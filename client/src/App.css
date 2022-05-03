@@ -59,6 +59,24 @@ btn-primary[disabled] {
   @apply bg-grey300 text-grey100;
 }
 
+/* Button Secondary */
+
+.btn-secondary {
+  @apply font-medium text-base py-2.5 px-6 rounded-lg border border-blue600 bg-white text-blue600;
+}
+
+.btn-secondary:hover {
+  @apply text-blue400 border-blue400 bg-white;
+}
+
+.btn-secondary:active {
+  @apply text-blue800 border-blue800 bg-white;
+}
+.btn-secondary:disabled,
+btn-secondary[disabled] {
+  @apply text-grey400 border-grey400 bg-grey100;
+}
+
 a {
   @apply font-semibold text-base underline underline-offset-auto text-blue600;
 }
