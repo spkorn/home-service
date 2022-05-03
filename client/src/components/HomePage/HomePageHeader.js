@@ -1,5 +1,5 @@
-import "../App.css";
-import image from "../HomePagePhoto/imageIndex";
+import "../../App.css"
+import image from "../../HomePagePhoto/imageIndex.js";
 
 function HomePageHeader() {
   return (

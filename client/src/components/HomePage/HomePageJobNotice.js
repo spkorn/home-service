@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
-import "../App.css";
+import "../../App.css"
 import { css } from "@emotion/react";
-import image from "../HomePagePhoto/imageIndex.js";
+import image from "../../HomePagePhoto/imageIndex.js";
 
 function HomePageJobNotice() {
   return (

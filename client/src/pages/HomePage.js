@@ -1,8 +1,8 @@
 import "../App.css";
 import { css } from "@emotion/react";
-import HomePageHeader from "../components/HomePageHeader";
-import PopularService from "../components/popular-service";
-import HomePageJobNotice from "../components/HomePageJobNotice";
+import HomePageHeader from "../components/HomePage/HomePageHeader";
+import PopularService from "../components/HomePage/HomePagePopular";
+import HomePageJobNotice from "../components/HomePage/HomePageJobNotice";
 
 
 function HomePage() {

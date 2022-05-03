@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import "../App.css";
-import image from "../HomePagePhoto/imageindex";
+import "../../App.css"
+import image from "../../HomePagePhoto/imageIndex.js";
 
 function PopularService() {
   return (
