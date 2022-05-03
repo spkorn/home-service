@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
-import '../App.css'
-import { css } from '@emotion/react'
-import image from '../HomePagePhoto/imageIndex.js'
+import "../../App.css";
+import { css } from "@emotion/react";
+import image from "../../HomePagePhoto/imageIndex.js";
 
 function Footer() {
   return (
@@ -47,7 +47,7 @@ function Footer() {
           </div>
         </div>
         <div className="footer-contact1">
-          <div>บริษัท โฮมเซอร์วิสเซส จำกัด</div>
+          <div className="mb-2">บริษัท โฮมเซอร์วิสเซส จำกัด</div>
           <div
             css={css`
               color: #4b5160;
@@ -58,7 +58,7 @@ function Footer() {
         </div>
         <div className="footer-contact2">
           <div
-            className="flex items-center"
+            className="flex items-center mb-2"
             css={css`
               color: #4b5160;
             `}
@@ -135,7 +135,7 @@ function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;

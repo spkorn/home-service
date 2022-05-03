@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
-import '../App.css'
-import { css } from '@emotion/react'
-import image from '../HomePagePhoto/imageIndex.js'
+import "../../App.css";
+import { css } from "@emotion/react";
+import image from "../../HomePagePhoto/imageIndex.js";
 
 function NavNonLogin() {
   return (
@@ -14,7 +14,11 @@ function NavNonLogin() {
         padding: 0px 10vw 0px 10vw;
         align-items: center;
         box-shadow: 2px 2px 24px rgba(23, 51, 106, 0.12);
+        position: -webkit-sticky;
         position: sticky;
+        top: 0;
+        z-index: 100;
+        background-color: white;
       `}
     >
       <div
@@ -75,7 +79,7 @@ function NavNonLogin() {
         เข้าสู่ระบบ
       </button>
     </nav>
-  )
+  );
 }
 
-export default NavNonLogin
+export default NavNonLogin;

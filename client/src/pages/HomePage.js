@@ -1,22 +1,20 @@
 import "../App.css";
-import { css } from "@emotion/react";
 import HomePageHeader from "../components/HomePage/HomePageHeader";
 import PopularService from "../components/HomePage/HomePagePopular";
 import HomePageJobNotice from "../components/HomePage/HomePageJobNotice";
-import Footer from '../Components/Footer.js'
-import NavNonLogin from '../Components/NavNonLogin.js'
-
+import Footer from "../components/HomePage/Footer";
+import NavNonLogin from "../components/HomePage/NavNonLogin";
 
 function HomePage() {
   return (
     <div className="home-page">
-    <NavNonLogin />
+      <NavNonLogin />
       <HomePageHeader />
-      <PopularService/>
-    <HomePageJobNotice />
-    <Footer />
+      <PopularService />
+      <HomePageJobNotice />
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;
