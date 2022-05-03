@@ -1,10 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import "../App.css";
-import general from "../HomePagePhoto/why.svg";
-import air from "../HomePagePhoto/air.svg";
-import washingMachine from "../HomePagePhoto/washing.svg";
-import tag from "../HomePagePhoto/grouptag.svg";
+import image from "../HomePagePhoto/imageindex";
 
 function PopularService() {
   return (
@@ -19,14 +16,14 @@ function PopularService() {
             margin: 42px 18px 60px 18px;
           `}
         >
-          <img className="rounded-t-lg" src={general} alt="ทำความสะอาดทั่วไป" />
+          <img className="rounded-t-lg" src={image.general} alt="ทำความสะอาดทั่วไป" />
           <div className="ml-6">
             <p className="bg-blue100 px-2.5 py-1 mt-4 w-fit rounded-lg text-blue800 text-xs">
               บริการทั่วไป
             </p>
             <h2 className="text-grey950 mt-2">ทำความสะอาดทั่วไป</h2>
             <div className="flex mb-6">
-              <img src={tag} alt="tag" />
+              <img src={image.tag} alt="tag" />
               <p className="text-grey700 text-sm ml-2.5">
                 ค่าบริการประมาณ 500.00 - 1,000.00 ฿
               </p>
@@ -42,14 +39,14 @@ function PopularService() {
             margin: 42px 18px 60px 18px;
           `}
         >
-          <img className="rounded-t-lg" src={air} alt="ล้างแอร์" />
+          <img className="rounded-t-lg" src={image.air} alt="ล้างแอร์" />
           <div className="ml-6">
             <p className="bg-blue100 px-2.5 py-1 mt-4 w-fit rounded-lg text-blue800 text-xs">
               บริการทั่วไป
             </p>
             <h2 className="text-grey950 mt-2">ล้างแอร์</h2>
             <div className="flex mb-6">
-              <img src={tag} alt="tag" />
+              <img src={image.tag} alt="tag" />
               <p className="text-grey700 text-sm ml-2.5">
                 ค่าบริการประมาณ 500.00 - 1,000.00 ฿
               </p>
@@ -67,7 +64,7 @@ function PopularService() {
         >
           <img
             className="rounded-t-lg"
-            src={washingMachine}
+            src={image.washingMachine}
             alt="ซ่อมเครื่องซักผ้า"
           />
           <div className="ml-6">
@@ -76,7 +73,7 @@ function PopularService() {
             </p>
             <h2 className="text-grey950 mt-2">ซ่อมเครื่องซักผ้า</h2>
             <div className="flex mb-6">
-              <img src={tag} alt="tag" />
+              <img src={image.tag} alt="tag" />
               <p className="text-grey700 text-sm ml-2.5">
                 ค่าบริการประมาณ 500.00 ฿
               </p>
