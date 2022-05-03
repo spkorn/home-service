@@ -77,7 +77,6 @@ btn-secondary[disabled] {
   @apply text-grey400 border-grey400 bg-grey100;
 }
 
-/* /////// */
 a {
   @apply font-semibold text-base underline underline-offset-auto text-blue600;
 }
