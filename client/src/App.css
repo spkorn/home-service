@@ -58,3 +58,15 @@ h5 {
 btn-primary[disabled] {
   @apply bg-grey300 text-grey100;
 }
+
+a {
+  @apply font-semibold text-base underline underline-offset-auto text-blue600;
+}
+
+a:hover {
+  @apply text-blue400;
+}
+
+a:active {
+  @apply text-blue800;
+}
