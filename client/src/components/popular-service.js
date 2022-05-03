@@ -16,7 +16,11 @@ function PopularService() {
             margin: 42px 18px 60px 18px;
           `}
         >
-          <img className="rounded-t-lg" src={image.general} alt="ทำความสะอาดทั่วไป" />
+          <img
+            className="rounded-t-lg"
+            src={image.general}
+            alt="ทำความสะอาดทั่วไป"
+          />
           <div className="ml-6">
             <p className="bg-blue100 px-2.5 py-1 mt-4 w-fit rounded-lg text-blue800 text-xs">
               บริการทั่วไป
@@ -82,10 +86,17 @@ function PopularService() {
           </div>
         </div>
       </div>
-<div className="flex justify-center w-screen">
-          <button className="btn-primary" css={css`width: 155px;
-height: 44px;`}>ดูบริการท้ังหมด</button>
-          </div>
+      <div className="flex justify-center w-screen">
+        <button
+          className="btn-primary"
+          css={css`
+            width: 155px;
+            height: 44px;
+          `}
+        >
+          ดูบริการท้ังหมด
+        </button>
+      </div>
     </div>
   );
 }
