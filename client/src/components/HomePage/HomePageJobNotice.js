@@ -8,7 +8,7 @@ function HomePageJobNotice() {
         <img src={image.jobNoticeWorker} alt="job-notice-worker" />
 
         <div className="flex flex-col pl-36 py-6 justify-evenly">
-          <h1 className="text-white font-bold text-5xl">
+          <h1 className="text-white font-bold text-4xl">
             มาร่วมเป็นพนักงานซ่อม
             <br />
             กับ HomeServices
@@ -18,7 +18,7 @@ function HomePageJobNotice() {
             <br />
             และยังได้รับค่าตอบแทนที่มากขึ้นกว่าเดิม
           </p>
-          <h2 className="text-white font-normal text-3xl">
+          <h2 className="text-white font-normal text-2xl">
             ติดต่อมาที่อีเมล: job@homeservices.co
           </h2>
         </div>
