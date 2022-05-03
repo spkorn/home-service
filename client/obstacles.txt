@@ -1,0 +1,3 @@
+Troubleshoot 3/5/22
+1. Can't set up Tailwind
+2. Set up button in Tailwind <currently rolling with hard code on button>

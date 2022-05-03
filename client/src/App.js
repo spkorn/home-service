@@ -1,7 +1,10 @@
-import "./App.css";
+/** @jsxImportSource @emotion/react */
+//import "./App.css";
+import { css } from "@emotion/react";
+import HomePage from "./pages/HomePage";
 
 function App() {
-  return <div className="App"></div>;
+  return (<HomePage />);
 }
 
 export default App;
