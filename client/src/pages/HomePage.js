@@ -1,22 +1,13 @@
-import "../App.css";
-import { css } from "@emotion/react";
+import Footer from '../Components/Footer.js'
+import NavNonLogin from '../Components/NavNonLogin.js'
 
 function HomePage() {
   return (
-    <div className="home-page">
-      <div className="App">
-        <h1
-          className="text-blue900"
-          // css={css`
-          //   font-family: prompt;
-          // `}
-        >
-          Hello WORLD บริการของเรา
-        </h1>
-        <button className="bg-blue300">PRAYUTH</button>
-      </div>
+    <div>
+      <NavNonLogin />
+      <Footer />
     </div>
-  );
+  )
 }
 
-export default HomePage;
+export default HomePage
