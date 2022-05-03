@@ -1,20 +1,11 @@
 import "../App.css";
 import { css } from "@emotion/react";
+import PopularService from "../components/popular-service";
 
 function HomePage() {
   return (
     <div className="home-page">
-      <div className="App">
-        <h1
-          className="text-blue900"
-          // css={css`
-          //   font-family: prompt;
-          // `}
-        >
-          Hello WORLD บริการของเรา
-        </h1>
-        <button className="bg-blue300">PRAYUTH</button>
-      </div>
+      <PopularService/>
     </div>
   );
 }
