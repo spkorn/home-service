@@ -1,3 +1,6 @@
+import logoHomeService from './logo-HomeServices.png'
+import phoneIcon from './phone-icon.png'
+import envelopeIcon from './envelope-icon.png'
 import homepageHeaderWorkman from "./homepage-header-human.png";
 import general from "./why.svg";
 import air from "./air.svg";
@@ -13,7 +16,11 @@ const image = {
     washingMachine,
     tag,
     jobNoticeHouseLogo,
-    jobNoticeWorker
+    jobNoticeWorker,
+    logoHomeService,
+    phoneIcon,
+    envelopeIcon
 };
 
 export default image;
+
