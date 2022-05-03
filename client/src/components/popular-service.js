@@ -85,8 +85,10 @@ function PopularService() {
           </div>
         </div>
       </div>
-      
-        <button className="btn-primary"><div className="items-center w-screen">ดูบริการท้ังหมด</div></button>
+<div className="flex justify-center w-screen">
+          <button className="btn-primary" css={css`width: 155px;
+height: 44px;`}>ดูบริการท้ังหมด</button>
+          </div>
     </div>
   );
 }
