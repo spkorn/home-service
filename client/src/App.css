@@ -12,32 +12,28 @@
 }
 
 h1 {
-  font-weight: 500;
+  @apply font-medium;
   font-size: 32px;
   line-height: 150%;
 }
 
 h2 {
-  font-weight: 500;
-  font-size: 20px;
+  @apply font-medium text-xl;
   line-height: 150%;
 }
 
 h3 {
-  font-weight: 400;
-  font-size: 20px;
+  @apply font-normal text-xl;
   line-height: 150%;
 }
 
 h4 {
-  font-weight: 500;
-  font-size: 18px;
+  @apply font-medium text-lg;
   line-height: 150%;
 }
 
 h5 {
-  font-weight: 500;
-  font-size: 16px;
+  @apply font-medium text-base;
   line-height: 150%;
 }
 
@@ -87,4 +83,15 @@ a:hover {
 
 a:active {
   @apply text-blue800;
+}
+
+input {
+  @apply placeholder:text-grey700 border rounded-lg border-grey300  focus:outline-none focus:border-blue600 focus:text-grey950;
+  width: 360px;
+  height: 44px;
+  padding: 10px 0px 10px 16px;
+}
+
+label {
+  @apply text-grey900;
 }
