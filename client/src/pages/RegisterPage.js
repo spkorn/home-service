@@ -2,8 +2,8 @@
 import { css } from "@emotion/react";
 import "../App.css";
 import { useState } from "react";
-import NavNonLogin from "../components/HomePage/NavNonLogin";
-import { useAuth } from "../contexts/authentication";
+import NavNonLogin from "../components/HomePage/NavNonLogin.js";
+import { useAuth } from "../contexts/authentication.js";
 
 function RegisterPage() {
   const [name, setName] = useState("");
@@ -11,21 +11,21 @@ function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  //   const { register } = useAuth();
+    const { register } = useAuth();
 
-  //   const handleSubmit = (event) => {
-  //     event.preventDefault();
-  //     const data = {
-  //       name,
-  //       phoneNumber,
-  //       email,
-  //       password,
-  //     };
-  //     register(data);
-  //   };
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      const data = {
+        name,
+        phoneNumber,
+        email,
+        password,
+      };
+      register(data);
+    };
 
   return (
-    <div className="register-form-container">
+    <div className="register-form-container" onSubmit={handleSubmit}>
       <NavNonLogin />
       <div
         className="w-screen flex justify-center"

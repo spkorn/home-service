@@ -1,8 +1,10 @@
-import HomePage from "./pages/HomePage.js";
-import RegisterPage from "./pages/RegisterPage.js";
+import { useAuth } from "./contexts/authentication.js"
+import AuthenticatedApp from "./pages/AuthenticatedApp.js";
+import UnauthenticatedApp from "./pages/UnauthenticatedApp.js";
 
 function App() {
-  return (<RegisterPage />);
+  const auth = useAuth();
+  return (auth.isAuthenticated? <AuthenticatedApp/> : <UnauthenticatedApp/>);
 }
 
 export default App;
