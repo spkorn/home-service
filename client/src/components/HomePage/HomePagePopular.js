@@ -7,7 +7,9 @@ function PopularService() {
   return (
     <div className="popular-service" css={css `background-color: rgba(229,229,229,0.2);`}>
         <h1 className="text-blue950 text-center pt-20">บริการยอดฮิตของเรา</h1>
-        <div className="flex flex-row w-screen justify-center">
+        <div className="flex flex-row w-screen justify-between" css={css`
+              padding: 0px 10vw 0px 10vw;
+            `}>
           <div
             className="border border-grey300 border-solid rounded-lg bg-white"
             css={css`
