@@ -5,6 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from './contexts/authentication';
 import { BrowserRouter } from 'react-router-dom';
+import jwtInterceptors from "./utils/jwtInterceptors";
+
+jwtInterceptors();
 
 ReactDOM.render(
   <React.StrictMode>

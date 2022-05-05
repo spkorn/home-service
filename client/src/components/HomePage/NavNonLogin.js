@@ -2,7 +2,8 @@
 import "../../App.css";
 import { css } from "@emotion/react";
 import image from "../../HomePagePhoto/imageIndex.js";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function NavNonLogin() {
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ function NavNonLogin() {
             margin-right: 70px;
           `}
         >
+          <Link to="/">
           <img
             alt="Home Services Logo"
             src={image.logoHomeService}
@@ -48,16 +50,11 @@ function NavNonLogin() {
               width: 32px;
               height: 32px;
             `}
-          />
-          <div
-            css={css`
-              color: #336df2;
-              font-size: 24px;
-              line-height: 36.29px;
-            `}
-          >
+            />
+          </Link>
+          <Link to="/" className="text-blue600 text-2xl no-underline">
             HomeServices
-          </div>
+          </Link>
         </div>
         <h5
           css={css`
@@ -67,7 +64,9 @@ function NavNonLogin() {
           บริการของเรา
         </h5>
       </div>
-      <button onClick={()=>navigate("/login")} className="btn-secondary">เข้าสู่ระบบ</button>
+      <button onClick={() => navigate("/login")} className="btn-secondary">
+        เข้าสู่ระบบ
+      </button>
     </nav>
   );
 }
