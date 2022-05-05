@@ -3,12 +3,12 @@ import HomePageHeader from "../components/HomePage/HomePageHeader";
 import PopularService from "../components/HomePage/HomePagePopular";
 import HomePageJobNotice from "../components/HomePage/HomePageJobNotice";
 import Footer from "../components/HomePage/Footer";
-import NavNonLogin from "../components/HomePage/NavNonLogin";
+import Nav from "../components/HomePage/Nav";
 
 function HomePage() {
   return (
     <div className="home-page">
-      <NavNonLogin />
+      <Nav />
       <HomePageHeader />
       <PopularService />
       <HomePageJobNotice />

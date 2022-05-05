@@ -107,3 +107,25 @@ input:valid {
 input[type="checkbox"] {
   @apply w-6 h-6 mr-4 border-grey300 rounded-md hover:border-blue600;
 }
+
+.dropdown {
+  overflow: hidden;
+  @apply text-base border-0 outline-0 m-0 float-left;
+}
+
+.dropdown-content {
+  @apply hidden absolute bg-white rounded-lg pt-1 mt-1 mb-1;
+  box-shadow: 2px 2px 24px rgba(23, 51, 106, 0.12);
+  width: 180px;
+  height: 164px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  @apply float-none pt-2 pb-2 block text-left text-grey800 text-sm font-normal;
+  text-decoration: none;
+}
+
+.dropdown:hover .dropdown-content {
+  @apply block;
+}

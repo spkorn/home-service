@@ -25,6 +25,7 @@ function AuthProvider(props) {
     localStorage.setItem("token", token);
     const dataToken = jwtDecode(token);
     setState({ ...state, user: dataToken });
+    // localStorage.setItem("name", dataToken.name);
     navigate("/");
   };
 
@@ -44,4 +45,4 @@ function AuthProvider(props) {
 
 const useAuth = () => React.useContext(AuthContext);
 
-export { AuthProvider, useAuth };
+export { AuthProvider, useAuth};

@@ -2,7 +2,7 @@
 import { css } from "@emotion/react";
 import "../App.css";
 import { useState } from "react";
-import NavNonLogin from "../components/HomePage/NavNonLogin.js";
+import Nav from "../components/HomePage/Nav.js";
 import { useAuth } from "../contexts/authentication.js";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
@@ -27,7 +27,7 @@ function RegisterPage() {
 
   return (
     <div className="register-form-container" onSubmit={handleSubmit}>
-      <NavNonLogin />
+      <Nav />
       <div
         className="w-screen flex justify-center"
         css={css`

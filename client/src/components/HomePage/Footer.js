@@ -2,6 +2,7 @@
 import "../../App.css";
 import { css } from "@emotion/react";
 import image from "../../HomePagePhoto/imageIndex.js";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -23,11 +24,12 @@ function Footer() {
         `}
       >
         <div
-          className="footer-home-service-logo"
+          className="cursor-pointer"
           css={css`
             display: flex;
           `}
         >
+          <Link to="/">
           <img
             alt="homeservices"
             src={image.logoHomeService}
@@ -35,16 +37,16 @@ function Footer() {
               width: 39.11px;
               height: 39.11px;
             `}
-          />
-          <div
-            className="text-blue600"
+            /></Link>
+          
+            <Link to="/" className="text-blue600 no-underline"
             css={css`
               font-size: 29.33px;
               line-height: 44.35px;
             `}
           >
             HomeServices
-          </div>
+          </Link>
         </div>
         <div className="footer-contact1">
           <div className="mb-2">บริษัท โฮมเซอร์วิสเซส จำกัด</div>
