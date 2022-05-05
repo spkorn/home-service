@@ -10,10 +10,12 @@ function Nav() {
   const navigate = useNavigate();
   const auth = useAuth();
   const { logout } = useAuth();
-  const loginName = localStorage.getItem("name");
+  //const loginName = localStorage.getItem("name");
+  const { state } = useAuth();
 
   return (
-    <nav className="flex justify-between w-screen items-center bg-white h-20"
+    <nav
+      className="flex justify-between w-screen items-center bg-white h-20"
       css={css`
         padding: 0px 10vw 0px 10vw;
         box-shadow: 2px 2px 24px rgba(23, 51, 106, 0.12);
@@ -67,25 +69,45 @@ function Nav() {
         {auth.isAuthenticated ? (
           <div className="dropdown">
             <div className="flex items-center cursor-pointer">
-              <p className="text-grey700 text-sm">{loginName}</p>
-              <img src={image.avatar} className="rounded-full w-10 h-10 mx-4 " alt="user's display"/>
+              <p className="text-grey700 text-sm">{state.user.name}</p>
+              <img
+                src={image.avatar}
+                className="rounded-full w-10 h-10 mx-4 "
+                alt="user's display"
+              />
             </div>
             <div className="dropdown-content cursor-pointer">
               <div className="flex items-center hover:bg-grey100 hover:bg-opacity-50 hover:text-grey950">
-                <img src={image.profileIcon} className="ml-4 mr-2 my-2 " alt="ข้อมูลผู้ใช้งาน"/>
+                <img
+                  src={image.profileIcon}
+                  className="ml-4 mr-2 my-2 "
+                  alt="ข้อมูลผู้ใช้งาน"
+                />
                 <Link to="/profile">ข้อมูลผู้ใช้งาน</Link>
               </div>
               <div className="flex items-center hover:bg-grey100 hover:bg-opacity-50 hover:text-grey950">
-                <img src={image.orderIcon} className="ml-4 mr-2 my-2 " alt="รายการคำสั่งซ่อม" />
+                <img
+                  src={image.orderIcon}
+                  className="ml-4 mr-2 my-2 "
+                  alt="รายการคำสั่งซ่อม"
+                />
                 <Link to="/">รายการคำสั่งซ่อม</Link>
               </div>
               <div className="flex items-center hover:bg-grey100 hover:bg-opacity-50 hover:text-grey950">
-                <img src={image.historyIcon} className="ml-4 mr-2 my-2 " alt="ประวัติการซ่อม"/>
+                <img
+                  src={image.historyIcon}
+                  className="ml-4 mr-2 my-2 "
+                  alt="ประวัติการซ่อม"
+                />
                 <Link to="/">ประวัติการซ่อม</Link>
               </div>
               <hr className="text-grey300 my-1" />
               <div className="flex items-center hover:bg-grey100 hover:bg-opacity-50 hover:text-grey950">
-                <img src={image.logoutIcon} className="ml-4 mr-2 my-2 " alt="ออกจากระบบ"/>
+                <img
+                  src={image.logoutIcon}
+                  className="ml-4 mr-2 my-2 "
+                  alt="ออกจากระบบ"
+                />
                 <Link
                   to="/"
                   onClick={() => {

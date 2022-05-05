@@ -23,7 +23,7 @@ async function init() {
   });
 
   app.listen(port, () => {
-    console.log(`App listening on port ${port}`);
+    console.log(`Server is listening on port ${port}`);
   });
 }
 

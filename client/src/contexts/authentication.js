@@ -9,7 +9,7 @@ function AuthProvider(props) {
   const [state, setState] = useState({
     loading: null,
     error: null,
-    user: null,
+    user: {},
   });
 
   const navigate = useNavigate();
@@ -30,14 +30,16 @@ function AuthProvider(props) {
   };
 
   const logout = () => {
-    localStorage.removeItem("token")
-    setState({ ...state, user: null, error: null })
+    localStorage.removeItem("token");
+    setState({ ...state, user: null, error: null });
   };
 
   const isAuthenticated = Boolean(localStorage.getItem("token"));
 
   return (
-    <AuthContext.Provider value={{ state, login, logout, register, isAuthenticated }}>
+    <AuthContext.Provider
+      value={{ state, login, logout, register, isAuthenticated }}
+    >
       {props.children}
     </AuthContext.Provider>
   );
@@ -45,4 +47,4 @@ function AuthProvider(props) {
 
 const useAuth = () => React.useContext(AuthContext);
 
-export { AuthProvider, useAuth};
+export { AuthProvider, useAuth };
