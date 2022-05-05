@@ -2,8 +2,11 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import authRouter from "./apps/auth.js";
+import dotenv from "dotenv";
 
 async function init() {
+  dotenv.config();
+
   const app = express();
   const port = 4000;
 
