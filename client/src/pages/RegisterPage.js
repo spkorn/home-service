@@ -151,7 +151,6 @@ function RegisterPage() {
             <div className="text-center">
               <Link
                 to="/login"
-                className="font-semibold text-base underline underline-offset-auto text-blue600 hover:text-blue400 active:text-blue800"
               >
                 กลับไปหน้าเข้าสู่ระบบ
               </Link>
