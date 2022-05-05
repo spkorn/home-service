@@ -2,8 +2,10 @@
 import "../../App.css";
 import { css } from "@emotion/react";
 import image from "../../HomePagePhoto/imageIndex.js";
+import { useNavigate } from 'react-router-dom';
 
 function NavNonLogin() {
+  const navigate = useNavigate();
   return (
     <nav
       css={css`
@@ -65,19 +67,7 @@ function NavNonLogin() {
           บริการของเรา
         </h5>
       </div>
-      <button
-        css={css`
-          font-size: 16px;
-          line-height: 24.19px;
-          color: #336df2;
-          border: 1px solid #336df2;
-          border-radius: 8px;
-          width: 115px;
-          height: 40px;
-        `}
-      >
-        เข้าสู่ระบบ
-      </button>
+      <button onClick={()=>navigate("/login")} className="btn-secondary">เข้าสู่ระบบ</button>
     </nav>
   );
 }

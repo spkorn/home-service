@@ -86,12 +86,24 @@ a:active {
 }
 
 input {
-  @apply placeholder:text-grey700 border rounded-lg border-grey300  focus:outline-none focus:border-blue600 focus:text-grey950;
+  @apply placeholder:text-grey700 border rounded-lg border-grey300;
   width: 360px;
   height: 44px;
   padding: 10px 0px 10px 16px;
 }
 
+input:focus {
+  @apply placeholder:text-grey950 border-blue600 outline-none;
+}
+
 label {
   @apply text-grey900;
+}
+
+input:valid {
+  @apply placeholder:text-grey950 border-grey300 outline-none;
+}
+
+input[type="checkbox"] {
+  @apply w-6 h-6 mr-4 border-grey300 rounded-md hover:border-blue600;
 }

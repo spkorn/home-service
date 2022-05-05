@@ -4,6 +4,7 @@ import "../App.css";
 import { useState } from "react";
 import NavNonLogin from "../components/HomePage/NavNonLogin.js";
 import { useAuth } from "../contexts/authentication.js";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function RegisterPage() {
   const [name, setName] = useState("");
@@ -11,18 +12,18 @@ function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-    const { register } = useAuth();
+  const { register } = useAuth();
 
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      const data = {
-        name,
-        phoneNumber,
-        email,
-        password,
-      };
-      register(data);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = {
+      name,
+      phoneNumber,
+      email,
+      password,
     };
+    register(data);
+  };
 
   return (
     <div className="register-form-container" onSubmit={handleSubmit}>
@@ -53,7 +54,7 @@ function RegisterPage() {
                 id="name"
                 name="name"
                 type="text"
-                placeholder="กรุณากรอกชื่อ นามสกุล"
+                placeholder="กรุณากรอกชื่อ-นามสกุล"
                 onChange={(event) => {
                   setName(event.target.value);
                 }}
@@ -124,13 +125,9 @@ function RegisterPage() {
               <label>
                 <input
                   required
-                  className="w-6 h-6 mr-4"
                   id="conditionAndPrivacy"
                   name="conditionAndPrivacy"
-                                  type="checkbox"
-                                  css={css`border-radius: 6px;
-                                  border: 1px solid #CCD0D7;
-                                  `}
+                  type="checkbox"
                 />
                 <span className="absolute">
                   ยอมรับ <a href="/">ข้อตกลงและเงื่อนไข</a> และ{" "}
@@ -152,7 +149,12 @@ function RegisterPage() {
               ลงทะเบียน
             </button>
             <div className="text-center">
-              <a href="">กลับไปหน้าเข้าสู่ระบบ</a>
+              <Link
+                to="/login"
+                className="font-semibold text-base underline underline-offset-auto text-blue600 hover:text-blue400 active:text-blue800"
+              >
+                กลับไปหน้าเข้าสู่ระบบ
+              </Link>
             </div>
           </div>
         </form>
