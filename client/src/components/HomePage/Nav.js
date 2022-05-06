@@ -58,16 +58,15 @@ function Nav() {
           </Link>
         </div>
         <h5
-          css={css`
-            font-size: 16px;
-          `}
+          className="cursor-pointer"
+          onClick={() => navigate("/service")}
         >
           บริการของเรา
         </h5>
       </div>
       <div>
         {auth.isAuthenticated ? (
-          <div className="dropdown">
+          <div className="dropdown cursor-pointer">
             <div className="flex items-center cursor-pointer">
               <p className="text-grey700 text-sm">{state.user.name}</p>
               <img
