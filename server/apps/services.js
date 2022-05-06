@@ -25,6 +25,32 @@ serviceRouter.get("/:id", async (req, res) => {
   });
 });
 
+//API route to create service item page
+serviceRouter.post("/", async (req, res) => {
+  const newServiceItem = {
+    ...req.body,
+    created_date: new Date(),
+    edited_date: new Date(),
+  };
+
+  const result = await pool.query(
+    `insert into service (service_name, category, price_range_estimate, service_photo, created_date, edited_date) 
+    values ($1, $2, $3, $4, $5, $6)`,
+    [
+      newServiceItem.service_name,
+      newServiceItem.category,
+      newServiceItem.price_range_estimate,
+      newServiceItem.service_photo,
+      newServiceItem.created_date,
+      newServiceItem.edited_date,
+    ]
+  );
+
+  return res.json({
+    message: "New service item has been created successfully.",
+  });
+});
+
 serviceRouter.delete("/:id", async (req, res) => {
   const serviceId = req.params.id;
 
