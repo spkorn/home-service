@@ -1,16 +1,17 @@
+import ServicePageJobNotice from "../components/ServicePage/ServicesPageJobNotice";
 import "../App.css";
 import ServicePageHeader from "../components/ServicePage/ServicePageHeader";
 import Footer from "../components/HomePage/Footer";
 import Nav from "../components/HomePage/Nav";
 
-function HomePage() {
+function ServicePage() {
   return (
-    <div className="home-page">
+    <div className="service-page">
       <Nav />
-      <ServicePageHeader /> 
+      <ServicePageHeader />
+    <ServicePageJobNotice /> 
       <Footer />
     </div>
   );
 }
-
-export default HomePage;
+export default ServicePage;

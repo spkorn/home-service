@@ -10,6 +10,7 @@ function UnauthenticatedApp() {
     <div className="App">
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/service" element={<ServicePage />} />
         <Route path="/login" element={<LoginPage />} /> 
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/service" element={<ServicePage />} />

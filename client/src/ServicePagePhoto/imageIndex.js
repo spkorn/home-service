@@ -1,7 +1,7 @@
-import Header from "./Header.jpg";
+import logoHomeService from "./logo-HomeServices.svg";
 
 const image = {
-  Header,
-};
+  logoHomeService,
+
 
 export default image;
