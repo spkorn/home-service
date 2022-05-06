@@ -53,6 +53,12 @@ function LoginPage() {
                   setEmail(event.target.value);
                 }}
                 value={email}
+                css={css`
+                  padding: 10px 0px 10px 16px;
+                  width: 100%;
+                  height: 44px;
+                `}
+                className="border rounded-lg border-grey300"
               />
             </label>
           </div>
@@ -71,6 +77,12 @@ function LoginPage() {
                   setPassword(event.target.value);
                 }}
                 value={password}
+                css={css`
+                  padding: 10px 0px 10px 16px;
+                  width: 100%;
+                  height: 44px;
+                `}
+                className="border rounded-lg border-grey300"
               />
             </label>
           </div>
