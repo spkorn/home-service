@@ -13,10 +13,9 @@ function UnauthenticatedApp() {
         <Route path="/service" element={<ServicePage />} />
         <Route path="/login" element={<LoginPage />} /> 
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/service" element={<ServicePage />} />
       </Routes>
     </div>
-  );
+  )
 }
 
-export default UnauthenticatedApp;
+export default UnauthenticatedApp
