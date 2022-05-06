@@ -59,6 +59,12 @@ function RegisterPage() {
                   setName(event.target.value);
                 }}
                 value={name}
+                css={css`
+                  padding: 10px 0px 10px 16px;
+                  width: 100%;
+                  height: 44px;
+                `}
+                className="border rounded-lg border-grey300"
               />
             </label>
           </div>
@@ -78,6 +84,12 @@ function RegisterPage() {
                   setPhoneNumber(event.target.value);
                 }}
                 value={phoneNumber}
+                css={css`
+                  padding: 10px 0px 10px 16px;
+                  width: 100%;
+                  height: 44px;
+                `}
+                className="border rounded-lg border-grey300"
               />
             </label>
           </div>
@@ -96,6 +108,12 @@ function RegisterPage() {
                   setEmail(event.target.value);
                 }}
                 value={email}
+                css={css`
+                  padding: 10px 0px 10px 16px;
+                  width: 100%;
+                  height: 44px;
+                `}
+                className="border rounded-lg border-grey300"
               />
             </label>
           </div>
@@ -114,6 +132,12 @@ function RegisterPage() {
                   setPassword(event.target.value);
                 }}
                 value={password}
+                css={css`
+                  padding: 10px 0px 10px 16px;
+                  width: 100%;
+                  height: 44px;
+                `}
+                className="border rounded-lg border-grey300"
               />
             </label>
             <br />
@@ -149,11 +173,7 @@ function RegisterPage() {
               ลงทะเบียน
             </button>
             <div className="text-center">
-              <Link
-                to="/login"
-              >
-                กลับไปหน้าเข้าสู่ระบบ
-              </Link>
+              <Link to="/login">กลับไปหน้าเข้าสู่ระบบ</Link>
             </div>
           </div>
         </form>

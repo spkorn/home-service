@@ -2,8 +2,10 @@
 import { css } from "@emotion/react";
 import "../../App.css"
 import image from "../../HomePagePhoto/imageIndex.js";
+import { useNavigate } from "react-router-dom";
 
 function PopularService() {
+  const navigate = useNavigate();
   return (
     <div className="popular-service" css={css `background-color: rgba(229,229,229,0.2);`}>
         <h1 className="text-blue950 text-center pt-20">บริการยอดฮิตของเรา</h1>
@@ -96,6 +98,7 @@ function PopularService() {
               height: 44px;
               margin-bottom: 147px;
             `}
+          onClick={() => navigate("/service")}
           >
             ดูบริการท้ังหมด
           </button>
