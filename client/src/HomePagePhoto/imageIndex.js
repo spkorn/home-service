@@ -13,7 +13,7 @@ import logoutIcon from "./logout.svg";
 import historyIcon from "./history.svg";
 import orderIcon from "./order.svg";
 import avatar from "./avatar.png";
-import bell from "./bell.svg";
+import banner from "./banner.svg";
 
 const image = {
   homepageHeaderWorkman,
@@ -31,7 +31,7 @@ const image = {
   historyIcon,
   orderIcon,
   avatar,
-  bell,
+  banner,
 };
 
 export default image;
