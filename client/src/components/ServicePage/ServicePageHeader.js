@@ -19,7 +19,7 @@ function ServiceHeader() {
           โดย พนักงานแม่บ้านและช่างมืออาชีพ
         </p>
       </div>
-      <div className="h-20 flex items-center justify-evenly border-b border-grey300">
+      <div className="h-20 w-screen flex items-center justify-evenly border-b border-grey300">
         <input
           id="search-text"
           name="search-text"

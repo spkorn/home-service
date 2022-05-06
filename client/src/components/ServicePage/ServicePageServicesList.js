@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import image from '../../ServicePagePhoto/imageIndex'
+import image from '../../HomePagePhoto/imageIndex'
 
 function ServicesList() {
   return (
     <div
       className="our-services"
       css={css`
-        width: 1440px;
+        width: 100vw;
         height: 1384px;
         display: flex;
         justify-content: center;
@@ -35,7 +35,7 @@ function ServicesList() {
           `}
         >
           <img
-            src={image.cleanAirConditioner}
+            src={image.air}
             alt="Fix air conditioner"
             css={css`
               width: 349px;
@@ -82,7 +82,7 @@ function ServicesList() {
               `}
             >
               <img
-                src={image.tagIcon}
+                src={image.tag}
                 alt="Price Tag"
                 css={css`
                   width: 16px;
@@ -107,7 +107,7 @@ function ServicesList() {
           `}
         >
           <img
-            src={image.cleanAirConditioner}
+            src={image.air}
             alt="Fix air conditioner"
             css={css`
               width: 349px;
@@ -154,7 +154,7 @@ function ServicesList() {
               `}
             >
               <img
-                src={image.tagIcon}
+                src={image.tag}
                 alt="Price Tag"
                 css={css`
                   width: 16px;
@@ -179,7 +179,7 @@ function ServicesList() {
           `}
         >
           <img
-            src={image.cleanAirConditioner}
+            src={image.air}
             alt="Fix air conditioner"
             css={css`
               width: 349px;
@@ -226,7 +226,7 @@ function ServicesList() {
               `}
             >
               <img
-                src={image.tagIcon}
+                src={image.tag}
                 alt="Price Tag"
                 css={css`
                   width: 16px;
@@ -251,7 +251,7 @@ function ServicesList() {
           `}
         >
           <img
-            src={image.cleanAirConditioner}
+            src={image.air}
             alt="Fix air conditioner"
             css={css`
               width: 349px;
@@ -298,7 +298,7 @@ function ServicesList() {
               `}
             >
               <img
-                src={image.tagIcon}
+                src={image.tag}
                 alt="Price Tag"
                 css={css`
                   width: 16px;
@@ -323,7 +323,7 @@ function ServicesList() {
           `}
         >
           <img
-            src={image.cleanAirConditioner}
+            src={image.air}
             alt="Fix air conditioner"
             css={css`
               width: 349px;
@@ -370,7 +370,7 @@ function ServicesList() {
               `}
             >
               <img
-                src={image.tagIcon}
+                src={image.tag}
                 alt="Price Tag"
                 css={css`
                   width: 16px;
@@ -395,7 +395,7 @@ function ServicesList() {
           `}
         >
           <img
-            src={image.cleanAirConditioner}
+            src={image.air}
             alt="Fix air conditioner"
             css={css`
               width: 349px;
@@ -442,7 +442,7 @@ function ServicesList() {
               `}
             >
               <img
-                src={image.tagIcon}
+                src={image.tag}
                 alt="Price Tag"
                 css={css`
                   width: 16px;
@@ -467,7 +467,7 @@ function ServicesList() {
           `}
         >
           <img
-            src={image.cleanAirConditioner}
+            src={image.air}
             alt="Fix air conditioner"
             css={css`
               width: 349px;
@@ -514,7 +514,7 @@ function ServicesList() {
               `}
             >
               <img
-                src={image.tagIcon}
+                src={image.tag}
                 alt="Price Tag"
                 css={css`
                   width: 16px;
@@ -539,7 +539,7 @@ function ServicesList() {
           `}
         >
           <img
-            src={image.cleanAirConditioner}
+            src={image.air}
             alt="Fix air conditioner"
             css={css`
               width: 349px;
@@ -586,7 +586,7 @@ function ServicesList() {
               `}
             >
               <img
-                src={image.tagIcon}
+                src={image.tag}
                 alt="Price Tag"
                 css={css`
                   width: 16px;
@@ -612,7 +612,7 @@ function ServicesList() {
           `}
         >
           <img
-            src={image.cleanAirConditioner}
+            src={image.air}
             alt="Fix air conditioner"
             css={css`
               width: 349px;
@@ -659,7 +659,7 @@ function ServicesList() {
               `}
             >
               <img
-                src={image.tagIcon}
+                src={image.tag}
                 alt="Price Tag"
                 css={css`
                   width: 16px;
