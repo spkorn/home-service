@@ -16,7 +16,7 @@ function AuthProvider(props) {
 
   const register = async (data) => {
     await axios.post("http://localhost:4000/auth/register", data);
-    navigate("/");
+    navigate("/login");
   };
 
   const login = async (data) => {
@@ -25,7 +25,7 @@ function AuthProvider(props) {
     localStorage.setItem("token", token);
     const dataToken = jwtDecode(token);
     setState({ ...state, user: dataToken });
-    localStorage.setItem("name", dataToken.name);
+    // localStorage.setItem("name", dataToken.name);
     navigate("/");
   };
 
