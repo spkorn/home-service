@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import authRouter from "./apps/auth.js";
+import serviceRouter from "./apps/services.js";
 import dotenv from "dotenv";
 
 async function init() {
@@ -13,9 +14,10 @@ async function init() {
   app.use(cors());
   app.use(bodyParser.json());
   app.use("/auth", authRouter);
+  app.use("/service", serviceRouter);
 
   app.get("/", (req, res) => {
-    res.send("Welcome to Home Service !");
+    res.send("Welcome to Home Service!");
   });
 
   app.get("*", (req, res) => {
