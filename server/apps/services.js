@@ -13,6 +13,18 @@ serviceRouter.get("/", async (req, res) => {
   });
 });
 
+//API route to one service item page
+serviceRouter.get("/:id", async (req, res) => {
+  const serviceId = req.params.id;
+
+  const result = await pool.query(`select * from service where service_id=$1`, [
+    serviceId,
+  ]);
+  return res.json({
+    data: result.rows[0],
+  });
+});
+
 serviceRouter.delete("/:id", async (req, res) => {
   const serviceId = req.params.id;
 
