@@ -10,8 +10,9 @@ function Nav() {
   const navigate = useNavigate();
   const auth = useAuth();
   const { logout } = useAuth();
-  //const loginName = localStorage.getItem("name");
-  const { state } = useAuth();
+  const loginName = localStorage.getItem("name"); // ใช้อันนี้แล้ว user name บน nav ไม่หายตอน refresh
+  //const { state } = useAuth();
+  //console.log(loginName);
 
   return (
     <nav
@@ -57,10 +58,7 @@ function Nav() {
             HomeServices
           </Link>
         </div>
-        <h5
-          className="cursor-pointer"
-          onClick={() => navigate("/service")}
-        >
+        <h5 className="cursor-pointer" onClick={() => navigate("/service")}>
           บริการของเรา
         </h5>
       </div>
@@ -68,7 +66,7 @@ function Nav() {
         {auth.isAuthenticated ? (
           <div className="dropdown cursor-pointer">
             <div className="flex items-center cursor-pointer">
-              <p className="text-grey700 text-sm">{state.user.name}</p>
+              <p className="text-grey700 text-sm">{loginName}</p>
               <img
                 src={image.avatar}
                 className="rounded-full w-10 h-10 mx-4 "

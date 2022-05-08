@@ -25,13 +25,14 @@ function AuthProvider(props) {
     localStorage.setItem("token", token);
     const dataToken = jwtDecode(token);
     setState({ ...state, user: dataToken });
-    // localStorage.setItem("name", dataToken.name);
+    localStorage.setItem("name", dataToken.name); // ใช้อันนี้แล้ว user name บน nav ไม่หายตอน refresh
     navigate("/");
   };
 
   const logout = () => {
     localStorage.removeItem("token");
     setState({ ...state, user: null, error: null });
+    localStorage.removeItem("name"); // ลบข้อมูล user name ออกตอน logout
   };
 
   const isAuthenticated = Boolean(localStorage.getItem("token"));

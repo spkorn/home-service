@@ -7,7 +7,6 @@ import MultiRangeSlider from "./MultiRangeSlider";
 function ServiceHeader() {
   const [search, setSearch] = useState("");
 
-
   return (
     <header className="service-header">
       <div className="banner">
@@ -30,7 +29,9 @@ function ServiceHeader() {
           }}
           value={search}
           className="border rounded-lg border-grey300"
-          css={css`padding: 10px 0px 10px 16px;`}
+          css={css`
+            padding: 10px 0px 10px 16px;
+          `}
         />
 
         <div className="flex">
@@ -72,7 +73,9 @@ function ServiceHeader() {
                 `}
               >
                 <div>
-                  <p className="text-xs font-normal text-grey700 px-5 my-2">0-3000฿</p>
+                  <p className="text-xs font-normal text-grey700 px-5 my-2">
+                    0-3000฿
+                  </p>
                   <MultiRangeSlider
                     min={0}
                     max={3000}
@@ -85,7 +88,7 @@ function ServiceHeader() {
             </div>
           </div>
 
-          <div class="vl"></div>
+          <div className="vl"></div>
           <div className="flex-col">
             <p className="text-xs text-grey700 font-normal">เรียงตาม</p>
             <div className="dropdown cursor-pointer">
