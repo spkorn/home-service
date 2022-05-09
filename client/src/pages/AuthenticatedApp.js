@@ -3,16 +3,27 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./HomePage";
 import UserProfile from "./Profile";
 import ServicePage from "./ServicePage";
+import AdminPage from "./AdminCategoryPage";
 import "../App.css";
 
 function AuthenticatedApp() {
+  const loginRole = localStorage.getItem("role");
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/profile" element={<UserProfile />} />
-        <Route path="/service" element={<ServicePage />} />
-      </Routes>
+      {loginRole === "customer" ? (
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/service" element={<ServicePage />} />
+          <Route path="/category-dashboard" element={<AdminPage />} />
+        </Routes>
+      ) : (
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/service" element={<ServicePage />} />
+        </Routes>
+      )}
     </div>
   );
 }
