@@ -7,18 +7,16 @@ import '../../App.css'
 export default function AdminCategories() {
   return (
     <div
-      className="categories-data"
+      className="categories-data w-screen h-screen"
       css={css`
-        width: 1200px;
-        height: 994px;
         background: #e5e5e5;
         padding: 41px;
         border: 0.5px solid #e6e7eb;
       `}
     >
       <div
+        className='pl-60'
         css={css`
-          width: 1120px;
           height: 305px;
           border-radius: 5px;
         `}
@@ -26,7 +24,6 @@ export default function AdminCategories() {
         <div
           className="table header"
           css={css`
-            width: 1120px;
             height: 41px;
             background-color: #efeff2;
             color: #646c80;
@@ -43,6 +40,7 @@ export default function AdminCategories() {
             css={css`
               width: 80px;
               padding: 24px;
+              font-weight: 400;
             `}
           >
             ลำดับ
@@ -52,6 +50,7 @@ export default function AdminCategories() {
             css={css`
               width: 262px;
               padding: 24px;
+              font-weight: 400;
             `}
           >
             ชื่อหมวดหมู่
@@ -70,6 +69,7 @@ export default function AdminCategories() {
             css={css`
               width: 357px;
               padding: 24px;
+              font-weight: 400;
             `}
           >
             แก้ไขล่าสุด
@@ -79,6 +79,7 @@ export default function AdminCategories() {
             css={css`
               width: 120px;
               padding: 24px;
+              font-weight: 400;
             `}
           >
             Action
@@ -90,11 +91,10 @@ export default function AdminCategories() {
               key={categoryData.id}
               className="data-category-box"
               css={css`
-                width: 1120px;
                 height: 88px;
                 background-color: #ffff;
                 display: flex;
-                justify-content: space-between;
+                justify-content: space-between;;
                 border: 0.5px solid #e6e7eb;
               `}
             >
@@ -113,6 +113,7 @@ export default function AdminCategories() {
                   css={css`
                     width: 80px;
                     text-align: center;
+                    font-weight: 300;
                   `}
                 >
                   {categoryData.order}
@@ -122,6 +123,7 @@ export default function AdminCategories() {
                   css={css`
                     width: 262px;
                     padding: 24px;
+                    font-weight: 300;
                   `}
                 >
                   {categoryData.categoryName}
@@ -130,6 +132,7 @@ export default function AdminCategories() {
                   css={css`
                     width: 245px;
                     padding: 24px;
+                    font-weight: 300;
                   `}
                 >
                   {categoryData.createdDate}
@@ -151,6 +154,7 @@ export default function AdminCategories() {
                   display: flex;
                   align-items: center;
                   justify-content: space-around;
+                  padding-right: 24px;
                 `}
               >
                 <img
