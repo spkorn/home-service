@@ -21,6 +21,7 @@ function RegisterPage() {
       phoneNumber,
       email,
       password,
+      role: "customer",
     };
     register(data);
   };
