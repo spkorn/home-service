@@ -27,7 +27,7 @@ function AuthProvider(props) {
     setState({ ...state, user: dataToken });
     localStorage.setItem("name", dataToken.name); // ใช้อันนี้แล้ว user name บน nav ไม่หายตอน refresh
     localStorage.setItem("role", dataToken.role);
-    if (item.role==="customer") {navigate("/");} else {navigate("/admin");}
+    if (item.role==="customer") {navigate("/");} else {navigate("/category-dashboard");}
   };
 
   const logout = () => {

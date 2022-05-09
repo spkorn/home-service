@@ -1,6 +1,6 @@
 import "../App.css";
 
-function AdminPage() {
+function AdminCategoryPage() {
   return (
     <div className="user-profile">
           <h1>Admin</h1>
@@ -8,4 +8,4 @@ function AdminPage() {
   );
 }
 
-export default AdminPage;
+export default  AdminCategoryPage;
