@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-
 import HomePage from "./HomePage";
 import UserProfile from "./Profile";
 import ServicePage from "./ServicePage";
@@ -10,7 +9,7 @@ function AuthenticatedApp() {
   const loginRole = localStorage.getItem("role");
   return (
     <div className="App">
-      {loginRole === "customer" ? (
+      {loginRole == "admin" ? (
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/profile" element={<UserProfile />} />
@@ -21,7 +20,7 @@ function AuthenticatedApp() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/profile" element={<UserProfile />} />
-          <Route path="/service" element={<ServicePage />} />
+            <Route path="/service" element={<ServicePage />} />
         </Routes>
       )}
     </div>

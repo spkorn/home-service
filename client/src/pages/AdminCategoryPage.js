@@ -2,10 +2,10 @@ import "../App.css";
 
 function AdminCategoryPage() {
   return (
-    <div className="user-profile">
-          <h1>Admin</h1>
+    <div className="admin-category-page">
+      <h1>Admin</h1>
     </div>
   );
 }
 
-export default  AdminCategoryPage;
+export default AdminCategoryPage;

@@ -11,6 +11,7 @@ authRouter.post("/register", async (req, res) => {
     phoneNumber: req.body.phoneNumber,
     email: req.body.email,
     password: req.body.password,
+    role: req.body.role,
   };
 
   const salt = await bcrypt.genSalt(10);
@@ -19,9 +20,9 @@ authRouter.post("/register", async (req, res) => {
   // console.log(user.password.length);
 
   await pool.query(
-    `insert into users (name, phoneNumber, email, password)
-  values ($1, $2, $3, $4)`,
-    [user.name, user.phoneNumber, user.email, user.password]
+    `insert into users (name, phoneNumber, email, password, role)
+  values ($1, $2, $3, $4, $5)`,
+    [user.name, user.phoneNumber, user.email, user.password, user.role]
   );
 
   return res.json({
@@ -63,6 +64,7 @@ authRouter.post("/login", async (req, res) => {
       user_id: user.rows[0].user_id,
       name: user.rows[0].name,
       phoneNumber: user.rows[0].phoneNumber,
+      role: user.rows[0].role,
     },
     process.env.SECRET_KEY,
     {

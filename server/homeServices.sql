@@ -14,7 +14,7 @@ user_id int
 create table users (
 user_id int primary key generated always as identity,
 name varchar (100) not null,
-phone_number integer not null,
+phoneNumber int not null,
 email varchar (100) not null,
 password varchar (100) not null,
 role text not null
@@ -31,11 +31,11 @@ insert into service (service_name, category, price_range_estimate, service_photo
 insert into service (service_name, category, price_range_estimate, service_photo, created_date, edited_date, user_id) values ('ติดตั้งชักโครก', 'บริการห้องน้ำ', 2759.59, 'lacus at turpis donec posuere metus vitae ipsum aliquam non mauris morbi', '2021-12-15T08:16:47Z', '2021-07-18T04:15:58Z', 9);
 insert into service (service_name, category, price_range_estimate, service_photo, created_date, edited_date, user_id) values ('ติดตั้งเตาแก๊ส', 'บริการห้องครัว', 3620.08, 'interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu', '2022-03-16T23:24:20Z', '2021-12-10T07:02:21Z', 10);
 
-insert into users (name, phone_number, email, password, role) values ('Stephan Edmeades', '0879316420', 'sedmeades0@goodreads.com', 'iP4EAxpCF4i', 'customer');
-insert into users (name, phone_number, email, password, role) values ('Fredia Nijs', '0342821343', 'fnijs1@twitpic.com', 'Yuapex', 'customer');
-insert into users (name, phone_number, email, password, role) values ('Tessie Gadeaux', '0228320111', 'tgadeaux2@soundcloud.com', 'JJFYDDIFdQ', 'customer');
-insert into users (name, phone_number, email, password, role) values ('Corrine Revill', '0298476902', 'crevill3@wunderground.com', 'CU6F9kkpdx9H', 'customer');
-insert into users (name, phone_number, email, password, role) values ('Alexi Sword', '0292112304', 'asword4@hibu.com', 'GWlTsOVW', 'customer');
-insert into users (name, phone_number, email, password, role) values ('Bernetta Goatman', '0885067947', 'bgoatman5@creativecommons.org', 'dlCSIq78BU', 'customer');
-insert into users (name, phone_number, email, password, role) values ('Burnaby Trouel', '0607150189', 'btrouel6@microsoft.com', 'pwRWWe5rC3x', 'admin');
-insert into users (name, phone_number, email, password, role) values ('Del Kliement', '0165268368', 'dkliement7@360.cn', 'PX6YMnV', 'admin');
+insert into users (name, phoneNumber, email, password, role) values ('Stephan Edmeades', '0879316420', 'sedmeades0@goodreads.com', 'iP4EAxpCF4i', 'customer');
+insert into users (name, phoneNumber, email, password, role) values ('Fredia Nijs', '0342821343', 'fnijs1@twitpic.com', 'Yuapex', 'customer');
+insert into users (name, phoneNumber, email, password, role) values ('Tessie Gadeaux', '0228320111', 'tgadeaux2@soundcloud.com', 'JJFYDDIFdQ', 'customer');
+insert into users (name, phoneNumber, email, password, role) values ('Corrine Revill', '0298476902', 'crevill3@wunderground.com', 'CU6F9kkpdx9H', 'customer');
+insert into users (name, phoneNumber, email, password, role) values ('Alexi Sword', '0292112304', 'asword4@hibu.com', 'GWlTsOVW', 'customer');
+insert into users (name, phoneNumber, email, password, role) values ('Bernetta Goatman', '0885067947', 'bgoatman5@creativecommons.org', 'dlCSIq78BU', 'customer');
+insert into users (name, phoneNumber, email, password, role) values ('Burnaby Trouel', '0607150189', 'btrouel6@microsoft.com', 'pwRWWe5rC3x', 'admin');
+insert into users (name, phoneNumber, email, password, role) values ('Del Kliement', '0165268368', 'dkliement7@360.cn', 'PX6YMnV', 'admin');

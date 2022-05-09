@@ -70,7 +70,7 @@ function RegisterPage() {
             </label>
           </div>
           <div className="mt-5">
-            <label for="phone">
+            <label htmlFor="phone">
               <h5>
                 เบอร์โทรศัพท์<span className="text-red">*</span>
               </h5>
