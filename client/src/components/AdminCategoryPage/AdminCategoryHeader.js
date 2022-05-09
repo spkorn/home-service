@@ -11,9 +11,9 @@ function AdminCategoryHeader() {
   const [search, setSearch] = useState("");
 
   return (
-    <header className="admin-header">
-      <div className="header-name w-screen flex items-center h-20 px-10 justify-between border-b border-grey300">
-        <h1 className="text-xl font-medium">หมวดหมู่</h1>
+    <header className="admin-header ">
+      <div className="header-name pl-60 w-screen flex items-center h-20 pr-10 justify-between border-b border-grey300 ">
+        <h1 className="text-xl font-medium pl-10">หมวดหมู่</h1>
         <div className="flex">
           <input
             id="search-text"
