@@ -1,11 +1,12 @@
-import "../App.css";
+import '../App.css'
+import AdminCategories from '../components/AdminCategoryPage/CategoriesList'
 
 function AdminCategoryPage() {
   return (
     <div className="admin-category-page">
-      <h1>Admin</h1>
+      <AdminCategories />
     </div>
-  );
+  )
 }
 
-export default AdminCategoryPage;
+export default AdminCategoryPage
