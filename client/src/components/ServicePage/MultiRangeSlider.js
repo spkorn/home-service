@@ -47,7 +47,12 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
   }, [minVal, maxVal, onChange]);
 
   return (
+    <div>
+      <p className="text-xs font-normal text-grey700 px-5 my-1.5">
+                    {minVal}-{maxVal}฿
+      </p>
     <div className="container">
+      <br></br>
       <input
         type="range"
         min={min}
@@ -82,6 +87,7 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
         <div ref={range} className="slider__range" />
         <div className="slider__left-value">{minVal}</div>
         <div className="slider__right-value">{maxVal}</div>
+      </div>
       </div>
     </div>
   );

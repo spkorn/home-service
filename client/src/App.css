@@ -148,23 +148,11 @@ input[type="checkbox"] {
 
 #search-text:focus {
   background-image: none;
-  @apply bg-white placeholder:pl-2 font-normal placeholder:text-grey950 border-blue600;
+  @apply bg-white placeholder:pl-2 font-normal placeholder:text-white border-blue600;
 }
 
 .multi-range-slider {
   width: 216px;
-}
-
-.multi-range-slider .bar-inner {
-  background-color: black;
-  display: flex;
-  flex-grow: 1;
-  flex-shrink: 1;
-  justify-content: space-between;
-  position: relative;
-  border: solid 1px black;
-  justify-content: space-between;
-  box-shadow: inset 0px 0px 5px black;
 }
 
 .vl {
@@ -176,8 +164,8 @@ input[type="checkbox"] {
 
 input[type="range"]::-webkit-slider-thumb {
   pointer-events: all;
-  width: 24px;
-  height: 24px;
+  width: 13px;
+  height: 13px;
   -webkit-appearance: none;
   /* @apply w-6 h-6 appearance-none pointer-events-auto; */
 }

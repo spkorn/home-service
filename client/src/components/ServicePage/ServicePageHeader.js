@@ -73,9 +73,6 @@ function ServiceHeader() {
                 `}
               >
                 <div>
-                  <p className="text-xs font-normal text-grey700 px-5 my-2">
-                    0-3000฿
-                  </p>
                   <MultiRangeSlider
                     min={0}
                     max={3000}
