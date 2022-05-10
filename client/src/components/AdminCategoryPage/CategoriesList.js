@@ -5,7 +5,6 @@ import "../../App.css";
 
 export default function AdminCategories(props) {
   const { category, setCategory } = props;
-
   return (
     <div
       className="categories-data w-screen h-screen"
