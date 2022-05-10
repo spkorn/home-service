@@ -7,7 +7,7 @@ const categoryRouter = Router();
 
 categoryRouter.post("/", async (req, res) => {
   const newCategory = {
-    category_name: req.body.category_name,
+    ...req.body,
     category_created_date: new Date(),
     category_edited_date: new Date(),
   };

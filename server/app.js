@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import authRouter from "./apps/auth.js";
-import categoryRouter from "./apps/category.js"
+import categoryRouter from "./apps/category.js";
 import dotenv from "dotenv";
 
 async function init() {

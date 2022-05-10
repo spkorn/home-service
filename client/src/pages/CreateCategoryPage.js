@@ -8,17 +8,16 @@ import axios from "axios";
 
 function CreateCategory() {
   const navigate = useNavigate();
-  const [category, setCategory] = useState("");
-  //   const createCategory = async () => {
-  //     await axios.post("http://localhost:4000/api", {
-  //       category,
-  //     });
-  //     const handleSubmit = (event) => {
-  //       event.preventDefault();
-  //       createCategory();
-  //     };
-  //   };
-  // รอหลังบ้านก่อน
+  const [category_name, setCategory_name] = useState("");
+  const createCategory = async () => {
+    await axios.post("http://localhost:4000/category", { category_name });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    createCategory();
+    navigate("/category-dashboard");
+  };
 
   return (
     <div
@@ -28,7 +27,7 @@ function CreateCategory() {
       `}
     >
       <SideBar />
-      <div className="pl-60">
+      <form className="pl-60" onSubmit={handleSubmit}>
         <div className="header-name flex items-center h-20 px-10 justify-between border-b border-grey300 bg-white">
           <h1 className="text-xl font-medium">เพิ่มหมวดหมู่</h1>
           <div className="flex">
@@ -41,7 +40,6 @@ function CreateCategory() {
             <button
               className="btn-primary flex items-center justify-center ml-6 text-base font-medium w-28 h-11"
               type="submit"
-              onClick={() => navigate("/category-dashboard")}
             >
               สร้าง
             </button>
@@ -64,7 +62,7 @@ function CreateCategory() {
               ชื่อหมวดหมู่<span className="text-red">*</span>
             </label>
             <input
-              require
+              required
               id="categoryName"
               name="categoryName"
               type="text"
@@ -74,14 +72,14 @@ function CreateCategory() {
                 height: 44px;
               `}
               className="border rounded-lg border-grey300 focus:border-blue600 focus:outline-none"
-              value={category}
+              value={category_name}
               onChange={(event) => {
-                setCategory(event.target.value);
+                setCategory_name(event.target.value);
               }}
             />
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
