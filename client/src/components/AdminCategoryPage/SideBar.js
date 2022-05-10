@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 function LeftNav() {
   const navigate = useNavigate();
   return (
-    <div className="left-nav w-60 h-screen bg-blue950 top-0 z-10 fixed" css={css`box-shadow: inset -1px 0px 0px #3E3E3E;`}>
+    <div className="left-nav w-60 h-screen bg-blue950 top-0 z-10 fixed pb-20" css={css`box-shadow: inset -1px 0px 0px #3E3E3E;`}>
       <div className="flex justify-center my-8">
         <div className="py-2 px-2.5 bg-blue100 rounded-xl w-48 h-12 flex items-center cursor-pointer" onClick={() => navigate("/")}>
           <img className="w-7 h-7 mr-1.5" src={image.logoHomeService} />
@@ -29,10 +29,18 @@ function LeftNav() {
           </a>
         </div>
         <div className="hover:bg-blue900 h-12 my-1 cursor-pointer pt-3">
-          <img className="inline-block h-5 mr-2 ml-7" src={icon.coupon} alt="Promotion Code"/>
+          <img className="inline-block h-5 mr-2 ml-7" src={icon.coupon} alt="Logout"/>
           <a className="h-14 text-grey100 font-medium text-base no-underline hover:text-white">
             Promotion Code
           </a>
+        </div>
+        <div>
+        <div className="hover:bg-blue900 h-12 my-1 cursor-pointer pt-3">
+          <img className="inline-block mr-2 ml-7" src={icon.logout} alt="Logout"/>
+            <a onClick={() => navigate("/logout")} className="h-14 text-grey100 font-medium text-base no-underline hover:text-white">
+            Logout
+          </a>
+          </div>
         </div>
       </div>
     </div>
