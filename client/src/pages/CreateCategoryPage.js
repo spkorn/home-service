@@ -22,7 +22,7 @@ function CreateCategory() {
   return (
     <div className="create-category-container h-screen bg-bg">
       <SideBar />
-      <div className="pl-60">
+      <form className="pl-60" onSubmit={handleSubmit}>
         <div
           className="header-name flex items-center h-20 px-10
          justify-between border-b border-grey300 bg-white"
@@ -64,14 +64,14 @@ function CreateCategory() {
               type="text"
               className="border rounded-lg border-grey300
               focus:border-blue600 focus:outline-none w-4/6 h-11 py-2.5 pl-4"
-              value={category}
+              value={category_name}
               onChange={(event) => {
-                setCategory(event.target.value);
+                setCategory_name(event.target.value);
               }}
             />
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
