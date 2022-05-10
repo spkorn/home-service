@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react'
-import icons from '../../AdminPhoto/imageIndex'
-import adminCategories from './CategoriesData'
-import '../../App.css'
+import { css } from "@emotion/react";
+import icons from "../../AdminPhoto/imageIndex";
+import adminCategories from "./CategoriesData";
+import "../../App.css";
 
 export default function AdminCategories() {
   return (
@@ -15,7 +15,7 @@ export default function AdminCategories() {
       `}
     >
       <div
-        className='pl-60'
+        className="pl-60"
         css={css`
           height: 305px;
           border-radius: 5px;
@@ -85,99 +85,100 @@ export default function AdminCategories() {
             Action
           </h5>
         </div>
-        {adminCategories.map((categoryData) => {
-          return (
-            <div
-              key={categoryData.id}
-              className="data-category-box"
-              css={css`
-                height: 88px;
-                background-color: #ffff;
-                display: flex;
-                justify-content: space-between;;
-                border: 0.5px solid #e6e7eb;
-              `}
-            >
+        <div className="bg-white rounded-b-lg">
+          {adminCategories.map((categoryData) => {
+            return (
               <div
-                className="data-category"
+                key={categoryData.id}
+                className="data-category-box"
                 css={css`
-                  width: 888px;
                   height: 88px;
-                  padding-left: 56px;
                   display: flex;
-                  align-items: center;
+                  justify-content: space-between;
+                  border: 0.5px solid #e6e7eb;
                 `}
               >
                 <div
-                  className="order-number"
+                  className="data-category"
                   css={css`
-                    width: 80px;
-                    text-align: center;
-                    font-weight: 300;
+                    width: 888px;
+                    height: 88px;
+                    padding-left: 56px;
+                    display: flex;
+                    align-items: center;
                   `}
                 >
-                  {categoryData.order}
+                  <div
+                    className="order-number"
+                    css={css`
+                      width: 80px;
+                      text-align: center;
+                      font-weight: 300;
+                    `}
+                  >
+                    {categoryData.order}
+                  </div>
+                  <div
+                    className="category-name"
+                    css={css`
+                      width: 262px;
+                      padding: 24px;
+                      font-weight: 300;
+                    `}
+                  >
+                    {categoryData.categoryName}
+                  </div>
+                  <div
+                    css={css`
+                      width: 245px;
+                      padding: 24px;
+                      font-weight: 300;
+                    `}
+                  >
+                    {categoryData.createdDate}
+                  </div>
+                  <div
+                    css={css`
+                      width: 245px;
+                      padding: 24px;
+                    `}
+                  >
+                    {categoryData.lastEdited}
+                  </div>
                 </div>
                 <div
-                  className="category-name"
+                  className="icons-box"
                   css={css`
-                    width: 262px;
-                    padding: 24px;
-                    font-weight: 300;
+                    width: 120px;
+                    height: 88px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    padding-right: 24px;
                   `}
                 >
-                  {categoryData.categoryName}
-                </div>
-                <div
-                  css={css`
-                    width: 245px;
-                    padding: 24px;
-                    font-weight: 300;
-                  `}
-                >
-                  {categoryData.createdDate}
-                </div>
-                <div
-                  css={css`
-                    width: 245px;
-                    padding: 24px;
-                  `}
-                >
-                  {categoryData.lastEdited}
+                  <img
+                    alt="Delete"
+                    src={icons.trashIcon}
+                    css={css`
+                      width: 24px;
+                      height: 24px;
+                    `}
+                  />
+                  <img
+                    alt="Edit"
+                    src={icons.editIcon}
+                    css={css`
+                      width: 24px;
+                      height: 24px;
+                    `}
+                  />
                 </div>
               </div>
-              <div
-                className="icons-box"
-                css={css`
-                  width: 120px;
-                  height: 88px;
-                  display: flex;
-                  align-items: center;
-                  justify-content: space-around;
-                  padding-right: 24px;
-                `}
-              >
-                <img
-                  alt="Delete"
-                  src={icons.trashIcon}
-                  css={css`
-                    width: 24px;
-                    height: 24px;
-                  `}
-                />
-                <img
-                  alt="Edit"
-                  src={icons.editIcon}
-                  css={css`
-                    width: 24px;
-                    height: 24px;
-                  `}
-                />
-              </div>
-            </div>
-          )
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
-  )
+  );
 }

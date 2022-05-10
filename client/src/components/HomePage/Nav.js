@@ -10,7 +10,8 @@ function Nav() {
   const navigate = useNavigate();
   const auth = useAuth();
   const { logout } = useAuth();
-  const loginName = localStorage.getItem("name"); // ใช้อันนี้แล้ว user name บน nav ไม่หายตอน refresh
+  const loginName = localStorage.getItem("name");// ใช้อันนี้แล้ว user name บน nav ไม่หายตอน refresh
+  const loginRole = localStorage.getItem("role"); 
   //const { state } = useAuth();
   //console.log(loginName);
 
@@ -74,14 +75,21 @@ function Nav() {
               />
             </div>
             <div className="dropdown-content cursor-pointer">
-              <div className="flex items-center hover:bg-grey100 hover:bg-opacity-50 hover:text-grey950">
+              {loginRole == "admin" ? (<div className="flex items-center hover:bg-grey100 hover:bg-opacity-50 hover:text-grey950">
+                <img
+                  src={image.profileIcon}
+                  className="ml-4 mr-2 my-2 "
+                  alt="admin"
+                />
+                <Link to="/">Admin Dashboard</Link>
+              </div>) : (<div className="flex items-center hover:bg-grey100 hover:bg-opacity-50 hover:text-grey950">
                 <img
                   src={image.profileIcon}
                   className="ml-4 mr-2 my-2 "
                   alt="ข้อมูลผู้ใช้งาน"
                 />
                 <Link to="/profile">ข้อมูลผู้ใช้งาน</Link>
-              </div>
+              </div>)}
               <div className="flex items-center hover:bg-grey100 hover:bg-opacity-50 hover:text-grey950">
                 <img
                   src={image.orderIcon}
@@ -98,6 +106,8 @@ function Nav() {
                 />
                 <Link to="/">ประวัติการซ่อม</Link>
               </div>
+              
+              
               <hr className="text-grey300 my-1" />
               <div className="flex items-center hover:bg-grey100 hover:bg-opacity-50 hover:text-grey950">
                 <img
