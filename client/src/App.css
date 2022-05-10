@@ -111,10 +111,9 @@ input[type="checkbox"] {
 }
 
 .dropdown-content {
-  @apply hidden absolute bg-white rounded-lg pt-1 mt-1 mb-1;
+  @apply hidden absolute bg-white rounded-lg pt-1 mt-1 mb-1 pb-1;
   box-shadow: 2px 2px 24px rgba(23, 51, 106, 0.12);
   width: 180px;
-  height: 164px;
   z-index: 1;
 }
 

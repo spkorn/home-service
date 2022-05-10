@@ -3,6 +3,7 @@ import HomePage from "./HomePage";
 import UserProfile from "./Profile";
 import ServicePage from "./ServicePage";
 import AdminCategoryPage from "./AdminCategoryPage";
+import CreateCategory from "./CreateCategoryPage";
 import "../App.css";
 
 function AuthenticatedApp() {
@@ -15,6 +16,7 @@ function AuthenticatedApp() {
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/service" element={<ServicePage />} />
           <Route path="/category-dashboard" element={<AdminCategoryPage />} />
+          <Route path="/create-category" element={<CreateCategory />} />
         </Routes>
       ) : (
         <Routes>

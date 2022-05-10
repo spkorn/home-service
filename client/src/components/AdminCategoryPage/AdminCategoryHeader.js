@@ -31,33 +31,12 @@ function AdminCategoryHeader() {
           />
           <button
             className="btn-primary flex items-center ml-6"
-            onClick={() => navigate("/category-dashboard")}
+            onClick={() => navigate("/create-category")}
           >
             <div className="text-base font-medium mr-3">เพิ่มหมวดหมู่</div>
             <img src={image.plusSign} />
           </button>
         </div>
-
-        {/* <div
-        className="header-name w-screen flex items-center h-20 px-10 justify-between border-b border-grey300"
-        onSubmit={handleSubmit}
-      >
-        <h1 className="text-xl font-medium">เพิ่มหมวดหมู่</h1>
-        <div className="flex">
-          <button
-            className="btn-secondary flex items-center justify-center text-base font-medium w-28 h-11"
-            onClick={() => navigate("/category-dashboard")}
-          >
-            ยกเลิก
-          </button>
-          <button
-            className="btn-primary flex items-center justify-center ml-6 text-base font-medium w-28 h-11"
-            type="submit"
-            onClick={() => navigate("/category-dashboard")}
-          >
-            สร้าง
-          </button>
-        </div>*/}
       </div>
     </header>
   );
