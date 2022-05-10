@@ -5,7 +5,7 @@ import SideBar from "../components/AdminCategoryPage/SideBar";
 import useSearchBox from "../hooks/util";
 
 function AdminCategoryPage() {
-  const { searchCategory, setSearchCategory, category, setCategory } =
+  const { searchCategory, setSearchCategory, category, setCategory} =
     useSearchBox();
   return (
     <div className="admin-category-page">

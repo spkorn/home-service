@@ -6,7 +6,8 @@ import { useState } from "react";
 import SideBar from "../components/AdminCategoryPage/SideBar";
 import axios from "axios";
 
-function CreateCategory() {
+function CreateCategory(props) {
+  const { id, setId } = props;
   const navigate = useNavigate();
   const [category_name, setCategory_name] = useState("");
   const createCategory = async () => {

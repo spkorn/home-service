@@ -2,9 +2,10 @@
 import { css } from "@emotion/react";
 import icons from "../../AdminPhoto/imageIndex.js";
 import "../../App.css";
+import Moment from "react-moment";
 
 export default function AdminCategories(props) {
-  const { category, setCategory } = props;
+  const { category } = props;
   return (
     <div
       className="categories-data w-screen h-screen"
@@ -135,7 +136,9 @@ export default function AdminCategories(props) {
                       font-weight: 300;
                     `}
                   >
-                    {data.category_created_date}
+                    <Moment format="DD/MM/YYYY HH:MM">
+                      {data.category_created_date}
+                    </Moment>
                   </div>
                   <div
                     css={css`
@@ -143,7 +146,9 @@ export default function AdminCategories(props) {
                       padding: 24px;
                     `}
                   >
-                    ไม่รู้
+                    <Moment format="DD/MM/YYYY HH:MM">
+                      {data.category_edited_date}
+                    </Moment>
                   </div>
                 </div>
                 <div
@@ -180,4 +185,5 @@ export default function AdminCategories(props) {
         </div>
       </div>
     </div>
-);}
+  );
+}
