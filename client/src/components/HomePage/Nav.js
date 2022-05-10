@@ -81,7 +81,7 @@ function Nav() {
                   className="ml-4 mr-2 my-2 "
                   alt="admin"
                 />
-                <Link to="/">Admin Dashboard</Link>
+                <Link to="/category-dashboard">Admin</Link>
               </div>) : (<div className="flex items-center hover:bg-grey100 hover:bg-opacity-50 hover:text-grey950">
                 <img
                   src={image.profileIcon}
