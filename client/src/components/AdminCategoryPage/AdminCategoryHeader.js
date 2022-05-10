@@ -2,13 +2,29 @@ import "../../App.css";
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import "../../App.css";
-import { useState } from "react";
+import axios from "axios";
+import { useEffect } from "react";
 import image from "../../AdminPhoto/imageIndex";
 import { useNavigate } from "react-router-dom";
 
-function AdminCategoryHeader() {
+function AdminCategoryHeader(props) {
   const navigate = useNavigate();
-  const [search, setSearch] = useState("");
+  const { searchCategory, setSearchCategory, setCategory } = props;
+  // const searchCategoryData = async () => {
+  //   const results = await axios.get(
+  //     `http://localhost:4000/category?keywords=${searchCategory}`
+  //   );
+  //   setCategory(results.data.data);
+  //   console.log(results);
+  // };
+  
+  // useEffect(() => {
+  //   let timerId;
+  //   timerId = setTimeout(searchCategoryData, 1000);
+  //   return () => {
+  //     clearTimeout(timerId);
+  //   };
+  // }, [searchCategory]);
 
   return (
     <header className="admin-header ">
@@ -21,9 +37,9 @@ function AdminCategoryHeader() {
             type="text"
             placeholder="ค้นหาหมวดหมู่..."
             onChange={(event) => {
-              setSearch(event.target.value);
+              setSearchCategory(event.target.value);
             }}
-            value={search}
+            value={searchCategory}
             className="border rounded-lg border-grey300"
             css={css`
               padding: 10px 0px 10px 16px;

@@ -1,10 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import icons from "../../AdminPhoto/imageIndex";
-import adminCategories from "./CategoriesData";
+import icons from "../../AdminPhoto/imageIndex.js";
 import "../../App.css";
 
-export default function AdminCategories() {
+export default function AdminCategories(props) {
+  const { category, setCategory } = props;
+
   return (
     <div
       className="categories-data w-screen h-screen"
@@ -86,10 +87,10 @@ export default function AdminCategories() {
           </h5>
         </div>
         <div className="bg-white rounded-b-lg">
-          {adminCategories.map((categoryData) => {
+          {category.map((data) => {
             return (
               <div
-                key={categoryData.id}
+                key={data.id}
                 className="data-category-box"
                 css={css`
                   height: 88px;
@@ -116,7 +117,7 @@ export default function AdminCategories() {
                       font-weight: 300;
                     `}
                   >
-                    {categoryData.order}
+                    {data.category_id}
                   </div>
                   <div
                     className="category-name"
@@ -126,7 +127,7 @@ export default function AdminCategories() {
                       font-weight: 300;
                     `}
                   >
-                    {categoryData.categoryName}
+                    {data.category_name}
                   </div>
                   <div
                     css={css`
@@ -135,7 +136,7 @@ export default function AdminCategories() {
                       font-weight: 300;
                     `}
                   >
-                    {categoryData.createdDate}
+                    {data.category_created_date}
                   </div>
                   <div
                     css={css`
@@ -143,7 +144,7 @@ export default function AdminCategories() {
                       padding: 24px;
                     `}
                   >
-                    {categoryData.lastEdited}
+                    ไม่รู้
                   </div>
                 </div>
                 <div
@@ -180,5 +181,4 @@ export default function AdminCategories() {
         </div>
       </div>
     </div>
-  );
-}
+);}
