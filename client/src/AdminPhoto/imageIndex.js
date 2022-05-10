@@ -4,6 +4,7 @@ import plusSign from "./plus-sign.svg";
 import coupon from "./coupon.svg";
 import category from "./category.svg";
 import service from "./paper.svg";
+import logout from "./logoutIcon.svg";
 
 const image = {
   editIcon,
@@ -11,7 +12,8 @@ const image = {
   plusSign,
   coupon,
   service,
-  category
+  category,
+  logout
 }
 
 export default image
