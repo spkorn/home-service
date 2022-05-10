@@ -1,14 +1,14 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
-import "../App.css";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import SideBar from "../components/AdminCategoryPage/SideBar";
-import axios from "axios";
+import { css } from '@emotion/react'
+import '../App.css'
+import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import SideBar from '../components/AdminCategoryPage/SideBar'
+import axios from 'axios'
 
 function CreateCategory() {
-  const navigate = useNavigate();
-  const [category, setCategory] = useState("");
+  const navigate = useNavigate()
+  const [category, setCategory] = useState('')
   //   const createCategory = async () => {
   //     await axios.post("http://localhost:4000/api", {
   //       category,
@@ -21,46 +21,42 @@ function CreateCategory() {
   // รอหลังบ้านก่อน
 
   return (
-    <div
-      className="create-category-container h-screen"
-      css={css`
-        background-color: #f3f4f6;
-      `}
-    >
+    <div className="create-category-container h-screen bg-bg">
       <SideBar />
       <div className="pl-60">
-        <div className="header-name flex items-center h-20 px-10 justify-between border-b border-grey300 bg-white">
+        <div
+          className="header-name flex items-center h-20 px-10
+         justify-between border-b border-grey300 bg-white"
+        >
           <h1 className="text-xl font-medium">เพิ่มหมวดหมู่</h1>
           <div className="flex">
             <button
-              className="btn-secondary flex items-center justify-center text-base font-medium w-28 h-11"
-              onClick={() => navigate("/category-dashboard")}
+              className="btn-secondary flex items-center
+               justify-center text-base font-medium w-28 h-11"
+              onClick={() => navigate('/category-dashboard')}
             >
               ยกเลิก
             </button>
             <button
-              className="btn-primary flex items-center justify-center ml-6 text-base font-medium w-28 h-11"
+              className="btn-primary flex items-center justify-center
+               ml-6 text-base font-medium w-28 h-11"
               type="submit"
-              onClick={() => navigate("/category-dashboard")}
+              onClick={() => navigate('/category-dashboard')}
             >
               สร้าง
             </button>
           </div>
         </div>
         <div
-          className="createCategory bg-white border border-grey200 flex items-center rounded-lg h-32"
-          css={css`
-            margin: 40px 24px 0px 40px;
-            padding: 0px 24px;
-          `}
+          className="createCategory 
+          bg-white border border-grey200
+           flex items-center rounded-lg h-32 mx-6 my-10 py-0 px-24"
         >
           <div
-            className="inputForCreate flex justify-between items-center h-11"
-            css={css`
-              width: 662px;
-            `}
+            className="inputForCreate 
+            flex justify-between items-center h-11 w-2/4"
           >
-            <label className="h-6">
+            <label className="h-6 text-grey700">
               ชื่อหมวดหมู่<span className="text-red">*</span>
             </label>
             <input
@@ -68,22 +64,18 @@ function CreateCategory() {
               id="categoryName"
               name="categoryName"
               type="text"
-              css={css`
-                padding: 10px 0px 10px 16px;
-                width: 433px;
-                height: 44px;
-              `}
-              className="border rounded-lg border-grey300 focus:border-blue600 focus:outline-none"
+              className="border rounded-lg border-grey300
+              focus:border-blue600 focus:outline-none w-4/6 h-11 py-2.5 pl-4"
               value={category}
               onChange={(event) => {
-                setCategory(event.target.value);
+                setCategory(event.target.value)
               }}
             />
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default CreateCategory;
+export default CreateCategory
