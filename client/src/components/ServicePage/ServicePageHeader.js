@@ -1,11 +1,27 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import "../../App.css";
-import { useState } from "react";
 import MultiRangeSlider from "./MultiRangeSlider";
+import axios from "axios";
+import { useEffect } from "react";
 
-function ServiceHeader() {
-  const [search, setSearch] = useState("");
+function ServiceHeader(props) {
+  const { searchService, setSearchService, setService } = props;
+
+  // const searchServiceData = async () => {
+  //   const results = await axios.get(
+  //     `http://localhost:4000/service?keywords=${searchService}`
+  //   );
+  //   setService(results.data.data);
+  // };
+
+  // useEffect(() => {
+  //   let timerId;
+  //   timerId = setTimeout(searchServiceData, 1000);
+  //   return () => {
+  //     clearTimeout(timerId);
+  //   };
+  // }, [searchService]);
 
   return (
     <header className="service-header">
@@ -25,9 +41,9 @@ function ServiceHeader() {
           type="text"
           placeholder="ค้นหาบริการ..."
           onChange={(event) => {
-            setSearch(event.target.value);
+            setSearchService(event.target.value);
           }}
-          value={search}
+          value={searchService}
           className="border rounded-lg border-grey300"
           css={css`
             padding: 10px 0px 10px 16px;
