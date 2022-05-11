@@ -20,7 +20,7 @@ categoryRouter.get("/", async (req, res) => {
   }
   const results = await pool.query(query, values);
 
-  return res.json({
+  return res.status(200).json({
     data: results.rows,
   });
 });
@@ -28,7 +28,7 @@ categoryRouter.get("/", async (req, res) => {
 categoryRouter.get("/:id", async (req, res) => {
   const categoryId = req.params.id;
 
-  const result = await pool.query(`select * from where catedgory_id=$1`, [
+  const result = await pool.query(`select * from where category_id=$1`, [
     categoryId,
   ]);
   return res.json({
