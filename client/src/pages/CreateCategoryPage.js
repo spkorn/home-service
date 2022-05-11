@@ -1,23 +1,23 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
-import "../App.css";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import SideBar from "../components/AdminCategoryPage/SideBar";
-import axios from "axios";
+// import { css } from "@emotion/react";
+import '../App.css'
+import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import SideBar from '../components/AdminCategoryPage/SideBar'
+import axios from 'axios'
 
 function CreateCategory() {
-  const navigate = useNavigate();
-  const [category_name, setCategory_name] = useState("");
+  const navigate = useNavigate()
+  const [category_name, setCategory_name] = useState('')
   const createCategory = async () => {
-    await axios.post("http://localhost:4000/category", { category_name });
-  };
+    await axios.post('http://localhost:4000/category', { category_name })
+  }
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    createCategory();
-    navigate("/category-dashboard");
-  };
+    event.preventDefault()
+    createCategory()
+    navigate('/category-dashboard')
+  }
 
   return (
     <div className="create-category-container h-screen bg-bg">
@@ -32,7 +32,7 @@ function CreateCategory() {
             <button
               className="btn-secondary flex items-center
                justify-center text-base font-medium w-28 h-11"
-              onClick={() => navigate("/category-dashboard")}
+              onClick={() => navigate('/category-dashboard')}
             >
               ยกเลิก
             </button>
@@ -66,14 +66,14 @@ function CreateCategory() {
               focus:border-blue600 focus:outline-none w-4/6 h-11 py-2.5 pl-4"
               value={category_name}
               onChange={(event) => {
-                setCategory_name(event.target.value);
+                setCategory_name(event.target.value)
               }}
             />
           </div>
         </div>
       </form>
     </div>
-  );
+  )
 }
 
-export default CreateCategory;
+export default CreateCategory
