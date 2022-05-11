@@ -16,7 +16,7 @@ function AuthProvider(props) {
 
   const register = async (data) => {
     await axios.post("http://localhost:4000/auth/register", data);
-    navigate("/");
+    navigate("/login");
   };
 
   const login = async (data) => {
@@ -25,13 +25,19 @@ function AuthProvider(props) {
     localStorage.setItem("token", token);
     const dataToken = jwtDecode(token);
     setState({ ...state, user: dataToken });
-    localStorage.setItem("name", dataToken.name);
-    navigate("/");
+    localStorage.setItem("name", dataToken.name); // ใช้อันนี้แล้ว user name บน nav ไม่หายตอน refresh
+    localStorage.setItem("role", dataToken.role);
+    if (dataToken.role === "admin") {
+      navigate("/category-dashboard");
+    } else {
+      navigate("/");
+    }
   };
 
   const logout = () => {
     localStorage.removeItem("token");
     setState({ ...state, user: null, error: null });
+    localStorage.removeItem("name"); // ลบข้อมูล user name ออกตอน logout
   };
 
   const isAuthenticated = Boolean(localStorage.getItem("token"));

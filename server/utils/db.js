@@ -5,7 +5,7 @@ const { Pool } = pg.default;
 dotenv.config();
 
 const pool = new Pool({
-  connectionString: `postgresql://postgres:${process.env.POSTGRESQL_PASSWORD}@localhost:5432/homeService`,
+  connectionString: `postgresql://postgres:${process.env.password}@localhost:5432/homeService`,
 });
 
 export { pool };

@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import "../../App.css";
-import { css } from "@emotion/react";
-import image from "../../HomePagePhoto/imageIndex.js";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import '../../App.css'
+import { css } from '@emotion/react'
+import image from '../../HomePagePhoto/imageIndex.js'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
 function Footer() {
   return (
@@ -30,16 +30,19 @@ function Footer() {
           `}
         >
           <Link to="/">
-          <img
-            alt="homeservices"
-            src={image.logoHomeService}
-            css={css`
-              width: 39.11px;
-              height: 39.11px;
-            `}
-            /></Link>
-          
-            <Link to="/" className="text-blue600 no-underline"
+            <img
+              alt="homeservices"
+              src={image.logoHomeService}
+              css={css`
+                width: 39.11px;
+                height: 39.11px;
+              `}
+            />
+          </Link>
+
+          <Link
+            to="/"
+            className="text-blue600 no-underline"
             css={css`
               font-size: 29.33px;
               line-height: 44.35px;
@@ -137,7 +140,7 @@ function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }
 
-export default Footer;
+export default Footer

@@ -86,10 +86,7 @@ a:active {
 }
 
 input {
-  @apply placeholder:text-grey700 border rounded-lg border-grey300;
-  width: 360px;
-  height: 44px;
-  padding: 10px 0px 10px 16px;
+  @apply placeholder:text-grey700;
 }
 
 input:focus {
@@ -114,10 +111,9 @@ input[type="checkbox"] {
 }
 
 .dropdown-content {
-  @apply hidden absolute bg-white rounded-lg pt-1 mt-1 mb-1;
+  @apply hidden absolute bg-white rounded-lg pt-1 mt-1 mb-1 pb-1;
   box-shadow: 2px 2px 24px rgba(23, 51, 106, 0.12);
   width: 180px;
-  height: 164px;
   z-index: 1;
 }
 
@@ -125,7 +121,50 @@ input[type="checkbox"] {
   @apply float-none pt-2 pb-2 block text-left text-grey800 text-sm font-normal;
   text-decoration: none;
 }
+.dropdown-content p {
+  @apply float-none pt-2 pb-2 block text-left text-grey700 text-sm font-normal hover:text-blue700;
+}
 
 .dropdown:hover .dropdown-content {
   @apply block;
+}
+
+.banner {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 25, 81, 0.6),
+      rgba(0, 25, 81, 0.6)
+    ),
+    url(../src/ServicePagePhoto/Header.jpg);
+  @apply w-screen bg-center bg-cover h-60 text-center relative;
+}
+
+#search-text {
+  background-image: url(../src/ServicePagePhoto/search.svg);
+  width: 350px;
+  @apply bg-no-repeat bg-left pl-4 bg-origin-content placeholder:pl-10  placeholder:text-grey700 font-normal focus:placeholder:text-grey950 focus:border-blue600;
+}
+
+#search-text:focus {
+  background-image: none;
+  @apply bg-white placeholder:pl-2 font-normal placeholder:text-white border-blue600;
+}
+
+.multi-range-slider {
+  width: 216px;
+}
+
+.vl {
+  border-left: 1px solid #ccd0d7;
+  height: 44px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  pointer-events: all;
+  width: 13px;
+  height: 13px;
+  -webkit-appearance: none;
+  /* @apply w-6 h-6 appearance-none pointer-events-auto; */
 }

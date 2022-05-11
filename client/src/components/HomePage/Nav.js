@@ -10,8 +10,10 @@ function Nav() {
   const navigate = useNavigate();
   const auth = useAuth();
   const { logout } = useAuth();
-  //const loginName = localStorage.getItem("name");
-  const { state } = useAuth();
+  const loginName = localStorage.getItem("name"); // ใช้อันนี้แล้ว user name บน nav ไม่หายตอน refresh
+  const loginRole = localStorage.getItem("role");
+  //const { state } = useAuth();
+  //console.log(loginName);
 
   return (
     <nav
@@ -57,19 +59,15 @@ function Nav() {
             HomeServices
           </Link>
         </div>
-        <h5
-          css={css`
-            font-size: 16px;
-          `}
-        >
+        <h5 className="cursor-pointer" onClick={() => navigate("/service")}>
           บริการของเรา
         </h5>
       </div>
       <div>
         {auth.isAuthenticated ? (
-          <div className="dropdown">
+          <div className="dropdown cursor-pointer">
             <div className="flex items-center cursor-pointer">
-              <p className="text-grey700 text-sm">{state.user.name}</p>
+              <p className="text-grey700 text-sm">{loginName}</p>
               <img
                 src={image.avatar}
                 className="rounded-full w-10 h-10 mx-4 "
@@ -77,30 +75,46 @@ function Nav() {
               />
             </div>
             <div className="dropdown-content cursor-pointer">
-              <div className="flex items-center hover:bg-grey100 hover:bg-opacity-50 hover:text-grey950">
-                <img
-                  src={image.profileIcon}
-                  className="ml-4 mr-2 my-2 "
-                  alt="ข้อมูลผู้ใช้งาน"
-                />
-                <Link to="/profile">ข้อมูลผู้ใช้งาน</Link>
-              </div>
-              <div className="flex items-center hover:bg-grey100 hover:bg-opacity-50 hover:text-grey950">
-                <img
-                  src={image.orderIcon}
-                  className="ml-4 mr-2 my-2 "
-                  alt="รายการคำสั่งซ่อม"
-                />
-                <Link to="/">รายการคำสั่งซ่อม</Link>
-              </div>
-              <div className="flex items-center hover:bg-grey100 hover:bg-opacity-50 hover:text-grey950">
-                <img
-                  src={image.historyIcon}
-                  className="ml-4 mr-2 my-2 "
-                  alt="ประวัติการซ่อม"
-                />
-                <Link to="/">ประวัติการซ่อม</Link>
-              </div>
+              {loginRole == "admin" ? (
+                <div>
+                  <div className="flex items-center hover:bg-grey100 hover:bg-opacity-50 hover:text-grey950">
+                    <img
+                      src={image.profileIcon}
+                      className="ml-4 mr-2 my-2 "
+                      alt="admin"
+                    />
+                    <Link to="/category-dashboard">Admin</Link>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <div className="flex items-center hover:bg-grey100 hover:bg-opacity-50 hover:text-grey950">
+                    <img
+                      src={image.profileIcon}
+                      className="ml-4 mr-2 my-2 "
+                      alt="ข้อมูลผู้ใช้งาน"
+                    />
+                    <Link to="/profile">ข้อมูลผู้ใช้งาน</Link>
+                  </div>
+                  <div className="flex items-center hover:bg-grey100 hover:bg-opacity-50 hover:text-grey950">
+                    <img
+                      src={image.orderIcon}
+                      className="ml-4 mr-2 my-2 "
+                      alt="รายการคำสั่งซ่อม"
+                    />
+                    <Link to="/">รายการคำสั่งซ่อม</Link>
+                  </div>
+                  <div className="flex items-center hover:bg-grey100 hover:bg-opacity-50 hover:text-grey950">
+                    <img
+                      src={image.historyIcon}
+                      className="ml-4 mr-2 my-2 "
+                      alt="ประวัติการซ่อม"
+                    />
+                    <Link to="/">ประวัติการซ่อม</Link>
+                  </div>
+                </div>
+              )}
+
               <hr className="text-grey300 my-1" />
               <div className="flex items-center hover:bg-grey100 hover:bg-opacity-50 hover:text-grey950">
                 <img
