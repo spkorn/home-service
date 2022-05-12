@@ -5,7 +5,9 @@ import coupon from './coupon.svg'
 import category from './category.svg'
 import service from './paper.svg'
 import logout from './logoutIcon.svg'
+import exclamation from './icons/exclamation.png'
 import arrow from './arrow.png'
+
 
 const image = {
   editIcon,
@@ -15,6 +17,7 @@ const image = {
   service,
   category,
   logout,
+  exclamation,
   arrow
 }
 

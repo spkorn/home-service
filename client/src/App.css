@@ -101,7 +101,7 @@ input:valid {
   @apply placeholder:text-grey950 border-grey300 outline-none;
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   @apply w-6 h-6 mr-4 border-grey300 rounded-md hover:border-blue600;
 }
 
@@ -161,7 +161,7 @@ input[type="checkbox"] {
   margin-left: 20px;
 }
 
-input[type="range"]::-webkit-slider-thumb {
+input[type='range']::-webkit-slider-thumb {
   pointer-events: all;
   width: 13px;
   height: 13px;
