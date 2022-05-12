@@ -146,6 +146,7 @@ function AdminCategories(props) {
                     css={css`
                       width: 245px;
                       padding: 24px;
+                      font-weight: 300;
                     `}
                   >
                     <Moment format="DD/MM/YYYY hh:mm A">

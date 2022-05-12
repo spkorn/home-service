@@ -17,25 +17,24 @@ category_edited_date timestamptz not null
 
 );
 
-create table sub_service (
-sub_service_id int primary key generated always as identity,
-sub_service_name text not null,
-unit text not null,
-price_per_unit decimal (7,2) not null,
-sub_service_quantity int not null, 
-total_price decimal (7,2) not null
-);
-
 create table service (
 service_id int primary key generated always as identity,
 user_id int references users(user_id) on delete cascade,
 category_id int references category(category_id) on delete cascade,
-sub_service_id int references sub_service(sub_service_id) on delete cascade,
 service_name text,
-price_range_estimate decimal (7,2) not null,
-service_photo text not null,
+service_photo json not null,
 service_created_date timestamptz not null,
 service_edited_date timestamptz not null
+);
+
+create table sub_service (
+sub_service_id int primary key generated always as identity,
+sub_service_name text not null,
+service_id int references service(service_id) on delete cascade,
+unit text not null,
+price_per_unit decimal (7,2) not null,
+sub_service_quantity int not null, 
+total_price decimal (7,2) not null
 );
 
 insert into users (name, phoneNumber, email, password, role) values ('Stephan Edmeades', '0879316420', 'sedmeades0@goodreads.com', 'iP4EAxpCF4i', 'customer');
@@ -53,28 +52,46 @@ insert into category (category_name, category_created_date, category_edited_date
 insert into category (category_name, category_created_date, category_edited_date) values ('บริการทั่วไป', '2022-04-22T12:24:24Z', '2022-04-12T04:17:17Z');
 insert into category (category_name, category_created_date, category_edited_date) values ('บริการห้องน้ำ', '2021-06-07T09:25:13Z', '2021-08-07T23:23:22Z');
 
-insert into sub_service (sub_service_name, unit, price_per_unit, sub_service_quantity, total_price) values ('แอร์ขนาด 9000 - 12000 บีทียู แบบติดผนัง', 'เครื่อง', 800.02, 0, 0);
-insert into sub_service (sub_service_name, unit, price_per_unit, sub_service_quantity, total_price) values ('แอร์ขนาด 12000 - 18000 บีทียู แบบติดผนัง', 'เครื่อง', 1000.00, 0, 0);
-insert into sub_service (sub_service_name, unit, price_per_unit, sub_service_quantity, total_price) values ('แอร์ขนาด 9000 - 18000 บีทียู แบบติดผนัง', 'เครื่อง', 500.02, 0, 0);
-insert into sub_service (sub_service_name, unit, price_per_unit, sub_service_quantity, total_price) values ('แอร์ขนาด 9000 - 18000 บีทียู แบบติดผนัง', 'เครื่อง', 700.02, 0, 0);
-insert into sub_service (sub_service_name, unit, price_per_unit, sub_service_quantity, total_price) values ('ชักโครกแบบหลุม', 'อัน', 500.50, 0, 0);
-insert into sub_service (sub_service_name, unit, price_per_unit, sub_service_quantity, total_price) values ('ชักโครกแบบกด', 'อัน', 1000.00, 0, 0);
-insert into sub_service (sub_service_name, unit, price_per_unit, sub_service_quantity, total_price) values ('ชักโครกแบบไฟฟ้า', 'อัน', 3000.00, 0, 0);
-insert into sub_service (sub_service_name, unit, price_per_unit, sub_service_quantity, total_price) values ('เตาถ่าน', 'เตา', 200.00, 0, 0);
-insert into sub_service (sub_service_name, unit, price_per_unit, sub_service_quantity, total_price) values ('เตาแก๊ส', 'ถัง', 500.00, 0, 0);
-insert into sub_service (sub_service_name, unit, price_per_unit, sub_service_quantity, total_price) values ('เตาไฟฟ้าแบบผนัง', 'ชุด', 20000.00, 0, 0);
+insert into service (user_id, category_id, service_name, service_photo, service_created_date, service_edited_date) values (1, 2, 'ล้างแอร์', '{"url": "https://res.cloudinary.com/spkorn/image/upload/v1652336332/spkorn/homeServices/%E0%B8%A5%E0%B9%89%E0%B8%B2%E0%B8%87%E0%B9%81%E0%B8%AD%E0%B8%A3%E0%B9%8C_jsl1bo.png", "publicId": "123"}', '2021-08-15T04:00:55Z', '2021-10-07T11:42:31Z');
+insert into service (user_id, category_id, service_name, service_photo, service_created_date, service_edited_date) values (2, 2, 'ติดตั้งแอร์', '{"url": "https://res.cloudinary.com/spkorn/image/upload/v1652336332/spkorn/homeServices/%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B9%81%E0%B8%AD%E0%B8%A3%E0%B9%8C_oapxxz.png", "publicId": "123"}', '2021-07-11T13:19:59Z', '2022-03-05T18:16:13Z');
+insert into service (user_id, category_id, service_name, service_photo, service_created_date, service_edited_date) values (3, 2, 'ซ่อมแอร์', '{"url": "https://res.cloudinary.com/spkorn/image/upload/v1652336331/spkorn/homeServices/%E0%B8%8B%E0%B9%88%E0%B8%AD%E0%B8%A1%E0%B9%81%E0%B8%AD%E0%B8%A3%E0%B9%8C_lr9z2u.png", "publicId": "123"}', '2022-04-06T20:54:35Z', '2022-02-04T00:55:15Z');
+insert into service (user_id, category_id, service_name, service_photo, service_created_date, service_edited_date) values (4, 2, 'ทำความสะอาดทั่วไป', '{"url": "https://res.cloudinary.com/spkorn/image/upload/v1652336333/spkorn/homeServices/%E0%B8%97%E0%B8%B3%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%AA%E0%B8%B0%E0%B8%AD%E0%B8%B2%E0%B8%94%E0%B8%97%E0%B8%B1%E0%B9%88%E0%B8%A7%E0%B9%84%E0%B8%9B_qtt23u.png", "publicId": "123"}', '2021-12-13T23:58:56Z', '2021-10-29T16:02:29Z');
+insert into service (user_id, category_id, service_name, service_photo, service_created_date, service_edited_date) values (5, 2, 'ซ่อมเครื่องซักผ้า', '{"url": "https://res.cloudinary.com/spkorn/image/upload/v1652336331/spkorn/homeServices/%E0%B8%8B%E0%B9%88%E0%B8%AD%E0%B8%A1%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%8B%E0%B8%B1%E0%B8%81%E0%B8%9C%E0%B9%89%E0%B8%B2_c14kc4.png", "publicId": "123"}', '2021-08-31T03:24:17Z', '2021-07-17T00:17:44Z');
+insert into service (user_id, category_id, service_name, service_photo, service_created_date, service_edited_date) values (6, 1, 'ติดตั้งเตาแก๊ส', '{"url": "https://res.cloudinary.com/spkorn/image/upload/v1652336331/spkorn/homeServices/%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B9%80%E0%B8%95%E0%B8%B2%E0%B9%81%E0%B8%81%E0%B9%8A%E0%B8%AA_vuoq3j.png", "publicId": "123"}', '2021-09-16T17:06:46Z', '2021-07-04T14:13:47Z');
+insert into service (user_id, category_id, service_name, service_photo, service_created_date, service_edited_date) values (7, 1, 'ติดตั้งเครื่องดูดควัน', '{"url": "https://res.cloudinary.com/spkorn/image/upload/v1652336331/spkorn/homeServices/%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%94%E0%B8%B9%E0%B8%94%E0%B8%84%E0%B8%A7%E0%B8%B1%E0%B8%99_rkmulw.png", "publicId": "123"}', '2021-06-14T20:09:15Z', '2021-07-03T12:23:32Z');
+insert into service (user_id, category_id, service_name, service_photo, service_created_date, service_edited_date) values (8, 3, 'ติดตั้งชักโครก', '{"url": "https://res.cloudinary.com/spkorn/image/upload/v1652336331/spkorn/homeServices/%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%8A%E0%B8%B1%E0%B8%81%E0%B9%82%E0%B8%84%E0%B8%A3%E0%B8%81_yuwb5l.png", "publicId": "123"}', '2021-11-29T17:24:14Z', '2022-05-06T13:27:44Z');
+insert into service (user_id, category_id, service_name, service_photo, service_created_date, service_edited_date) values (9, 3, 'ติดตั้งเครื่องทำน้ำอุ่น', '{"url": "https://res.cloudinary.com/spkorn/image/upload/v1652336330/spkorn/homeServices/%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%97%E0%B8%B3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%AD%E0%B8%B8%E0%B9%88%E0%B8%99_bcawvs.png", "publicId": "123"}', '2021-12-15T08:16:47Z', '2021-07-18T04:15:58Z');
+insert into service (user_id, category_id, service_name, service_photo, service_created_date, service_edited_date) values (10, 1,'ติดตั้งตู้เย็น', '{"url": "https://res.cloudinary.com/spkorn/image/upload/v1652329234/spkorn/homeServices/cong-wang-RqEEq4uF6jo-unsplash_v0uhsn.jpg", "publicId": "123"}', '2022-03-16T23:24:20Z', '2021-12-10T07:02:21Z');
+insert into service (user_id, category_id, service_name, service_photo, service_created_date, service_edited_date) values (1, 2,'เป็นรูปที่มีทุกบ้าน', '{"url": "https://res.cloudinary.com/spkorn/image/upload/v1652344130/spkorn/homeServices/king10_xpvarm.jpg", "publicId": "123"}', '2022-03-16T23:24:20Z', '2021-12-10T07:02:21Z');
 
-insert into service (user_id, category_id, sub_service_id, service_name, price_range_estimate, service_photo, service_created_date, service_edited_date) values (10, 1, null, 'ติดตั้งเครื่องดูดควัน', 5805.22, 'libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis ut at dolor quis odio consequat varius integer ac leo', '2021-08-15T04:00:55Z', '2021-10-07T11:42:31Z');
-insert into service (user_id, category_id, sub_service_id, service_name, price_range_estimate, service_photo, service_created_date, service_edited_date) values (9, 2, 1, 'ล้างแอร์', 3406.16, 'aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor', '2021-07-11T13:19:59Z', '2022-03-05T18:16:13Z');
-insert into service (user_id, category_id, sub_service_id, service_name, price_range_estimate, service_photo, service_created_date, service_edited_date) values (8, 2, 2, 'ซ่อมแอร์', 2748.54, 'luctus cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis', '2022-04-06T20:54:35Z', '2022-02-04T00:55:15Z');
-insert into service (user_id, category_id, sub_service_id, service_name, price_range_estimate, service_photo, service_created_date, service_edited_date) values (7, 1, null, 'ซ่อมตู้ครัว', 9951.95, 'quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis', '2021-12-13T23:58:56Z', '2021-10-29T16:02:29Z');
-insert into service (user_id, category_id, sub_service_id, service_name, price_range_estimate, service_photo, service_created_date, service_edited_date) values (6, 2, null, 'ซ่อมเครื่องซักผ้า', 1389.99, 'convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam', '2021-08-31T03:24:17Z', '2021-07-17T00:17:44Z');
-insert into service (user_id, category_id, sub_service_id, service_name, price_range_estimate, service_photo, service_created_date, service_edited_date) values (5, 3, 3, 'ติดตั้งชักโครก', 1551.76, 'erat id mauris vulputate elementum nullam varius nulla facilisi cras non', '2021-09-16T17:06:46Z', '2021-07-04T14:13:47Z');
-insert into service (user_id, category_id, sub_service_id, service_name, price_range_estimate, service_photo, service_created_date, service_edited_date) values (4, 1, 4, 'ติดตั้งเตาแก๊ส', 1340.75, 'purus eu magna vulputate luctus cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum', '2021-06-14T20:09:15Z', '2021-07-03T12:23:32Z');
-insert into service (user_id, category_id, sub_service_id, service_name, price_range_estimate, service_photo, service_created_date, service_edited_date) values (3, 3, null, 'ติดตั้งเครื่องทำน้ำอุ่น', 5039.39, 'convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in', '2021-11-29T17:24:14Z', '2022-05-06T13:27:44Z');
-insert into service (user_id, category_id, sub_service_id, service_name, price_range_estimate, service_photo, service_created_date, service_edited_date) values (2, 3, 3, 'ติดตั้งชักโครก', 999.59, 'lacus at turpis donec posuere metus vitae ipsum aliquam non mauris morbi', '2021-12-15T08:16:47Z', '2021-07-18T04:15:58Z');
-insert into service (user_id, category_id, sub_service_id, service_name, price_range_estimate, service_photo, service_created_date, service_edited_date) values (1, 1, 4, 'ติดตั้งเตาแก๊ส', 3620.08, 'interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu', '2022-03-16T23:24:20Z', '2021-12-10T07:02:21Z');
-
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('แอร์ขนาด 9000 - 12000 บีทียู แบบติดผนัง', 1, 'เครื่อง', 800.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('แอร์ขนาด 12000 - 15000 บีทียู แบบติดผนัง', 1, 'เครื่อง', 1000.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('แอร์ขนาด 15000 - 18000 บีทียู แบบติดผนัง', 1, 'เครื่อง', 2000.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('แอร์ขนาด 18000 - 20000 บีทียู แบบติดผนัง', 1, 'เครื่อง', 2500.02, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('แอร์ขนาด 9000 - 12000 บีทียู แบบติดผนัง', 2, 'เครื่อง', 1500.02, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('แอร์ขนาด 12000 - 15000 บีทียู แบบติดผนัง', 2, 'เครื่อง', 2000.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('แอร์ขนาด 15000 - 18000 บีทียู แบบติดผนัง', 2, 'เครื่อง', 3000.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('แอร์ขนาด 18000 - 20000 บีทียู แบบติดผนัง', 2, 'เครื่อง', 3500.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('แอร์ขนาด 9000 - 12000 บีทียู แบบติดผนัง', 3, 'เครื่อง', 1500.02, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('แอร์ขนาด 12000 - 15000 บีทียู แบบติดผนัง', 3, 'เครื่อง', 2000.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('แอร์ขนาด 15000 - 18000 บีทียู แบบติดผนัง', 3, 'เครื่อง', 2500.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('แอร์ขนาด 18000 - 20000 บีทียู แบบติดผนัง', 3, 'เครื่อง', 3000.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('กวาดพื้น', 4, 'ชั่วโมง', 250.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('ถูพื้น', 4, 'ชั่วโมง', 300.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('เครื่องซักผ้าฝาหน้า', 5, 'เครื่อง', 500.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('เครื่องซักผ้าฝาบน', 5, 'เครื่อง', 300.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('เตาถ่าน', 6, 'เตา', 200.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('เตาแก๊ส', 6, 'ถัง', 500.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('เตาไฟฟ้าแบบผนัง', 6, 'ชุด', 20000.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('ดูดเทอร์โบ', 7, 'ชุด', 20000.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('ชักโครกแบบหลุม', 8, 'อัน', 500.50, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('ชักโครกแบบกด', 8, 'อัน', 1000.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('ชักโครกแบบไฟฟ้า', 8, 'อัน', 3000.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('แบบกำลังไฟต่ำกว่า 3500 วัตต์', 9, 'เครื่อง', 1000.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('แบบกำลังไฟสูงกว่า 3500 วัตต์', 9, 'เครื่อง', 2000.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('แบบขนาดเล็กกว่า 10 คิว', 10, 'เครื่อง', 1500.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('แบบขนาดใหญ่กว่า 10 คิว', 10, 'เครื่อง', 2000.00, 0, 0);
+insert into sub_service (sub_service_name, service_id, unit, price_per_unit, sub_service_quantity, total_price) values ('ทรงพระเจริญ', 11, 'หมื่นๆปี', 112.00, 0, 0);
 
 
 -- select *

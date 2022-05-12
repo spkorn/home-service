@@ -4,6 +4,7 @@ import image from "../../HomePagePhoto/imageIndex";
 
 function ServicesList(props) {
   const { service } = props;
+  console.log(service);
 
   return (
     <div className="our-services w-screen flex justify-center items-center">
@@ -28,7 +29,7 @@ function ServicesList(props) {
               key={data.service_id}
             >
               <img
-                src={data.service_photo}
+                src={data.service_photo.url}
                 alt={data.service_name}
                 css={css`
                   width: 349px;
@@ -58,7 +59,9 @@ function ServicesList(props) {
                     align-items: center;
                     margin-bottom: 8px;
                   `}
-                >{data.category_name}</div>
+                >
+                  {data.category_name}
+                </div>
                 <h2>{data.service_name}</h2>
                 <div
                   css={css`
@@ -81,7 +84,7 @@ function ServicesList(props) {
                       margin-right: 9.33px;
                     `}
                   />
-                  ค่าบริการประมาณ {data.price_range_estimate} ฿
+                  ค่าบริการประมาณ {data.min_price} - {data.max_price} ฿
                 </div>
                 <a className="cursor-pointer">เลือกบริการ</a>
               </div>
