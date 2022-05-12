@@ -3,14 +3,14 @@ import { css } from "@emotion/react";
 import icons from "../../AdminPhoto/imageIndex.js";
 import "../../App.css";
 import Moment from "react-moment";
-import { useNavigate, useParams } from "react-router-dom";
+// import { useNavigate, useParams } from "react-router-dom";
 
-function AdminCategories(props) {
-  const { category } = props;
-  const navigate = useNavigate();
+function AdminService(props) {
+  const { service } = props;
+//   const navigate = useNavigate();
   return (
     <div
-      className="categories-data w-screen min-h-screen"
+      className="w-screen min-h-screen"
       css={css`
         background: #e5e5e5;
         padding: 41px;
@@ -48,16 +48,26 @@ function AdminCategories(props) {
             ลำดับ
           </h5>
           <h5
-            className="categoryName"
+            className="serviceName"
             css={css`
               width: 262px;
               padding: 24px;
               font-weight: 400;
             `}
           >
-            ชื่อหมวดหมู่
+            ชื่อบริการ
+                  </h5>
+                  <h5
+            className="createdDate"
+            css={css`
+              width: 245px;
+              padding: 24px;
+              font-weight: 400;
+            `}
+          >
+            หมวดหมู่
           </h5>
-          <h5
+                  <h5
             className="createdDate"
             css={css`
               width: 245px;
@@ -81,7 +91,7 @@ function AdminCategories(props) {
             className="action"
             css={css`
               width: 120px;
-              padding: 24px;
+              padding: 24px 30px 24px 24px;
               font-weight: 400;
             `}
           >
@@ -89,11 +99,11 @@ function AdminCategories(props) {
           </h5>
         </div>
         <div className="bg-white rounded-b-lg">
-          {category.map((data, index) => {
+          {service.map((data, index) => {
             return (
               <div
-                key={data.category_id}
-                className="data-category-box"
+                key={data.service_id}
+                className="data-service-box"
                 css={css`
                   height: 88px;
                   display: flex;
@@ -102,7 +112,7 @@ function AdminCategories(props) {
                 `}
               >
                 <div
-                  className="data-category"
+                  className="data-service"
                   css={css`
                     width: 888px;
                     height: 88px;
@@ -119,17 +129,27 @@ function AdminCategories(props) {
                       font-weight: 300;
                     `}
                   >
-                    {index + 1}
+                    {index+1}
                   </div>
                   <div
-                    className="category-name"
+                    className="service-name"
                     css={css`
                       width: 262px;
                       padding: 24px;
                       font-weight: 300;
                     `}
                   >
-                    {data.category_name}
+                    {data.service_name}
+                  </div>
+                  <div
+                    className="service-name"
+                    css={css`
+                      width: 262px;
+                      padding: 24px;
+                      font-weight: 300;
+                    `}
+                  >
+                    {data.category_id}
                   </div>
                   <div
                     css={css`
@@ -139,7 +159,7 @@ function AdminCategories(props) {
                     `}
                   >
                     <Moment format="DD/MM/YYYY hh:mm A">
-                      {data.category_created_date}
+                      {data.service_created_date}
                     </Moment>
                   </div>
                   <div
@@ -149,7 +169,7 @@ function AdminCategories(props) {
                     `}
                   >
                     <Moment format="DD/MM/YYYY hh:mm A">
-                      {data.category_edited_date}
+                      {data.service_edited_date}
                     </Moment>
                   </div>
                 </div>
@@ -180,9 +200,6 @@ function AdminCategories(props) {
                       height: 24px;
                     `}
                     className="cursor-pointer"
-                    onClick={() =>
-                      navigate(`/category/edit/${data.category_id}`)
-                    }
                   />
                 </div>
               </div>
@@ -194,4 +211,4 @@ function AdminCategories(props) {
   );
 }
 
-export default AdminCategories;
+export default AdminService;
