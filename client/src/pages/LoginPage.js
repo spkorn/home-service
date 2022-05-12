@@ -1,23 +1,23 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
-import "../App.css";
-import { useState } from "react";
-import Nav from "../components/HomePage/Nav.js";
-import { useAuth } from "../contexts/authentication.js";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { css } from '@emotion/react'
+import '../App.css'
+import { useState } from 'react'
+import Nav from '../components/HomePage/Nav.js'
+import { useAuth } from '../contexts/authentication.js'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
 function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const {login} = useAuth();
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const { login } = useAuth()
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     login({
       email,
       password
-    });
-  };
+    })
+  }
 
   return (
     <div className="login-form-container" onSubmit={handleSubmit}>
@@ -50,7 +50,7 @@ function LoginPage() {
                 type="email"
                 placeholder="กรุณากรอกอีเมล"
                 onChange={(event) => {
-                  setEmail(event.target.value);
+                  setEmail(event.target.value)
                 }}
                 value={email}
                 css={css`
@@ -74,7 +74,7 @@ function LoginPage() {
                 type="password"
                 placeholder="กรุณากรอกรหัสผ่าน"
                 onChange={(event) => {
-                  setPassword(event.target.value);
+                  setPassword(event.target.value)
                 }}
                 value={password}
                 css={css`
@@ -101,19 +101,15 @@ function LoginPage() {
             </button>
             <div className="text-center">
               <span className="text-grey700">
-                ยังไม่มีบัญชีผู้ใช้ HomeService?{" "}
+                ยังไม่มีบัญชีผู้ใช้ HomeService?{' '}
               </span>
-              <Link
-                to="/register"
-              >
-                ลงทะเบียน
-              </Link>
+              <Link to="/register">ลงทะเบียน</Link>
             </div>
           </div>
         </form>
       </div>
     </div>
-  );
+  )
 }
 
-export default LoginPage;
+export default LoginPage
