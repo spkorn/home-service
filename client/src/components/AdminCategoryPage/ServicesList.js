@@ -7,7 +7,7 @@ import Moment from "react-moment";
 
 function AdminService(props) {
   const { service } = props;
-//   const navigate = useNavigate();
+  //   const navigate = useNavigate();
   return (
     <div
       className="w-screen min-h-screen"
@@ -56,8 +56,8 @@ function AdminService(props) {
             `}
           >
             ชื่อบริการ
-                  </h5>
-                  <h5
+          </h5>
+          <h5
             className="createdDate"
             css={css`
               width: 245px;
@@ -67,7 +67,7 @@ function AdminService(props) {
           >
             หมวดหมู่
           </h5>
-                  <h5
+          <h5
             className="createdDate"
             css={css`
               width: 245px;
@@ -129,7 +129,7 @@ function AdminService(props) {
                       font-weight: 300;
                     `}
                   >
-                    {index+1}
+                    {index + 1}
                   </div>
                   <div
                     className="service-name"
@@ -140,6 +140,16 @@ function AdminService(props) {
                     `}
                   >
                     {data.service_name}
+                  </div>
+                  <div
+                    className="service-name"
+                    css={css`
+                      width: 262px;
+                      padding: 24px;
+                      font-weight: 300;
+                    `}
+                  >
+                    {data.category_name}
                   </div>
                   <div
                     css={css`
@@ -156,6 +166,7 @@ function AdminService(props) {
                     css={css`
                       width: 245px;
                       padding: 24px;
+                      font-weight: 300;
                     `}
                   >
                     <Moment format="DD/MM/YYYY hh:mm A">

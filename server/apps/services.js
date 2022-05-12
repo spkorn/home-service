@@ -8,16 +8,24 @@ const serviceRouter = Router();
 // API route to service listing page
 serviceRouter.get("/", async (req, res) => {
   const keywords = req.query.keywords || "";
-  
+
   let query = "";
   let values = [];
 
   if (keywords) {
-    query = `select * from service 
+    query = `select service_id, category_name, service_name, 
+    price_range_estimate, service_photo, service_created_date, service_edited_date
+    from service
+    inner join category
+    on service.category_id = category.category_id
     where service_name ilike '%'||$1||'%' order by service_id asc`; // '%' || tag_name || '%' can search anything in keywords
     values = [keywords];
   } else {
-    query = `select * from service order by service_id asc`;
+    query = `select service_id, category_name, service_name, 
+    price_range_estimate, service_photo, service_created_date, service_edited_date
+    from service
+    inner join category
+    on service.category_id = category.category_id order by service_id asc`;
   }
   const results = await pool.query(query, values);
 

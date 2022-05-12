@@ -58,7 +58,7 @@ function ServicesList(props) {
                     align-items: center;
                     margin-bottom: 8px;
                   `}
-                ></div>
+                >{data.category_name}</div>
                 <h2>{data.service_name}</h2>
                 <div
                   css={css`
