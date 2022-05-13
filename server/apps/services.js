@@ -55,9 +55,19 @@ serviceRouter.get("/", async (req, res) => {
 serviceRouter.get("/:id", async (req, res) => {
   const serviceId = req.params.id;
 
-  const result = await pool.query(`select * from service where service_id=$1`, [
-    serviceId,
-  ]);
+  const result = await pool.query(
+    `select service.service_id, category.category_name, service.category_id, service.service_name, 
+            service.service_photo, min(sub_service.price_per_unit) as min_price, 
+            max(sub_service.price_per_unit) as max_price, service.service_created_date, service.service_edited_date
+    from service
+    inner join sub_service
+    on service.service_id = sub_service.service_id  
+    inner join category
+    on category.category_id = service.category_id
+    where service.service_id = $1
+    group by service.service_id, category.category_name`,
+    [serviceId]
+  );
   return res.json({
     data: result.rows[0],
   });
