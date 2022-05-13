@@ -44,7 +44,7 @@ function AlertBoxDelete(props) {
                       </button>
                       <button
                         className="btn-secondary"
-                        onclick={props.hideFunction}
+                        onClick={props.hideFunction}
                       >
                         ยกเลิก
                       </button>

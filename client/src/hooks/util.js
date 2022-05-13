@@ -17,9 +17,7 @@ function useHook() {
   };
 
   const deleteCategoryId = async (categoryId) => {
-    await axios.delete(
-      `http://localhost:4000/category/${categoryId}`
-    );
+    await axios.delete(`http://localhost:4000/category/${categoryId}`);
     getCategory();
     document.getElementById("popUp").style.display = "none";
   };
@@ -64,20 +62,14 @@ function useHook() {
     setDeleteService(true);
   };
 
-  // const hideServiceAlert = async (serviceId) => {
-  //   document.getElementById("popUp").style.display = "none";
-  //   navigate("/service-dashboard");
-  // };
-
   const categoryDeleteAlert = async (categoryId) => {
     setCategory_Id(categoryId);
     setDeleteCategory(true);
   };
 
-  // const hideCategoryAlert = async (categoryId) => {
-  //   document.getElementById("popUp").style.display = "none";
-  //   navigate("/category-dashboard");
-  // };
+  const hide = () => {
+    document.getElementById("popUp").style.visibility = "hidden";
+  };
 
   return {
     searchCategory,
@@ -110,8 +102,7 @@ function useHook() {
     category_Id,
     setCategory_Id,
     categoryDeleteAlert,
-    // hideServiceAlert,
-    // hideCategoryAlert,
+    hide,
   };
 }
 

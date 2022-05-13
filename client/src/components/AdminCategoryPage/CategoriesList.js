@@ -15,6 +15,7 @@ function AdminCategories(props) {
     categoryDeleteAlert,
     deleteCategory,
     category_Id,
+    hide
   } = props;
 
   const navigate = useNavigate();
@@ -25,10 +26,6 @@ function AdminCategories(props) {
 
   const handleDelete = () => {
     deleteCategoryId(category_Id);
-  };
-
-  const hide = () => {
-    document.getElementById("popUp").style.display = "none";
   };
 
   return (
