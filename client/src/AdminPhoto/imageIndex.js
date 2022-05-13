@@ -7,7 +7,7 @@ import service from './paper.svg'
 import logout from './logoutIcon.svg'
 import exclamation from './icons/exclamation.png'
 import arrow from './arrow.png'
-
+import addPhoto from './icons/add-photo.png'
 
 const image = {
   editIcon,
@@ -18,7 +18,8 @@ const image = {
   category,
   logout,
   exclamation,
-  arrow
+  arrow,
+  addPhoto
 }
 
 export default image
