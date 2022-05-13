@@ -1,16 +1,16 @@
 import { Router } from "express";
 import { pool } from "../utils/db.js";
 import { protect } from "../middlewares/protects.js";
-import multer from "multer";
-import { cloudinaryUpload } from "../utils/uploads.js";
+// import multer from "multer";
+//import { cloudinaryUpload } from "../utils/uploads.js";
 
 const serviceRouter = Router();
 //serviceRouter.use(protect);
 
-const multerUpload = multer({ dest: "uploads/" });
-const servicePhotoUpload = multerUpload.fields([
-  { name: "servicePhoto", maxCount: 1 },
-]);
+//const multerUpload = multer({ dest: "uploads/" });
+//const servicePhotoUpload = multerUpload.fields([
+//  { name: "servicePhoto", maxCount: 1 },
+//]);
 
 // API route to service listing page
 serviceRouter.get("/", async (req, res) => {
@@ -28,8 +28,8 @@ serviceRouter.get("/", async (req, res) => {
     on service.service_id = sub_service.service_id  
     inner join category
     on category.category_id = service.category_id
-    group by service.service_id, category.category_name
     where service_name ilike '%'||$1||'%' 
+    group by service.service_id, category.category_name
     order by service.service_id asc`; // '%' || tag_name || '%' can search anything in keywords
     values = [keywords];
   } else {
@@ -63,30 +63,44 @@ serviceRouter.get("/:id", async (req, res) => {
   });
 });
 
-// Need to fix
 //API route to create service item page
-serviceRouter.post("/", servicePhotoUpload, async (req, res) => {
-  console.log(req.files.servicePhoto);
+serviceRouter.post("/", async (req, res) => {
+  //add parameter servicePhoto
+  //console.log(req.files.servicePhoto);
   const newServiceItem = {
     ...req.body,
     service_created_date: new Date(),
     service_edited_date: new Date(),
   };
 
-  const servicePhotoUrl = await cloudinaryUpload(req.files);
-  newServiceItem["servicePhotos"] = servicePhotoUrl;
+  // const servicePhotoUrl = await cloudinaryUpload(req.files);
+  // newServiceItem["servicePhotos"] = servicePhotoUrl;
 
   await pool.query(
-    `insert into service (service_name, category_id, service_photo, service_created_date, service_edited_date) 
-    values ($1, $2, $3, $4, $5)`,
+    `insert into service (service_name, category_id, service_photo, service_created_date, service_edited_date)
+    values ($1, (select category_id from category where category_name = $2), $3, $4, $5)`,
     [
       newServiceItem.service_name,
-      newServiceItem.category_id,
+      newServiceItem.category_name,
       newServiceItem.service_photo, // newServiceItem.servicePhotos,
       newServiceItem.service_created_date,
       newServiceItem.service_edited_date,
     ]
   );
+  //console.log(newServiceItem.sub_service.length);
+
+  for (let r = 0; r <= newServiceItem.sub_service.length - 1; r++) {
+    await pool.query(
+      `insert into sub_service ( service_id, sub_service_name, unit, price_per_unit, sub_service_quantity, total_price)
+    values ((select service_id from service where service_name = $1 ), $2, $3, $4, 0, 0);`,
+      [
+        newServiceItem.service_name,
+        newServiceItem.sub_service[r].sub_service_name,
+        newServiceItem.sub_service[r].unit,
+        newServiceItem.sub_service[r].price_per_unit,
+      ]
+    );
+  }
 
   return res.json({
     message: "New service item has been created successfully.",
