@@ -20,7 +20,7 @@ module.exports = {
       grey400: '#B3B8C4',
       grey500: '#9AA1B0',
       grey600: '#80899C',
-      grey700: '#636678',
+      grey700: '#646C80',
       grey800: '#4B5160',
       grey900: '#323640',
       grey950: '#232630',
