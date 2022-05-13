@@ -6,7 +6,7 @@ import axios from "axios";
 import { useEffect } from "react";
 
 function ServiceHeader(props) {
-  const { searchService, setSearchService, setService } = props;
+  const { category, searchService, setSearchService, setService, getCategory } = props;
 
   const searchServiceData = async () => {
     const results = await axios.get(
@@ -22,6 +22,10 @@ function ServiceHeader(props) {
       clearTimeout(timerId);
     };
   }, [searchService]);
+
+  useEffect(() => {
+    getCategory();
+  }, []);
 
   return (
     <header className="service-header">
@@ -56,23 +60,13 @@ function ServiceHeader(props) {
             <div className="dropdown cursor-pointer">
               <p className="cursor-pointer">บริการทั้งหมด ▾ </p>
               <div
-                className="dropdown-content cursor-pointer"
-                css={css`
-                  height: 160px;
-                `}
+                className="dropdown-content cursor-pointer "
               >
-                <div className="ml-4 ">
-                  <p>บริการทั้งหมด</p>
-                </div>
-                <div className="ml-4 ">
-                  <p>บริการทั่วไป</p>
-                </div>
-                <div className=" ml-4 ">
-                  <p>บริการห้องครัว</p>
-                </div>
-                <div className=" ml-4 ">
-                  <p>บริการห้องน้ำ</p>
-                </div>
+                {category.map((data) => {
+                  return (<div className="ml-4 key={data.category_id}">
+                  <p>{data.category_name}</p>
+                </div>)
+                })}
               </div>
             </div>
           </div>

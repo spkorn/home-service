@@ -3,11 +3,34 @@ import { css } from "@emotion/react";
 import icons from "../../AdminPhoto/imageIndex.js";
 import "../../App.css";
 import Moment from "react-moment";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import AlertBoxDelete from "../AlertBoxDelete.js";
 
 function AdminCategories(props) {
-  const { category } = props;
+  const {
+    category,
+    getCategory,
+    deleteCategoryId,
+    categoryDeleteAlert,
+    deleteCategory,
+    category_Id,
+  } = props;
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getCategory();
+  }, []);
+
+  const handleDelete = () => {
+    deleteCategoryId(category_Id);
+  };
+
+  const hide = () => {
+    document.getElementById("popUp").style.display = "none";
+  };
+
   return (
     <div
       className="categories-data w-screen min-h-screen"
@@ -172,6 +195,10 @@ function AdminCategories(props) {
                       width: 24px;
                       height: 24px;
                     `}
+                    className="cursor-pointer"
+                    onClick={() => {
+                      categoryDeleteAlert(data.category_id);
+                    }}
                   />
                   <img
                     alt="Edit"
@@ -189,6 +216,9 @@ function AdminCategories(props) {
               </div>
             );
           })}
+          {deleteCategory ? (
+            <AlertBoxDelete deleteFunction={handleDelete} hideFunction={hide} />
+          ) : null}
         </div>
       </div>
     </div>

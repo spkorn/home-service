@@ -2,10 +2,22 @@ import "../App.css";
 import AdminService from "../components/AdminCategoryPage/ServicesList";
 import AdminServiceHeader from "../components/AdminCategoryPage/AdminServiceHeader";
 import SideBar from "../components/AdminCategoryPage/SideBar";
-import useService from "../hooks/service";
+import useHook from "../hooks/util";
 
 function AdminServicePage() {
-  const { searchService, setSearchService, service, setService } = useService();
+  const {
+    searchService,
+    setSearchService,
+    service,
+    setService,
+    getService,
+    deleteServiceId,
+    serviceDeleteAlert,
+    deleteService,
+    service_Id,
+    setDeleteService,
+    setService_Id
+  } = useHook();
   return (
     <div className="admin-service-page">
       <SideBar />
@@ -14,7 +26,16 @@ function AdminServicePage() {
         searchService={searchService}
         setSearchService={setSearchService}
       />
-      <AdminService service={service} setService={setService} />
+      <AdminService
+        service={service}
+        getService={getService}
+        deleteServiceId={deleteServiceId}
+        serviceDeleteAlert={serviceDeleteAlert}
+        deleteService={deleteService}
+        setDeleteService={setDeleteService}
+        service_Id={service_Id}
+        setService_Id={setService_Id}
+      />
     </div>
   );
 }
