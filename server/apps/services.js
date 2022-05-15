@@ -125,11 +125,29 @@ serviceRouter.put("/:id", async (req, res) => {
     ...req.body,
     service_edited_date: new Date(),
   };
-  //console.log(updateServiceItem);
+
   const serviceId = req.params.id;
 
   // ใช้ได้แล้ว
   for (let r = 0; r <= updateServiceItem.data.length - 1; r++) {
+    await pool.query(
+      `update service
+    set service_name=$1,  
+    category_id=(select category_id from category where category_name=$2),
+    service_photo=$3, 
+    service_edited_date=$4 
+    where service_id=$5
+    `,
+      [
+        updateServiceItem.data[updateServiceItem.data.length - 1].service_name,
+        updateServiceItem.data[updateServiceItem.data.length - 1].category_name,
+        updateServiceItem.data[updateServiceItem.data.length - 1].service_photo,
+        updateServiceItem.data[updateServiceItem.data.length - 1]
+          .service_edited_date,
+        serviceId,
+      ]
+    );
+
     // เช็คว่ามีชื่อ sub-service ไหม ถ้าไม่มีให้ลบ sub-service ที่ไม่มีชื่อ
     if (!updateServiceItem.data[r].sub_service_name) {
       await pool.query(`delete from sub_service where sub_service_id = $1`, [
@@ -148,24 +166,6 @@ serviceRouter.put("/:id", async (req, res) => {
       ]
     );
   }
-
-  await pool.query(
-    `update service
-  set service_name=$1,  
-  category_id=(select category_id from category where category_name=$2),
-  service_photo=$3, 
-  service_edited_date=$4 
-  where service_id=$5
-  `,
-    [
-      updateServiceItem.data[updateServiceItem.data.length - 1].service_name,
-      updateServiceItem.data[updateServiceItem.data.length - 1].category_name,
-      updateServiceItem.data[updateServiceItem.data.length - 1].service_photo,
-      updateServiceItem.data[updateServiceItem.data.length - 1]
-        .service_edited_date,
-      serviceId,
-    ]
-  );
 
   return res.json({
     message: `Service item ${serviceId} has been updated.`,
