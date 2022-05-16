@@ -100,18 +100,19 @@ serviceRouter.post("/", async (req, res) => {
     ]
   );
   //console.log(newServiceItem.sub_service.length);
-
-  for (let r = 0; r <= newServiceItem.sub_service.length - 1; r++) {
-    await pool.query(
-      `insert into sub_service ( service_id, sub_service_name, unit, price_per_unit, sub_service_quantity, total_price)
+  if (newServiceItem.sub_service) {
+    for (let r = 0; r <= newServiceItem.sub_service.length - 1; r++) {
+      await pool.query(
+        `insert into sub_service ( service_id, sub_service_name, unit, price_per_unit, sub_service_quantity, total_price)
     values ((select service_id from service where service_name = $1 ), $2, $3, $4, 0, 0);`,
-      [
-        newServiceItem.service_name,
-        newServiceItem.sub_service[r].sub_service_name,
-        newServiceItem.sub_service[r].unit,
-        newServiceItem.sub_service[r].price_per_unit,
-      ]
-    );
+        [
+          newServiceItem.service_name,
+          newServiceItem.sub_service[r].sub_service_name,
+          newServiceItem.sub_service[r].unit,
+          newServiceItem.sub_service[r].price_per_unit,
+        ]
+      );
+    }
   }
 
   return res.json({
