@@ -15,12 +15,31 @@ const serviceRouter = Router();
 // API route to service listing page
 serviceRouter.get("/", async (req, res) => {
   const keywords = req.query.keywords || "";
+  const categoryFilter = req.query.categoryFilter || "";
+  const maxPriceFilter = req.query.maxPriceFilter || Number.MAX_SAFE_INTEGER; 
+  const minPriceFilter = req.query.minPriceFilter || 0;
+  const orderFilter = req.query.orderFilter || asc;
 
   let query = "";
   let values = [];
 
-  if (keywords) {
-    query = `select service.service_id, category.category_name, service.category_id, service.service_name, 
+ if (keywords && categoryFilter && maxPriceFilter && minPriceFilter && orderFilter) {
+  (query = `select service.service_id, category.category_name, service.category_id, service.service_name, 
+  service.service_photo, min(sub_service.price_per_unit) as min_price, 
+  max(sub_service.price_per_unit) as max_price, service.service_created_date, service.service_edited_date
+  from service
+  inner join sub_service
+  on service.service_id = sub_service.service_id  
+  inner join category
+  on category.category_id = service.category_id
+  where service.service_name ilike '%'||$1||'%' and category.category_name = $2 and
+  (sub_service.price_per_unit <= $3) and (sub_service.price_per_unit >= $4)
+  group by service.service_id, category.category_name, sub_service.price_per_unit
+  order by service.service_name = $5`); // '%' || tag_name || '%' can search anything in keywords
+  values = [keywords, categoryFilter, maxPriceFilter, minPriceFilter, orderFilter];
+
+  } else if (keywords && maxPriceFilter && minPriceFilter && orderFilter) {
+    (query = `select service.service_id, category.category_name, service.category_id, service.service_name, 
     service.service_photo, min(sub_service.price_per_unit) as min_price, 
     max(sub_service.price_per_unit) as max_price, service.service_created_date, service.service_edited_date
     from service
@@ -28,27 +47,45 @@ serviceRouter.get("/", async (req, res) => {
     on service.service_id = sub_service.service_id  
     inner join category
     on category.category_id = service.category_id
-    where service_name ilike '%'||$1||'%' 
+	  where service.service_name ilike '%'||$1||'%' and (sub_service.price_per_unit <= $2) 
+    and (sub_service.price_per_unit >= $3)
     group by service.service_id, category.category_name
-    order by service.service_id asc`; // '%' || tag_name || '%' can search anything in keywords
-    values = [keywords];
+    order by service.service_name $4`);
+    values = [keywords, maxPriceFilter, minPriceFilter, orderFilter];
+
+  } else if (categoryFilter && maxPriceFilter && minPriceFilter && orderFilter) {
+    (query = `select service.service_id, category.category_name, service.category_id, service.service_name, 
+    service.service_photo, min(sub_service.price_per_unit) as min_price, 
+    max(sub_service.price_per_unit) as max_price, service.service_created_date, service.service_edited_date
+    from service
+    inner join sub_service
+    on service.service_id = sub_service.service_id  
+    inner join category
+    on category.category_id = service.category_id
+	  where category.category_name = $1 and (sub_service.price_per_unit <= $2) 
+    and (sub_service.price_per_unit >= $3)
+    group by service.service_id, category.category_name
+    order by service.service_name $4`);
+    values = [categoryFilter, maxPriceFilter, minPriceFilter, orderFilter]; 
+      
   } else {
     query = `select service.service_id, category.category_name, service.category_id, service.service_name, 
-    service.service_photo, min(sub_service.price_per_unit) as min_price, 
-    max(sub_service.price_per_unit) as max_price, service.service_created_date, service.service_edited_date
-    from service
-    inner join sub_service
-    on service.service_id = sub_service.service_id  
-    inner join category
-    on category.category_id = service.category_id
-    group by service.service_id, category.category_name
-    order by service.service_id asc`;
-  }
-  const results = await pool.query(query, values);
+      service.service_photo, min(sub_service.price_per_unit) as min_price, 
+      max(sub_service.price_per_unit) as max_price, service.service_created_date, service.service_edited_date
+      from service
+      inner join sub_service
+      on service.service_id = sub_service.service_id  
+      inner join category
+      on category.category_id = service.category_id
+      group by service.service_id, category.category_name
+      order by service.service_id asc`;
 
-  return res.status(200).json({
-    data: results.rows,
-  });
+    const results = await pool.query(query, values);
+
+    return res.status(200).json({
+      data: results.rows,
+    });
+  }
 });
 
 //API route to one service item page
@@ -75,6 +112,7 @@ serviceRouter.get("/:id", async (req, res) => {
     data: result.rows,
   });
 });
+
 
 serviceRouter.post("/", async (req, res) => {
   //add parameter servicePhoto
