@@ -68,7 +68,8 @@ promotion_edited_date_time timestamptz not null
 create table payment (
 payment_id int primary key generated always as identity,
 promotion_id int references promotion(promotion_id),
-credit_card_number int not null,
+credit_card_number varchar(16) not null,
+name_on_card varchar (100) not null, 
 expiry_date date not null,
 CVC_CVV_code int not null
 );
@@ -141,7 +142,11 @@ insert into promotion (promotion_code, promotion_types, promotion_quota, promoti
 insert into promotion (promotion_code, promotion_types, promotion_quota, promotion_discount_amount, promotion_expiry_date, promotion_expiry_time, promotion_created_date_time, promotion_edited_date_time) values ('iHiaPom', 'fixed', 1000, 200, '2022-08-08', '12:00', '2022-05-14T23:24:20Z', '2022-5-14T23:24:20Z');
 insert into promotion (promotion_code, promotion_types, promotion_quota, promotion_discount_amount, promotion_expiry_date, promotion_expiry_time, promotion_created_date_time, promotion_edited_date_time) values ('IsusO', 'fixed', 50, 200, '2022-11-11', '06:00', '2022-05-14T23:24:20Z', '2022-5-14T23:24:20Z');
 
-
+insert into payment (credit_card_number, name_on_card, expiry_date, CVC_CVV_code) values ('1212312121123456', 'Parn Rienkijkarn', '2023-09-01', 632);
+insert into payment (credit_card_number, name_on_card, expiry_date, CVC_CVV_code) values ('1234554321098890', 'Chatchard Sidhibhun', '2040-08-12', 999);
+insert into payment (credit_card_number, name_on_card, expiry_date, CVC_CVV_code) values ('1212312121123456', 'William Shakespeare', '2030-02-22', 012);
+insert into payment (credit_card_number, name_on_card, expiry_date, CVC_CVV_code) values ('1212312121123456', 'Hakuna Matata', '2027-11-30', 620);
+insert into payment (credit_card_number, name_on_card, expiry_date, CVC_CVV_code) values ('1212312121123456', 'Natasha Nutt', '2025-10-10', 767);
 
 -- select *
 -- from service
