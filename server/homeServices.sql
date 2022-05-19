@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS users, service, category, sub_service, checkout, order_summary, promotion, payment CASCADE; 
+DROP TABLE IF EXISTS users, service, category, sub_service, checkout, order_summary, promotion, payment, order_history CASCADE; 
 
 create table users (
 user_id int primary key generated always as identity,
@@ -49,6 +49,7 @@ province text not null,
 note text);
 
 create table order_summary (
+order_summary_id int primary key generated always as identity,
 sub_service_id int references sub_service(sub_service_id),
 checkout_id int references checkout(checkout_id)
 );
@@ -72,6 +73,13 @@ credit_card_number varchar(16) not null,
 name_on_card varchar (100) not null, 
 expiry_date date not null,
 CVC_CVV_code int not null
+);
+create table order_history (
+order_history_id int primary key generated always as identity,
+order_summary_id int references order_summary(order_summary_id),
+status text not null,
+finished_date_time timestamptz,
+serviceman_name text not null
 );
 
 insert into users (name, phoneNumber, email, password, role) values ('Stephan Edmeades', '0879316420', 'sedmeades0@goodreads.com', 'iP4EAxpCF4i', 'customer');
@@ -136,6 +144,12 @@ insert into checkout (payment_id, service_date, service_time, address, sub_distr
 insert into checkout (payment_id, service_date, service_time, address, sub_district, district, province, note) values (4, '2022-06-06', '19:45', '112 Orasadiraja Street', 'Les Majeste', 'Kalaland', 'Dusit', 'please expect royal defamation charge at any moment');
 insert into checkout (payment_id, service_date, service_time, address, sub_district, district, province, note) values (5, '2022-06-09', '08:15', '7/110 Metro Sky Wutthakat', 'Talat Phlu', 'Thonburi', 'Bangkok', 'please call 30 minutes in advance');
 
+insert into order_summary (sub_service_id, checkout_id) values (1, 1);
+insert into order_summary (sub_service_id, checkout_id) values (1, 2);
+insert into order_summary (sub_service_id, checkout_id) values (2, 3);
+insert into order_summary (sub_service_id, checkout_id) values (8, 4);
+insert into order_summary (sub_service_id, checkout_id) values (12, 5);
+
 insert into promotion (promotion_code, promotion_types, promotion_quota, promotion_discount_amount, promotion_expiry_date, promotion_expiry_time, promotion_created_date_time, promotion_edited_date_time) values ('IsusO', 'fixed', 400, 600, '2022-10-10', '12:00', '2022-03-16T23:24:20Z', '2022-03-16T23:24:20Z');
 insert into promotion (promotion_code, promotion_types, promotion_quota, promotion_discount_amount, promotion_expiry_date, promotion_expiry_time, promotion_created_date_time, promotion_edited_date_time) values ('IsusLek', 'percent', 112, 84000, '2022-12-05', '17:00', '2022-05-18T01:02:03Z', '2022-05-18T01:02:03Z');
 insert into promotion (promotion_code, promotion_types, promotion_quota, promotion_discount_amount, promotion_expiry_date, promotion_expiry_time, promotion_created_date_time, promotion_edited_date_time) values ('iHiaTu', 'percent', 50,  100, '2022-06-30', '18:00', '2022-10-30T23:24:20Z', '2022-10-30T23:24:20Z');
@@ -148,9 +162,19 @@ insert into payment (credit_card_number, name_on_card, expiry_date, CVC_CVV_code
 insert into payment (credit_card_number, name_on_card, expiry_date, CVC_CVV_code) values ('1212312121123456', 'Hakuna Matata', '2027-11-30', 620);
 insert into payment (credit_card_number, name_on_card, expiry_date, CVC_CVV_code) values ('1212312121123456', 'Natasha Nutt', '2025-10-10', 767);
 
+insert into order_history (order_summary_id, status, finished_date_time, serviceman_name) values (1, 'ดำเนินการสำเร็จ', '2022-06-16T16:00:00Z', 'Supakorn Meelarp');
+insert into order_history (order_summary_id, status, finished_date_time, serviceman_name) values (2, 'กำลังดำเนินการ', '2022-06-16T16:00:00Z', 'Supakorn Meelarp');
+insert into order_history (order_summary_id, status, finished_date_time, serviceman_name) values (3, 'รอดำเนินการ', '2022-06-16T16:00:00Z', 'Hakuna Matata');
+insert into order_history (order_summary_id, status, finished_date_time, serviceman_name) values (4, 'ดำเนินการสำเร็จ', '2022-07-12T16:00:00Z', 'Somsak Jeamteerasakul');
+insert into order_history (order_summary_id, status, finished_date_time, serviceman_name) values (5, 'รอดำเนินการ', '2022-06-16T16:00:00Z', 'Supakorn Meelarp');
+
 -- select *
 -- from service
 -- inner join category
 -- on category.category_id = service.category_id
+
+
+
+
 
 
