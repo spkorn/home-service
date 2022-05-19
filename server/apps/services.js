@@ -149,6 +149,21 @@ serviceRouter.get("/", async (req, res) => {
       order by service.service_name desc`);
       values = [maxPriceFilter, minPriceFilter]; 
    
+    } else if (keywords) {
+
+      (query = `select service.service_id, category.category_name, service.category_id, service.service_name,
+      service.service_photo, min(sub_service.price_per_unit) as min_price, 
+      max(sub_service.price_per_unit) as max_price, service.service_created_date, service.service_edited_date
+      from service
+      inner join sub_service
+      on service.service_id = sub_service.service_id  
+      inner join category
+      on category.category_id = service.category_id
+      where service.service_name ilike '%'||$1||'%'
+      group by service.service_id, category.category_name
+      order by service.service_id asc`);
+      values = [keywords];
+    
     } else {
       query = `select service.service_id, category.category_name, service.category_id, service.service_name, 
       service.service_photo, min(sub_service.price_per_unit) as min_price, 
@@ -186,9 +201,10 @@ serviceRouter.get("/:id", async (req, res) => {
     on service.service_id = sub_service.service_id  
     where service.service_id = $1
     group by service.service_id, category.category_name, sub_service.sub_service_id
-    order by service_service_id asc`,
-    values = [serviceId]
+    order by sub_service.sub_service_id asc`,
+    [serviceId]
   );
+  //console.log(result.rows);
   return res.json({
     data: result.rows,
   });
@@ -248,14 +264,10 @@ serviceRouter.post("/", servicePhotoUpload, async (req, res) => {
 serviceRouter.put("/:id", async (req, res) => {
   const updateServiceItem = {
     ...req.body,
+    service_edited_date: new Date(),
   };
 
   const serviceId = req.params.id;
-  const subServiceId = [];
-
-  for (let r = 0; r <= updateServiceItem.data.length - 1; r++) {
-    subServiceId.push(updateServiceItem.data[r].sub_service_id);
-  }
 
   // ใช้ได้แล้ว
   for (let r = 0; r <= updateServiceItem.data.length - 1; r++) {
@@ -271,18 +283,18 @@ serviceRouter.put("/:id", async (req, res) => {
         updateServiceItem.data[updateServiceItem.data.length - 1].service_name,
         updateServiceItem.data[updateServiceItem.data.length - 1].category_name,
         updateServiceItem.data[updateServiceItem.data.length - 1].service_photo,
-        (updateServiceItem.data[
-          updateServiceItem.data.length - 1
-        ].service_edited_date = new Date()),
+        updateServiceItem.data[updateServiceItem.data.length - 1]
+          .service_edited_date,
         serviceId,
       ]
     );
 
-    // ให้ลบ sub_service_id ทั้งหมดที่ไม่อยู่ใน array subServiceId
-    await pool.query(
-      `delete from sub_service where sub_service_id != all($1) and service_id =$2`,
-      [subServiceId, serviceId]
-    );
+    // เช็คว่ามีชื่อ sub-service ไหม ถ้าไม่มีให้ลบ sub-service ที่ไม่มีชื่อ
+    if (!updateServiceItem.data[r].sub_service_name) {
+      await pool.query(`delete from sub_service where sub_service_id = $1`, [
+        updateServiceItem.data[r].sub_service_id,
+      ]);
+    }
 
     await pool.query(
       `update sub_service set sub_service_name=$1, unit=$2, price_per_unit=$3, sub_service_quantity=0, total_price=0
@@ -313,3 +325,4 @@ serviceRouter.delete("/:id", async (req, res) => {
 });
 
 export default serviceRouter;
+

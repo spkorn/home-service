@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react'
-import '../../App.css'
-import image from '../../AdminPhoto/imageIndex'
-import { useNavigate, useParams } from 'react-router-dom'
-import { useEffect } from 'react'
-import axios from 'axios'
-import Moment from 'react-moment'
+import { css } from "@emotion/react";
+import "../../App.css";
+import image from "../../AdminPhoto/imageIndex";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
+import Moment from "react-moment";
 
 function EditedCategoryForm(props) {
   const {

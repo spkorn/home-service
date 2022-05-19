@@ -62,7 +62,7 @@ function ServiceHeader(props) {
           <div className="flex-col">
             <p className="text-xs text-grey700 font-normal">หมวดหมู่บริการ</p>
             <select
-              className="cursor-pointer"
+              className="select"
               name="filter-category"
               type="text"
               value={categoryFilter}
@@ -76,7 +76,7 @@ function ServiceHeader(props) {
                 {category.map((data) => {
                   return (
                     <option
-                      className="cursor-pointer text-grey700 text-sm font-normal focus:text-blue700 "
+                      className="cursor-pointer text-grey700 text-sm font-normal"
                       key={data.category_id}
                       value={data.category_name}
                     >
