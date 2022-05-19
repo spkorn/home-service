@@ -189,7 +189,6 @@ serviceRouter.get("/:id", async (req, res) => {
     order by service_service_id asc`,
     values = [serviceId]
   );
-  //console.log(result.rows);
   return res.json({
     data: result.rows,
   });
@@ -249,10 +248,14 @@ serviceRouter.post("/", servicePhotoUpload, async (req, res) => {
 serviceRouter.put("/:id", async (req, res) => {
   const updateServiceItem = {
     ...req.body,
-    service_edited_date: new Date(),
   };
 
   const serviceId = req.params.id;
+  const subServiceId = [];
+
+  for (let r = 0; r <= updateServiceItem.data.length - 1; r++) {
+    subServiceId.push(updateServiceItem.data[r].sub_service_id);
+  }
 
   // ใช้ได้แล้ว
   for (let r = 0; r <= updateServiceItem.data.length - 1; r++) {
@@ -268,18 +271,18 @@ serviceRouter.put("/:id", async (req, res) => {
         updateServiceItem.data[updateServiceItem.data.length - 1].service_name,
         updateServiceItem.data[updateServiceItem.data.length - 1].category_name,
         updateServiceItem.data[updateServiceItem.data.length - 1].service_photo,
-        updateServiceItem.data[updateServiceItem.data.length - 1]
-          .service_edited_date,
+        (updateServiceItem.data[
+          updateServiceItem.data.length - 1
+        ].service_edited_date = new Date()),
         serviceId,
       ]
     );
 
-    // เช็คว่ามีชื่อ sub-service ไหม ถ้าไม่มีให้ลบ sub-service ที่ไม่มีชื่อ
-    if (!updateServiceItem.data[r].sub_service_name) {
-      await pool.query(`delete from sub_service where sub_service_id = $1`, [
-        updateServiceItem.data[r].sub_service_id,
-      ]);
-    }
+    // ให้ลบ sub_service_id ทั้งหมดที่ไม่อยู่ใน array subServiceId
+    await pool.query(
+      `delete from sub_service where sub_service_id != all($1) and service_id =$2`,
+      [subServiceId, serviceId]
+    );
 
     await pool.query(
       `update sub_service set sub_service_name=$1, unit=$2, price_per_unit=$3, sub_service_quantity=0, total_price=0
