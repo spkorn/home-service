@@ -39,13 +39,28 @@ function useHook() {
   const [orderFilter, setOrderFilter] = useState("asc");
 
   //service
-  const [service, setService] = useState([]);
+  const [service, setService] = useState([
+    {
+      service_name: "",
+      category_name: "",
+      service_photo: { url: "", publicId: "" },
+      sub_service_name: "",
+      unit: "",
+      price_per_unit: 0,
+      service_created_date: "",
+      service_edited_date: "",
+    },
+  ]);
   const [service_name, setService_name] = useState("");
+  const [sub_service_name, setSub_service_name] = useState("");
+  const [price_per_unit, setPrice_per_unit] = useState(0);
+  const [unit, setUnit] = useState("");
   const [servicePhotos, setServicePhotos] = useState({});
   const [subServiceList, setSubServiceList] = useState([
     { sub_service_name: "", unit: "", price_per_unit: 0 },
     { sub_service_name: "", unit: "", price_per_unit: 0 },
   ]);
+  const [editHeader, setEditHeader] = useState("");
 
   const getService = async () => {
     const result = await axios("http://localhost:4000/service");
@@ -64,6 +79,8 @@ function useHook() {
       `http://localhost:4000/service/${serviceId}`
     );
     setService(result.data.data);
+    setEditHeader(result.data.data[0].service_name);
+    console.log(result);
   };
 
   //Service Image
@@ -170,6 +187,14 @@ function useHook() {
     setOrderFilter,
     categoryFilter,
     setCategoryFilter,
+    sub_service_name,
+    setSub_service_name,
+    price_per_unit,
+    setPrice_per_unit,
+    unit,
+    setUnit,
+    editHeader,
+    setEditHeader,
   };
 }
 
