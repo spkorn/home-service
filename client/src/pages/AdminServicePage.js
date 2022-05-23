@@ -2,7 +2,7 @@ import "../App.css";
 import AdminService from "../components/AdminServicePage/ServicesList";
 import AdminServiceHeader from "../components/AdminServicePage/AdminServiceHeader";
 import SideBar from "../components/AdminCategoryPage/SideBar";
-import useHook from "../hooks/util";
+import useUtils from "../hooks/utils";
 
 function AdminServicePage() {
   const {
@@ -16,7 +16,7 @@ function AdminServicePage() {
     deleteService,
     service_Id,
     setDeleteService,
-  } = useHook();
+  } = useUtils();
   return (
     <div className="admin-service-page">
       <SideBar />

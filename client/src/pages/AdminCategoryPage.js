@@ -2,7 +2,7 @@ import "../App.css";
 import AdminCategories from "../components/AdminCategoryPage/CategoriesList";
 import AdminCategoryHeader from "../components/AdminCategoryPage/AdminCategoryHeader";
 import SideBar from "../components/AdminCategoryPage/SideBar";
-import useHook from "../hooks/util";
+import useUtils from "../hooks/utils";
 
 function AdminCategoryPage() {
   const {
@@ -17,7 +17,7 @@ function AdminCategoryPage() {
     category_Id,
     hide,
     setDeleteCategory
-  } = useHook();
+  } = useUtils();
   return (
     <div className="admin-category-page">
       <SideBar />

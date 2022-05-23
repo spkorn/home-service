@@ -4,10 +4,10 @@ import ServicePageHeader from "../components/ServicePage/ServicePageHeader";
 import ServicesList from "../components/ServicePage/ServicePageServicesList";
 import ServicePageJobNotice from "../components/ServicePage/ServicesPageJobNotice";
 import Footer from "../components/HomePage/Footer";
-import useHook from "../hooks/util";
+import useUtils from "../hooks/utils";
 
 function ServicePage() {
-  const { searchService, setSearchService, service, setService, getCategory, category, setCategory, orderFilter, setOrderFilter, categoryFilter, setCategoryFilter } = useHook();
+  const { searchService, setSearchService, service, setService, getCategory, category, setCategory, orderFilter, setOrderFilter, categoryFilter, setCategoryFilter } = useUtils();
   return (
     <div className="service-page">
       <Nav />

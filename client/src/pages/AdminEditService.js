@@ -3,8 +3,7 @@ import { css } from "@emotion/react";
 import "../App.css";
 import SideBar from "../components/AdminCategoryPage/SideBar";
 import ServiceEditForm from "../components/AdminServicePage/EditForm";
-import useHook from "../hooks/util";
-import Moment from "react-moment";
+import useUtils from "../hooks/utils";
 
 function AdminEditService() {
   const {
@@ -17,10 +16,9 @@ function AdminEditService() {
     category_name,
     service_name,
     setService_name,
-    // handleFileChange,
     editHeader,
     setEditHeader,
-  } = useHook();
+  } = useUtils();
   return (
     <div>
       <SideBar />
@@ -34,7 +32,6 @@ function AdminEditService() {
         category_name={category_name}
         service_name={service_name}
         setService_name={setService_name}
-        // handleFileChange={handleFileChange}
         editHeader={editHeader}
         setEditHeader={setEditHeader}
       />

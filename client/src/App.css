@@ -109,7 +109,6 @@ input[type="checkbox"] {
 .dropdown-content {
   @apply hidden absolute bg-white rounded-lg pt-1 mt-1 mb-1 pb-1;
   box-shadow: 2px 2px 24px rgba(23, 51, 106, 0.12);
-  width: 180px;
   z-index: 1;
 }
 
@@ -132,7 +131,7 @@ input[type="checkbox"] {
       rgba(0, 25, 81, 0.6)
     ),
     url(../src/ServicePagePhoto/Header.jpg);
-  @apply w-screen bg-center bg-cover h-60 text-center relative;
+  @apply bg-center bg-cover h-60 text-center relative;
 }
 
 #search-text {

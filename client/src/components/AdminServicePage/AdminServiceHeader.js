@@ -1,5 +1,3 @@
-/** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
 import "../../App.css";
 import { useEffect } from "react";
 import image from "../../AdminPhoto/imageIndex";
@@ -27,7 +25,7 @@ function AdminServiceHeader(props) {
 
   return (
     <header className="admin-header ">
-      <div className="header-name pl-60 w-screen flex items-center h-20 pr-10 justify-between border-b border-grey300 ">
+      <div className="header-name pl-60 flex items-center h-20 pr-10 justify-between border-b border-grey300 ">
         <h1 className="text-xl font-medium pl-10">บริการ</h1>
         <div className="flex">
           <input
@@ -39,18 +37,14 @@ function AdminServiceHeader(props) {
               setSearchService(event.target.value);
             }}
             value={searchService}
-            className="border rounded-lg border-grey300"
-            css={css`
-              padding: 10px 0px 10px 16px;
-            `}
+            className="border rounded-lg border-grey300 py-2.5 px-4"
           />
-          <button className="btn-primary flex items-center ml-6" onClick={() => navigate("/create-service")}>
-            <div
-              className="text-base font-medium mr-3"
-            >
-              เพิ่มบริการ
-            </div>
-            <img src={image.plusSign} />
+          <button
+            className="btn-primary flex items-center ml-6"
+            onClick={() => navigate("/create-service")}
+          >
+            <div className="text-base font-medium mr-3">เพิ่มบริการ</div>
+            <img src={image.plusSign} alt="Plus Symbol" />
           </button>
         </div>
       </div>

@@ -2,7 +2,7 @@ import "../../App.css";
 import MultiRangeSlider from "./MultiRangeSlider";
 import axios from "axios";
 import { useEffect } from "react";
-import useHook from "../../hooks/util";
+import useUtils from "../../hooks/utils";
 
 function ServiceHeader(props) {
   const { category, searchService, setSearchService, setService, getCategory, orderFilter, setOrderFilter, categoryFilter, setCategoryFilter } = props;
@@ -28,7 +28,7 @@ function ServiceHeader(props) {
   const { minFilter,
     setMinFilter,
     maxFilter,
-    setMaxFilter, } = useHook();
+    setMaxFilter, } = useUtils();
   return (
     <header className="service-header">
       <div className="banner">
@@ -40,7 +40,7 @@ function ServiceHeader(props) {
           โดย พนักงานแม่บ้านและช่างมืออาชีพ
         </p>
       </div>
-      <div className="h-20 w-screen flex items-center justify-evenly border-b border-grey300">
+      <div className="h-20 flex items-center justify-evenly border-b border-grey300">
         <input
           id="search-text"
           name="search-text"
@@ -50,7 +50,7 @@ function ServiceHeader(props) {
             setSearchService(event.target.value);
           }}
           value={searchService}
-          className="border rounded-lg border-grey300 px-2.5 pl-4"
+          className="border rounded-lg border-grey300 px-2.5 pl-4 h-14"
         />
         <div className="flex">
           <div className="flex-col">
@@ -58,7 +58,7 @@ function ServiceHeader(props) {
             <div className="dropdown cursor-pointer">{categoryFilter===""? (
               <p className="cursor-pointer">บริการทั้งหมด ▾</p>) : (<p className="cursor-pointer">{categoryFilter} ▾</p>) }
               <div
-                className="dropdown-content cursor-pointer"
+                className="dropdown-content cursor-pointer w-44"
               >
                 <div className="ml-4" onClick={() => {
                 setCategoryFilter("")
@@ -83,7 +83,7 @@ function ServiceHeader(props) {
             <div className="dropdown cursor-pointer">
               <p className="cursor-pointer w-36"> {minFilter} - {maxFilter} ฿ ▾ </p>
               <div
-                className="dropdown-content w-[253px] h-[112px]"
+                className="dropdown-content w-64 h-28"
               >
                 <div>
                   <MultiRangeSlider
@@ -108,7 +108,7 @@ function ServiceHeader(props) {
             <div className="dropdown cursor-pointer ">{orderFilter==="asc"? (
               <p className="cursor-pointer w-56">ตามตัวอักษร (Ascending) ▾</p>) : (<p className="cursor-pointer w-56">ตามตัวอักษร (Descending) ▾</p>) }
               <div
-                className="dropdown-content cursor-pointer w-[240px]"
+                className="dropdown-content cursor-pointer w-60"
               >
                 <div className="ml-4" onClick={() => {
                 setOrderFilter("asc")

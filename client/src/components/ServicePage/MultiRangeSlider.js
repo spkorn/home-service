@@ -3,9 +3,8 @@ import classnames from "classnames";
 import PropTypes from "prop-types";
 import "./MultiRangeSlider.css";
 
-const MultiRangeSlider = ({ min, max, onChange ,minFilter,
+const MultiRangeSlider = ({ min, max, onChange ,
     setMinFilter,
-    maxFilter,
     setMaxFilter}) => {
   const [minVal, setMinVal] = useState(min);
   const [maxVal, setMaxVal] = useState(max);

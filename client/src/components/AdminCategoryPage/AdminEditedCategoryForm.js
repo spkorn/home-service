@@ -1,5 +1,3 @@
-/** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
 import "../../App.css";
 import image from "../../AdminPhoto/imageIndex";
 import { useNavigate, useParams } from "react-router-dom";
@@ -14,46 +12,41 @@ function EditedCategoryForm(props) {
     setCategory_name,
     category_edited_date,
     setCategory_edited_date,
-    getCategoryById
-  } = props
+    getCategoryById,
+  } = props;
 
-  const params = useParams()
-  const navigate = useNavigate()
+  const params = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    getCategoryById(params.categoryId)
-  }, [])
+    getCategoryById(params.categoryId);
+  }, []);
 
   const updateCategoryById = async (categoryId) => {
     await axios.put(`http://localhost:4000/category/${categoryId}`, {
       category_name,
-      category_edited_date
-    })
-    navigate('/category-dashboard')
-  }
+      category_edited_date,
+    });
+    navigate("/category-dashboard");
+  };
 
   useEffect(() => {
     if (category) {
-      setCategory_name(category.category_name)
-      setCategory_edited_date(category.category_edited_date)
+      setCategory_name(category.category_name);
+      setCategory_edited_date(category.category_edited_date);
     }
-  }, [category])
+  }, [category]);
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     updateCategoryById(params.categoryId, {
       category_name,
-      category_edited_date
-    })
-  }
+      category_edited_date,
+    });
+  };
 
   return (
-    <div
-      className="edit-container h-screen"
-      css={css`
-        background-color: #f3f4f7;
-      `}
-    >
+    <div className="edit-container h-screen bg-bg">
       <form
         className="header-and-content ml-60 h-screen"
         onSubmit={handleSubmit}
@@ -63,16 +56,19 @@ function EditedCategoryForm(props) {
         border-b border-grey300 px-10 py-10 bg-white"
         >
           <div className="flex justify-between h-12 w-44">
-            <button onClick={() => navigate('/category-dashboard')}>
+            <button onClick={() => navigate("/category-dashboard")}>
               <img alt="Arrow Icon" src={image.arrow} className="w-10 h10" />
             </button>
             <div className="w-52 h-12">
               <div className="font-normal text-grey700 text-xs">หมวดหมู่</div>
-              <div className="font-medium text-xl">{category.category_name}</div>
+              <div className="font-medium text-xl">
+                {category.category_name}
+              </div>
             </div>
           </div>
           <div className="buttons flex justify-between h-11 w-64 px-1">
-            <button className="btn-secondary 
+            <button
+              className="btn-secondary 
             w-28 h-11 "
               onClick={() => navigate("/category-dashboard")}
             >
@@ -99,7 +95,7 @@ function EditedCategoryForm(props) {
                 name="edited_category"
                 value={category_name}
                 onChange={(e) => {
-                  setCategory_name(e.target.value)
+                  setCategory_name(e.target.value);
                 }}
               />
             </div>
@@ -133,7 +129,7 @@ function EditedCategoryForm(props) {
         </div>
       </form>
     </div>
-  )
+  );
 }
 
-export default EditedCategoryForm
+export default EditedCategoryForm;

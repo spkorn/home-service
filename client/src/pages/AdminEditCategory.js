@@ -1,25 +1,17 @@
 import "../App.css";
 import SideBar from "../components/AdminCategoryPage/SideBar";
-import useHook from "../hooks/util";
+import useUtils from "../hooks/utils";
 import EditedCategoryForm from "../components/AdminCategoryPage/AdminEditedCategoryForm";
 
 function AdminEditCategory() {
   const {
     category,
-    setCategory,
     category_name,
     setCategory_name,
-    setCategory_created_date,
     category_edited_date,
     setCategory_edited_date,
-    deleteCategoryId,
-    getCategory,
-    getCategoryById,
-    categoryDeleteAlert,
-    deleteCategory,
-    setDeleteCategory,
-    category_Id,
-  } = useHook();
+    getCategoryById
+  } = useUtils();
   return (
     <div>
       <SideBar />

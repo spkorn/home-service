@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function useHook() {
+function useUtils() {
   const navigate = useNavigate();
 
   //category
@@ -198,4 +198,4 @@ function useHook() {
   };
 }
 
-export default useHook;
+export default useUtils;

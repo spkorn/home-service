@@ -1,7 +1,7 @@
 import "../App.css";
 import SideBar from "../components/AdminCategoryPage/SideBar";
 import AddService from "../components/AdminServicePage/AdminAddService";
-import useHook from "../hooks/util";
+import useUtils from "../hooks/utils";
 
 function CreateService() {
   const {
@@ -19,7 +19,7 @@ function CreateService() {
     subServiceList,
     setSubServiceList,
     handleRemoveImageService
-  } = useHook();
+  } = useUtils();
   return (
     <div className="create-service-container h-screen bg-bg">
       <SideBar />
