@@ -143,19 +143,31 @@ insert into promotion (promotion_code, promotion_types, promotion_quota, promoti
 
 insert into checkout (sub_service_id, promotion_id, service_date_time, address, sub_district, district, province, postal_code, note, total_price) 
 values (1, 1, '2021-07-11T13:19:59Z', '382 Bang Waek Road', 'Bang Pai', 'Bang Khae', 'Bangkok', 10160, '', 0);
--- insert into checkout (sub_service_id, promotion_id, service_date_time, address, sub_district, district, province, postal_code, note, total_price) values (2, '2022-08-09', '20:00', 'Somewhere over the rainbow', 'Bang Sai', 'Klong Tom', 'Prayuth', 'female serviceman requested');
--- insert into checkout (sub_service_id, promotion_id, service_date_time, address, sub_district, district, province, postal_code, note, total_price) values (3, '2022-07-22', '19:00', 'Samoeng Villa', 'Samoeng Tai', 'Samoeng', 'Chiang Mai', 'please park in the back of the alley');
--- insert into checkout (sub_service_id, promotion_id, service_date_time, address, sub_district, district, province, postal_code, note, total_price) values (4, '2022-06-06', '19:45', '112 Orasadiraja Street', 'Les Majeste', 'Kalaland', 'Dusit', 'please expect royal defamation charge at any moment');
--- insert into checkout (sub_service_id, promotion_id, service_date_time, address, sub_district, district, province, postal_code, note, total_price) values (5, '2022-06-09', '08:15', '7/110 Metro Sky Wutthakat', 'Talat Phlu', 'Thonburi', 'Bangkok', 'please call 30 minutes in advance');
+insert into checkout (sub_service_id, promotion_id, service_date_time, address, sub_district, district, province, postal_code, note, total_price) 
+values (2, 1, '2021-07-11T13:19:59Z', 'Somewhere over the rainbow', 'Bang Sai', 'Klong Tom', 'Nonthaburi', 21091, 'female serviceman requested', 0);
+insert into checkout (sub_service_id, promotion_id, service_date_time, address, sub_district, district, province, postal_code, note, total_price) 
+values (11, 2, '2021-07-11T13:19:59Z', 'Samoeng Villa', 'Samoeng Tai', 'Samoeng', 'Chiang Mai', 90201, 'please park at the back of the alley', 0);
+insert into checkout (sub_service_id, promotion_id, service_date_time, address, sub_district, district, province, postal_code, note, total_price) 
+values (9, 3, '2021-07-11T13:19:59Z', '112 Orasadiraja Street', 'Les Majeste', 'Dusit', 'Kalaland', 112, 'please expect royal defamation charges at any moment', 0);
+insert into checkout (sub_service_id, promotion_id, service_date_time, address, sub_district, district, province, postal_code, note, total_price) 
+values (5, 5, '2021-07-11T13:19:59Z', '7/110 Metro Sky Wutthakat', 'Talat Phlu', 'Thonburi', 'Bangkok', 10600, 'please call 30 minutes in advance', 0);
 
 insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('พี่เจ๋ง', 'ซ่อมแอร์', 'หัวใจผมว่างจะมีใครบ้างจับจอง');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('พี่เบิร์ด', 'ซ่อมได้', 'ว่าง');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('พี่บาว', 'ซ่อมครัว', 'ไม่ว่าง');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('พี่กร', 'ทำความสะอาดทั่วไป', 'แต่แพ้น้ำยาล้างห้องน้ำ');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('พี่เนอส', 'ซ่อมเครื่องซักผ้า', 'เสร็จช้าแต่เสร็จนะ');
 
 insert into order_history (serviceman_detail_id, checkout_id, order_number, status, finished_date_time)
 values (1, 1, 'AA000001', 'กำลังดำเนินการ', '2022-06-16T16:00:00Z');
--- insert into order_history (order_summary_id, status, finished_date_time, serviceman_name) values (2, 'กำลังดำเนินการ', '2022-06-16T16:00:00Z', 'Supakorn Meelarp');
--- insert into order_history (order_summary_id, status, finished_date_time, serviceman_name) values (3, 'รอดำเนินการ', '2022-06-16T16:00:00Z', 'Hakuna Matata');
--- insert into order_history (order_summary_id, status, finished_date_time, serviceman_name) values (4, 'ดำเนินการสำเร็จ', '2022-07-12T16:00:00Z', 'Somsak Jeamteerasakul');
--- insert into order_history (order_summary_id, status, finished_date_time, serviceman_name) values (5, 'รอดำเนินการ', '2022-06-16T16:00:00Z', 'Supakorn Meelarp');
+insert into order_history (serviceman_detail_id, checkout_id, order_number, status, finished_date_time)
+values (2, 5, 'AA000002', 'รอดำเนินการ', '2022-07-01T15:00:00Z');
+insert into order_history (serviceman_detail_id, checkout_id, order_number, status, finished_date_time)
+values (4, 4, 'AA000003', 'ดำเนินการสำเร็จ', '2022-07-05T09:00:00Z');
+insert into order_history (serviceman_detail_id, checkout_id, order_number, status, finished_date_time)
+values (2, 3, 'AA000004', 'ดำเนินการสำเร็จ', '2022-06-02T10:30:00Z');
+insert into order_history (serviceman_detail_id, checkout_id, order_number, status, finished_date_time)
+values (5, 2, 'AA000005', 'รอดำเนินการ', '2022-06-20T12:45:00Z');
 
 -- select *
 -- from service
