@@ -7,7 +7,9 @@ import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import InputAddress from "react-thailand-address-autocomplete";
 
 function TestInputPage() {
-  const [value, setValue] = useState(new Date());
+  const [dateTime, setDateTime] = useState(new Date());
+  const today = new Date();
+  const tomorrow = new Date(today).setDate(new Date(today).getDate() + 1);
 
   const [fullAddress, setFullAddress] = useState({
     address: "",
@@ -53,7 +55,7 @@ function TestInputPage() {
   };
 
   const handleSelectAddress = (addresses) => {
-    const { address, subdistrict, district, province, zipcode } = addresses;
+    //const { address, subdistrict, district, province, zipcode } = addresses;
     setFullAddress({
       ...fullAddress,
       ...addresses,
@@ -61,7 +63,37 @@ function TestInputPage() {
     // or setFullAddress({ address, subdistrict, district, province, zipcode, })
   };
 
+  function toThaiDateString(date) {
+    let monthNames = [
+      "มกราคม",
+      "กุมภาพันธ์",
+      "มีนาคม",
+      "เมษายน",
+      "พฤษภาคม",
+      "มิถุนายน",
+      "กรกฎาคม",
+      "สิงหาคม.",
+      "กันยายน",
+      "ตุลาคม",
+      "พฤศจิกายน",
+      "ธันวาคม",
+    ];
+
+    let year = date.getFullYear() + 543;
+    let month = monthNames[date.getMonth()];
+    let numOfDay = date.getDate();
+
+    let hour = date.getHours().toString().padStart(2, "0");
+    let minutes = date.getMinutes().toString().padStart(2, "0");
+    let second = date.getSeconds().toString().padStart(2, "0");
+
+    // return `${numOfDay} ${month} ${year} ` + `${hour}:${minutes}:${second} น.`;
+    return `${numOfDay} ${month} ${year}`; // เอาแต่ วัน เดือน ปี ไม่เอาเวลา
+  }
+
   console.log(fullAddress);
+  console.log(toThaiDateString(dateTime));
+  console.log(dateTime.toLocaleTimeString("th-TH")); // เวลาแบบ 24 ชั่วโมง
 
   return (
     <div className="m-9">
@@ -69,11 +101,12 @@ function TestInputPage() {
         <DateTimePicker
           renderInput={(params) => <TextField {...params} />}
           label="วันเวลาที่สะดวกใช้บริการ"
-          value={value}
-          onChange={(newValue) => {
-            setValue(newValue);
+          value={dateTime}
+          onChange={(newDateTime) => {
+            setDateTime(newDateTime);
           }}
-          minDate={new Date()}
+          minDate={tomorrow}
+          //minDate={new Date()}
           minTime={new Date(0, 0, 0, 8)}
           maxTime={new Date(0, 0, 0, 18, 45)}
         />
