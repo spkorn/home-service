@@ -8,7 +8,7 @@ const orderHistoryRouter = router();
 orderHistoryRouter.get("/:id", async (req, res) => {
     const orderHistoryByUserId = req.params.id;
 
-    const result = await pool.query(`select order_history.order_number, order_history.finished_date_time, order_history.status, serviceman_detail.serviceman_name, checkout.sub_service_id, sub_service.sub_service_name, checkout.total_price
+    const result = await pool.query(`select order_history.order_number, order_history.finished_date_time, order_history.status, serviceman_detail.serviceman_name, checkout.sub_service_id, sub_service.sub_service_name, checkout.total_price, checkout.checkout_id
     from order_history
     inner join checkout
     on order_history.checkout_id = checkout.checkout_id
@@ -17,8 +17,10 @@ orderHistoryRouter.get("/:id", async (req, res) => {
 	inner join users
 	on users.user_id = order_history.user_id
 	inner join sub_service
-	on sub_service.sub_service_id = checkout.sub_service_id
-	where users.user_id = $1`, [orderHistoryByUserId]
+	on sub_service.checkout_id = checkout.checkout_id
+	inner join service
+	on service.service_id = sub_service.service_id
+	where sub_service_quantity != 0 and users.user_id = $1`, [orderHistoryByUserId]
     );
 
     return res.status(200).json({
