@@ -3,8 +3,8 @@ import TextField from "@mui/material/TextField";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
-//import InputThaiAddress from "thai-address-autocomplete-react";
 import InputAddress from "react-thailand-address-autocomplete";
+// ลง package โดยใช้คำสั่ง npm install --save react-thailand-address-autocomplete
 
 function TestInputPage() {
   const [dateTime, setDateTime] = useState(new Date());
@@ -22,35 +22,30 @@ function TestInputPage() {
   const handleChangeAddress = (e) => {
     const temp = { ...fullAddress };
     temp.address = e;
-    //setFullAddress({ address: e });
     setFullAddress(temp);
   };
 
   const handleChangeSubDistrict = (e) => {
     const temp = { ...fullAddress };
     temp.subdistrict = e;
-    //setFullAddress({ subdistrict: e });
     setFullAddress(temp);
   };
 
   const handleChangeDistrict = (e) => {
     const temp = { ...fullAddress };
     temp.district = e;
-    //setFullAddress({ district: e });
     setFullAddress(temp);
   };
 
   const handleChangeProvince = (e) => {
     const temp = { ...fullAddress };
     temp.province = e;
-    //setFullAddress({ province: e });
     setFullAddress(temp);
   };
 
   const handleChangeZipcode = (e) => {
     const temp = { ...fullAddress };
     temp.zipcode = e;
-    //setFullAddress({ zipcode: e });
     setFullAddress(temp);
   };
 
@@ -95,9 +90,19 @@ function TestInputPage() {
   console.log(toThaiDateString(dateTime));
   console.log(dateTime.toLocaleTimeString("th-TH")); // เวลาแบบ 24 ชั่วโมง
 
+  const addressStyle = {
+    marginTop: "0.5rem",
+    width: "47vw",
+    height: "44px",
+    borderRadius: "0.5rem",
+    padding: "0.625rem 1rem",
+    borderWidth: "1px",
+    borderColor: "#ccd0d7",
+  };
+
   return (
-    <div className="m-9">
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
+    <div className=" px-6 pt-6 pb-8 flex flex-col justify-between border border-grey300 rounded-lg">
+      {/* <LocalizationProvider dateAdapter={AdapterDateFns}>
         <DateTimePicker
           renderInput={(params) => <TextField {...params} />}
           label="วันเวลาที่สะดวกใช้บริการ"
@@ -110,135 +115,99 @@ function TestInputPage() {
           minTime={new Date(0, 0, 0, 8)}
           maxTime={new Date(0, 0, 0, 18, 45)}
         />
-      </LocalizationProvider>
-
-      <div>
-        {/* <label>ที่อยู่</label>
-        <br />
-        <input
-          className="h-9 w-32 py-2.5 pl-4 border rounded-lg border-grey300 focus:border-blue600 focus:outline-none"
-          address="address"
-          value={fullAddress.address}
-          onChange={(e) => {
-            handleChangeAddress(e.target.value);
-          }}
-          onSelect={(e) => {
-            handleSelectAddress(e);
-          }}
-        />
-        <br /> */}
-        {/* <label>ที่อยู่</label>
-        <InputThaiAddress
-          field={"address"}
-          value={fullAddress.address}
-          onChange={(e) => {
-            handleChangeAddress(e.target.value);
-          }}
-          onSelect={(e) => {
-            handleSelectAddress(e);
-          }}
-        />
-        <label>แขวง / ตำบล</label>
-        <InputThaiAddress
-          field={"subdistrict"}
-          value={fullAddress.subdistrict}
-          onChange={(e) => {
-            handleChangeSubDistrict(e.target.value);
-          }}
-          onSelect={(e) => {
-            handleSelectAddress(e);
-          }}
-        />
-        <label>เขต / อำเภอ</label>
-        <InputThaiAddress
-          address="district"
-          value={fullAddress.district}
-          onChange={(e) => {
-            handleChangeDistrict(e.target.value);
-          }}
-          onSelect={(e) => {
-            handleSelectAddress(e);
-          }}
-        />
-        <label>จังหวัด</label>
-        <InputThaiAddress
-          address="province"
-          value={fullAddress.province}
-          onChange={(e) => {
-            handleChangeProvince(e.target.value);
-          }}
-          onSelect={(e) => {
-            handleSelectAddress(e);
-          }}
-        />
-        <label>รหัสไปรษณีย์</label>
-        <InputThaiAddress
-          address="zipcode"
-          value={fullAddress.zipcode}
-          onChange={(e) => {
-            handleChangeZipcode(e.target.value);
-          }}
-          onSelect={(e) => {
-            handleSelectAddress(e);
-          }}
-        /> */}
-
-        <label>ที่อยู่</label>
-        <InputAddress
-          address="address"
-          value={fullAddress.address}
-          onChange={(e) => {
-            handleChangeAddress(e.target.value);
-          }}
-          onSelect={(e) => {
-            handleSelectAddress(e);
-          }}
-        />
-        <label>แขวง / ตำบล</label>
-        <InputAddress
-          address="subdistrict"
-          value={fullAddress.subdistrict}
-          onChange={(e) => {
-            handleChangeSubDistrict(e.target.value);
-          }}
-          onSelect={(e) => {
-            handleSelectAddress(e);
-          }}
-        />
-        <label>เขต / อำเภอ</label>
-        <InputAddress
-          address="district"
-          value={fullAddress.district}
-          onChange={(e) => {
-            handleChangeDistrict(e.target.value);
-          }}
-          onSelect={(e) => {
-            handleSelectAddress(e);
-          }}
-        />
-        <label>จังหวัด</label>
-        <InputAddress
-          address="province"
-          value={fullAddress.province}
-          onChange={(e) => {
-            handleChangeProvince(e.target.value);
-          }}
-          onSelect={(e) => {
-            handleSelectAddress(e);
-          }}
-        />
-        <label>รหัสไปรษณีย์</label>
-        <InputAddress
-          address="zipcode"
-          value={fullAddress.zipcode}
-          onChange={(e) => {
-            handleChangeZipcode(e.target.value);
-          }}
-          onSelect={(e) => {
-            handleSelectAddress(e);
-          }}
-        />
-      </div>
+      </LocalizationProvider> */}
+      <form>
+        <div className="w-full flex flex-col justify-between mt-4">
+          <label>
+            <h5 className="text-grey900">
+              ที่อยู่<span className="text-red"> *</span>
+            </h5>
+            <InputAddress
+              id="address"
+              address="address"
+              value={fullAddress.address}
+              type="text"
+              onChange={(e) => {
+                handleChangeAddress(e.target.value);
+              }}
+              onSelect={(e) => {
+                handleSelectAddress(e);
+              }}
+              style={addressStyle}
+            />
+          </label>
+          <label>
+            <h5 className="text-grey900">
+              แขวง / ตำบล<span className="text-red"> *</span>
+            </h5>
+            <InputAddress
+              id="subdistrict"
+              address="subdistrict"
+              value={fullAddress.subdistrict}
+              type="text"
+              onChange={(e) => {
+                handleChangeSubDistrict(e.target.value);
+              }}
+              onSelect={(e) => {
+                handleSelectAddress(e);
+              }}
+              style={addressStyle}
+            />
+          </label>
+          <label>
+            <h5 className="text-grey900">
+              เขต / อำเภอ<span className="text-red"> *</span>
+            </h5>
+            <InputAddress
+              id="district"
+              address="district"
+              value={fullAddress.district}
+              type="text"
+              onChange={(e) => {
+                handleChangeDistrict(e.target.value);
+              }}
+              onSelect={(e) => {
+                handleSelectAddress(e);
+              }}
+              style={addressStyle}
+            />
+          </label>
+          <label>
+            <h5 className="text-grey900">
+              จังหวัด<span className="text-red"> *</span>
+            </h5>
+            <InputAddress
+              id="province"
+              address="province"
+              value={fullAddress.province}
+              type="text"
+              onChange={(e) => {
+                handleChangeProvince(e.target.value);
+              }}
+              onSelect={(e) => {
+                handleSelectAddress(e);
+              }}
+              style={addressStyle}
+            />
+          </label>
+          {/* <label>
+          <h5 className="text-grey900">
+            รหัสไปรษณีย์<span className="text-red"> *</span>
+          </h5>
+          <InputAddress
+            address="zipcode"
+            value={fullAddress.zipcode}
+            onChange={(e) => {
+              handleChangeZipcode(e.target.value);
+            }}
+            onSelect={(e) => {
+              handleSelectAddress(e);
+            }}
+            style={addressStyle}
+          />
+        </label> */}
+        </div>
+      </form>
     </div>
   );
 }
