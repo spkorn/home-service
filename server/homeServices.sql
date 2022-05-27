@@ -111,7 +111,6 @@ insert into service (user_id, category_id, service_name, service_photo, service_
 insert into service (user_id, category_id, service_name, service_photo, service_created_date, service_edited_date) values (8, 3, 'ติดตั้งชักโครก', '{"url": "https://res.cloudinary.com/spkorn/image/upload/v1652336331/spkorn/homeServices/%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B8%8A%E0%B8%B1%E0%B8%81%E0%B9%82%E0%B8%84%E0%B8%A3%E0%B8%81_yuwb5l.png", "publicId": "123"}', '2021-11-29T17:24:14Z', '2022-05-06T13:27:44Z');
 insert into service (user_id, category_id, service_name, service_photo, service_created_date, service_edited_date) values (9, 3, 'ติดตั้งเครื่องทำน้ำอุ่น', '{"url": "https://res.cloudinary.com/spkorn/image/upload/v1652336330/spkorn/homeServices/%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%97%E0%B8%B3%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B8%AD%E0%B8%B8%E0%B9%88%E0%B8%99_bcawvs.png", "publicId": "123"}', '2021-12-15T08:16:47Z', '2021-07-18T04:15:58Z');
 insert into service (user_id, category_id, service_name, service_photo, service_created_date, service_edited_date) values (10, 1,'ติดตั้งตู้เย็น', '{"url": "https://res.cloudinary.com/spkorn/image/upload/v1652329234/spkorn/homeServices/cong-wang-RqEEq4uF6jo-unsplash_v0uhsn.jpg", "publicId": "123"}', '2022-03-16T23:24:20Z', '2021-12-10T07:02:21Z');
-insert into service (user_id, category_id, service_name, service_photo, service_created_date, service_edited_date) values (1, 2,'เป็นรูปที่มีทุกบ้าน', '{"url": "https://res.cloudinary.com/spkorn/image/upload/v1652344130/spkorn/homeServices/king10_xpvarm.jpg", "publicId": "123"}', '2022-03-16T23:24:20Z', '2021-12-10T07:02:21Z');
 
 
 insert into promotion (promotion_code, promotion_types, promotion_quota, promotion_discount_amount, promotion_expiry_date, promotion_expiry_time, promotion_created_date_time, promotion_edited_date_time) values ('IsusO', 'fixed', 400, 600, '2022-10-10', '12:00', '2022-03-16T23:24:20Z', '2022-03-16T23:24:20Z');
@@ -147,7 +146,6 @@ insert into sub_service (sub_service_name, service_id, unit, price_per_unit) val
 insert into sub_service (sub_service_name, service_id, unit, price_per_unit) values ('แบบกำลังไฟสูงกว่า 3500 วัตต์', 9, 'เครื่อง', 2000.00);
 insert into sub_service (sub_service_name, service_id, unit, price_per_unit) values ('แบบขนาดเล็กกว่า 10 คิว', 10, 'เครื่อง', 1500.00);
 insert into sub_service (sub_service_name, service_id, unit, price_per_unit) values ('แบบขนาดใหญ่กว่า 10 คิว', 10, 'เครื่อง', 2000.00);
-insert into sub_service (sub_service_name, service_id, unit, price_per_unit) values ('ทรงพระเจริญ', 11, 'หมื่นๆปี', 112.00);
 
 insert into checkout (promotion_id, service_date_time, address, sub_district, district, province, postal_code, note, total_price) 
 values (1, '2021-07-11T13:19:59Z', '382 Bang Waek Road', 'Bang Pai', 'Bang Khae', 'Bangkok', 10160, '', 0);
