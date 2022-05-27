@@ -49,7 +49,6 @@ function ServiceDetailOneTop() {
             <GreyTextOne>ชำระเงิน</GreyTextOne>
           </div>
         </div>
-        <ButtonNaJa>HI</ButtonNaJa>
       </div>
     </div>
   )
