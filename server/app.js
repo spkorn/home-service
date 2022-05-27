@@ -4,6 +4,7 @@ import cors from "cors";
 import authRouter from "./apps/auth.js";
 import serviceRouter from "./apps/services.js";
 import categoryRouter from "./apps/category.js";
+import orderHistoryRouter from "./apps/orderHistory.js";
 import dotenv from "dotenv";
 import cloudinary from "cloudinary";
 
@@ -25,6 +26,7 @@ async function init() {
   app.use("/auth", authRouter);
   app.use("/service", serviceRouter);
   app.use("/category", categoryRouter);
+  app.use("/orderHistory", orderHistoryRouter);
 
   app.get("/", (req, res) => {
     res.send("Welcome to Home Service!");
