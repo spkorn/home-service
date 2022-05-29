@@ -3,7 +3,7 @@ import HomePage from './HomePage'
 import LoginPage from './LoginPage'
 import RegisterPage from './RegisterPage'
 import ServicePage from './ServicePage'
-
+import NotFoundPage from './NotFoundPage'
 import '../App.css'
 
 function UnauthenticatedApp() {
@@ -14,6 +14,7 @@ function UnauthenticatedApp() {
         <Route path="/service" element={<ServicePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   )
