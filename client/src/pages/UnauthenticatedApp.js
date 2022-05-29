@@ -1,10 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import HomePage from './HomePage'
-import LoginPage from './LoginPage'
-import RegisterPage from './RegisterPage'
-import ServicePage from './ServicePage'
-import NotFoundPage from './NotFoundPage'
-import '../App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./HomePage";
+import LoginPage from "./LoginPage";
+import RegisterPage from "./RegisterPage";
+import ServicePage from "./ServicePage";
+import NotFoundPage from "./NotFoundPage";
+import "../App.css";
 
 function UnauthenticatedApp() {
   return (
@@ -17,7 +17,7 @@ function UnauthenticatedApp() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
-  )
+  );
 }
 
-export default UnauthenticatedApp
+export default UnauthenticatedApp;

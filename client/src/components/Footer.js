@@ -1,6 +1,6 @@
 import image from "../HomePagePhoto/imageIndex";
 import { useNavigate } from "react-router-dom";
-import "../App.css"
+import "../App.css";
 
 function Footer() {
   const navigate = useNavigate();

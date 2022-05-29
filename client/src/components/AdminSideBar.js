@@ -21,7 +21,9 @@ function SideBar() {
               className="w-7 h-7 absolute "
               src={image.logoHomeService}
             />
-            <p className=" text-blue500 font-medium text-xl absolute ml-8">HomeServices</p>
+            <p className=" text-blue500 font-medium text-xl absolute ml-8">
+              HomeServices
+            </p>
           </div>
         </div>
         <div>

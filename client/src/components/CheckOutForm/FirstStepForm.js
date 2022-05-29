@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { GreyTextTwo } from "./CheckOutForm";
 import image from "../../HomePagePhoto/imageIndex";
 import icons from "../../AdminPhoto/imageIndex";
@@ -10,12 +10,13 @@ function FirstStepForm(props) {
   const {
     getServiceById,
     service,
+    setService,
     setStep,
     subService,
     setSubService,
     error,
     setError,
-    setTotal
+    setTotal,
   } = props;
 
   const params = useParams();
@@ -34,10 +35,17 @@ function FirstStepForm(props) {
       let itemIndex = subService.findIndex(
         (item) => item.sub_service_id === data.sub_service_id
       );
+      let index = service.findIndex(
+        (item) => item.sub_service_id === data.sub_service_id
+      );
       let tempList = [...subService];
       tempList[itemIndex].sub_service_quantity =
         tempList[itemIndex].sub_service_quantity + 1;
       setSubService(tempList);
+      let tempService = [...service];
+      tempService[index].sub_service_quantity =
+        tempService[index].sub_service_quantity + 1;
+      setService(tempService);
     } else {
       let tempSubService = {
         sub_service_id: data.sub_service_id,
@@ -48,6 +56,12 @@ function FirstStepForm(props) {
         sub_service_quantity: 1,
       };
       setSubService([...subService, tempSubService]);
+      let tempService = [...service];
+      let index = service.findIndex(
+        (item) => item.sub_service_id === data.sub_service_id
+      );
+      tempService[index].sub_service_quantity = 1;
+      setService(tempService);
     }
   };
 
@@ -55,16 +69,28 @@ function FirstStepForm(props) {
 
   const subtractQuantity = (data) => {
     let tempList = [...subService];
+    let tempService = [...service];
     let itemIndex = subService.findIndex(
       (item) => item.sub_service_id === data.sub_service_id
     );
+    let index = service.findIndex(
+      (item) => item.sub_service_id === data.sub_service_id
+    );
+
     if (tempList[itemIndex].sub_service_quantity === 1) {
-      const newItems = tempList.filter((item) => item.sub_service_id !== data.sub_service_id);
+      const newItems = tempList.filter(
+        (item) => item.sub_service_id !== data.sub_service_id
+      );
       setSubService(newItems);
+      tempService[index].sub_service_quantity = 0;
+      setService(tempService);
     } else {
       tempList[itemIndex].sub_service_quantity =
         tempList[itemIndex].sub_service_quantity - 1;
       setSubService(tempList);
+      tempService[index].sub_service_quantity =
+        tempService[index].sub_service_quantity - 1;
+      setService(tempService);
     }
   };
 
@@ -75,9 +101,9 @@ function FirstStepForm(props) {
   const nextStep = () => {
     if (subService.length !== 0) {
       setStep(2);
-      setTotal(totalPrice)
+      setTotal(totalPrice);
     } else {
-      setError("กรุณาเลือกอย่างน้อย 1 รายการ")
+      setError("กรุณาเลือกอย่างน้อย 1 รายการ");
     }
   };
 
@@ -146,18 +172,20 @@ function FirstStepForm(props) {
           </div>
         </div>
         <Summary total={totalPrice}>
-          {subService.length===0? <p className="text-red">{error}</p> : null}
+          {subService.length === 0 ? <p className="text-red">{error}</p> : null}
           {subService.map((data) => {
             return (
               <div key={data.sub_service_id}>
-                <p className="float-left my-2 text-black text-sm font-light">{data.sub_service_name}</p>{" "}
+                <p className="float-left my-2 text-black text-sm font-light">
+                  {data.sub_service_name}
+                </p>{" "}
                 <p className="float-right my-2 text-grey900 text-sm font-light">
                   {data.sub_service_quantity} รายการ
                 </p>
               </div>
             );
           })}
-          </Summary>
+        </Summary>
       </div>
       <SubmitTab
         onClickBack={() => navigate("/service")}

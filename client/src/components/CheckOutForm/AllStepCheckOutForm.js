@@ -51,10 +51,14 @@ function AllStepCheckOutForm() {
           setError={setError}
           error={error}
         />
-      ) : <ThirdStepForm           total={total}
+      ) : (
+        <ThirdStepForm
+          total={total}
           fullAddress={fullAddress}
           bookingDateAndTime={bookingDateAndTime}
-          subService={subService}/>}
+          subService={subService}
+        />
+      )}
     </div>
   );
 }

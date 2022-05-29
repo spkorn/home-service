@@ -214,7 +214,7 @@ export function useUtils() {
   //checkout
   const [bookingDateAndTime, setBookingDateAndTime] = useState(null);
   const [step, setStep] = useState(1);
-  const [subService, setSubService] = useState([])
+  const [subService, setSubService] = useState([]);
   const [fullAddress, setFullAddress] = useState({
     address: "",
     subdistrict: "",
@@ -295,7 +295,9 @@ export function useUtils() {
     setBookingDateAndTime,
     subService,
     setSubService,
-    error, setError,
-    total, setTotal
+    error,
+    setError,
+    total,
+    setTotal,
   };
 }

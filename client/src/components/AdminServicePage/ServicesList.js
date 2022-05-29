@@ -48,18 +48,14 @@ function AdminService(props) {
           </thead>
         </table>
         <table className="bg-white rounded-b-[5px] table-fixed w-full">
-            {service.length !== 0 && service[0].service_name !== "" ? (
-              <tbody className="text-left">
-                {service.map((data, index) => {
-                  return (
-                    <tr className="border-t border-grey200 ">
-                      <td className="font-light text-center">
-                        {index + 1}
-                      </td>
-                      <td className="font-light">
-                        {data.service_name}
-                      </td >
-                      <td className="px-3">
+          {service.length !== 0 && service[0].service_name !== "" ? (
+            <tbody className="text-left">
+              {service.map((data, index) => {
+                return (
+                  <tr className="border-t border-grey200 ">
+                    <td className="font-light text-center">{index + 1}</td>
+                    <td className="font-light">{data.service_name}</td>
+                    <td className="px-3">
                       {data.category_id % 4 === 0 ? (
                         <td className="bg-blue100 px-2.5 py-1 rounded-lg text-xs text-blue800">
                           {data.category_name}
@@ -80,47 +76,44 @@ function AdminService(props) {
                         <td className="bg-pink px-2.5 py-1 rounded-lg text-xs text-red">
                           {data.category_name}
                         </td>
-                        )}
-                      </td>
-                      <td className="font-light w-[185px]">
-                        <Moment format="DD/MM/YYYY hh:mm A ">
-                          {data.service_created_date}
-                        </Moment>
-                      </td>
-                      <td className="font-light w-[185px]">
-                        <Moment format="DD/MM/YYYY hh:mm A">
-                          {data.service_edited_date}
-                        </Moment>
-                      </td>
-                      <td className="h-[88px] flex items-center justify-center">
-                        <img
-                          className="w-6 h-6 cursor-pointer mx-2"
-                          alt="Delete"
-                          src={icons.trashIcon}
-                          onClick={() => {
-                            serviceDeleteAlert(data.service_id);
-                          }}
-                        />
-                        <img
-                          className="w-6 h-6 cursor-pointer mx-2"
-                          alt="Edit"
-                          src={icons.editIcon}
-                          onClick={() =>
-                            navigate(`/service/edit/${data.service_id}`)
-                          }
-                        />
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            ) : null}
-            {deleteService ? (
-              <AlertBoxDelete
-                deleteFunction={handleDelete}
-                hideFunction={hide}
-              />
-            ) : null}
+                      )}
+                    </td>
+                    <td className="font-light w-[185px]">
+                      <Moment format="DD/MM/YYYY hh:mm A ">
+                        {data.service_created_date}
+                      </Moment>
+                    </td>
+                    <td className="font-light w-[185px]">
+                      <Moment format="DD/MM/YYYY hh:mm A">
+                        {data.service_edited_date}
+                      </Moment>
+                    </td>
+                    <td className="h-[88px] flex items-center justify-center">
+                      <img
+                        className="w-6 h-6 cursor-pointer mx-2"
+                        alt="Delete"
+                        src={icons.trashIcon}
+                        onClick={() => {
+                          serviceDeleteAlert(data.service_id);
+                        }}
+                      />
+                      <img
+                        className="w-6 h-6 cursor-pointer mx-2"
+                        alt="Edit"
+                        src={icons.editIcon}
+                        onClick={() =>
+                          navigate(`/service/edit/${data.service_id}`)
+                        }
+                      />
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          ) : null}
+          {deleteService ? (
+            <AlertBoxDelete deleteFunction={handleDelete} hideFunction={hide} />
+          ) : null}
         </table>
       </div>
     </div>

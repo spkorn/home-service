@@ -53,7 +53,11 @@ function EditedCategoryForm() {
         className="header-and-content ml-60 h-screen"
         onSubmit={handleSubmit}
       >
-        <AdminEditedHeader back={() => navigate("/category-dashboard")} title={title} name={category.category_name}/>
+        <AdminEditedHeader
+          back={() => navigate("/category-dashboard")}
+          title={title}
+          name={category.category_name}
+        />
         <div className="editCategory h-1/5 w-full py-14 px-10 flex flex-col ">
           <div className="editBox bg-white h-auto border border-grey200 rounded-lg px-6 py-10 w-full">
             <div className="input-box flex justify-between items-center h-11 w-3/5">

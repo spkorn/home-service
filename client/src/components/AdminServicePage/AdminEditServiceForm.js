@@ -1,10 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
-import image from "../../AdminPhoto/imageIndex";
 import "../../App.css";
 import { useEffect } from "react";
 import Moment from "react-moment";
 import axios from "axios";
-import { useUtils } from "../../hooks/utils"
+import { useUtils } from "../../hooks/utils";
 import AdminEditedHeader from "../AdminEditedHeader";
 
 function ServiceEditForm() {
@@ -102,96 +101,103 @@ function ServiceEditForm() {
   };
 
   const title = "บริการ";
-  
+
   return (
-    <div className="flex flex-col ml-60 ">
-      <form onSubmit={handleSubmit}>
-        <AdminEditedHeader back={() => navigate("/service-dashboard")} title={title} name={editHeader}/>
-        <div className="bg-bg w-[1200px] min-h-screen flex justify-center">
-          <div className="edit-box w-[1120px] min-h-screen mb-[72px] flex flex-col items-center">
-            <form className="edit-form w-[1120px] min-h-screen bg-white py-10 px-6 grid gap-y-10 mt-10 rounded-lg border border-grey200">
-              <div className="service-name w-[662px] h-11 flex items-center justify-between">
-                <label
-                  className="title-service-name text-base text-grey700 font-medium"
-                  for="titleService"
-                >
-                  ชื่อบริการ<span className="text-red">*</span>
-                </label>
-                <input
-                  className="input-service-name w-[433px] h-11 rounded-lg border border-grey300 px-4 py-3"
-                  type="text"
-                  id="titleService"
-                  name="titleService"
-                  value={
-                    service_name === ""
-                      ? service[service.length - 1].service_name
-                      : service_name
-                  }
-                  onChange={(e) => {
-                    handleChangeServiceName(e, service.length - 1);
-                  }}
-                />
+    <form className="pl-60 min-h-screen" onSubmit={handleSubmit}>
+      <AdminEditedHeader
+        back={() => navigate("/service-dashboard")}
+        title={title}
+        name={editHeader}
+      />
+      <div className=" bg-bg">
+        <div className=" py-10">
+          <div className=" bg-white mx-10 p-6">
+            <div className=" h-11 w-8/12 mb-10 flex justify-between items-center pr-16">
+              <label
+                className="w-52 text-grey700 text-base font-medium"
+                htmlFor="serviceName"
+              >
+                ชื่อบริการ
+              </label>
+              <input
+                required
+                className="h-11 w-3/4 py-2.5 pl-4 border rounded-lg border-grey300 focus:border-blue600 focus:outline-none"
+                type="text"
+                id="service name"
+                name="service name"
+                value={
+                  service_name === ""
+                    ? service[service.length - 1].service_name
+                    : service_name
+                }
+                onChange={(e) => {
+                  handleChangeServiceName(e, service.length - 1);
+                }}
+              />
+            </div>
+            <div className="h-11 w-8/12 mb-10 flex justify-between items-center pr-16">
+              <label
+                className="w-52 text-grey700 text-base font-medium"
+                htmlFor="chooseCategory"
+              >
+                หมวดหมู่
+              </label>
+              <select
+                required
+                className="h-11 w-3/4 border border-grey300 py-2.5 pl-4 focus:border-blue600 focus:outline-none"
+                value={
+                  category_name === ""
+                    ? service[service.length - 1].category_name
+                    : category_name
+                }
+                onChange={(e) => {
+                  handleChangeCategory(e, service.length - 1);
+                }}
+              >
+                {category.map((dt) => {
+                  return (
+                    <option key={dt.category_id} value={dt.category_name}>
+                      {dt.category_name}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+            <div className="h-40 w-8/12 pr-16 mb-10 flex justify-between ">
+              <div className="text-grey700 w-52 text-base font-medium ">
+                รูปภาพ
               </div>
-              <div className="choose-category w-[662px] h-11 flex items-center justify-between">
-                <label className="title-service-name text-base text-grey700 font-medium">
-                  หมวดหมู่<span className="text-red">*</span>
-                </label>
-                <select
-                  className="input-service-name w-[433px] h-11 rounded-lg border border-grey300"
-                  value={
-                    category_name === ""
-                      ? service[service.length - 1].category_name
-                      : category_name
-                  }
-                  onChange={(e) => {
-                    handleChangeCategory(e, service.length - 1);
-                  }}
-                >
-                  {category.map((dt) => {
-                    return (
-                      <option key={dt.category_id} value={dt.category_name}>
-                        {dt.category_name}
-                      </option>
-                    );
-                  })}
-                </select>
-              </div>
-              <div className="addImg w-[662px] h-[232px] flex justify-between">
-                <label className="text-grey700 font-medium">
-                  รูปภาพ<span className="text-red">*</span>
-                </label>
-                <div className="w-[433px] h-[232px] flex flex-col justify-between relative">
-                  <div className="w-[433px] h-[200px] rounded-lg border border-grey300"></div>
-                  <div className="w-[433px] h-6 flex justify-between items-center">
-                    <div className="text-xs text-grey700">
-                      ขนาดภาพที่แนะนำ: 1440 x 225 PX
-                    </div>
-                    <div className="z-50 absolute inset-0 ">
-                      <img
-                        className="object-cover h-[200px] w-full rounded-md "
-                        src={service[service.length - 1].service_photo.url}
-                        alt={service[service.length - 1].service_name}
-                      />
-                    </div>
-                  </div>
+              <div className="w-3/4 h-40 relative">
+                <div className="z-0 h-36 border border-dashed border-grey300 rounded-md py-6 flex flex-col items-center justify-between text-grey700 ">
+                  <img
+                    className="object-cover h-[200px] w-full rounded-md z-50 absolute inset-0"
+                    src={service[service.length - 1].service_photo.url}
+                    alt={service[service.length - 1].service_name}
+                  />
                 </div>
               </div>
-              <hr className="break-line text-grey300" />
-              <label className="text-grey700 text-base font-medium flex self-start">
-                รายการบริการย่อย
-              </label>
-              {service.map((subService, index) => {
-                return (
+            </div>
+            <hr className="mt-20 mb-10 text-grey300 " />
+            <div className="mb-10 text-grey700 text-base font-medium ">
+              รายการบริการย่อย
+            </div>
+            {service.map((subService, index) => {
+              return (
+                <div key={index}>
                   <div
-                    key={index}
-                    className="priceBox flex items-center justify-between pl-11 w-[1072px] h-[69px]"
+                    id="add-details-box"
+                    className=" h-full mb-10 flex justify-between"
                   >
-                    <div className="w-[422px] h-[69px]">
-                      <label className="order-name text-grey700">
-                        ชื่อรายการ<span className="text-red">*</span>
+                    <div className="flex flex-col w-2/5">
+                      <label
+                        className="text-sm text-grey700"
+                        htmlFor="orderName"
+                      >
+                        ชื่อรายการ
                       </label>
                       <input
-                        className="w-[422px] h-11 rounded-md border border-gray-300 px-4 py-3"
+                        required
+                        className="rounded-lg h-11 border border-grey300 mr-4 py-2.5 pl-4 focus:border-blue600 focus:outline-none"
                         type="text"
                         value={subService.sub_service_name}
                         onChange={(e) => {
@@ -200,12 +206,13 @@ function ServiceEditForm() {
                         }}
                       />
                     </div>
-                    <div className="w-60 h-[69px]">
-                      <label className="unit-price text-grey700">
-                        ค่าบริการ / 1 หน่วย<span className="text-red">*</span>
+                    <div className="flex flex-col w-56">
+                      <label className="text-sm text-grey700">
+                        ค่าบริการ / 1 หน่วย
                       </label>
                       <input
-                        className="w-60 h-11 rounded-md border border-gray-300 px-4 py-3"
+                        required
+                        className="rounded-lg h-11 border border-grey300 mr-4 py-2.5 pl-4 focus:border-blue600 focus:outline-none"
                         type="number"
                         step="any"
                         value={subService.price_per_unit}
@@ -214,12 +221,16 @@ function ServiceEditForm() {
                         }}
                       />
                     </div>
-                    <div className="w-60 h-[69px]">
-                      <label className="unit-price text-grey700">
-                        หน่วยการบริการ<span className="text-red">*</span>
+                    <div className="flex flex-col w-56">
+                      <label
+                        className="text-sm text-grey700 "
+                        htmlFor="unitService"
+                      >
+                        หน่วยการบริการ
                       </label>
                       <input
-                        className="w-60 h-11 rounded-md border border-gray-300 px-4 py-3"
+                        required
+                        className="rounded-lg h-11 border border-grey300 py-2.5 pl-4 focus:border-blue600 focus:outline-none mr-4"
                         type="text"
                         value={subService.unit}
                         onChange={(e) => {
@@ -242,48 +253,43 @@ function ServiceEditForm() {
                       </button>
                     )}
                   </div>
-                );
-              })}
-              <button
-                className="btn-secondary h-11 w-[185px] flex items-center"
-                onClick={addList}
-                type="button"
-              >
-                <div className="ml-[15px] mr-[13px]">เพิ่มรายการ</div>
-                <img
-                  className="h-2.5 w-2.5"
-                  alt="Blue Plus Symbol"
-                  src={image.bluePlusSymbol}
-                />
-              </button>
-              <hr className="break-line text-grey300" />
-              <div className="time-line h-[100px] w-[387px] flex flex-col justify-between">
-                <div className="created-time h-11 w-[387px] flex justify-between items-center">
-                  <label className="font-medium text-base text-grey700">
-                    สร้างเมื่อ
-                  </label>
-                  <div>
-                    <Moment format="DD/MM/YYYY hh:mm A">
-                      {service[0].service_created_date}
-                    </Moment>
-                  </div>
                 </div>
-                <div className="last-edited h-11 w-[387px] flex justify-between">
-                  <label className="font-medium text-base items-center text-grey700">
-                    แก้ไขล่าสุด
-                  </label>
-                  <div>
-                    <Moment format="DD/MM/YYYY hh:mm A">
-                      {service[service.length - 1].service_edited_date}
-                    </Moment>
-                  </div>
+              );
+            })}
+            <button
+              className="btn-secondary h-11 w-48"
+              onClick={addList}
+              type="button"
+            >
+              เพิ่มรายการ +
+            </button>
+            <hr className="text-grey300 my-10" />
+            <div className="h-[100px] w-[387px] flex flex-col justify-between">
+              <div className="h-11 w-[387px] flex justify-between items-center">
+                <label className="font-medium text-base text-grey700">
+                  สร้างเมื่อ
+                </label>
+                <div>
+                  <Moment format="DD/MM/YYYY hh:mm A">
+                    {service[0].service_created_date}
+                  </Moment>
                 </div>
               </div>
-            </form>
+              <div className="h-11 w-[387px] flex justify-between">
+                <label className="font-medium text-base items-center text-grey700">
+                  แก้ไขล่าสุด
+                </label>
+                <div>
+                  <Moment format="DD/MM/YYYY hh:mm A">
+                    {service[service.length - 1].service_edited_date}
+                  </Moment>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }
 

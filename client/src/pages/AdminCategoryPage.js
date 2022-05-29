@@ -16,7 +16,7 @@ function AdminCategoryPage() {
     categoryDeleteAlert,
     category_Id,
     hide,
-    setDeleteCategory
+    setDeleteCategory,
   } = useUtils();
   return (
     <div className="admin-category-page">

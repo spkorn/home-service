@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { useUser } from "../hooks/user";
 
 function RegisterPage() {
-
-  const { name,
+  const {
+    name,
     phoneNumber,
     email,
     password,
@@ -22,7 +22,8 @@ function RegisterPage() {
     nameError,
     validateName,
     passwordError,
-    validatePassword } = useUser();
+    validatePassword,
+  } = useUser();
 
   const { register } = useAuth();
   const navigate = useNavigate();
@@ -57,7 +58,7 @@ function RegisterPage() {
           className="bg-white border border-grey300 rounded-lg w-[614px] px-[87px] pt-8 pb-[45px] mt-[52px] mb-[87px]"
           onSubmit={handleSubmit}
         >
-          <h1 className="text-blue950 text-center">ลงทะเบียน </h1>
+          <h1 className="text-blue950 text-center text-[32px] font-medium">ลงทะเบียน </h1>
           <div className="mt-5">
             <label>
               <h5>
@@ -170,7 +171,8 @@ function RegisterPage() {
                   }}
                 />
                 <span className="absolute">
-                  ยอมรับ <button className="btn-ghost">ข้อตกลงและเงื่อนไข</button> และ{" "}
+                  ยอมรับ{" "}
+                  <button className="btn-ghost">ข้อตกลงและเงื่อนไข</button> และ{" "}
                   <button className="btn-ghost">นโยบายความเป็นส่วนตัว</button>
                 </span>
               </label>
@@ -182,7 +184,9 @@ function RegisterPage() {
               ลงทะเบียน
             </button>
             <div className="text-center">
-              <button className="btn-ghost" onClick={()=>navigate("/login")}>กลับไปหน้าเข้าสู่ระบบ</button>
+              <button className="btn-ghost" onClick={() => navigate("/login")}>
+                กลับไปหน้าเข้าสู่ระบบ
+              </button>
             </div>
           </div>
         </form>

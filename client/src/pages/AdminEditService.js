@@ -6,7 +6,7 @@ function AdminEditService() {
   return (
     <div>
       <SideBar />
-      <ServiceEditForm/>
+      <ServiceEditForm />
     </div>
   );
 }

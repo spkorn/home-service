@@ -45,57 +45,57 @@ function AdminCategories(props) {
               <th className="pl-6 py-3 font-normal text-center">Action</th>
             </tr>
           </thead>
-          </table>
-          <table className="bg-white rounded-b-[5px] table-fixed w-full">
-            <tbody>
-              {category.map((data, index) => {
-                return (
-                  <tr className="border-t border-grey200">
-                    <td className="order-number font-light text-center">
-                      {index + 1}
-                    </td>
-                    <td className="category-name font-light">
-                      {data.category_name}
-                    </td>
-                    <td className="created-date font-light mr-6">
-                      <Moment format="DD/MM/YYYY hh:mm A ">
-                        {data.category_created_date}
-                      </Moment>
-                    </td>
-                    <td className="last-edited font-light mr-6">
-                      <Moment format="DD/MM/YYYY hh:mm A">
-                        {data.category_edited_date}
-                      </Moment>
-                    </td>
-                    <td className="icons-box h-[88px] pl-6 flex items-center justify-center">
-                      <img
-                        alt="Delete"
-                        src={icons.trashIcon}
-                        className="cursor-pointer w-6 h-6 mx-2"
-                        onClick={() => {
-                          categoryDeleteAlert(data.category_id);
-                        }}
-                      />
-                      <img
-                        alt="Edit"
-                        src={icons.editIcon}
-                        className="cursor-pointer w-6 h-6 mx-2"
-                        onClick={() =>
-                          navigate(`/category/edit/${data.category_id}`)
-                        }
-                      />
-                    </td>
-                  </tr>
-                );
-              })}
-              {deleteCategory ? (
-                <AlertBoxDelete
-                  deleteFunction={handleDelete}
-                  hideFunction={hide}
-                />
-              ) : null}
-            </tbody>
-          </table>
+        </table>
+        <table className="bg-white rounded-b-[5px] table-fixed w-full">
+          <tbody>
+            {category.map((data, index) => {
+              return (
+                <tr className="border-t border-grey200">
+                  <td className="order-number font-light text-center">
+                    {index + 1}
+                  </td>
+                  <td className="category-name font-light">
+                    {data.category_name}
+                  </td>
+                  <td className="created-date font-light mr-6">
+                    <Moment format="DD/MM/YYYY hh:mm A ">
+                      {data.category_created_date}
+                    </Moment>
+                  </td>
+                  <td className="last-edited font-light mr-6">
+                    <Moment format="DD/MM/YYYY hh:mm A">
+                      {data.category_edited_date}
+                    </Moment>
+                  </td>
+                  <td className="icons-box h-[88px] pl-6 flex items-center justify-center">
+                    <img
+                      alt="Delete"
+                      src={icons.trashIcon}
+                      className="cursor-pointer w-6 h-6 mx-2"
+                      onClick={() => {
+                        categoryDeleteAlert(data.category_id);
+                      }}
+                    />
+                    <img
+                      alt="Edit"
+                      src={icons.editIcon}
+                      className="cursor-pointer w-6 h-6 mx-2"
+                      onClick={() =>
+                        navigate(`/category/edit/${data.category_id}`)
+                      }
+                    />
+                  </td>
+                </tr>
+              );
+            })}
+            {deleteCategory ? (
+              <AlertBoxDelete
+                deleteFunction={handleDelete}
+                hideFunction={hide}
+              />
+            ) : null}
+          </tbody>
+        </table>
       </div>
     </div>
   );

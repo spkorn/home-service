@@ -5,8 +5,18 @@ import { useEffect } from "react";
 import { useUtils } from "../../hooks/utils";
 
 function ServiceHeader(props) {
-  const { category, searchService, setSearchService, setService, getCategory, orderFilter, setOrderFilter, categoryFilter, setCategoryFilter } = props;
-  
+  const {
+    category,
+    searchService,
+    setSearchService,
+    setService,
+    getCategory,
+    orderFilter,
+    setOrderFilter,
+    categoryFilter,
+    setCategoryFilter,
+  } = props;
+
   const searchServiceData = async () => {
     const results = await axios.get(
       `http://localhost:4000/service?keywords=${searchService}&categoryFilter=${categoryFilter}&maxPriceFilter=${maxFilter}&minPriceFilter=${minFilter}&orderFilter=${orderFilter}`
@@ -26,14 +36,11 @@ function ServiceHeader(props) {
     getCategory();
   }, []);
 
-  const { minFilter,
-    setMinFilter,
-    maxFilter,
-    setMaxFilter, } = useUtils();
+  const { minFilter, setMinFilter, maxFilter, setMaxFilter } = useUtils();
   return (
     <header className="service-header">
       <div className="banner">
-        <h1 className=" text-white pt-16 mb-3">บริการของเรา</h1>
+        <h1 className=" text-white pt-16 mb-3 text-[32px] font-medium">บริการของเรา</h1>
         <p className="text-white font-normal text-base">
           ซ่อมเครื่องใช้ไฟฟ้า ซ่อมแอร์ ทำความสะอาดบ้าน และอื่น ๆ อีกมากมาย
         </p>
@@ -55,24 +62,35 @@ function ServiceHeader(props) {
         />
         <div className="flex">
           <div className="flex-col">
-            <p className="text-xs text-grey700 font-normal mb-1">หมวดหมู่บริการ</p>
-            <div className="dropdown cursor-pointer">{categoryFilter===""? (
-              <p className="cursor-pointer mb-1">บริการทั้งหมด ▾</p>) : (<p className="cursor-pointer">{categoryFilter} ▾</p>) }
-              <div
-                className="dropdown-content cursor-pointer w-44"
-              >
-                <div className="ml-4" onClick={() => {
-                setCategoryFilter("")
-              }}>
+            <p className="text-xs text-grey700 font-normal mb-1">
+              หมวดหมู่บริการ
+            </p>
+            <div className="dropdown cursor-pointer">
+              {categoryFilter === "" ? (
+                <p className="cursor-pointer mb-1">บริการทั้งหมด ▾</p>
+              ) : (
+                <p className="cursor-pointer">{categoryFilter} ▾</p>
+              )}
+              <div className="dropdown-content cursor-pointer w-44">
+                <div
+                  className="ml-4"
+                  onClick={() => {
+                    setCategoryFilter("");
+                  }}
+                >
                   <p>บริการทั้งหมด</p>
                 </div>
                 {category.map((data) => {
-                  return (<div className="ml-4" onClick={() => {
-                    const value = data.category_name
-                setCategoryFilter(String(value))
-              }}>
-                  <p>{data.category_name}</p>
-                </div>
+                  return (
+                    <div
+                      className="ml-4"
+                      onClick={() => {
+                        const value = data.category_name;
+                        setCategoryFilter(String(value));
+                      }}
+                    >
+                      <p>{data.category_name}</p>
+                    </div>
                   );
                 })}
               </div>
@@ -82,10 +100,11 @@ function ServiceHeader(props) {
           <div className="flex-col">
             <p className="text-xs text-grey700 font-normal mb-1">ราคา</p>
             <div className="dropdown cursor-pointer">
-              <p className="cursor-pointer w-36 mb-1"> {minFilter} - {maxFilter} ฿ ▾ </p>
-              <div
-                className="dropdown-content w-64 h-28"
-              >
+              <p className="cursor-pointer w-36 mb-1">
+                {" "}
+                {minFilter} - {maxFilter} ฿ ▾{" "}
+              </p>
+              <div className="dropdown-content w-64 h-28">
                 <div>
                   <MultiRangeSlider
                     min={0}
@@ -106,27 +125,40 @@ function ServiceHeader(props) {
           <div className="vl"></div>
           <div className="flex-col">
             <p className="text-xs text-grey700 font-normal mb-1">เรียงตาม</p>
-            <div className="dropdown cursor-pointer ">{orderFilter==="asc"? (
-              <p className="cursor-pointer w-56 mb-1">ตามตัวอักษร (Ascending) ▾</p>) : (<p className="cursor-pointer w-56">ตามตัวอักษร (Descending) ▾</p>) }
-              <div
-                className="dropdown-content cursor-pointer w-60"
-              >
-                <div className="ml-4" onClick={() => {
-                setOrderFilter("asc")
-              }}>
+            <div className="dropdown cursor-pointer ">
+              {orderFilter === "asc" ? (
+                <p className="cursor-pointer w-56 mb-1">
+                  ตามตัวอักษร (Ascending) ▾
+                </p>
+              ) : (
+                <p className="cursor-pointer w-56">
+                  ตามตัวอักษร (Descending) ▾
+                </p>
+              )}
+              <div className="dropdown-content cursor-pointer w-60">
+                <div
+                  className="ml-4"
+                  onClick={() => {
+                    setOrderFilter("asc");
+                  }}
+                >
                   <p>ตามตัวอักษร (Ascending)</p>
                 </div>
-                <div className="ml-4" onClick={() => {
-                setOrderFilter("desc")
-              }}>
+                <div
+                  className="ml-4"
+                  onClick={() => {
+                    setOrderFilter("desc");
+                  }}
+                >
                   <p>ตามตัวอักษร (Descending)</p>
                 </div>
               </div>
             </div>
-            
           </div>
         </div>
-        <button className="btn-primary" onClick={searchServiceData}>ค้นหา</button>
+        <button className="btn-primary" onClick={searchServiceData}>
+          ค้นหา
+        </button>
       </div>
     </header>
   );

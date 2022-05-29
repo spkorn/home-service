@@ -74,32 +74,32 @@ export function useUser() {
       setPasswordError("");
     }
     setPassword(validPassword);
-    };
-    
-    return {
-      name,
-      setName,
-      phoneNumber,
-      setPhoneNumber,
-      email,
-      setEmail,
-      password,
-      setPassword,
-      errorForm,
-      setErrorForm,
-      validated,
-      setValidated,
-      emailError,
-      setEmailError,
-      validateEmail,
-      phoneNumberError,
-      setPhoneNumberError,
-      validatePhoneNumber,
-      nameError,
-      setNameError,
-      validateName,
-      passwordError,
-      setPasswordError,
-      validatePassword,
-    };
+  };
+
+  return {
+    name,
+    setName,
+    phoneNumber,
+    setPhoneNumber,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    errorForm,
+    setErrorForm,
+    validated,
+    setValidated,
+    emailError,
+    setEmailError,
+    validateEmail,
+    phoneNumberError,
+    setPhoneNumberError,
+    validatePhoneNumber,
+    nameError,
+    setNameError,
+    validateName,
+    passwordError,
+    setPasswordError,
+    validatePassword,
+  };
 }
