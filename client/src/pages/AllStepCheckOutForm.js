@@ -1,10 +1,10 @@
-import { useUtils } from "../../hooks/utils";
-import CheckoutHeader from "./CheckoutHeader";
-import FirstStepForm from "./FirstStepForm";
-import PaymentComplete from "./PaymentComplete";
-import SecondStepForm from "./SecondStepForm";
-import ThirdStepForm from "./ThirdStepForm";
-import Nav from "../Nav";
+import { useUtils } from "../hooks/utils";
+import CheckoutHeader from "../components/CheckOutForm/CheckoutHeader";
+import FirstStepForm from "../components/CheckOutForm/FirstStepForm";
+import PaymentComplete from "../components/CheckOutForm/PaymentComplete";
+import SecondStepForm from "../components/CheckOutForm/SecondStepForm";
+import ThirdStepForm from "../components/CheckOutForm/ThirdStepForm";
+import Nav from "../components/Nav";
 
 function AllStepCheckOutForm() {
   const {

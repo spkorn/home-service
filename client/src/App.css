@@ -96,6 +96,12 @@ input[type="checkbox"] {
   @apply float-none py-2 block text-left text-grey800 text-sm font-normal !important;
   text-decoration: none;
 }
+
+.dropdown-content span {
+  @apply float-none py-2 block text-left text-grey800 text-sm font-normal !important;
+  text-decoration: none;
+}
+
 .dropdown-content p {
   @apply float-none py-2 block text-left text-grey700 text-sm font-normal hover:text-blue700;
 }

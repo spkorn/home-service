@@ -9,6 +9,7 @@ function Nav() {
   const { logout } = useAuth();
   const loginName = localStorage.getItem("name"); // ใช้อันนี้แล้ว user name บน nav ไม่หายตอน refresh
   const loginRole = localStorage.getItem("role");
+  const user_id = localStorage.getItem("user_id");
 
   return (
     <nav className="flex justify-between items-center bg-white h-20 px-[10vw] shadow-[2px_2px_24px_rgba(23,51,106,0.12)] sticky top-0 z-[100]">
@@ -44,7 +45,7 @@ function Nav() {
             </div>
             <div
               id="dropdown-content"
-              className="dropdown-content cursor-pointer w-[190px]"
+              className="dropdown-content cursor-pointer w-[190px] "
             >
               {loginRole == "admin" ? (
                 <div>
@@ -57,7 +58,7 @@ function Nav() {
                       className="ml-4 mr-2 my-2 "
                       alt="admin"
                     />
-                    <a>Admin</a>
+                    <span>Admin</span>
                   </div>
                 </div>
               ) : (
@@ -71,10 +72,10 @@ function Nav() {
                       className="ml-4 mr-2 my-2 "
                       alt="ข้อมูลผู้ใช้งาน"
                     />
-                    <a>ข้อมูลผู้ใช้งาน</a>
+                    <span>ข้อมูลผู้ใช้งาน</span>
                   </div>
                   <div
-                    onClick={() => navigate("/")}
+                    onClick={() => navigate(`/order-history/${user_id}`)}
                     className="flex items-center hover:bg-grey100 hover:bg-opacity-50 hover:text-grey950"
                   >
                     <img
@@ -82,7 +83,7 @@ function Nav() {
                       className="ml-4 mr-2 my-2 "
                       alt="ประวัติการซ่อม"
                     />
-                    <a>ประวัติการซ่อม</a>
+                    <span>ประวัติการซ่อม</span>
                   </div>
                 </div>
               )}
@@ -99,7 +100,7 @@ function Nav() {
                   className="ml-4 mr-2 my-2 "
                   alt="ออกจากระบบ"
                 />
-                <a>ออกจากระบบ</a>
+                <span>ออกจากระบบ</span>
               </div>
             </div>
           </div>

@@ -36,7 +36,7 @@ export function useUser() {
       setPhoneNumberError("กรุณากรอกเบอร์โทรศัพท์");
     } else if (
       !validator.isNumeric(validPhoneNumber) ||
-      !validPhoneNumber.length === 10
+      validPhoneNumber.length !== 10
     ) {
       setPhoneNumberError("กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง");
     } else {
