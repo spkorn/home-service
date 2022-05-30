@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { pool } from "..utils/db.js";
+import { pool } from "../utils/db.js";
 import { protect } from "../middlewares/protects.js";
 
 const orderSummaryRouter = Router();
