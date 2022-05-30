@@ -106,7 +106,7 @@ function FirstStepForm(props) {
     <div>
       <div className="px-[10vw] flex mt-8  mx-0 justify-between w-screen">
         <div className="w-[50vw] mr-[2vw] py-8 px-6 mb-[125px] flex flex-col justify-between border border-grey300 rounded-lg">
-          <div className="mb-5">
+          <div className="mb-4">
             <GreyTextTwo>
               เลือกรายการ{service[service.length - 1].service_name}
             </GreyTextTwo>

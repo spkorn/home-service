@@ -9,7 +9,6 @@ import { Summary } from "./Summary";
 import moment from "moment";
 import SubmitTab from "./SubmitTab";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Moment from "react-moment";
 
 function SecondStep(props) {
@@ -22,10 +21,10 @@ function SecondStep(props) {
     setSubService,
     total,
     setStep,
+    setService,
         service_name,
   } = props;
 
-  const navigate = useNavigate();
   const [error, setError] = useState("");
 
   const changeDateAndTime = (date, dateString) => {
@@ -103,7 +102,20 @@ function SecondStep(props) {
   console.log(total);
   console.log(subService);
 
-  const backStep = (e) => {
+  const backStep = () => {
+    setService([
+    {
+      service_name: "",
+      category_name: "",
+      service_photo: { url: "", publicId: "" },
+      sub_service_name: "",
+      unit: "",
+      price_per_unit: 0,
+      service_created_date: "",
+      service_edited_date: "",
+      sub_service_quantity: 0,
+    },
+  ]);
     setSubService([]);
     setStep(1);
   };
@@ -127,7 +139,7 @@ function SecondStep(props) {
     <div>
       <div className="px-[10vw] flex mt-8  mx-0 justify-between w-screen">
         <div className=" w-[50vw] mr-[2vw] mb-[125px] py-8 px-6 flex flex-col justify-between border border-grey300 rounded-lg">
-          <div className="mb-5">
+          <div className="mb-4">
             <GreyTextTwo>กรอกข้อมูลบริการ</GreyTextTwo>
           </div>
           <div>

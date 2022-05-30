@@ -48,7 +48,8 @@ function AllStepCheckOutForm() {
           subService={subService}
           setSubService={setSubService}
           setStep={setStep}
-          service_name={service_name}
+            service_name={service_name}
+            setService={setService}
         />
       ) : step === 3 ? (
         <ThirdStepForm
