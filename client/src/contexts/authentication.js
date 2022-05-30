@@ -28,6 +28,8 @@ function AuthProvider(props) {
     localStorage.setItem("name", dataToken.name); // ใช้อันนี้แล้ว user name บน nav ไม่หายตอน refresh
     localStorage.setItem("user_id", dataToken.user_id);
     localStorage.setItem("role", dataToken.role);
+    localStorage.setItem("phoneNumber", dataToken.phoneNumber);
+    localStorage.setItem("email", dataToken.email);
     if (dataToken.role === "admin") {
       navigate("/category-dashboard");
     } else {
@@ -39,6 +41,10 @@ function AuthProvider(props) {
     localStorage.removeItem("token");
     setState({ ...state, user: null, error: null });
     localStorage.removeItem("name"); // ลบข้อมูล user name ออกตอน logout
+    localStorage.removeItem("user_id");
+    localStorage.removeItem("phoneNumbser");
+    localStorage.removeItem("email");
+    navigate("/");
   };
 
   const isAuthenticated = Boolean(localStorage.getItem("token"));

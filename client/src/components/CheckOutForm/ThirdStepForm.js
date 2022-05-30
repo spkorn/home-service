@@ -47,31 +47,32 @@ function ThirdStep(props) {
         String(validCreditCard[2]) +
         String(validCreditCard[3]);
       if (
-        prefix2digit === "34" ||
-        (prefix2digit === "37" && validator.isNumeric(validCreditCard))
+        (prefix2digit === "34" || prefix2digit === "37") &&
+        validator.isNumeric(validCreditCard)
       ) {
         setCreditcardCheck(image.AMEX);
         setCreditcardError("");
       } else if (
-        prefix2digit === "51" ||
-        prefix2digit === "52" ||
-        prefix2digit === "53" ||
-        prefix2digit === "54" ||
-        (prefix2digit === "55" && validator.isNumeric(validCreditCard))
+        (prefix2digit === "51" ||
+          prefix2digit === "52" ||
+          prefix2digit === "53" ||
+          prefix2digit === "54" ||
+          prefix2digit === "55") &&
+        validator.isNumeric(validCreditCard)
       ) {
         setCreditcardCheck(image.MASTERCARD);
         setCreditcardError("");
       } else if (
-        prefix4digit === "4539" ||
-        prefix4digit === "4556" ||
-        prefix4digit === "4916" ||
-        prefix4digit === "4532" ||
-        prefix4digit === "4929" ||
-        prefix4digit === "4485" ||
-        prefix4digit === "4716" ||
-        prefix4digit === "4024" ||
-        (String(validCreditCard[0]) === "4" &&
-          validator.isNumeric(validCreditCard))
+        (prefix4digit === "4539" ||
+          prefix4digit === "4556" ||
+          prefix4digit === "4916" ||
+          prefix4digit === "4532" ||
+          prefix4digit === "4929" ||
+          prefix4digit === "4485" ||
+          prefix4digit === "4716" ||
+          prefix4digit === "4024" ||
+          String(validCreditCard[0]) === "4") &&
+        validator.isNumeric(validCreditCard)
       ) {
         setCreditcardCheck(image.VISA);
         setCreditcardError("");
@@ -105,6 +106,7 @@ function ThirdStep(props) {
 
   const createOrder = async (data) => {
     await axios.post("http://localhost:4000/checkout", data);
+    setStep(4);
   };
 
   const nextStep = () => {
@@ -124,11 +126,10 @@ function ThirdStep(props) {
         province: fullAddress.province,
         zipcode: fullAddress.zipcode,
         total_price: total,
-        sub_service: subService,
         note,
+        sub_service: JSON.stringify(subService),
       };
       createOrder(data);
-      setStep(4);
     } else {
       setError("กรุณากรอกข้อมูลการชำระเงิน");
     }

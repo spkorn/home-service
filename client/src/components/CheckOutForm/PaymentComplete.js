@@ -13,7 +13,7 @@ function PaymentComplete(props) {
   } = props;
 
   return (
-    <div className="bg-[#F3F4F6] min-h-screen flex justify-center px-[30vw]">
+    <div className="bg-bg min-h-screen flex justify-center px-[30vw]">
       <div className="w-full h-full my-[52px] pt-12 pb-[52px] px-[60px] border border-grey300 rounded-lg bg-white flex flex-col items-center gap-[38px]">
         <div className="flex flex-col items-center gap-[23px]">
           <img

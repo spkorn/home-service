@@ -34,7 +34,6 @@ function SecondStep(props) {
       moment(dateString, "DD MMMM YYYY HH:mm").toISOString()
     );
   };
-  console.log(bookingDateAndTime);
 
   const range = (start, end) => {
     const result = [];

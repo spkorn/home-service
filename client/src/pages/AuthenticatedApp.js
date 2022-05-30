@@ -9,7 +9,8 @@ import AdminEditService from "./AdminEditService";
 import AdminService from "./AdminServicePage";
 import CreateService from "./CreateServicePage";
 import NotFoundPage from "./NotFoundPage";
-import AllStepCheckOutForm from "../components/CheckOutForm/AllStepCheckOutForm";
+import AllStepCheckOutForm from "./AllStepCheckOutForm";
+import OrderHistory from "./OrderHistory";
 
 function AuthenticatedApp() {
   const loginRole = localStorage.getItem("role");
@@ -43,6 +44,10 @@ function AuthenticatedApp() {
           <Route
             path="/checkout/:serviceId"
             element={<AllStepCheckOutForm />}
+            />
+            <Route
+            path="/order-history/:userId"
+            element={<OrderHistory/>}
           />
         </Routes>
       )}

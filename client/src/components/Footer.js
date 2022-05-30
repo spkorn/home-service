@@ -6,7 +6,7 @@ function Footer() {
   const navigate = useNavigate();
   return (
     <footer className="home-page-footer">
-      <div className="h-[150px] flex justify-between items-center px-[10vw]">
+      <div className="h-[150px] flex justify-between items-center px-[10vw] bg-white">
         <div className="cursor-pointer flex" onClick={() => navigate("/")}>
           <img
             className="w-[39.11px] h-[39.11px]"

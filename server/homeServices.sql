@@ -68,9 +68,6 @@ sub_service_id int references sub_service(sub_service_id) on delete cascade,
 checkout_id int references checkout(checkout_id) on delete cascade, 
 sub_service_quantity int not null );
 
-
-
-	
 create table serviceman_detail (
 serviceman_detail_id int primary key generated always as identity,
 serviceman_name text not null,
@@ -85,7 +82,6 @@ user_id int references users(user_id) on delete cascade,
 order_number text not null,
 status text not null
 );
-
 
 insert into users (name, phoneNumber, email, password, role) values ('Stephan Edmeades', '0879316420', 'sedmeades0@goodreads.com', 'iP4EAxpCF4i', 'customer');
 insert into users (name, phoneNumber, email, password, role) values ('Fredia Nijs', '0342821343', 'fnijs1@twitpic.com', 'Yuapex', 'customer');
