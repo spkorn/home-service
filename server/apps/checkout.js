@@ -15,13 +15,14 @@ checkoutRouter.post("/", async (req, res) => {
     // province: req.body.province,
     // zipcode: req.body.zipcode,
     // total_price: req.body.total_price,
+    // note: req.body.note,
     // sub_service: JSON.parse(req.body.sub_service),
     ...req.body,
   };
 
   await pool.query(
-    `insert into checkout (service_date_time, address, sub_district, district, province, postal_code, total_price)
-  values ($1, $2, $3, $4, $5, $6, $7)`,
+    `insert into checkout (service_date_time, address, sub_district, district, province, postal_code, total_price, note)
+  values ($1, $2, $3, $4, $5, $6, $7, $8)`,
     [
       newCheckoutItem.date_time,
       newCheckoutItem.address,
@@ -30,6 +31,7 @@ checkoutRouter.post("/", async (req, res) => {
       newCheckoutItem.province,
       newCheckoutItem.zipcode,
       newCheckoutItem.total_price,
+      newCheckoutItem.note,
     ]
   );
 
@@ -48,8 +50,9 @@ checkoutRouter.post("/", async (req, res) => {
     and district = $6
     and province = $7
     and postal_code = $8
-    and total_price = $9))
-    , $10);`,
+    and total_price = $9
+    and note = $10))
+    , $11);`,
         [
           newCheckoutItem.sub_service[r].sub_service_name,
           newCheckoutItem.service_name,
@@ -60,6 +63,7 @@ checkoutRouter.post("/", async (req, res) => {
           newCheckoutItem.province,
           newCheckoutItem.zipcode,
           newCheckoutItem.total_price,
+          newCheckoutItem.note,
           newCheckoutItem.sub_service[r].sub_service_quantity,
         ]
       );
