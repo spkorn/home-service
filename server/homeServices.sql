@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS users, service, category, sub_service, promotion, checkout,
 create table users (
 user_id int primary key generated always as identity,
 name varchar (100) not null,
-phoneNumber varchar (10) not null,
+phoneNumber int not null,
 email varchar (100) not null,
 password varchar (100) not null,
 role text not null
@@ -154,34 +154,72 @@ insert into checkout (promotion_id, service_date_time, address, sub_district, di
 values (3, '2021-07-11T13:19:59Z', '112 Orasadiraja Street', 'Les Majeste', 'Dusit', 'Kalaland', 112, 'please expect royal defamation charges at any moment', 0);
 insert into checkout (promotion_id, service_date_time, address, sub_district, district, province, postal_code, note, total_price) 
 values (5, '2021-07-11T13:19:59Z', '7/110 Metro Sky Wutthakat', 'Talat Phlu', 'Thonburi', 'Bangkok', 10600, 'please call 30 minutes in advance', 0);
+insert into checkout (promotion_id, service_date_time, address, sub_district, district, province, postal_code, note, total_price) 
+values (5, '2022-04-22T13:19:59Z', '771 Thanon PhutthaMonthon Sai 2', 'Bang Pai', 'Bang Khae', 'Bangkok', 10160, 'ขอช่างที่ไม่สูบบุหรี่', 0);
+insert into checkout (promotion_id, service_date_time, address, sub_district, district, province, postal_code, note, total_price) 
+values (2, '2022-05-11T13:19:59Z', '35/1 ซอยหนองปลิง ถ.หนองปลิง', 'เขาทอง', 'เมือง', 'นครสวรรค์', 60000, '', 0);
+insert into checkout (promotion_id, service_date_time, address, sub_district, district, province, postal_code, note, total_price) 
+values (1, '2022-07-11T13:19:59Z', '888 ถนนปั้น', 'สุขใจ', 'สำราญราษฎร์', 'กรุงเทพมหานคร', 10212, 'ห้ามสาย มีธุระต่อ', 0);
+insert into checkout (promotion_id, service_date_time, address, sub_district, district, province, postal_code, note, total_price) 
+values (4, '2022-08-12T23:05:00Z', '6/223 คอนโดศุภาลัย', 'หนองค้างพลู', 'ประเวศ', 'กรุงเทพมหานคร', 12124, 'บอกนิติฯ ว่ามาห้องคุณเจี๊ยบ', 0);
+insert into checkout (promotion_id, service_date_time, address, sub_district, district, province, postal_code, note, total_price) 
+values (3, '2022-05-10T20:00:59Z', '35/58 ซอย 3 ถนนนกแก้ว', 'กุดป่อง', 'เมือง', 'เลย', 42000, '', 0);
+
 
 insert into checkout_quantity (sub_service_id, checkout_id, sub_service_quantity)
-values (1, 1, 3);
+values (1, 1, 2);
 insert into checkout_quantity (sub_service_id, checkout_id, sub_service_quantity)
-values (2, 1, 10);
+values (2, 1, 3);
 insert into checkout_quantity (sub_service_id, checkout_id, sub_service_quantity)
-values (3, 1, 30);
+values (3, 1, 5);
 insert into checkout_quantity (sub_service_id, checkout_id, sub_service_quantity)
 values (4, 1, 4);
 insert into checkout_quantity (sub_service_id, checkout_id, sub_service_quantity)
-values (13, 2, 5);
+values (13, 4, 1);
 insert into checkout_quantity (sub_service_id, checkout_id, sub_service_quantity)
-values (14, 2, 3);
+values (14, 2, 1);
+insert into checkout_quantity (sub_service_id, checkout_id, sub_service_quantity)
+values (27, 10, 1);
+insert into checkout_quantity (sub_service_id, checkout_id, sub_service_quantity)
+values (23, 9, 1);
+insert into checkout_quantity (sub_service_id, checkout_id, sub_service_quantity)
+values (22, 8, 1);
+insert into checkout_quantity (sub_service_id, checkout_id, sub_service_quantity)
+values (15, 7, 1);
+insert into checkout_quantity (sub_service_id, checkout_id, sub_service_quantity)
+values (16, 6, 1);
+insert into checkout_quantity (sub_service_id, checkout_id, sub_service_quantity)
+values (21, 5, 1);
 	
 
-insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('พี่เจ๋ง', 'ซ่อมแอร์', 'หัวใจผมว่างจะมีใครบ้างจับจอง');
-insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('พี่เบิร์ด', 'ซ่อมได้', 'ว่าง');
-insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('พี่บาว', 'ซ่อมครัว', 'ไม่ว่าง');
-insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('พี่กร', 'ทำความสะอาดทั่วไป', 'แต่แพ้น้ำยาล้างห้องน้ำ');
-insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('พี่เนอส', 'ซ่อมเครื่องซักผ้า', 'เสร็จช้าแต่เสร็จนะ');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('สมศักดิ์ เจียมธีรสกุล', 'ซ่อมแอร์', 'ว่างรับงาน');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ประวิตร วงษ์สุวรรณ', 'ติดตั้งเตาแก๊ส', 'ลาพักร้อนถึงเดือนหน้า');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ชวน หลีกภัย', 'ติดตั้งแอร์', 'ว่าง');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('เนติวิทย์ โชติพัฒน์ไพศาล', 'ทำความสะอาดทั่วไป', 'แต่แพ้ Dettol');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ศุภกร มีลาภ', 'ติดตั้งตู้เย็น', 'คิวยาวทุกวันไปอีกสองสัปดาห์');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ปารย์ เหรียญกิจการ', 'ล้างแอร์', 'ไม่ว่างสัปดาห์หน้า');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ชัชชาติ สิทธิพันธุ์', 'ติดตั้งชักโครก', 'ลาออกไปแล้ว');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('วิโรจน์ กาวไก่', 'ติดตั้งเครื่องทำน้ำอุ่น', 'ว่างรับงาน');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('อัศวิน ขวัญเมือง', 'ติดตั้งเครื่องซักผ้า', 'ว่างยาวเพราะตกงาน');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ธงไชย แมคอินไตย์', 'ติดตั้งเครื่องดูดควัน', 'เสร็จช้าแต่เสร็จนะ');
 
 insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)
 values (1, 1, 10, 'AA000001', 'กำลังดำเนินการ');
 insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)
-values (2, 2, 10, 'AA000002', 'รอดำเนินการ');
+values (1, 2, 10, 'AA000002', 'รอดำเนินการ');
 insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)
-values (4, 4, 8, 'AA000003', 'ดำเนินการสำเร็จ');
+values (10, 3, 8, 'AA000003', 'ดำเนินการสำเร็จ');
 insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)
-values (2, 3, 7, 'AA000004', 'ดำเนินการสำเร็จ');
+values (4, 4, 7, 'AA000004', 'ดำเนินการสำเร็จ');
 insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)
-values (5, 2, 6, 'AA000005', 'รอดำเนินการ');
+values (9, 5, 6, 'AA000005', 'รอดำเนินการ');
+insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)
+values (9, 6, 6, 'AA000006', 'กำลังดำเนินการ');
+insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)
+values (6, 7, 4, 'AA000007', 'รอดำเนินการ');
+insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)
+values (6, 8, 3, 'AA000008', 'ดำเนินการสำเร็จ');
+insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)
+values (7, 9, 2, 'AA000009', 'รอดำเนินการ');
+insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)
+values (5, 10, 1, 'AA000010', 'กำลังดำเนิินการ');
