@@ -63,7 +63,8 @@ authRouter.post("/login", async (req, res) => {
     {
       user_id: user.rows[0].user_id,
       name: user.rows[0].name,
-      phoneNumber: user.rows[0].phoneNumber,
+      email: user.rows[0].email,
+      phoneNumber: user.rows[0].phonenumber,
       role: user.rows[0].role,
     },
     process.env.SECRET_KEY,
