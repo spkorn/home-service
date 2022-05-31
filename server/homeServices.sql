@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS users, service, category, sub_service, promotion, checkout,
 create table users (
 user_id int primary key generated always as identity,
 name varchar (100) not null,
-phoneNumber varchar (10) not null,
+phoneNumber int not null,
 email varchar (100) not null,
 password varchar (100) not null,
 role text not null
@@ -193,7 +193,7 @@ values (21, 5, 1);
 	
 
 insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('สมศักดิ์ เจียมธีรสกุล', 'ซ่อมแอร์', 'ว่างรับงาน');
-insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ประวิตร วงษ์สุวรรณ', 'ซ่อมเครื่องซักผ้า', 'ลาพักร้อนถึงเดือนหน้า');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ประวิตร วงษ์สุวรรณ', 'ติดตั้งเตาแก๊ส', 'ลาพักร้อนถึงเดือนหน้า');
 insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ชวน หลีกภัย', 'ติดตั้งแอร์', 'ว่าง');
 insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('เนติวิทย์ โชติพัฒน์ไพศาล', 'ทำความสะอาดทั่วไป', 'แต่แพ้ Dettol');
 insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ศุภกร มีลาภ', 'ติดตั้งตู้เย็น', 'คิวยาวทุกวันไปอีกสองสัปดาห์');
