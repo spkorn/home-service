@@ -1,7 +1,7 @@
 import "../App.css";
 import Nav from "../components/Nav";
-import Activity from "../CustomerServices/Activity";
-import NavBar from "../CustomerServices/NavBar";
+import Activity from "../components/CustomerPage/Activity";
+import NavBar from "../components/CustomerPage/NavBar";
 import Footer from "../components/Footer";
 
 function OrderHistory() {

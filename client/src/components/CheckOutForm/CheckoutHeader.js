@@ -37,7 +37,8 @@ function CheckoutHeader(props) {
             {service[service.length - 1].service_name}
           </h1>
         </div>
-        <div className="h-[129px] rounded-[10px] bg-white flex justify-around items-center border border-[#D8D8D8]">
+        
+        <div className="h-[129px] rounded-[10px] bg-white flex justify-between px-[10vw] items-center border border-[#D8D8D8]">
           {step === 1 ? (
             <div className="h-[76px] w-[51px] flex flex-col items-center justify-between">
               <CerrentCircle>

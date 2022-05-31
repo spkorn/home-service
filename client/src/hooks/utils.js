@@ -5,9 +5,6 @@ import { useNavigate } from "react-router-dom";
 export function useUtils() {
   const navigate = useNavigate();
 
-  const [isError, setIsError] = useState(null);
-  const [isLoading, setIsLoading] = useState(null);
-
   //category
   const [category, setCategory] = useState([]);
   const [category_name, setCategory_name] = useState("");
@@ -15,60 +12,28 @@ export function useUtils() {
   const [category_edited_date, setCategory_edited_date] = useState("");
 
   const getCategory = async () => {
-    try {
-      setIsError(false);
-      setIsLoading(true);
-      const result = await axios("http://localhost:4000/category");
-      setCategory(result.data.data);
-      setIsLoading(false);
-    } catch (error) {
-      setIsError(true);
-      setIsLoading(false);
-    }
+    const result = await axios("http://localhost:4000/category");
+    setCategory(result.data.data);
   };
 
   const deleteCategoryId = async (categoryId) => {
-    try {
-      setIsError(false);
-      setIsLoading(true);
-      await axios.delete(`http://localhost:4000/category/${categoryId}`);
-      getCategory();
-      document.getElementById("popUp").style.display = "none";
-      setIsLoading(false);
-      navigate("/category-dashboard");
-    } catch (error) {
-      setIsError(true);
-      setIsLoading(false);
-    }
+    await axios.delete(`http://localhost:4000/category/${categoryId}`);
+    getCategory();
+    document.getElementById("popUp").style.display = "none";
+    navigate("/category-dashboard");
   };
 
   const getCategoryById = async (categoryId) => {
-    try {
-      setIsError(false);
-      setIsLoading(true);
-      const result = await axios.get(
-        `http://localhost:4000/category/${categoryId}`
-      );
-      setCategory(result.data.data);
-      setIsLoading(false);
-    } catch (error) {
-      setIsError(true);
-      setIsLoading(false);
-    }
+    const result = await axios.get(
+      `http://localhost:4000/category/${categoryId}`
+    );
+    setCategory(result.data.data);
   };
 
   //Create Category
   const createCategory = async () => {
-    try {
-      setIsError(false);
-      setIsLoading(true);
-      await axios.post("http://localhost:4000/category", { category_name });
-      navigate("/category-dashboard");
-      setIsLoading(false);
-    } catch (error) {
-      setIsError(true);
-      setIsLoading(false);
-    }
+    await axios.post("http://localhost:4000/category", { category_name });
+    navigate("/category-dashboard");
   };
 
   //Filter
@@ -105,47 +70,23 @@ export function useUtils() {
   const [editHeader, setEditHeader] = useState("");
 
   const getService = async () => {
-    try {
-      setIsError(false);
-      setIsLoading(true);
-      const result = await axios("http://localhost:4000/service");
-      setService(result.data.data);
-      setIsLoading(false);
-    } catch (error) {
-      setIsError(true);
-      setIsLoading(false);
-    }
+    const result = await axios("http://localhost:4000/service");
+    setService(result.data.data);
   };
 
   const deleteServiceId = async (serviceId) => {
-    try {
-      setIsError(false);
-      setIsLoading(true);
-      await axios.delete(`http://localhost:4000/service/${serviceId}`);
-      getService();
-      document.getElementById("popUp").style.display = "none";
-      setIsLoading(false);
-      navigate("/service-dashboard");
-    } catch (error) {
-      setIsError(true);
-      setIsLoading(false);
-    }
+    await axios.delete(`http://localhost:4000/service/${serviceId}`);
+    getService();
+    document.getElementById("popUp").style.display = "none";
+    navigate("/service-dashboard");
   };
 
   const getServiceById = async (serviceId) => {
-    try {
-      setIsError(false);
-      setIsLoading(true);
-      const result = await axios.get(
-        `http://localhost:4000/service/${serviceId}`
-      );
-      setService(result.data.data);
-      setEditHeader(result.data.data[0].service_name);
-      setIsLoading(false);
-    } catch (error) {
-      setIsError(true);
-      setIsLoading(false);
-    }
+    const result = await axios.get(
+      `http://localhost:4000/service/${serviceId}`
+    );
+    setService(result.data.data);
+    setEditHeader(result.data.data[0].service_name);
   };
 
   //Service Image
@@ -165,18 +106,10 @@ export function useUtils() {
 
   //Create Service
   const createService = async (data) => {
-    try {
-      setIsError(false);
-      setIsLoading(true);
-      await axios.post("http://localhost:4000/service", data, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      setIsLoading(false);
-      navigate("/service-dashboard");
-    } catch (error) {
-      setIsError(true);
-      setIsLoading(false);
-    }
+    await axios.post("http://localhost:4000/service", data, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    navigate("/service-dashboard");
   };
 
   const handleSubmitService = (event) => {
@@ -282,10 +215,6 @@ export function useUtils() {
     setUnit,
     editHeader,
     setEditHeader,
-    isError,
-    setIsError,
-    isLoading,
-    setIsLoading,
     createCategory,
     step,
     setStep,

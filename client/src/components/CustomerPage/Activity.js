@@ -1,5 +1,5 @@
-import image from "../CustomerPhoto/imageIndex";
-import "../App.css";
+import image from "../../CustomerPhoto/imageIndex";
+import "../../App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";

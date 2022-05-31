@@ -12,29 +12,31 @@ function AuthProvider(props) {
     user: {},
   });
 
+
   const navigate = useNavigate();
 
   const register = async (data) => {
+    
     await axios.post("http://localhost:4000/auth/register", data);
     navigate("/login");
   };
 
   const login = async (data) => {
-    const result = await axios.post("http://localhost:4000/auth/login", data);
-    const token = result.data.token;
-    localStorage.setItem("token", token);
-    const dataToken = jwtDecode(token);
-    setState({ ...state, user: dataToken });
-    localStorage.setItem("name", dataToken.name); // ใช้อันนี้แล้ว user name บน nav ไม่หายตอน refresh
-    localStorage.setItem("user_id", dataToken.user_id);
-    localStorage.setItem("role", dataToken.role);
-    localStorage.setItem("phoneNumber", dataToken.phoneNumber);
-    localStorage.setItem("email", dataToken.email);
-    if (dataToken.role === "admin") {
-      navigate("/category-dashboard");
-    } else {
-      navigate("/");
-    }
+      const result = await axios.post("http://localhost:4000/auth/login", data);
+      const token = result.data.token;
+      localStorage.setItem("token", token);
+      const dataToken = jwtDecode(token);
+      setState({ ...state, user: dataToken });
+      localStorage.setItem("name", dataToken.name); // ใช้อันนี้แล้ว user name บน nav ไม่หายตอน refresh
+      localStorage.setItem("user_id", dataToken.user_id);
+      localStorage.setItem("role", dataToken.role);
+      localStorage.setItem("phoneNumber", dataToken.phoneNumber);
+      localStorage.setItem("email", dataToken.email);
+      if (dataToken.role === "admin") {
+        navigate("/category-dashboard");
+      } else {
+        navigate("/");
+      }
   };
 
   const logout = () => {

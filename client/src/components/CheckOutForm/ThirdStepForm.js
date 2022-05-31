@@ -53,6 +53,7 @@ function ThirdStep(props) {
       ) {
         setCreditcardCheck(image.AMEX);
         setCreditcardError("");
+        setError("");
       } else if (
         (prefix2digit === "51" ||
           prefix2digit === "52" ||
@@ -63,6 +64,7 @@ function ThirdStep(props) {
       ) {
         setCreditcardCheck(image.MASTERCARD);
         setCreditcardError("");
+        setError("");
       } else if (
         (prefix4digit === "4539" ||
           prefix4digit === "4556" ||
@@ -77,6 +79,7 @@ function ThirdStep(props) {
       ) {
         setCreditcardCheck(image.VISA);
         setCreditcardError("");
+        setError("");
       } else {
         setCreditcardCheck("");
         setCreditcardError("We only accept AMEX, Mastercard and Visa cards.");
@@ -91,6 +94,7 @@ function ThirdStep(props) {
       setCodeError("กรุณากรอกรหัสให้ถูกต้อง");
     } else {
       setCodeError("");
+      setError("");
     }
     setCode(validCode);
   };
@@ -99,6 +103,7 @@ function ThirdStep(props) {
     if (validator.isNumeric(e.target.value) && e.target.value.length === 4) {
       setExpired(e.target.value);
       setExpiredError("");
+      setError("");
     } else {
       setExpired(e.target.value);
       setExpiredError("กรุณากรอกวันหมดอายุให้ถูกต้อง");
@@ -115,7 +120,11 @@ function ThirdStep(props) {
       codeError === "" &&
       nameError === "" &&
       creditcardError === "" &&
-      expiredError === ""
+      expiredError === "" &&
+      name !== "" &&
+      creditcardNumber !== "" &&
+      expired !== "" &&
+      code !== ""
     ) {
       const data = {
         user_id: user_id,
@@ -132,7 +141,7 @@ function ThirdStep(props) {
       };
       createOrder(data);
     } else {
-      setError("กรุณากรอกข้อมูลการชำระเงิน");
+      setError("กรุณากรอกข้อมูลการชำระเงินให้ถูกต้อง");
     }
   };
 
@@ -165,12 +174,7 @@ function ThirdStep(props) {
                   placeholder="กรุณากรอกหมายเลขบัตรเครดิต"
                   value={creditcardNumber}
                   onChange={(event) => {
-                    if (creditcardNumber === "") {
-                      validateCreditCard(event);
-                      setCreditcardError("กรุณากรอกหมายเลขบัตรเครดิต");
-                    } else {
-                      validateCreditCard(event);
-                    }
+                    validateCreditCard(event);
                   }}
                   max="16"
                 />
@@ -188,12 +192,7 @@ function ThirdStep(props) {
                   placeholder="กรุณากรอกชื่อบนบัตร"
                   value={name}
                   onChange={(event) => {
-                    if (name === "") {
-                      validateName(event);
-                      setNameError("กรุณากรอกชื่อบนบัตร");
-                    } else {
-                      validateName(event);
-                    }
+                    validateName(event);
                   }}
                 />
                 <br />
@@ -207,12 +206,7 @@ function ThirdStep(props) {
                 </h5>
                 <input
                   onChange={(e) => {
-                    if (expired === "") {
-                      expiredChange(e);
-                      setExpiredError("กรุณากรอกวันหมดอายุ");
-                    } else {
-                      expiredChange(e);
-                    }
+                    expiredChange(e);
                   }}
                   value={expired}
                   className="h-11 py-2.5 px-4 border rounded-lg focus:placeholder:text-grey950 mt-2 w-[22.5vw] border-grey300 focus:border-blue600 focus:outline-none"
@@ -233,12 +227,7 @@ function ThirdStep(props) {
                   max="3"
                   value={code}
                   onChange={(e) => {
-                    if (code === "") {
-                      validateCode(e);
-                      setCodeError("กรุณากรอกรหัส CVC / CVV");
-                    } else {
-                      validateCode(e);
-                    }
+                    validateCode(e);
                   }}
                 />
                 <br />
@@ -251,7 +240,11 @@ function ThirdStep(props) {
           {codeError === "" &&
           nameError === "" &&
           creditcardError === "" &&
-          expiredError === "" ? null : (
+          expiredError === "" &&
+          name !== "" &&
+          creditcardNumber !== "" &&
+          expired !== "" &&
+          code !== "" ? null : (
             <p className="text-red mt-2">{error}</p>
           )}
           {subService.map((data) => {
