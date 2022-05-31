@@ -17,7 +17,7 @@ function UserProfile() {
       <div className="h-24 bg-blue600 flex items-center justify-center">
         <h1 className="text-white text-[32px] font-medium">ข้อมูลผู้ใช้งาน</h1>
       </div>
-      <div className="flex my-8 mx-0 justify-between w-screen px-[15vw]">
+      <div className="flex my-8 mx-0 justify-between px-[15vw]">
         <NavBar />
         <section className="p-8 w-full ml-10 h-full bg-white border border-grey300 rounded-lg flex justify-evenly items-center">
             <img

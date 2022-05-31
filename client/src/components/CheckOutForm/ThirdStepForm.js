@@ -138,7 +138,7 @@ function ThirdStep(props) {
 
   return (
     <div>
-      <div className="px-[10vw] flex mt-8 mb-[125px] mx-0 justify-between w-screen">
+      <div className="flex my-8 mx-0 justify-between px-[10vw]">
         <div className=" w-[50vw] mr-[2vw] mb-[125px] py-8 px-6 flex flex-col justify-between border border-grey300 rounded-lg">
           <div className="mb-4 flex items-center">
             {creditcardCheck !== "" ? (
