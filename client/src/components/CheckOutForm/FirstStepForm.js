@@ -1,11 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { GreyTextTwo } from "./CheckOutForm";
 import image from "../../HomePagePhoto/imageIndex";
 import icons from "../../AdminPhoto/imageIndex";
 import { useNavigate, useParams } from "react-router-dom";
 import { Summary } from "./Summary";
 import SubmitTab from "./SubmitTab";
-import { useState } from "react";
 
 function FirstStepForm(props) {
   const {
@@ -104,9 +103,9 @@ function FirstStepForm(props) {
 
   return (
     <div>
-      <div className="px-[10vw] flex mt-8  mx-0 justify-between w-screen">
+      <div className="flex my-8 mx-0 justify-between px-[10vw]">
         <div className="w-[50vw] mr-[2vw] py-8 px-6 mb-[125px] flex flex-col justify-between border border-grey300 rounded-lg">
-          <div className="mb-4">
+          <div >
             <GreyTextTwo>
               เลือกรายการ{service[service.length - 1].service_name}
             </GreyTextTwo>

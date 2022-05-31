@@ -13,16 +13,16 @@ function CheckoutHeader(props) {
   const { service, step } = props;
   const navigate = useNavigate();
   return (
-    <header className="mb-[-168px] w-screen">
+    <header className="mb-[-168px] w-full">
       <img
         alt="Service"
         src={service[service.length - 1].service_photo.url}
-        className="h-80 z-10 w-screen static object-cover"
-      ></img>
+        className="h-80 z-10 static w-screen object-cover"
+      />
       <div className="h-[247px] flex flex-col justify-between px-[10vw] relative z-20 top-[-168px]">
         <div
           className="h-[68px] rounded-lg bg-white
-        shadow-[2px_2px_24px_(rgba(23, 51, 106, 0.12))] w-fit flex justify-evenly items-center px-[32px]"
+        shadow-[2px_2px_24px_(rgba(23, 51, 106, 0.12))] flex justify-evenly items-center px-[32px] w-fit"
         >
           <GreyTextOne>
             <div
@@ -37,7 +37,7 @@ function CheckoutHeader(props) {
             {service[service.length - 1].service_name}
           </h1>
         </div>
-        <div className="h-[129px] w-[80vw] rounded-[10px] bg-white flex justify-around items-center border border-[#D8D8D8]">
+        <div className="h-[129px] rounded-[10px] bg-white flex justify-around items-center border border-[#D8D8D8]">
           {step === 1 ? (
             <div className="h-[76px] w-[51px] flex flex-col items-center justify-between">
               <CerrentCircle>
