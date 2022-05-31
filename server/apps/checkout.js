@@ -17,7 +17,7 @@ checkoutRouter.post("/", async (req, res) => {
 
   const newCheckoutItem = {
     // ของจริง ใช้รูปแบบข้างล่างนี้
-    user_id : req.body.user_id,
+    user_id: req.body.user_id,
     service_name: req.body.service_name,
     date_time: req.body.date_time,
     address: req.body.address,
@@ -28,7 +28,7 @@ checkoutRouter.post("/", async (req, res) => {
     total_price: req.body.total_price,
     note: req.body.note,
     sub_service: JSON.parse(req.body.sub_service),
-    ...req.body,
+    // ...req.body, // ตอนใช้ postman ยิง test api ใช้แค่บรรทัดนี้
   };
 
   await pool.query(
@@ -95,7 +95,7 @@ checkoutRouter.post("/", async (req, res) => {
       and note = $11)),
       $12);`,
     [
-      `S${newdate}`, // ต้องทำให้ run order_number ได้แบบ auto
+      `S${newdate}`,
       "รอดำเนินการ",
       newCheckoutItem.service_name,
       newCheckoutItem.date_time,
