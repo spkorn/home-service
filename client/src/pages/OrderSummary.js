@@ -1,16 +1,23 @@
-import image from "../../CustomerPhoto/imageIndex";
+import image from "../CustomerPhoto/imageIndex";
 import Moment from "react-moment";
-import "../../App.css";
+import "../App.css";
+import { useState, useEffect } from "react";
+import axios  from "axios";
+import { useParams } from "react-router-dom";
 
-function PaymentComplete(props) {
-  const {
-    fullAddress,
-    bookingDateAndTime,
-    subService,
-    total,
-    note,
-    service_name,
-  } = props;
+function OrderSummary() {
+  const [order, setOrder] = useState();
+  const params = useParams();
+  const getOrderSummaryById = async (userId) => {
+      const result = await axios.get(
+        `http://localhost:4000/service/${userId}`
+      );
+      setOrder(result.data.data);
+  };
+
+  useEffect(() => {
+    getOrderSummaryById(params.userId);
+  }, []);
 
   return (
     <div className="bg-bg min-h-screen flex justify-center px-[30vw]">
@@ -28,16 +35,16 @@ function PaymentComplete(props) {
         <div className="w-full flex flex-col gap-[26px] justify-between h-full">
           <div className="flex flex-col justify-between">
             <p className="text-left my-4 text-black text-lg font-semibold">
-              {service_name}
+              {order.service_name}
             </p>
-            {subService.map((data) => {
+            {order.sub_service.map((data) => {
               return (
                 <div key={data.sub_service_id}>
                   <p className="float-left my-2 text-black text-sm font-normal">
                     {data.sub_service_name}
                   </p>{" "}
                   <p className="float-right my-2 text-black text-sm font-normal">
-                    {data.sub_service_quantity} รายการ
+                    {data.sub_service_quantity} {data.unit}
                   </p>
                 </div>
               );
@@ -49,7 +56,7 @@ function PaymentComplete(props) {
               </p>
               <p className="float-right my-2 text-black text-sm font-normal">
                 <Moment format="DD MMMM YYYY HH:mm">
-                  {bookingDateAndTime}
+                  {order.date_time}
                 </Moment>
               </p>
             </div>
@@ -58,19 +65,19 @@ function PaymentComplete(props) {
                 สถานที่
               </p>
               <p className="float-right my-2 text-black text-sm font-normal w-[80%] text-right">
-                {fullAddress.address} {fullAddress.subdistrict}{" "}
-                {fullAddress.district} {fullAddress.province}{" "}
-                {fullAddress.zipcode}
+                {order.fullAddress.address} {order.fullAddress.subdistrict}{" "}
+                {order.fullAddress.district} {order.fullAddress.province}{" "}
+                {order.fullAddress.zipcode}
               </p>
             </div>
           </div>
-          {note !== "" ? (
+          {order.note !== "" ? (
               <div>
                 <p className="float-left my-2 text-grey700 text-sm font-light">
                   ข้อมูลเพิ่มเติม
                 </p>
                 <p className="float-right my-2 text-black text-sm font-normal">
-                  {note}
+                  {order.note}
                 </p>
               </div>
           ) : null}
@@ -79,7 +86,7 @@ function PaymentComplete(props) {
             <div className="text-base text-grey700">รวม</div>
             <span className="text-base text-black font-semibold">
               {" "}
-              {Number(total).toLocaleString(undefined, {
+              {Number(order.total).toLocaleString(undefined, {
                 maximumFractionDigits: 2,
               })}{" "}
               ฿
@@ -94,4 +101,4 @@ function PaymentComplete(props) {
   );
 }
 
-export default PaymentComplete;
+export default OrderSummary;

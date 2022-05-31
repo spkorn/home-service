@@ -8,6 +8,7 @@ import image from "../../CustomerPhoto/imageIndex";
 import { useState } from "react";
 import { useUser } from "../../hooks/user";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function ThirdStep(props) {
   const {
@@ -19,6 +20,9 @@ function ThirdStep(props) {
     note,
     service_name,
   } = props;
+
+  const navigate = useNavigate();
+
   const { validateName, nameError, name, setNameError } = useUser();
 
   const [creditcardError, setCreditcardError] = useState("");
@@ -106,7 +110,7 @@ function ThirdStep(props) {
 
   const createOrder = async (data) => {
     await axios.post("http://localhost:4000/checkout", data);
-    setStep(4);
+    navigate(`/order-summary/${user_id}`)
   };
 
   const nextStep = () => {
@@ -260,7 +264,7 @@ function ThirdStep(props) {
                   {data.sub_service_name}
                 </p>{" "}
                 <p className="float-right my-2 text-grey900 text-sm font-light">
-                  {data.sub_service_quantity} รายการ
+                  {data.sub_service_quantity} {data.unit}
                 </p>
               </div>
             );

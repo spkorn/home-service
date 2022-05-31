@@ -303,7 +303,7 @@ function SecondStep(props) {
                   {data.sub_service_name}
                 </p>{" "}
                 <p className="float-right my-2 text-grey900 text-sm font-light">
-                  {data.sub_service_quantity} รายการ
+                  {data.sub_service_quantity} {data.unit}
                 </p>
               </div>
             );

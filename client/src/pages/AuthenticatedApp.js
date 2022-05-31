@@ -11,6 +11,7 @@ import CreateService from "./CreateServicePage";
 import NotFoundPage from "./NotFoundPage";
 import AllStepCheckOutForm from "./AllStepCheckOutForm";
 import OrderHistory from "./OrderHistory";
+import OrderSummary from "./OrderSummary";
 
 function AuthenticatedApp() {
   const loginRole = localStorage.getItem("role");
@@ -47,6 +48,10 @@ function AuthenticatedApp() {
             />
             <Route
             path="/order-history/:userId"
+            element={<OrderHistory/>}
+            />
+            <Route
+            path="/order-summary/:userId"
             element={<OrderHistory/>}
           />
         </Routes>

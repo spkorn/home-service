@@ -15,12 +15,13 @@ function Activity() {
   };
 
   useEffect(() => {
-    getOrderHistoryById(params.serviceId);
+    getOrderHistoryById(params.userId);
   }, []);
+
   return (
     <div>
       {order.map((data, index) => {
-        <div className="px-6 pt-[22px] pb-6 w-[53vw] bg-white border border-grey300 rounded-lg flex justify-between">
+        <div className="px-6 pt-[22px] pb-6 w-full bg-white border border-grey300 rounded-lg flex justify-between">
         <div>
           <div className="text-xl font-medium leading-[150%]">
             คำสังการซ่อมรหัส : {data.checkout_id}

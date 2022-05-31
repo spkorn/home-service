@@ -17,9 +17,9 @@ function UserProfile() {
           <div className="flex my-8 mx-0 justify-between w-screen px-[15vw]">
       <NavBar />
               <div className="p-6 w-full ml-10 h-full bg-white border border-grey300 rounded-lg flex-col items-center">
-          <div className="w-52 bg-grey700 flex justify-center items-center
-rounded-full border-8 border-grey600"><img className="rounded-full" src={image.avatar} alt="user's display" /></div>
-          <h2 className="text-xl text-black font-normal my-5">ชื่อ-นามสกุล: <span className="text-grey800">{name}</span></h2>
+          <div className="w-44 bg-grey700 flex justify-center items-center
+rounded-full border-8 border-grey600 mb-4"><img className="rounded-full" src={image.avatar} alt="user's display" /></div>
+          <label className="text-sm text-grey700 absolute bg-white font-normal z-20 ml-4">ชื่อ-นามสกุล</label> <input className="text-grey800 mt-2 w-[35vw] h-[44px] px-4 py-2.5 border rounded-lg border-grey300 relative" value={name} disabled/>
           {/* <h2 className="text-xl text-black font-normal my-5">อีเมล: <span className="text-grey800">{userEmail}</span></h2>
           <h2 className="text-xl text-black font-normal my-5">เบอร์โทรศัพท์: <span className="text-grey800">{userPhoneNumber}</span></h2> */}
               </div>
