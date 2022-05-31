@@ -42,6 +42,8 @@ module.exports = {
       lime: 'rgb(236 252 203)',
       amber: 'rgb(254 243 199)',
       brown: 'rgb(154 52 18)',
+      stone: 'rgb(120 113 108)',
+      cyan: 'rgb(14 116 144)'
     },
     extend: {}
   },

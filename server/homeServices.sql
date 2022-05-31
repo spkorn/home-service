@@ -57,7 +57,7 @@ district text not null,
 province text not null,
 postal_code varchar (5) not null,
 note text,
-total_price int
+total_price decimal (7,2) not null
 );
 
 

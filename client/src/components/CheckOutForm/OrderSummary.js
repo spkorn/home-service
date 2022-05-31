@@ -1,23 +1,20 @@
-import image from "../CustomerPhoto/imageIndex";
+import image from "../../CustomerPhoto/imageIndex";
 import Moment from "react-moment";
-import "../App.css";
-import { useState, useEffect } from "react";
-import axios  from "axios";
-import { useParams } from "react-router-dom";
+import "../../App.css";
+import { useNavigate } from "react-router-dom";
 
-function OrderSummary() {
-  const [order, setOrder] = useState();
-  const params = useParams();
-  const getOrderSummaryById = async (userId) => {
-      const result = await axios.get(
-        `http://localhost:4000/service/${userId}`
-      );
-      setOrder(result.data.data);
-  };
+function OrderSummary(props) {
+  const {
+    fullAddress,
+    bookingDateAndTime,
+    subService,
+    total,
+    note,
+    service_name,
+  } = props;
 
-  useEffect(() => {
-    getOrderSummaryById(params.userId);
-  }, []);
+  const navigate = useNavigate();
+  const user_id = localStorage.getItem("user_id");
 
   return (
     <div className="bg-bg min-h-screen flex justify-center px-[30vw]">
@@ -35,9 +32,9 @@ function OrderSummary() {
         <div className="w-full flex flex-col gap-[26px] justify-between h-full">
           <div className="flex flex-col justify-between">
             <p className="text-left my-4 text-black text-lg font-semibold">
-              {order.service_name}
+              {service_name}
             </p>
-            {order.sub_service.map((data) => {
+            {subService.map((data) => {
               return (
                 <div key={data.sub_service_id}>
                   <p className="float-left my-2 text-black text-sm font-normal">
@@ -56,44 +53,44 @@ function OrderSummary() {
               </p>
               <p className="float-right my-2 text-black text-sm font-normal">
                 <Moment format="DD MMMM YYYY HH:mm">
-                  {order.date_time}
+                  {bookingDateAndTime}
                 </Moment>
               </p>
             </div>
-            <div >
+            <div>
               <p className="float-left my-2 text-grey700 text-sm font-light">
                 สถานที่
               </p>
               <p className="float-right my-2 text-black text-sm font-normal w-[80%] text-right">
-                {order.fullAddress.address} {order.fullAddress.subdistrict}{" "}
-                {order.fullAddress.district} {order.fullAddress.province}{" "}
-                {order.fullAddress.zipcode}
+                {fullAddress.address} {fullAddress.subdistrict}{" "}
+                {fullAddress.district} {fullAddress.province}{" "}
+                {fullAddress.zipcode}
               </p>
             </div>
           </div>
-          {order.note !== "" ? (
-              <div>
-                <p className="float-left my-2 text-grey700 text-sm font-light">
-                  ข้อมูลเพิ่มเติม
-                </p>
-                <p className="float-right my-2 text-black text-sm font-normal">
-                  {order.note}
-                </p>
-              </div>
+          {note !== "" ? (
+            <div>
+              <p className="float-left my-2 text-grey700 text-sm font-light">
+                ข้อมูลเพิ่มเติม
+              </p>
+              <p className="float-right my-2 text-black text-sm font-normal">
+                {note}
+              </p>
+            </div>
           ) : null}
           <hr className="text-grey300 my-2" />
           <div className="h-7 flex items-center justify-between">
             <div className="text-base text-grey700">รวม</div>
             <span className="text-base text-black font-semibold">
               {" "}
-              {Number(order.total).toLocaleString(undefined, {
+              {Number(total).toLocaleString(undefined, {
                 maximumFractionDigits: 2,
               })}{" "}
               ฿
             </span>
           </div>
         </div>
-        <button className="bg-blue600 w-full h-11 rounded-lg text-white">
+        <button className="bg-blue600 w-full h-11 rounded-lg text-white" onClick={() => navigate(`/order-history/${user_id}`)}>
           เช็ครายการซ่อม
         </button>
       </div>

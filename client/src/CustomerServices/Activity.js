@@ -7,11 +7,13 @@ import { useParams } from "react-router-dom";
 function Activity() {
   const params = useParams();
   const [order, setOrder] = useState([]);
+
   const getOrderHistoryById = async (userId) => {
     const result = await axios.get(
       `http://localhost:4000/orderHistory/${userId}`
     );
     setOrder(result.data.data);
+    console.log(order)
   };
 
   useEffect(() => {
@@ -21,7 +23,7 @@ function Activity() {
   return (
     <div>
       {order.map((data, index) => {
-        <div className="px-6 pt-[22px] pb-6 w-full bg-white border border-grey300 rounded-lg flex justify-between">
+        <div className="p-6 w-full ml-10  bg-white border border-grey300 rounded-lg flex justify-between">
         <div>
           <div className="text-xl font-medium leading-[150%]">
             คำสังการซ่อมรหัส : {data.checkout_id}

@@ -3,6 +3,7 @@ import CheckoutHeader from "../components/CheckOutForm/CheckoutHeader";
 import FirstStepForm from "../components/CheckOutForm/FirstStepForm";
 import SecondStepForm from "../components/CheckOutForm/SecondStepForm";
 import ThirdStepForm from "../components/CheckOutForm/ThirdStepForm";
+import OrderSummary from "../components/CheckOutForm/OrderSummary";
 import Nav from "../components/Nav";
 
 function AllStepCheckOutForm() {
@@ -28,7 +29,7 @@ function AllStepCheckOutForm() {
   return (
     <div className="checkout form">
       <Nav />
-      <CheckoutHeader service={service} step={step} />
+      {step === 4 ? null : <CheckoutHeader service={service} step={step} />}
       {step === 2 ? (
         <SecondStepForm
           total={total}
@@ -55,7 +56,15 @@ function AllStepCheckOutForm() {
           note={note}
           service_name={service_name}
         />
-      ) : (
+        ) : step === 4 ? (<OrderSummary
+          fullAddress={fullAddress}
+          bookingDateAndTime={bookingDateAndTime}
+          subService={subService}
+          total={total}
+          note={note}
+          service_name={service_name}
+        />)
+          : (
         <FirstStepForm
           getServiceById={getServiceById}
           service={service}

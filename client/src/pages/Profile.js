@@ -3,11 +3,13 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import NavBar from "../CustomerServices/NavBar";
 import image from "../HomePagePhoto/imageIndex";
+import { useUser } from "../hooks/user";
 
 function UserProfile() {
-  const name = localStorage.getItem("name");
-  const userPhoneNumber = localStorage.getItem("phoneNumber");
-  const userEmail = localStorage.getItem("email");
+  const { loginName,
+    userPhoneNumber,
+    userEmail,
+    loginRole } = useUser();
 
   return (
     <div className="bg-bg">
@@ -17,33 +19,54 @@ function UserProfile() {
       </div>
       <div className="flex my-8 mx-0 justify-between w-screen px-[15vw]">
         <NavBar />
-        <div className="p-6 w-full ml-10 h-full bg-white border border-grey300 rounded-lg flex-col items-center">
-          <div
-            className="w-44 bg-grey700 flex justify-center items-center
-rounded-full border-8 border-grey600 mb-4"
-          >
+        <section className="p-8 w-full ml-10 h-full bg-white border border-grey300 rounded-lg flex justify-evenly items-center">
             <img
-              className="rounded-full"
+              className="w-48 shadow-xl mr-8 rounded-full relative z-10"
               src={image.avatar}
               alt="user's display"
             />
+          <div className="flex-col items-center">
+            {loginRole === "admin" ? (
+            <div className="bg-stone px-2.5 py-1 w-fit rounded-md text-xs text-white">
+              administrator
+            </div>
+          ) : loginRole === "customer" ? (
+            <div className="bg-cyan px-2.5 py-1 w-fit rounded-md text-xs text-white">
+              customer
+            </div>
+          ) : null}
+            <div className="my-4">
+              <label className="text-sm text-grey700 absolute bg-gradient-to-b from-white via-white font-normal z-20 ml-4">
+                ชื่อ-นามสกุล
+              </label>{" "}
+              <input
+                className="text-grey800 mt-2 w-[25vw] h-[44px] px-4 py-2.5 border rounded-lg border-grey300 relative"
+                value={loginName}
+                disabled
+              />
+            </div>
+            <div className="my-4">
+              <label className="text-sm text-grey700 absolute bg-gradient-to-b from-white via-white font-normal z-20 ml-4">
+                อีเมล
+              </label>{" "}
+              <input
+                className="text-grey800 mt-2 w-[25vw] h-[44px] px-4 py-2.5 border rounded-lg border-grey300 relative"
+                value={userEmail}
+                disabled
+              />
+            </div>
+            <div className="my-4">
+              <label className="text-sm text-grey700 absolute bg-gradient-to-b from-white via-white font-normal z-20 ml-4">
+                เบอร์โทรศัพท์
+              </label>{" "}
+              <input
+                className="text-grey800 mt-2 w-[25vw] h-[44px] px-4 py-2.5 border rounded-lg border-grey300 relative"
+                value={userPhoneNumber}
+                disabled
+              />
+            </div>
           </div>
-          <label className="text-sm text-grey700 absolute bg-white font-normal z-20 ml-4">
-            ชื่อ-นามสกุล
-          </label>{" "}
-          <input
-            className="text-grey800 mt-2 w-[35vw] h-[44px] px-4 py-2.5 border rounded-lg border-grey300 relative"
-            value={name}
-            disabled
-          />
-          <h2 className="text-xl text-black font-normal my-5">
-            อีเมล: <span className="text-grey800">{userEmail}</span>
-          </h2>
-          <h2 className="text-xl text-black font-normal my-5">
-            เบอร์โทรศัพท์:{" "}
-            <span className="text-grey800">{userPhoneNumber}</span>
-          </h2>
-        </div>
+        </section>
       </div>
       <Footer />
     </div>

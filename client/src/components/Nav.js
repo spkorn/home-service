@@ -50,11 +50,22 @@ function Nav() {
               {loginRole == "admin" ? (
                 <div>
                   <div
-                    onClick={() => navigate("/category-dashboard")}
+                    onClick={() => navigate("/profile")}
                     className="flex items-center hover:bg-grey100 hover:bg-opacity-50 hover:text-grey950"
                   >
                     <img
                       src={image.profileIcon}
+                      className="ml-4 mr-2 my-2 "
+                      alt="ข้อมูลผู้ใช้งาน"
+                    />
+                    <span>ข้อมูลผู้ใช้งาน</span>
+                  </div>
+                  <div
+                    onClick={() => navigate("/category-dashboard")}
+                    className="flex items-center hover:bg-grey100 hover:bg-opacity-50 hover:text-grey950"
+                  >
+                    <img
+                      src={image.orderIcon}
                       className="ml-4 mr-2 my-2 "
                       alt="admin"
                     />

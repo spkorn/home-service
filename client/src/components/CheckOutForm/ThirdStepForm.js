@@ -8,7 +8,6 @@ import image from "../../CustomerPhoto/imageIndex";
 import { useState } from "react";
 import { useUser } from "../../hooks/user";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 function ThirdStep(props) {
   const {
@@ -20,8 +19,6 @@ function ThirdStep(props) {
     note,
     service_name,
   } = props;
-
-  const navigate = useNavigate();
 
   const { validateName, nameError, name, setNameError } = useUser();
 
@@ -110,7 +107,7 @@ function ThirdStep(props) {
 
   const createOrder = async (data) => {
     await axios.post("http://localhost:4000/checkout", data);
-    navigate(`/order-summary/${user_id}`)
+    setStep(4);
   };
 
   const nextStep = () => {

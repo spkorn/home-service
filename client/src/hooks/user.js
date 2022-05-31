@@ -76,6 +76,12 @@ export function useUser() {
     setPassword(validPassword);
   };
 
+  //user data
+  const loginName = localStorage.getItem("name");
+  const userPhoneNumber = localStorage.getItem("phoneNumber");
+  const userEmail = localStorage.getItem("email");
+  const loginRole = localStorage.getItem("role");
+
   return {
     name,
     setName,
@@ -101,5 +107,9 @@ export function useUser() {
     passwordError,
     setPasswordError,
     validatePassword,
+    loginName,
+    userPhoneNumber,
+    userEmail,
+    loginRole,
   };
 }
