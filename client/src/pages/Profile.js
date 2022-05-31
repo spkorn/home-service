@@ -19,9 +19,9 @@ function UserProfile() {
       </div>
       <div className="flex my-8 mx-0 justify-between px-[15vw]">
         <NavBar />
-        <section className="p-8 w-full ml-10 h-full bg-white border border-grey300 rounded-lg flex justify-evenly items-center">
+        <section className="p-6 w-[50vw] ml-10 h-full bg-white border border-grey300 rounded-lg flex justify-evenly items-center">
             <img
-              className="w-48 shadow-xl mr-8 rounded-full relative z-10"
+              className="w-52 shadow-xl mr-8 rounded-full relative z-10"
               src={image.avatar}
               alt="user's display"
             />
@@ -40,7 +40,7 @@ function UserProfile() {
                 ชื่อ-นามสกุล
               </label>{" "}
               <input
-                className="text-grey800 mt-2 w-[25vw] h-[44px] px-4 py-2.5 border rounded-lg border-grey300 relative"
+                className="text-grey800 mt-2 w-[22vw] h-[44px] px-4 py-2.5 border rounded-lg border-grey300 relative"
                 value={loginName}
                 disabled
               />
@@ -50,7 +50,7 @@ function UserProfile() {
                 อีเมล
               </label>{" "}
               <input
-                className="text-grey800 mt-2 w-[25vw] h-[44px] px-4 py-2.5 border rounded-lg border-grey300 relative"
+                className="text-grey800 mt-2 w-[22vw] h-[44px] px-4 py-2.5 border rounded-lg border-grey300 relative"
                 value={userEmail}
                 disabled
               />
@@ -60,7 +60,7 @@ function UserProfile() {
                 เบอร์โทรศัพท์
               </label>{" "}
               <input
-                className="text-grey800 mt-2 w-[25vw] h-[44px] px-4 py-2.5 border rounded-lg border-grey300 relative"
+                className="text-grey800 mt-2 w-[22vw] h-[44px] px-4 py-2.5 border rounded-lg border-grey300 relative"
                 value={userPhoneNumber}
                 disabled
               />

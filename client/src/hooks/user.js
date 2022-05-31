@@ -23,6 +23,7 @@ export function useUser() {
       setEmailError("กรุณากรอกอีเมล");
     } else {
       setEmailError("");
+      setErrorForm("");
     }
     setEmail(validEmail);
   };
@@ -41,6 +42,7 @@ export function useUser() {
       setPhoneNumberError("กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง");
     } else {
       setPhoneNumberError("");
+      setErrorForm("");
     }
     setPhoneNumber(validPhoneNumber);
   };
@@ -57,6 +59,7 @@ export function useUser() {
       setNameError("กรุณากรอกชื่อ นามสกุลให้ถูกต้อง");
     } else {
       setNameError("");
+      setErrorForm("");
     }
     setName(validName);
   };
@@ -72,6 +75,7 @@ export function useUser() {
       setPasswordError("รหัสผ่านต้องมีอย่างน้อย 8 ตัว");
     } else {
       setPasswordError("");
+      setErrorForm("");
     }
     setPassword(validPassword);
   };

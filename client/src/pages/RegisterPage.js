@@ -35,7 +35,11 @@ function RegisterPage() {
       emailError === "" &&
       phoneNumberError === "" &&
       passwordError === "" &&
-      nameError === ""
+      nameError === "" &&
+      password !== "" &&
+      email !== "" &&
+      phoneNumber !== "" &&
+      name !== ""
     ) {
       const data = {
         name,
@@ -58,7 +62,9 @@ function RegisterPage() {
           className="bg-white border border-grey300 rounded-lg w-[614px] px-[87px] pt-8 pb-[45px] mt-[52px] mb-[87px]"
           onSubmit={handleSubmit}
         >
-          <h1 className="text-blue950 text-center text-[32px] font-medium">ลงทะเบียน </h1>
+          <h1 className="text-blue950 text-center text-[32px] font-medium">
+            ลงทะเบียน{" "}
+          </h1>
           <div className="mt-5">
             <label>
               <h5>
@@ -69,12 +75,7 @@ function RegisterPage() {
                 name="name"
                 placeholder="กรุณากรอกชื่อ-นามสกุล"
                 onChange={(event) => {
-                  if (name === "") {
-                    validateName(event);
-                    setValidated(false);
-                  } else {
-                    validateName(event);
-                  }
+                  validateName(event);
                 }}
                 value={name}
                 className="border rounded-lg border-grey300 w-full h-11 px-4 py-2.5"
@@ -93,12 +94,7 @@ function RegisterPage() {
                 name="phoneNumber"
                 placeholder="กรุณากรอกเบอร์โทรศัพท์"
                 onChange={(event) => {
-                  if (phoneNumber === "") {
-                    validatePhoneNumber(event);
-                    setValidated(false);
-                  } else {
-                    validatePhoneNumber(event);
-                  }
+                  validatePhoneNumber(event);
                 }}
                 value={phoneNumber}
                 max="10"
@@ -118,12 +114,7 @@ function RegisterPage() {
                 name="email"
                 placeholder="กรุณากรอกอีเมล"
                 onChange={(event) => {
-                  if (email === "") {
-                    validateEmail(event);
-                    setValidated(false);
-                  } else {
-                    validateEmail(event);
-                  }
+                  validateEmail(event);
                 }}
                 value={email}
                 className="border rounded-lg border-grey300 w-full h-11 px-4 py-2.5"
@@ -143,12 +134,7 @@ function RegisterPage() {
                 type="password"
                 placeholder="กรุณากรอกรหัสผ่าน"
                 onChange={(event) => {
-                  if (password === "") {
-                    validatePassword(event);
-                    setValidated(false);
-                  } else {
-                    validatePassword(event);
-                  }
+                  validatePassword(event);
                 }}
                 value={password}
                 className="border rounded-lg border-grey300 w-full h-11 px-4 py-2.5"
