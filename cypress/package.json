@@ -11,5 +11,8 @@
   "license": "ISC",
   "devDependencies": {
     "cypress": "^9.7.0"
+  },
+  "dependencies": {
+    "test-data-bot": "^0.8.0"
   }
 }
