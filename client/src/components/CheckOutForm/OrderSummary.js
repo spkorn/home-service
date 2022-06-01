@@ -70,10 +70,10 @@ function OrderSummary(props) {
           </div>
           {note !== "" ? (
             <div>
-              <p className="float-left my-2 text-grey700 text-sm font-light">
+              <p className="float-left  text-grey700 text-sm font-light">
                 ข้อมูลเพิ่มเติม
               </p>
-              <p className="float-right my-2 text-black text-sm font-normal">
+              <p className="float-right  text-black text-sm font-normal">
                 {note}
               </p>
             </div>

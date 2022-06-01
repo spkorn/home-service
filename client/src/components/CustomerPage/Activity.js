@@ -25,7 +25,7 @@ function Activity() {
   return (
     <div>
       {order.length === 0 ? (
-        <div className="p-6 ml-10 mb-8 bg-white border border-grey300 rounded-lg">
+        <div className="p-6 w-[50vw] ml-10 mb-8 bg-white border border-grey300 rounded-lg">
           <h1 className="text-grey700 text-2xl font-normal text-center">
             ไม่มีประวัติการซ่อม
           </h1>
@@ -66,7 +66,7 @@ function Activity() {
                     </div>
                   </div>
                   <div className="text-base font-normal leading-[150%] text-grey700">
-                    รายการ:
+                    รายการ: {data.service_name}
                     <ul className="flex flex-col list-disc ml-3">
                       {data.sub_service.map((subService, index) => {
                         return (

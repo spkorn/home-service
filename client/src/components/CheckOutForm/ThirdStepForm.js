@@ -49,7 +49,8 @@ function ThirdStep(props) {
         String(validCreditCard[3]);
       if (
         (prefix2digit === "34" || prefix2digit === "37") &&
-        validator.isNumeric(validCreditCard)
+        validator.isNumeric(validCreditCard) &&
+        (validCreditCard.length === 13 || validCreditCard.length === 16)
       ) {
         setCreditcardCheck(image.AMEX);
         setCreditcardError("");
@@ -60,7 +61,8 @@ function ThirdStep(props) {
           prefix2digit === "53" ||
           prefix2digit === "54" ||
           prefix2digit === "55") &&
-        validator.isNumeric(validCreditCard)
+        validator.isNumeric(validCreditCard) &&
+        (validCreditCard.length === 13 || validCreditCard.length === 16)
       ) {
         setCreditcardCheck(image.MASTERCARD);
         setCreditcardError("");
@@ -75,7 +77,8 @@ function ThirdStep(props) {
           prefix4digit === "4716" ||
           prefix4digit === "4024" ||
           String(validCreditCard[0]) === "4") &&
-        validator.isNumeric(validCreditCard)
+        validator.isNumeric(validCreditCard) &&
+        (validCreditCard.length === 13 || validCreditCard.length === 16)
       ) {
         setCreditcardCheck(image.VISA);
         setCreditcardError("");
@@ -90,7 +93,8 @@ function ThirdStep(props) {
 
   const validateCode = (e) => {
     var validCode = e.target.value;
-    if (!validator.isNumeric(validCode) || validCode.length !== 3) {
+    const pattern = /^[0-9]{3,4}$/;
+    if (!validator.matches(validCode, pattern)) {
       setCodeError("กรุณากรอกรหัสให้ถูกต้อง");
     } else {
       setCodeError("");
@@ -100,7 +104,8 @@ function ThirdStep(props) {
   };
 
   const expiredChange = (e) => {
-    if (validator.isNumeric(e.target.value) && e.target.value.length === 4) {
+    const pattern = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/
+    if (validator.matches(e.target.value, pattern)) {
       setExpired(e.target.value);
       setExpiredError("");
       setError("");
