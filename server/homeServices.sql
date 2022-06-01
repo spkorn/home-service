@@ -222,4 +222,4 @@ values (6, 8, 3, 'AA000008', 'ดำเนินการสำเร็จ');
 insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)
 values (7, 9, 2, 'AA000009', 'รอดำเนินการ');
 insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)
-values (5, 10, 1, 'AA000010', 'กำลังดำเนิินการ');
+values (5, 10, 1, 'AA000010', 'กำลังดำเนินการ');

@@ -31,20 +31,13 @@ function FirstStepForm(props) {
       (item) => item.sub_service_id === data.sub_service_id
     );
     let itemIndex = subService.findIndex(
-        (item) => item.sub_service_id === data.sub_service_id
-      );
-    let index = service.findIndex(
-        (item) => item.sub_service_id === data.sub_service_id
-      );
+      (item) => item.sub_service_id === data.sub_service_id
+    );
     let tempList = [...subService];
-    let tempService = [...service];
     if (added) {
       tempList[itemIndex].sub_service_quantity =
         tempList[itemIndex].sub_service_quantity + 1;
       setSubService(tempList);
-      tempService[index].sub_service_quantity =
-        tempService[index].sub_service_quantity + 1;
-      setService(tempService);
     } else {
       let tempSubService = {
         sub_service_id: data.sub_service_id,
@@ -54,38 +47,25 @@ function FirstStepForm(props) {
         sub_service_quantity: 1,
       };
       setSubService([...subService, tempSubService]);
-      tempService[index].sub_service_quantity = 1;
-      setService(tempService);
     }
   };
 
   const subtractQuantity = (data) => {
     let tempList = [...subService];
-    let tempService = [...service];
     let itemIndex = subService.findIndex(
       (item) => item.sub_service_id === data.sub_service_id
     );
-    let index = service.findIndex(
-      (item) => item.sub_service_id === data.sub_service_id
-    );
-
     if (tempList[itemIndex].sub_service_quantity === 1) {
       const newItems = tempList.filter(
         (item) => item.sub_service_id !== data.sub_service_id
       );
       setSubService(newItems);
-      tempService[index].sub_service_quantity = 0;
-      setService(tempService);
     } else {
       tempList[itemIndex].sub_service_quantity =
         tempList[itemIndex].sub_service_quantity - 1;
       setSubService(tempList);
-      tempService[index].sub_service_quantity =
-        tempService[index].sub_service_quantity - 1;
-      setService(tempService);
     }
   };
-
 
   const totalPrice = subService.reduce((acc, item) => {
     return acc + item.price_per_unit * item.sub_service_quantity;
@@ -104,8 +84,8 @@ function FirstStepForm(props) {
   return (
     <div>
       <div className="flex my-8 mx-0 justify-between px-[10vw]">
-        <div className="w-[50vw] mr-[2vw] py-8 px-6 mb-[125px] flex flex-col justify-between border border-grey300 rounded-lg">
-          <div >
+        <div className="h-full w-[50vw] mr-[2vw] py-8 px-6 mb-[125px] flex flex-col justify-between border border-grey300 rounded-lg">
+          <div>
             <GreyTextTwo>
               เลือกรายการ{service[service.length - 1].service_name}
             </GreyTextTwo>
@@ -146,7 +126,15 @@ function FirstStepForm(props) {
                         src={icons.minus}
                       />
                     </button>
-                    {data.sub_service_quantity}
+                    {subService.filter(
+                        (item) => item.sub_service_id === data.sub_service_id
+                      ).length===0? <span>0</span> : <span>{subService
+                      .filter(
+                        (item) => item.sub_service_id === data.sub_service_id
+                      )
+                      .map((sub) => {
+                        return <div>{ sub.sub_service_quantity }</div>;
+                      })}</span>}
                     <button
                       type="button"
                       className="w-[43px] h-[43px] bg-white border 
@@ -166,7 +154,9 @@ function FirstStepForm(props) {
           </div>
         </div>
         <Summary total={totalPrice}>
-          {subService.length === 0 ? <p className="text-red mt-2">{error}</p> : null}
+          {subService.length === 0 ? (
+            <p className="text-red mt-2">{error}</p>
+          ) : null}
           {subService.map((data, index) => {
             return (
               <div key={index}>
