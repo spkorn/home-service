@@ -10,7 +10,6 @@ function FirstStepForm(props) {
   const {
     getServiceById,
     service,
-    setService,
     setStep,
     subService,
     setSubService,

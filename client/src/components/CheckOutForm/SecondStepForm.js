@@ -18,7 +18,6 @@ function SecondStep(props) {
     bookingDateAndTime,
     setBookingDateAndTime,
     subService,
-    setSubService,
     total,
     setStep,
     setService,

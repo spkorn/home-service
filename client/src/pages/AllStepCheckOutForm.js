@@ -39,7 +39,6 @@ function AllStepCheckOutForm() {
           bookingDateAndTime={bookingDateAndTime}
           setBookingDateAndTime={setBookingDateAndTime}
           subService={subService}
-          setSubService={setSubService}
           setStep={setStep}
           service_name={service_name}
           setService={setService}
@@ -68,7 +67,6 @@ function AllStepCheckOutForm() {
         <FirstStepForm
           getServiceById={getServiceById}
           service={service}
-          setService={setService}
           setStep={setStep}
           step={step}
           subService={subService}

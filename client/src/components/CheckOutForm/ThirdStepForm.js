@@ -20,7 +20,7 @@ function ThirdStep(props) {
     service_name,
   } = props;
 
-  const { validateName, nameError, name, setNameError } = useUser();
+  const { validateName, nameError, name } = useUser();
 
   const [creditcardError, setCreditcardError] = useState("");
   const [creditcardCheck, setCreditcardCheck] = useState("");
