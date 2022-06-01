@@ -49,8 +49,7 @@ function ThirdStep(props) {
         String(validCreditCard[3]);
       if (
         (prefix2digit === "34" || prefix2digit === "37") &&
-        validator.isNumeric(validCreditCard) &&
-        (validCreditCard.length === 13 || validCreditCard.length === 16)
+        validator.isNumeric(validCreditCard)
       ) {
         setCreditcardCheck(image.AMEX);
         setCreditcardError("");
@@ -61,8 +60,7 @@ function ThirdStep(props) {
           prefix2digit === "53" ||
           prefix2digit === "54" ||
           prefix2digit === "55") &&
-        validator.isNumeric(validCreditCard) &&
-        (validCreditCard.length === 13 || validCreditCard.length === 16)
+        validator.isNumeric(validCreditCard)
       ) {
         setCreditcardCheck(image.MASTERCARD);
         setCreditcardError("");
@@ -77,8 +75,7 @@ function ThirdStep(props) {
           prefix4digit === "4716" ||
           prefix4digit === "4024" ||
           String(validCreditCard[0]) === "4") &&
-        validator.isNumeric(validCreditCard) &&
-        (validCreditCard.length === 13 || validCreditCard.length === 16)
+        validator.isNumeric(validCreditCard)
       ) {
         setCreditcardCheck(image.VISA);
         setCreditcardError("");

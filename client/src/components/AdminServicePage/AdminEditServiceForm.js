@@ -212,6 +212,8 @@ function ServiceEditForm() {
                         required
                         className="rounded-lg h-11 border border-grey300 mr-4 py-2.5 px-4 focus:border-blue600 focus:outline-none"
                         type="number"
+                        min="0"
+                        max="20000"
                         step="any"
                         value={subService.price_per_unit}
                         onChange={(e) => {
