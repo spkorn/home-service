@@ -40,14 +40,8 @@ orderHistoryRouter.get("/:id", async (req, res) => {
     (item) => item.order_number
   );
 
-  let countSubService = [];
-  let setOrderNumber = [];
-  let orderNumber = "";
-
-  for (let j = 0; j < countOrderNumber.length; j++) {
-    orderNumber = countOrderNumber[j].order_number;
-    setOrderNumber.push(orderNumber);
-  }
+  // ตัวแปรนี้เก็บค่า จำนวน loop ที่ต้องใช้ในการเพิ่ม sub_service กับ index เริ่มต้นในการเพิ่ม sub_serivce
+  let countSubService = [0];
 
   for (let i = 0; i < countOrderNumber.length; i++) {
     if (newResult.length < countOrderNumber.length) {
@@ -62,71 +56,47 @@ orderHistoryRouter.get("/:id", async (req, res) => {
     }
 
     let subService = 0;
-    // loop นี้ นับจำนวน sub_service ของแต่ละ order_number แล้วเก็บใส่ array
+    // loop นี้ นับจำนวน sub_service ของแต่ละ order_number
     for (let j = 0; j < result.rows.length; j++) {
       if (newResult[i].order_number === result.rows[j].order_number) {
         subService++;
       }
     }
 
-    countSubService.push(subService);
+    // เก็บค่าตำแหน่ง กับจำนวนรอบของ sub_service ที่จะใช้ loop
+    countSubService.push(countSubService[i] + subService);
 
-    for (let j = 0; j < countSubService[i]; j++) {
-      if (!newResult[i].sub_service) {
-        newResult[i].sub_service = [
-          {
+    // loop นี้คือเพิ่ม sub_service เข้าไปใน order_number
+    for (let j = 0; j < countSubService[i + 1]; j++) {
+      for (let k = countSubService[i]; k < countSubService[i + 1]; k++) {
+        if (!newResult[i].sub_service) {
+          newResult[i].sub_service = [
+            {
+              sub_service_name: result.rows[k].sub_service_name,
+              sub_service_quantity: result.rows[k].sub_service_quantity,
+              unit: result.rows[k].unit,
+            },
+          ];
+        }
+        if (newResult[i].sub_service.length < countSubService[i + 1]) {
+          newResult[i].sub_service[j] = {
             sub_service_name: result.rows[j].sub_service_name,
             sub_service_quantity: result.rows[j].sub_service_quantity,
             unit: result.rows[j].unit,
-          },
-        ];
-      }
-      if (newResult[i].sub_service.length < countSubService[i]) {
-        newResult[i].sub_service[j] = {
-          sub_service_name: result.rows[j].sub_service_name,
-          sub_service_quantity: result.rows[j].sub_service_quantity,
-          unit: result.rows[j].unit,
-        };
+          };
+        }
+        if (
+          newResult[i].sub_service.length >
+          Math.abs(countSubService[i + 1] - countSubService[i])
+        ) {
+          newResult[i].sub_service.splice(0, countSubService[i]);
+        }
       }
     }
-
-    // newResult[0].sub_service[0].sub_service_name =
-    //   result.rows[0].sub_service_name;
-    // newResult[0].sub_service[0].sub_service_quantity =
-    //   result.rows[0].sub_service_quantity;
-    // newResult[0].sub_service[0].unit = result.rows[0].unit;
-
-    // newResult[0].sub_service[1].sub_service_name =
-    //   result.rows[1].sub_service_name;
-    // newResult[0].sub_service[1].sub_service_quantity =
-    //   result.rows[1].sub_service_quantity;
-    // newResult[0].sub_service[1].unit = result.rows[1].unit;
-
-    // newResult[0].sub_service[2].sub_service_name =
-    //   result.rows[2].sub_service_name;
-    // newResult[0].sub_service[2].sub_service_quantity =
-    //   result.rows[2].sub_service_quantity;
-    // newResult[0].sub_service[2].unit = result.rows[2].unit;
-
-    // newResult[0].sub_service[3].sub_service_name =
-    //   result.rows[3].sub_service_name;
-    // newResult[0].sub_service[3].sub_service_quantity =
-    //   result.rows[3].sub_service_quantity;
-    // newResult[0].sub_service[3].unit = result.rows[3].unit;
-
-    // newResult[1].sub_service[0].sub_service_name =
-    //   result.rows[4].sub_service_name;
-    // newResult[1].sub_service[0].sub_service_quantity =
-    //   result.rows[4].sub_service_quantity;
-    // newResult[1].sub_service[0].unit = result.rows[4].unit;
   }
-
-  // console.log(setOrderNumber);
-  //console.log(countSubService);
 
   return res.status(200).json({
     data: newResult,
-    //data: result.rows,
   });
 });
 
