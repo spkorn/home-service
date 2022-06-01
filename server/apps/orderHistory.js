@@ -28,29 +28,7 @@ orderHistoryRouter.get("/:id", async (req, res) => {
     [orderHistoryByUserId]
   );
 
-  const newResult = [
-    {
-      order_number: "",
-      service_date_time: "",
-      status: "",
-      serviceman_name: "",
-      service_name: "",
-      sub_service: [
-        { sub_service_name: "", sub_service_quantity: 0, unit: "" },
-      ],
-      total_price: "",
-    },
-  ];
-
-  const jsonObj = {
-    order_number: "",
-    service_date_time: "",
-    status: "",
-    serviceman_name: "",
-    service_name: "",
-    sub_service: [{ sub_service_name: "", sub_service_quantity: 0, unit: "" }],
-    total_price: "",
-  };
+  const newResult = [];
 
   function removeDuplicates(data, key) {
     return [...new Map(data.map((item) => [key(item), item])).values()];
@@ -73,14 +51,15 @@ orderHistoryRouter.get("/:id", async (req, res) => {
 
   for (let i = 0; i < countOrderNumber.length; i++) {
     if (newResult.length < countOrderNumber.length) {
-      newResult.push(jsonObj);
+      newResult.push({
+        order_number: countOrderNumber[i].order_number,
+        service_date_time: countOrderNumber[i].service_date_time,
+        status: countOrderNumber[i].status,
+        serviceman_name: countOrderNumber[i].serviceman_name,
+        service_name: countOrderNumber[i].service_name,
+        total_price: countOrderNumber[i].total_price,
+      });
     }
-    newResult[i].order_number = countOrderNumber[i].order_number;
-    newResult[i].service_date_time = countOrderNumber[i].service_date_time;
-    newResult[i].status = countOrderNumber[i].status;
-    newResult[i].serviceman_name = countOrderNumber[i].serviceman_name;
-    newResult[i].service_name = countOrderNumber[i].service_name;
-    newResult[i].total_price = countOrderNumber[i].total_price;
 
     let subService = 0;
     // loop นี้ นับจำนวน sub_service ของแต่ละ order_number แล้วเก็บใส่ array
@@ -93,21 +72,57 @@ orderHistoryRouter.get("/:id", async (req, res) => {
     countSubService.push(subService);
 
     for (let j = 0; j < countSubService[i]; j++) {
-      newResult[i].sub_service[j].sub_service_name =
-        result.rows[j].sub_service_name;
-      newResult[i].sub_service[j].sub_service_quantity =
-        result.rows[j].sub_service_quantity;
-      newResult[i].sub_service[j].unit = result.rows[j].unit;
-      console.log(newResult[0].sub_service[2]);
-      console.log(newResult[0].sub_service.length);
+      if (!newResult[i].sub_service) {
+        newResult[i].sub_service = [
+          {
+            sub_service_name: result.rows[j].sub_service_name,
+            sub_service_quantity: result.rows[j].sub_service_quantity,
+            unit: result.rows[j].unit,
+          },
+        ];
+      }
       if (newResult[i].sub_service.length < countSubService[i]) {
-        newResult[i].sub_service.push(...jsonObj.sub_service);
+        newResult[i].sub_service[j] = {
+          sub_service_name: result.rows[j].sub_service_name,
+          sub_service_quantity: result.rows[j].sub_service_quantity,
+          unit: result.rows[j].unit,
+        };
       }
     }
+
+    // newResult[0].sub_service[0].sub_service_name =
+    //   result.rows[0].sub_service_name;
+    // newResult[0].sub_service[0].sub_service_quantity =
+    //   result.rows[0].sub_service_quantity;
+    // newResult[0].sub_service[0].unit = result.rows[0].unit;
+
+    // newResult[0].sub_service[1].sub_service_name =
+    //   result.rows[1].sub_service_name;
+    // newResult[0].sub_service[1].sub_service_quantity =
+    //   result.rows[1].sub_service_quantity;
+    // newResult[0].sub_service[1].unit = result.rows[1].unit;
+
+    // newResult[0].sub_service[2].sub_service_name =
+    //   result.rows[2].sub_service_name;
+    // newResult[0].sub_service[2].sub_service_quantity =
+    //   result.rows[2].sub_service_quantity;
+    // newResult[0].sub_service[2].unit = result.rows[2].unit;
+
+    // newResult[0].sub_service[3].sub_service_name =
+    //   result.rows[3].sub_service_name;
+    // newResult[0].sub_service[3].sub_service_quantity =
+    //   result.rows[3].sub_service_quantity;
+    // newResult[0].sub_service[3].unit = result.rows[3].unit;
+
+    // newResult[1].sub_service[0].sub_service_name =
+    //   result.rows[4].sub_service_name;
+    // newResult[1].sub_service[0].sub_service_quantity =
+    //   result.rows[4].sub_service_quantity;
+    // newResult[1].sub_service[0].unit = result.rows[4].unit;
   }
 
   // console.log(setOrderNumber);
-  // console.log(countSubService);
+  //console.log(countSubService);
 
   return res.status(200).json({
     data: newResult,
