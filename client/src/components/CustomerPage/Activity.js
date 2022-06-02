@@ -52,8 +52,8 @@ function Activity() {
                       <div>
                         วันเวลาดำเนินการ:{" "}
                         <Moment format="DD MMMM YYYY HH:mm">
-                          {data.service_date_time} {"น."}
-                        </Moment>
+                          {data.service_date_time}
+                        </Moment> น.
                       </div>
                     </div>
                     <div className="flex gap-x-[14.5px]">
