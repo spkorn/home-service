@@ -11,6 +11,7 @@ import CreateService from "./CreateServicePage";
 import NotFoundPage from "./NotFoundPage";
 import AllStepCheckOutForm from "./AllStepCheckOutForm";
 import OrderHistory from "./OrderHistory";
+import AdminOrder from "./AdminOrderPage";
 
 function AuthenticatedApp() {
   const loginRole = localStorage.getItem("role");
@@ -33,7 +34,8 @@ function AuthenticatedApp() {
             path="/service/edit/:serviceId"
             element={<AdminEditService />}
           />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path="/order-dashboard" element={<AdminOrder />} />
+          <Route path="*" element={<NotFoundPage />} /> 
         </Routes>
       ) : (
         <Routes>

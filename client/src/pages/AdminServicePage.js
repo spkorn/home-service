@@ -10,7 +10,6 @@ function AdminServicePage() {
     setSearchService,
     service,
     setService,
-    getService,
     deleteServiceId,
     serviceDeleteAlert,
     deleteService,
@@ -27,7 +26,6 @@ function AdminServicePage() {
       />
       <AdminService
         service={service}
-        getService={getService}
         deleteServiceId={deleteServiceId}
         serviceDeleteAlert={serviceDeleteAlert}
         deleteService={deleteService}

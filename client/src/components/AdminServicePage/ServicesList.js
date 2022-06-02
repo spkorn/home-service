@@ -8,7 +8,6 @@ import AlertBoxDelete from "../AlertBox.js";
 function AdminService(props) {
   const {
     service,
-    getService,
     serviceDeleteAlert,
     deleteService,
     deleteServiceId,
@@ -18,10 +17,6 @@ function AdminService(props) {
   
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    getService();
-  }, []);
 
   const hide = () => {
     document.getElementById("popUp").style.display = "none";
@@ -53,7 +48,7 @@ function AdminService(props) {
             <tbody className="text-left">
               {service.map((data, index) => {
                 return (
-                  <tr className="border-t border-grey200 ">
+                  <tr className="border-t border-grey200 " key={index}>
                     <td className="font-light text-center">{index + 1}</td>
                     <td className="font-light">{data.service_name}</td>
                     <td className="px-3">

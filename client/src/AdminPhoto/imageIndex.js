@@ -1,15 +1,16 @@
-import editIcon from './icons/edit-icon.png'
-import trashIcon from './icons/trash-icon.png'
+import editIcon from './edit-icon.png'
+import trashIcon from './trash-icon.png'
 import plusSign from './plus-sign.svg'
 import coupon from './coupon.svg'
 import category from './category.svg'
 import service from './paper.svg'
 import logout from './logoutIcon.svg'
-import exclamation from './icons/exclamation.png'
+import exclamation from './exclamation.png'
 import arrow from './arrow.png'
-import addPhoto from './icons/add-photo.png'
-import bluePlusSymbol from './icons/blue-plus-symbol.png'
-import minus from './icons/minus.png'
+import addPhoto from './add-photo.png'
+import bluePlusSymbol from './blue-plus-symbol.png'
+import minus from './minus.png'
+import orderIcon from "./orderIcon.svg"
 
 const image = {
   editIcon,
@@ -23,7 +24,8 @@ const image = {
   exclamation,
   arrow,
   addPhoto,
-  minus
+  minus,
+  orderIcon
 }
 
 export default image

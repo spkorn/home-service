@@ -7,12 +7,23 @@ const checkoutRouter = Router();
 // API route to add new checkout item to checkout table
 checkoutRouter.post("/", async (req, res) => {
   const dateObj = new Date();
-  const day = dateObj.getUTCDate().toString();
-  const month = (dateObj.getUTCMonth() + 1).toString();
-  const year = dateObj.getUTCFullYear().toString();
-  const hours = dateObj.getHours().toString();
-  const minutes = dateObj.getMinutes().toString();
-  const seconds = dateObj.getTime().toString().slice(0, 2);
+  let day = dateObj.getUTCDate().toString();
+  let month = (dateObj.getUTCMonth() + 1).toString();
+  let year = dateObj.getUTCFullYear().toString();
+  let hours = dateObj.getHours().toString();
+  let minutes = dateObj.getMinutes().toString();
+  let seconds = dateObj.getTime().toString().slice(0, 2);
+  
+  if (day.length == 1) {
+    day = "0" + day
+  }
+  if (month.length === 1) {
+    month = "0" + month 
+  }
+  if (hours.length === 1) {
+    hours = "0" + hours
+  }
+
   const newdate = day + month + year + hours + minutes + seconds;
 
   const newCheckoutItem = {

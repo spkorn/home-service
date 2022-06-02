@@ -10,7 +10,6 @@ function AdminCategoryPage() {
     setSearchCategory,
     category,
     setCategory,
-    getCategory,
     deleteCategoryId,
     deleteCategory,
     categoryDeleteAlert,
@@ -28,7 +27,6 @@ function AdminCategoryPage() {
       />
       <AdminCategories
         category={category}
-        getCategory={getCategory}
         deleteCategoryId={deleteCategoryId}
         categoryDeleteAlert={categoryDeleteAlert}
         deleteCategory={deleteCategory}

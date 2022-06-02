@@ -148,6 +148,8 @@ export function useUtils() {
   const [bookingDateAndTime, setBookingDateAndTime] = useState(null);
   const [step, setStep] = useState(1);
   const [subService, setSubService] = useState([]);
+  const [searchOrder, setSearchOrder] = useState("");
+  const [allOrder, setAllOrder] = useState([]);
   const [fullAddress, setFullAddress] = useState({
     address: "",
     subdistrict: "",
@@ -155,8 +157,16 @@ export function useUtils() {
     province: "",
     zipcode: "",
   });
+  
   const [total, setTotal] = useState("");
   const [note, setNote] = useState("");
+
+  const searchOrderData = async () => {
+    const results = await axios.get(
+      `http://localhost:4000/orderHistory?keywords=${searchOrder}`
+    );
+    setAllOrder(results.data.data);
+  };
 
   return {
     searchCategory,
@@ -228,5 +238,10 @@ export function useUtils() {
     setTotal,
     note,
     setNote,
+    searchOrder,
+    setSearchOrder,
+    allOrder,
+    setAllOrder,
+    searchOrderData,
   };
 }
