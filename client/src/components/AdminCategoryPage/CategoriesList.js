@@ -3,7 +3,7 @@ import "../../App.css";
 import Moment from "react-moment";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import AlertBoxDelete from "../AlertBoxDelete.js";
+import AlertBoxDelete from "../AlertBox.js";
 
 function AdminCategories(props) {
   const {
@@ -92,6 +92,10 @@ function AdminCategories(props) {
               <AlertBoxDelete
                 deleteFunction={handleDelete}
                 hideFunction={hide}
+                textAlert="ยืนยันการลบรายการ"
+                alertQuestion="คุณต้องการลบรายการ ใช่หรือไม่ ?"
+                primary="ลบรายการ"
+                secondary="ยกเลิก"
               />
             ) : null}
           </tbody>

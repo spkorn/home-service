@@ -5,12 +5,15 @@ import { useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
 import { useAuth } from "../../contexts/authentication";
+import RoleAlertBox from "../AlertBox";
 
 function PopularService() {
   const navigate = useNavigate();
   const auth = useAuth();
+  const { logout } = useAuth();
 
   const [service, setService] = useState([]);
+  const [roleAlert, setRoleAlert] = useState(false);
 
   const getService = async () => {
     const result = await axios("http://localhost:4000/service");
@@ -21,11 +24,27 @@ function PopularService() {
     getService();
   }, []);
 
-  console.log(service);
+  const role = localStorage.getItem("role");
+  
+  const adminSelectServiceAlert = () => {
+    setRoleAlert(true);
+  };
+  const back = () => {
+    logout();
+    document.getElementById("popUp").style.display = "none";
+    setRoleAlert(false);
+    navigate("/login");
+  };
+  const hide = () => {
+    document.getElementById("popUp").style.display = "none";
+    setRoleAlert(false);
+  };
 
   return (
     <div className="popular-service bg-[rgba(229, 229, 229, 0.2)] h-full">
-      <h1 className="text-blue950 text-center pt-14 font-normal text-[32px]">บริการยอดฮิตของเรา</h1>
+      <h1 className="text-blue950 text-center pt-14 font-normal text-[32px]">
+        บริการยอดฮิตของเรา
+      </h1>
       <div className=" px-20 py-8 grid grid-cols-3 justify-items-center">
         {service.slice(0, 3).map((data) => {
           return (
@@ -63,7 +82,9 @@ function PopularService() {
                     </div>
                   )}
                 </div>
-                <h2 className="text-grey950 font-medium text-xl">{data.service_name}</h2>
+                <h2 className="text-grey950 font-medium text-xl">
+                  {data.service_name}
+                </h2>
                 <div className="h-5 flex items-center font-normal text-sm text-grey700 mt-1 mb-3.5">
                   <img
                     className="mr-2.5 h-4 w-4"
@@ -93,12 +114,23 @@ function PopularService() {
                   )}
                 </div>
                 {auth.isAuthenticated ? (
-                  <button
-                    className="btn-ghost"
-                    onClick={() => navigate(`/checkout/${data.service_id}`)}
-                  >
-                    เลือกบริการ
-                  </button>
+                  <div>
+                    {role === "customer" ? (
+                      <button
+                        className="btn-ghost"
+                        onClick={() => navigate(`/checkout/${data.service_id}`)}
+                      >
+                        เลือกบริการ
+                      </button>
+                    ) : (
+                      <button
+                        className="btn-ghost"
+                        onClick={adminSelectServiceAlert}
+                      >
+                        เลือกบริการ
+                      </button>
+                    )}
+                  </div>
                 ) : (
                   <button
                     className="btn-ghost"
@@ -112,6 +144,16 @@ function PopularService() {
           );
         })}
       </div>
+      {roleAlert ? (
+        <RoleAlertBox
+          deleteFunction={back}
+          hideFunction={hide}
+          textAlert="Unable to select service"
+          alertQuestion="You must be logged in as a customer."
+          primary="Logout"
+          secondary="ยกเลิก"
+        />
+      ) : null}
       <div className="flex justify-center">
         <button
           className="btn-primary w-[155px] h-11 mb-[147px]"

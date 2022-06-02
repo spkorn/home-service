@@ -1,13 +1,31 @@
 import image from "../../HomePagePhoto/imageIndex";
-import React from "react";
+import React, { useState } from "react";
 import "../../App.css";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/authentication";
+import RoleAlertBox from "../AlertBox";
 
 function ServicesList(props) {
   const { service } = props;
   const navigate = useNavigate();
   const auth = useAuth();
+  const { logout } = useAuth();
+  const role = localStorage.getItem("role");
+  const [roleAlert, setRoleAlert] = useState(false);
+
+  const adminSelectServiceAlert = () => {
+    setRoleAlert(true);
+  };
+  const back = () => {
+    logout();
+    document.getElementById("popUp").style.display = "none";
+    setRoleAlert(false);
+    navigate("/login");
+  };
+  const hide = () => {
+    document.getElementById("popUp").style.display = "none";
+    setRoleAlert(false);
+  };
 
   return (
     <div className="px-[5%]">
@@ -49,7 +67,9 @@ function ServicesList(props) {
                       </div>
                     )}
                   </div>
-                  <h2 className="text-grey950 font-medium text-xl">{data.service_name}</h2>
+                  <h2 className="text-grey950 font-medium text-xl">
+                    {data.service_name}
+                  </h2>
                   <div className="h-5 flex items-center font-normal text-sm text-grey700 mt-1 mb-3.5">
                     <img
                       className="mr-2.5 h-4 w-4"
@@ -79,12 +99,25 @@ function ServicesList(props) {
                     )}
                   </div>
                   {auth.isAuthenticated ? (
-                    <button
-                      className="btn-ghost"
-                      onClick={() => navigate(`/checkout/${data.service_id}`)}
-                    >
-                      เลือกบริการ
-                    </button>
+                    <div>
+                      {role === "customer" ? (
+                        <button
+                          className="btn-ghost"
+                          onClick={() =>
+                            navigate(`/checkout/${data.service_id}`)
+                          }
+                        >
+                          เลือกบริการ
+                        </button>
+                      ) : (
+                        <button
+                          className="btn-ghost"
+                          onClick={adminSelectServiceAlert}
+                        >
+                          เลือกบริการ
+                        </button>
+                      )}
+                    </div>
                   ) : (
                     <button
                       className="btn-ghost"
@@ -98,6 +131,16 @@ function ServicesList(props) {
             );
           })}
         </div>
+      ) : null}
+      {roleAlert ? (
+        <RoleAlertBox
+          deleteFunction={back}
+          hideFunction={hide}
+          textAlert="Unable to select service"
+          alertQuestion="You must be logged in as a customer."
+          primary="Logout"
+          secondary="ยกเลิก"
+        />
       ) : null}
     </div>
   );

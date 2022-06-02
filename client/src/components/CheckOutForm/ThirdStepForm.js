@@ -52,8 +52,13 @@ function ThirdStep(props) {
         validator.isNumeric(validCreditCard)
       ) {
         setCreditcardCheck(image.AMEX);
-        setCreditcardError("");
-        setError("");
+        if (validCreditCard.length === 15) {
+          setCreditcardError("");
+          setError("");
+        } else {
+          setCreditcardError("An AMEX card number must have 15 digits.");
+          setError("กรุณากรอกข้อมูลการชำระเงินให้ถูกต้อง");
+        }
       } else if (
         (prefix2digit === "51" ||
           prefix2digit === "52" ||
@@ -63,8 +68,13 @@ function ThirdStep(props) {
         validator.isNumeric(validCreditCard)
       ) {
         setCreditcardCheck(image.MASTERCARD);
-        setCreditcardError("");
-        setError("");
+        if (validCreditCard.length === 16) {
+          setCreditcardError("");
+          setError("");
+        } else {
+          setCreditcardError("A Mastercard card number must have 16 digits.");
+          setError("กรุณากรอกข้อมูลการชำระเงินให้ถูกต้อง");
+        }
       } else if (
         (prefix4digit === "4539" ||
           prefix4digit === "4556" ||
@@ -78,8 +88,13 @@ function ThirdStep(props) {
         validator.isNumeric(validCreditCard)
       ) {
         setCreditcardCheck(image.VISA);
-        setCreditcardError("");
-        setError("");
+        if (validCreditCard.length === 13 || validCreditCard.length === 16) {
+          setCreditcardError("");
+          setError("");
+        } else {
+          setCreditcardError("A Visa card number must have 13 or 15 digits.");
+          setError("กรุณากรอกข้อมูลการชำระเงินให้ถูกต้อง");
+        }
       } else {
         setCreditcardCheck("");
         setCreditcardError("We only accept AMEX, Mastercard and Visa cards.");
@@ -101,7 +116,7 @@ function ThirdStep(props) {
   };
 
   const expiredChange = (e) => {
-    const pattern = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/
+    const pattern = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
     if (validator.matches(e.target.value, pattern)) {
       setExpired(e.target.value);
       setExpiredError("");

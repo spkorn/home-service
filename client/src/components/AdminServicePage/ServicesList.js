@@ -3,7 +3,7 @@ import "../../App.css";
 import Moment from "react-moment";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import AlertBoxDelete from "../AlertBoxDelete.js";
+import AlertBoxDelete from "../AlertBox.js";
 
 function AdminService(props) {
   const {
@@ -15,6 +15,7 @@ function AdminService(props) {
     service_Id,
     setDeleteService,
   } = props;
+  
 
   const navigate = useNavigate();
 
@@ -112,7 +113,14 @@ function AdminService(props) {
             </tbody>
           ) : null}
           {deleteService ? (
-            <AlertBoxDelete deleteFunction={handleDelete} hideFunction={hide} />
+            <AlertBoxDelete
+              deleteFunction={handleDelete}
+              hideFunction={hide}
+              textAlert="ยืนยันการลบรายการ"
+              alertQuestion="คุณต้องการลบรายการ ใช่หรือไม่ ?"
+              primary="ลบรายการ"
+              secondary="ยกเลิก"
+            />
           ) : null}
         </table>
       </div>
