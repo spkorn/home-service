@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useUser } from "../hooks/user";
 
 function LoginPage() {
-  const { login } = useAuth();
+  const { login, errorLogin, setErrorLogin } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -54,6 +54,7 @@ function LoginPage() {
                 name="email"
                 placeholder="กรุณากรอกอีเมล"
                 onChange={(event) => {
+                  setErrorLogin("");
                   validateEmail(event);
                 }}
                 value={email}
@@ -74,6 +75,7 @@ function LoginPage() {
                 type="password"
                 placeholder="กรุณากรอกรหัสผ่าน"
                 onChange={(event) => {
+                  setErrorLogin("");
                   validatePassword(event);
                 }}
                 value={password}
@@ -86,6 +88,7 @@ function LoginPage() {
           <br />
           <div className="form-actions">
             <p className="text-red text-xs text-center">{errorForm}</p>
+            {errorLogin !==""? <p className="text-red text-xs text-center">{errorLogin}</p> : null}
             <button className="btn-primary w-full mt-5 mb-[42px]" type="submit">
               เข้าสู่ระบบ
             </button>
