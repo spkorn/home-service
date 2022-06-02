@@ -173,7 +173,7 @@ values (2, 1, 3);
 insert into checkout_quantity (sub_service_id, checkout_id, sub_service_quantity)
 values (3, 1, 5);
 insert into checkout_quantity (sub_service_id, checkout_id, sub_service_quantity)
-values (4, 1, 4);
+values (4, 3, 4);
 insert into checkout_quantity (sub_service_id, checkout_id, sub_service_quantity)
 values (13, 4, 1);
 insert into checkout_quantity (sub_service_id, checkout_id, sub_service_quantity)
@@ -204,21 +204,21 @@ insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman
 insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ธงไชย แมคอินไตย์', 'ติดตั้งเครื่องดูดควัน', 'เสร็จช้าแต่เสร็จนะ');
 
 insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)
-values (1, 1, 10, 'AA000001', 'กำลังดำเนินการ');
+values (6, 1, 10, 'AA000001', 'กำลังดำเนินการ');
 insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)
-values (1, 2, 10, 'AA000002', 'รอดำเนินการ');
+values (4, 2, 10, 'AA000002', 'รอดำเนินการ');
 insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)
-values (10, 3, 8, 'AA000003', 'ดำเนินการสำเร็จ');
+values (6, 3, 8, 'AA000003', 'ดำเนินการสำเร็จ');
 insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)
 values (4, 4, 7, 'AA000004', 'ดำเนินการสำเร็จ');
 insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)
-values (9, 5, 6, 'AA000005', 'รอดำเนินการ');
+values (7, 5, 6, 'AA000005', 'รอดำเนินการ');
 insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)
 values (9, 6, 6, 'AA000006', 'กำลังดำเนินการ');
 insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)
-values (6, 7, 4, 'AA000007', 'รอดำเนินการ');
+values (9, 7, 4, 'AA000007', 'รอดำเนินการ');
 insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)
-values (6, 8, 3, 'AA000008', 'ดำเนินการสำเร็จ');
+values (7, 8, 3, 'AA000008', 'ดำเนินการสำเร็จ');
 insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)
 values (7, 9, 2, 'AA000009', 'รอดำเนินการ');
 insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)

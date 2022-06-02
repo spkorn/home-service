@@ -136,9 +136,9 @@ function ServicesList(props) {
         <RoleAlertBox
           deleteFunction={back}
           hideFunction={hide}
-          textAlert="Unable to select service"
-          alertQuestion="You must be logged in as a customer."
-          primary="Logout"
+          textAlert="ไม่สามารถเลือกบริการได้"
+          alertQuestion="คุณต้องเข้าสู่ระบบเป็น Customer"
+          primary="ออกจากระบบ"
           secondary="ยกเลิก"
         />
       ) : null}

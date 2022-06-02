@@ -40,7 +40,7 @@ function Activity() {
               >
                 <div>
                   <div className="text-xl font-medium leading-[150%]">
-                    คำสังการซ่อมรหัส : {data.order_number}
+                    คำสั่งการซ่อมรหัส : {data.order_number}
                   </div>
                   <div className="h-12  flex flex-col gap-y-[9px] mt-3 mb-5 text-sm font-normal leading-[150%] text-grey700">
                     <div className="flex gap-x-[14.5px]">
@@ -52,7 +52,7 @@ function Activity() {
                       <div>
                         วันเวลาดำเนินการ:{" "}
                         <Moment format="DD MMMM YYYY HH:mm">
-                          {data.service_date_time}
+                          {data.service_date_time} {"น."}
                         </Moment>
                       </div>
                     </div>

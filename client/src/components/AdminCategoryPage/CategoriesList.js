@@ -2,13 +2,11 @@ import icons from "../../AdminPhoto/imageIndex.js";
 import "../../App.css";
 import Moment from "react-moment";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import AlertBoxDelete from "../AlertBox.js";
 
 function AdminCategories(props) {
   const {
     category,
-    getCategory,
     deleteCategoryId,
     categoryDeleteAlert,
     deleteCategory,
@@ -17,10 +15,6 @@ function AdminCategories(props) {
   } = props;
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    getCategory();
-  }, []);
 
   const hide = () => {
     document.getElementById("popUp").style.display = "none";

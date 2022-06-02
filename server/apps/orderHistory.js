@@ -108,8 +108,8 @@ orderHistoryRouter.get("/", async (req, res) => {
   let values = [];
 
   if (keywords) {
-    query = `select order_history.order_number, order_history.status, serviceman_detail.serviceman_name, 
-    service.service_name, users.email   
+    query = `select order_history.order_history_id, order_history.order_number, order_history.status, serviceman_detail.serviceman_name, 
+    service.service_name, users.email, checkout.service_date_time   
     from order_history
       inner join checkout
       on order_history.checkout_id = checkout.checkout_id
@@ -123,11 +123,12 @@ orderHistoryRouter.get("/", async (req, res) => {
       on checkout_quantity.sub_service_id = sub_service.sub_service_id
       inner join service
       on service.service_id = sub_service.service_id
-    where order_history.order_number ilike '%'||$1||'%'`;
+    where order_history.order_number ilike '%'||$1||'%'
+    order by order_history.order_history_id asc`;
     values = [keywords];
   } else {
-    query = `select order_history.order_number, order_history.status, serviceman_detail.serviceman_name, 
-  service.service_name, users.email   
+    query = `select order_history.order_history_id, order_history.order_number, order_history.status, serviceman_detail.serviceman_name, 
+  service.service_name, users.email, checkout.service_date_time   
   from order_history
       inner join checkout
       on order_history.checkout_id = checkout.checkout_id
@@ -140,7 +141,8 @@ orderHistoryRouter.get("/", async (req, res) => {
       inner join sub_service
       on checkout_quantity.sub_service_id = sub_service.sub_service_id
       inner join service
-      on service.service_id = sub_service.service_id`;
+      on service.service_id = sub_service.service_id
+      order by order_history.order_history_id asc`;
   }
 
   const result = await pool.query(query, values);
