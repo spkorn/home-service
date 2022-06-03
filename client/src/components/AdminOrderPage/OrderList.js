@@ -3,6 +3,7 @@ import Moment from "react-moment";
 import { useState } from "react";
 import axios from "axios";
 import EditAlertBox from "../AlertBox";
+import { useNavigate } from "react-router-dom";
 
 function AdminOrderList(props) {
   const { allOrder, searchOrderData } = props;
@@ -15,6 +16,8 @@ function AdminOrderList(props) {
       status,
     });
   };
+
+  const navigate = useNavigate();
 
   const edited = () => {
     updateStatusById();
@@ -41,7 +44,6 @@ function AdminOrderList(props) {
               <th className="py-3 font-normal">ชื่อบริการ</th>
               <th className="py-3 font-normal w-[170px]">พนักงาน</th>
               <th className="py-3 font-normal">สถานะ</th>
-
               <th className="py-3 font-normal w-[270px]">Customer Email</th>
               <th className="py-3 font-normal w-[185px]">วันเวลาดำเนินการ</th>
             </tr>
@@ -52,7 +54,12 @@ function AdminOrderList(props) {
             {allOrder.map((data, index) => {
               return (
                 <tr className="border-t border-grey200" key={index}>
-                  <td className="font-light text-center h-24">
+                  <td
+                    className="font-normal text-center h-24 underline cursor-pointer hover:text-grey700"
+                    onClick={() =>
+                      navigate(`/order/detail/${data.order_history_id}`)
+                    }
+                  >
                     {data.order_number}
                   </td>
                   <td className="font-light">{data.service_name}</td>
@@ -113,7 +120,8 @@ function AdminOrderList(props) {
                   <td className="font-light mr-6 w-[185px]">
                     <Moment format="DD/MM/YYYY HH:mm">
                       {data.service_date_time}
-                    </Moment> น.
+                    </Moment>{" "}
+                    น.
                   </td>
                 </tr>
               );

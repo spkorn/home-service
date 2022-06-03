@@ -52,11 +52,22 @@ function EditedCategoryForm() {
         className="header-and-content ml-60 h-screen"
         onSubmit={handleSubmit}
       >
-        <AdminEditedHeader
-          back={() => navigate("/category-dashboard")}
-          title="หมวดหมู่"
-          name={category.category_name}
-        />
+        <AdminEditedHeader title="หมวดหมู่" name={category.category_name} back={() => navigate("/category-dashboard")}>
+          <button
+            className="btn-secondary 
+            w-28 h-11 "
+            type="button"
+            onClick={() => navigate("/category-dashboard")}
+          >
+            ยกเลิก
+          </button>
+          <button
+            className="btn-primary 
+          w-28 h-11"
+          >
+            ยืนยัน
+          </button>
+        </AdminEditedHeader>
         <div className="editCategory h-1/5 w-full py-14 px-10 flex flex-col ">
           <div className="editBox bg-white h-auto border border-grey200 rounded-lg px-6 py-10 w-full">
             <div className="input-box flex  items-center h-11 w-3/5">
@@ -79,24 +90,24 @@ function EditedCategoryForm() {
              h-24 flex"
             >
               <div className="h-11 flex-col">
-                <div className="text-base text-grey700 font-medium mt-3 mb-6">
+                <h5 className="text-base text-grey700 font-medium mt-3 mb-6">
                   สร้างเมื่อ
-                </div>
-                <div className="text-base text-grey700 font-medium mt-3 mb-6">
+                </h5>
+                <h5 className="text-base text-grey700 font-medium mt-3 mb-6">
                   แก้ไขล่าสุด
-                </div>
+                </h5>
               </div>
               <div className="ml-16 flex-col my-1">
-                <div className="mt-3 mb-6">
+                <p className="mt-3 mb-6">
                   <Moment format="DD/MM/YYYY hh:mm A">
                     {category.category_created_date}
                   </Moment>
-                </div>
-                <div className="mt-3 mb-6">
+                </p>
+                <p className="mt-3 mb-6">
                   <Moment format="DD/MM/YYYY hh:mm A">
                     {category.category_edited_date}
                   </Moment>
-                </div>
+                </p>
               </div>
             </div>
           </div>

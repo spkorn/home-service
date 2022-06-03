@@ -103,10 +103,23 @@ function ServiceEditForm() {
   return (
     <form className="pl-60 min-h-screen" onSubmit={handleSubmit}>
       <AdminEditedHeader
-        back={() => navigate("/service-dashboard")}
-        title="บริการ"
+          title="บริการ"
         name={editHeader}
-      />
+        back={() => navigate("/service-dashboard")}
+        ><button
+          className="btn-secondary 
+            w-28 h-11 "
+          type="button"
+          onClick={() => navigate("/service-dashboard")}
+        >
+          ยกเลิก
+        </button>
+        <button
+          className="btn-primary 
+          w-28 h-11"
+        >
+          ยืนยัน
+        </button></AdminEditedHeader>
       <div className=" bg-bg pb-4">
         <div className="py-10">
           <div className=" bg-white mx-10 p-6 border border-grey200 rounded-lg">
@@ -266,24 +279,24 @@ function ServiceEditForm() {
             <hr className="text-grey300 my-10" />
             <div className="h-[100px] w-[387px] flex flex-col justify-between">
               <div className="h-11 w-[387px] flex justify-between items-center">
-                <label className="font-medium text-base text-grey700">
+                <h5 className="font-medium text-base text-grey700">
                   สร้างเมื่อ
-                </label>
-                <div>
+                </h5>
+                <p>
                   <Moment format="DD/MM/YYYY hh:mm A">
                     {service[0].service_created_date}
                   </Moment>
-                </div>
+                </p>
               </div>
               <div className="h-11 w-[387px] flex justify-between">
-                <label className="font-medium text-base items-center text-grey700">
+                <h5 className="font-medium text-base items-center text-grey700">
                   แก้ไขล่าสุด
-                </label>
-                <div>
+                </h5>
+                <p>
                   <Moment format="DD/MM/YYYY hh:mm A">
                     {service[service.length - 1].service_edited_date}
                   </Moment>
-                </div>
+                </p>
               </div>
             </div>
           </div>
