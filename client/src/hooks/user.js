@@ -32,13 +32,11 @@ export function useUser() {
   const [phoneNumberError, setPhoneNumberError] = useState("");
 
   const validatePhoneNumber = (event) => {
+    const pattern = /^0[6-9]{1}[0-9]{8}$/;
     var validPhoneNumber = event.target.value;
     if (validator.isEmpty(validPhoneNumber)) {
       setPhoneNumberError("กรุณากรอกเบอร์โทรศัพท์");
-    } else if (
-      !validator.isNumeric(validPhoneNumber) ||
-      validPhoneNumber.length !== 10
-    ) {
+    } else if (!validator.matches(validPhoneNumber, pattern)) {
       setPhoneNumberError("กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง");
     } else {
       setPhoneNumberError("");
@@ -52,7 +50,7 @@ export function useUser() {
 
   const validateName = (event) => {
     var validName = event.target.value;
-    const pattern = /^[a-zA-Z]+ [a-zA-Z]+$/;
+    const pattern = /\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/;
     if (validator.isEmpty(validName)) {
       setNameError("กรุณากรอกชื่อ-นามสกุล");
     } else if (!validator.matches(validName, pattern)) {
