@@ -83,16 +83,16 @@ order_number text not null,
 status text not null
 );
 
-insert into users (name, phoneNumber, email, password, role) values ('Stephan Edmeades', '0879316420', 'sedmeades0@goodreads.com', 'iP4EAxpCF4i', 'customer');
-insert into users (name, phoneNumber, email, password, role) values ('Fredia Nijs', '0342821343', 'fnijs1@twitpic.com', 'Yuapex', 'customer');
-insert into users (name, phoneNumber, email, password, role) values ('Tessie Gadeaux', '0228320111', 'tgadeaux2@soundcloud.com', 'JJFYDDIFdQ', 'customer');
-insert into users (name, phoneNumber, email, password, role) values ('Corrine Revill', '0298476902', 'crevill3@wunderground.com', 'CU6F9kkpdx9H', 'customer');
-insert into users (name, phoneNumber, email, password, role) values ('Alexi Sword', '0292112304', 'asword4@hibu.com', 'GWlTsOVW', 'customer');
-insert into users (name, phoneNumber, email, password, role) values ('Bernetta Goatman', '0885067947', 'bgoatman5@creativecommons.org', 'dlCSIq78BU', 'customer');
-insert into users (name, phoneNumber, email, password, role) values ('Burnaby Trouel', '0607150189', 'btrouel6@microsoft.com', 'pwRWWe5rC3x', 'admin');
-insert into users (name, phoneNumber, email, password, role) values ('Del Kliement', '0165268368', 'dkliement7@360.cn', 'PX6YMnV', 'admin');
-insert into users (name, phoneNumber, email, password, role) values ('Supakorn Korn', '0165656658', 'kornpupakorn@gmail.com', 'maiborkmaibork', 'admin');
-insert into users (name, phoneNumber, email, password, role) values ('Prayuth Huakuy', '0000222332', 'hahaha@360.cn', 'PArnPards', 'customer');
+insert into users (name, phoneNumber, email, password, role) values ('ประจักษ์ เห็นคาตา', '0879316420', 'sedmeades0@goodreads.com', 'iP4EAxpCF4i', 'customer');
+insert into users (name, phoneNumber, email, password, role) values ('สดับ เสียงรับฟัง', '0342821343', 'fnijs1@twitpic.com', 'Yuapex', 'customer');
+insert into users (name, phoneNumber, email, password, role) values ('โหน่ง มนจิตรา', '0228320111', 'tgadeaux2@soundcloud.com', 'JJFYDDIFdQ', 'customer');
+insert into users (name, phoneNumber, email, password, role) values ('ตรงธรรม พร้อมรักษ์', '0298476902', 'crevill3@wunderground.com', 'CU6F9kkpdx9H', 'customer');
+insert into users (name, phoneNumber, email, password, role) values ('ธรรมชาติ ศาสตร์ไสยคุณ', '0292112304', 'asword4@hibu.com', 'GWlTsOVW', 'customer');
+insert into users (name, phoneNumber, email, password, role) values ('วิหกทัพ รุ่งเรื่องเครื่องเงิน', '0885067947', 'bgoatman5@creativecommons.org', 'dlCSIq78BU', 'customer');
+insert into users (name, phoneNumber, email, password, role) values ('นาคา น้ำสดใส', '0607150189', 'btrouel6@microsoft.com', 'pwRWWe5rC3x', 'admin');
+insert into users (name, phoneNumber, email, password, role) values ('เทพ ธงทองเงิน', '0165268368', 'dkliement7@360.cn', 'PX6YMnV', 'admin');
+insert into users (name, phoneNumber, email, password, role) values ('สมหญิง สินมั่งคั่ง', '0165656658', 'kornpupakorn@gmail.com', 'maiborkmaibork', 'admin');
+insert into users (name, phoneNumber, email, password, role) values ('พรพล แสงปทุมทัพ', '0000222332', 'hahaha@360.cn', 'PArnPards', 'customer');
 
 insert into category (category_name, category_created_date, category_edited_date) values ('บริการห้องครัว', '2021-09-18T02:26:51Z', '2022-02-17T15:15:13Z');
 insert into category (category_name, category_created_date, category_edited_date) values ('บริการทั่วไป', '2022-04-22T12:24:24Z', '2022-04-12T04:17:17Z');
@@ -192,16 +192,16 @@ insert into checkout_quantity (sub_service_id, checkout_id, sub_service_quantity
 values (21, 5, 1);
 	
 
-insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('สมศักดิ์ เจียมธีรสกุล', 'ซ่อมแอร์', 'ว่างรับงาน');
-insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ประวิตร วงษ์สุวรรณ', 'ติดตั้งเตาแก๊ส', 'ลาพักร้อนถึงเดือนหน้า');
-insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ชวน หลีกภัย', 'ติดตั้งแอร์', 'ว่าง');
-insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('เนติวิทย์ โชติพัฒน์ไพศาล', 'ทำความสะอาดทั่วไป', 'แต่แพ้ Dettol');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ไพบูลย์ ชูศักดิ์', 'ซ่อมแอร์', 'ว่างรับงาน');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ประสงค์ ลาภเพิ่ม', 'ติดตั้งเตาแก๊ส', 'ลาพักร้อนถึงเดือนหน้า');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ทศเทพ ไทยทศวรรษ', 'ติดตั้งแอร์', 'ว่าง');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('พลกร ใจใส', 'ทำความสะอาดทั่วไป', 'แต่แพ้ Dettol');
 insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ศุภกร มีลาภ', 'ติดตั้งตู้เย็น', 'คิวยาวทุกวันไปอีกสองสัปดาห์');
 insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ปารย์ เหรียญกิจการ', 'ล้างแอร์', 'ไม่ว่างสัปดาห์หน้า');
-insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ชัชชาติ สิทธิพันธุ์', 'ติดตั้งชักโครก', 'ลาออกไปแล้ว');
-insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('วิโรจน์ กาวไก่', 'ติดตั้งเครื่องทำน้ำอุ่น', 'ว่างรับงาน');
-insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('อัศวิน ขวัญเมือง', 'ซ่อมเครื่องซักผ้า', 'ว่างยาวเพราะตกงาน');
-insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ธงไชย แมคอินไตย์', 'ติดตั้งเครื่องดูดควัน', 'เสร็จช้าแต่เสร็จนะ');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ปกรณัม เทพฉายาลักษณ์', 'ติดตั้งชักโครก', 'ลาออกไปแล้ว');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('สมชาย อาจหาญชาญชัย', 'ติดตั้งเครื่องทำน้ำอุ่น', 'ว่างรับงาน');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ประเทือง แสงเรืองรอง', 'ซ่อมเครื่องซักผ้า', 'ว่างยาวเพราะตกงาน');
+insert into serviceman_detail (serviceman_name, serviceman_expertise, serviceman_status) values ('ปิยวรรณ แม้นจำปา', 'ติดตั้งเครื่องดูดควัน', 'เสร็จช้าแต่เสร็จนะ');
 
 insert into order_history (serviceman_detail_id, checkout_id, user_id, order_number, status)
 values (6, 1, 10, 'AA000001', 'กำลังดำเนินการ');

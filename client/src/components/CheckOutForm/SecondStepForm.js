@@ -20,7 +20,6 @@ function SecondStep(props) {
     subService,
     total,
     setStep,
-    setService,
     service_name,
     note,
     setNote,
@@ -100,30 +99,13 @@ function SecondStep(props) {
     borderColor: "#ccd0d7",
   };
 
-  console.log(service_name);
-  console.log(total);
-  console.log(subService);
-
   const backStep = () => {
-    setService([
-      {
-        service_name: "",
-        category_name: "",
-        service_photo: { url: "", publicId: "" },
-        sub_service_name: "",
-        unit: "",
-        price_per_unit: 0,
-        service_created_date: "",
-        service_edited_date: "",
-        sub_service_quantity: 0,
-      },
-    ]);
     setStep(1);
   };
 
   const nextStep = () => {
     if (
-      bookingDateAndTime !== "" &&
+      bookingDateAndTime !== null &&
       fullAddress.address !== "" &&
       fullAddress.subdistrict !== "" &&
       fullAddress.district !== "" &&
@@ -286,7 +268,7 @@ function SecondStep(props) {
           </div>
         </div>
         <Summary total={total}>
-          {bookingDateAndTime !== "" &&
+          {bookingDateAndTime !== null &&
           fullAddress.address !== "" &&
           fullAddress.subdistrict !== "" &&
           fullAddress.district !== "" &&
