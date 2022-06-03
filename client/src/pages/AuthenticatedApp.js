@@ -12,6 +12,7 @@ import NotFoundPage from "./NotFoundPage";
 import AllStepCheckOutForm from "./AllStepCheckOutForm";
 import OrderHistory from "./OrderHistory";
 import AdminOrder from "./AdminOrderPage";
+import AdminOrderDetailPage from "./AdminOrderDetailPage";
 
 function AuthenticatedApp() {
   const loginRole = localStorage.getItem("role");
@@ -35,7 +36,11 @@ function AuthenticatedApp() {
             element={<AdminEditService />}
           />
           <Route path="/order-dashboard" element={<AdminOrder />} />
-          <Route path="*" element={<NotFoundPage />} /> 
+          <Route
+            path="/order/detail/:orderHistoryId"
+            element={<AdminOrderDetailPage />}
+          />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       ) : (
         <Routes>
@@ -46,11 +51,8 @@ function AuthenticatedApp() {
           <Route
             path="/checkout/:serviceId"
             element={<AllStepCheckOutForm />}
-            />
-            <Route
-            path="/order-history/:userId"
-            element={<OrderHistory/>}
-            />
+          />
+          <Route path="/order-history/:userId" element={<OrderHistory />} />
         </Routes>
       )}
     </div>

@@ -7,7 +7,7 @@ import { useUtils } from "../hooks/utils";
 function AdminOrderPage() {
   const { searchOrder, setSearchOrder, allOrder, setAllOrder, searchOrderData } = useUtils();
   return (
-    <div className="admin-category-page">
+    <div className="admin-order-page">
       <SideBar />
       <AdminOrderHeader
         searchOrder={searchOrder}
