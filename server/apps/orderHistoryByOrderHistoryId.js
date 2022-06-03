@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { pool } from "../utils/db.js";
-import { protect } from "../middlewares/protects.js";
 
 const orderHistoryByOrderHistoryIdRouter = Router();
 
@@ -10,7 +9,8 @@ orderHistoryByOrderHistoryIdRouter.get("/:id", async (req, res) => {
 
   const result = await pool.query(
     `select order_history.order_number, checkout.service_date_time, order_history.status, serviceman_detail.serviceman_name, 
-  service.service_name, sub_service.sub_service_name, checkout_quantity.sub_service_quantity, sub_service.unit, checkout.total_price    
+  service.service_name, sub_service.sub_service_name, checkout_quantity.sub_service_quantity, sub_service.unit, checkout.total_price
+  , checkout.address, checkout.sub_district, checkout.district, checkout.province, checkout.postal_code, users.phonenumber     
   from order_history
       inner join checkout
       on order_history.checkout_id = checkout.checkout_id
@@ -52,6 +52,12 @@ orderHistoryByOrderHistoryIdRouter.get("/:id", async (req, res) => {
         serviceman_name: countOrderNumber[i].serviceman_name,
         service_name: countOrderNumber[i].service_name,
         total_price: countOrderNumber[i].total_price,
+        phonenumber: countOrderNumber[i].phonenumber,
+        address: countOrderNumber[i].address,
+        sub_district: countOrderNumber[i].sub_district,
+        district: countOrderNumber[i].district,
+        province: countOrderNumber[i].province,
+        zipcode: countOrderNumber[i].postal_code,
       });
     }
 
@@ -97,6 +103,7 @@ orderHistoryByOrderHistoryIdRouter.get("/:id", async (req, res) => {
 
   return res.status(200).json({
     data: newResult,
+    //data: result.rows,
   });
 });
 
