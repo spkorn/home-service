@@ -50,7 +50,7 @@ export function useUser() {
 
   const validateName = (event) => {
     var validName = event.target.value;
-    const pattern = /^[a-zA-Z]+ [-,a-zA-Z]+$/;
+    const pattern = /^[-,a-zA-Z'.]+ [-,a-zA-Z'.]+$/;
     if (validator.isEmpty(validName)) {
       setNameError("กรุณากรอกชื่อ-นามสกุล");
     } else if (!validator.matches(validName, pattern)) {
