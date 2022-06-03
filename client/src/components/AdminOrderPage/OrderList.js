@@ -1,29 +1,12 @@
 import "../../App.css";
 import Moment from "react-moment";
-import { useState } from "react";
 import EditAlertBox from "../AlertBox";
 import { useNavigate } from "react-router-dom";
-import { useUtils } from "../../hooks/utils";
 
 function AdminOrderList(props) {
-  const { allOrder, searchOrderData } = props;
-  const { status, setStatus, editAlert, setEditAlert, updateStatusById } = useUtils();
-  const [orderHistoryId, setOrderHistoryId] = useState(0);
+  const { allOrder} = props;
 
   const navigate = useNavigate();
-
-  const edited = () => {
-    updateStatusById(orderHistoryId, {status});
-    searchOrderData();
-    document.getElementById("popUp").style.display = "none";
-    setEditAlert(false);
-  };
-
-  const hide = () => {
-    setStatus("");
-    document.getElementById("popUp").style.display = "none";
-    setEditAlert(false);
-  };
 
   return (
     <div className="min-h-screen bg-bg p-[41px] pb-24">
@@ -59,53 +42,19 @@ function AdminOrderList(props) {
                     {data.serviceman_name}
                   </td>
                   <td className="font-light mr-6">
-                    <div className="dropdown cursor-pointer">
                       {data.status === "รอดำเนินการ" ? (
-                        <div className="bg-grey200 text-grey900 px-2.5 py-1 rounded-lg text-xs">
+                        <div className="w-fit bg-grey200 text-grey900 px-2.5 py-1 rounded-lg text-xs">
                           {data.status}
                         </div>
                       ) : data.status === "กำลังดำเนินการ" ? (
-                        <div className="bg-yellow100 text-yellow900 px-2.5 py-1 rounded-lg text-xs">
+                        <div className="w-fit bg-yellow100 text-yellow900 px-2.5 py-1 rounded-lg text-xs">
                           {data.status}
                         </div>
                       ) : (
-                        <div className="bg-green100 text-green900 px-2.5 py-1 rounded-lg text-xs">
+                        <div className="w-fit bg-green100 text-green900 px-2.5 py-1 rounded-lg text-xs">
                           {data.status}
                         </div>
                       )}
-                      <div className="dropdown-content cursor-pointer w-36">
-                        <div
-                          className="ml-4"
-                          onClick={() => {
-                            setStatus("รอดำเนินการ");
-                            setOrderHistoryId(data.order_history_id);
-                            setEditAlert(true);
-                          }}
-                        >
-                          <p>รอดำเนินการ</p>
-                        </div>
-                        <div
-                          className="ml-4"
-                          onClick={() => {
-                            setStatus("กำลังดำเนินการ");
-                            setOrderHistoryId(data.order_history_id);
-                            setEditAlert(true);
-                          }}
-                        >
-                          <p>กำลังดำเนินการ</p>
-                        </div>
-                        <div
-                          className="ml-4"
-                          onClick={() => {
-                            setStatus("ดำเนินการสำเร็จ");
-                            setOrderHistoryId(data.order_history_id);
-                            setEditAlert(true);
-                          }}
-                        >
-                          <p>ดำเนินการสำเร็จ</p>
-                        </div>
-                      </div>
-                    </div>
                   </td>
                   <td className="font-light mr-6">
                     <Moment format="DD/MM/YYYY HH:mm">
@@ -118,16 +67,6 @@ function AdminOrderList(props) {
             })}
           </tbody>
         </table>
-        {editAlert ? (
-          <EditAlertBox
-            deleteFunction={edited}
-            hideFunction={hide}
-            textAlert="ยืนยันการแก้ไข"
-            alertQuestion="คุณต้องการแก้ไขสถานะ ใช่หรือไม่ ?"
-            primary="ยืนยัน"
-            secondary="ยกเลิก"
-          />
-        ) : null}
       </div>
     </div>
   );
