@@ -5,7 +5,13 @@ import SideBar from "../components/AdminSideBar";
 import { useUtils } from "../hooks/utils";
 
 function AdminOrderPage() {
-  const { searchOrder, setSearchOrder, allOrder, setAllOrder, searchOrderData } = useUtils();
+  const {
+    searchOrder,
+    setSearchOrder,
+    allOrder,
+    setAllOrder,
+    searchOrderData,
+  } = useUtils();
   return (
     <div className="admin-order-page">
       <SideBar />
@@ -15,10 +21,7 @@ function AdminOrderPage() {
         setAllOrder={setAllOrder}
         searchOrderData={searchOrderData}
       />
-      <AdminOrderList
-        searchOrderData={searchOrderData}
-        allOrder={allOrder}
-      />
+      <AdminOrderList allOrder={allOrder} />
     </div>
   );
 }

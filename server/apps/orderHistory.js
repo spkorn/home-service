@@ -109,14 +109,12 @@ orderHistoryRouter.get("/", async (req, res) => {
 
   if (keywords) {
     query = `select order_history.order_history_id, order_history.order_number, order_history.status, serviceman_detail.serviceman_name, 
-    service.service_name, users.email, checkout.service_date_time   
+    service.service_name, checkout.service_date_time   
     from order_history
       inner join checkout
       on order_history.checkout_id = checkout.checkout_id
       inner join serviceman_detail
       on serviceman_detail.serviceman_detail_id = order_history.serviceman_detail_id
-      inner join users
-      on users.user_id = order_history.user_id
       inner join checkout_quantity
       on checkout_quantity.checkout_id = checkout.checkout_id
       inner join sub_service
@@ -128,14 +126,12 @@ orderHistoryRouter.get("/", async (req, res) => {
     values = [keywords];
   } else {
     query = `select order_history.order_history_id, order_history.order_number, order_history.status, serviceman_detail.serviceman_name, 
-  service.service_name, users.email, checkout.service_date_time   
+  service.service_name, checkout.service_date_time   
   from order_history
       inner join checkout
       on order_history.checkout_id = checkout.checkout_id
       inner join serviceman_detail
       on serviceman_detail.serviceman_detail_id = order_history.serviceman_detail_id
-      inner join users
-      on users.user_id = order_history.user_id
       inner join checkout_quantity
       on checkout_quantity.checkout_id = checkout.checkout_id
       inner join sub_service

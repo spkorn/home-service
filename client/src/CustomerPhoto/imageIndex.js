@@ -13,6 +13,10 @@ import completeIcon from './icons/complete-icon.png';
 import AMEX from "./icons/Amex.svg";
 import VISA from "./icons/Visa.svg";
 import MASTERCARD from "./icons/Mastercard.svg";
+import PhoneNumber from "./icons/PhoneNumber.svg"
+import Home from "./icons/Home.svg"
+import name from "./icons/CustomerName.svg"
+import email from "./icons/email.svg"
 
 
 const image = {
@@ -30,7 +34,11 @@ const image = {
   StepPaymentIcon,
   VISA,
   AMEX,
-  MASTERCARD
+  MASTERCARD,
+  PhoneNumber,
+  Home,
+  name,
+  email
 }
 
 export default image;
