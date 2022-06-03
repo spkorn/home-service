@@ -19,25 +19,16 @@
 // });
 
 // happy case #1.1 - test successful registration (hard code version)
-it("user should register successfully", () => {
-  cy.visit("http://localhost:3000/register").viewport(1500, 660);
-  cy.get("#name").type("Chadchart Sittipun");
-  cy.get("#phoneNumber").type("0879316420");
-  cy.get("#email").type("Chadchart@sittipun.com");
-  cy.get("#password").type("Chat888Chard");
-  cy.get("#conditionAndPrivacy").click();
-  cy.get(".btn-primary").click();
-  cy.url().should("eq", "http://localhost:3000/login");
-});
-
-// happy case#2 - test successful login
-it("user should login successfully", () => {
-  cy.visit("http://localhost:3000/login").viewport(1500, 660);
-  cy.get("#email").type("korn-supakorn@gmail.com");
-  cy.get("#password").type("kornsupakorn");
-  cy.get(".btn-primary").click();
-  cy.url().should("eq", "http://localhost:3000/");
-});
+// it("user should register successfully", () => {
+//   cy.visit("http://localhost:3000/register").viewport(1500, 660);
+//   cy.get("#name").type("Chadchart Sittipun");
+//   cy.get("#phoneNumber").type("0879316420");
+//   cy.get("#email").type("Chadchart@sittipun.com");
+//   cy.get("#password").type("Chat888Chard");
+//   cy.get("#conditionAndPrivacy").click();
+//   cy.get(".btn-primary").click();
+//   cy.url().should("eq", "http://localhost:3000/login");
+// });
 
 // edge case #1 - test unsuccessful registration due to incomplete filling
 it("user should not be able to register because of one missing filling", () => {
@@ -69,6 +60,5 @@ it("user should not be able to register", () => {
   cy.url().should("eq", "http://localhost:3000/register");
 });
 
-// edge case #3
 
 
