@@ -157,7 +157,7 @@ export function useUtils() {
     province: "",
     zipcode: "",
   });
-  
+
   const [total, setTotal] = useState("");
   const [note, setNote] = useState("");
 
@@ -166,6 +166,13 @@ export function useUtils() {
       `http://localhost:4000/orderHistory?keywords=${searchOrder}`
     );
     setAllOrder(results.data.data);
+  };
+
+  //update status
+  const [status, setStatus] = useState("");
+  const [editAlert, setEditAlert] = useState(false);
+  const updateStatusById = async (orderHistoryId, data) => {
+  await axios.put(`http://localhost:4000/orderHistory/${orderHistoryId}`, data);
   };
 
   return {
@@ -243,5 +250,10 @@ export function useUtils() {
     allOrder,
     setAllOrder,
     searchOrderData,
+    status,
+    setStatus,
+    editAlert,
+    setEditAlert,
+    updateStatusById,
   };
 }

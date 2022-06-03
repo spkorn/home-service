@@ -65,12 +65,12 @@ function Activity() {
                       <div>พนักงาน: {data.serviceman_name}</div>
                     </div>
                   </div>
-                  <div className="text-base font-normal leading-[150%] text-grey700">
+                  <div className="text-base font-normal leading-[150%] text-black">
                     รายการ: {data.service_name}
                     <ul className="flex flex-col list-disc ml-3">
                       {data.sub_service.map((subService, index) => {
                         return (
-                          <li key={index} className="ml-2 my-1 text-black font-normal text-sm">
+                          <li key={index} className="ml-2 my-1 font-normal text-sm">
                             {subService.sub_service_name},{" "}
                             {subService.sub_service_quantity} {subService.unit}
                           </li>

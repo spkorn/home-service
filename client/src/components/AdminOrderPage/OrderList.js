@@ -1,26 +1,19 @@
 import "../../App.css";
 import Moment from "react-moment";
 import { useState } from "react";
-import axios from "axios";
 import EditAlertBox from "../AlertBox";
 import { useNavigate } from "react-router-dom";
+import { useUtils } from "../../hooks/utils";
 
 function AdminOrderList(props) {
   const { allOrder, searchOrderData } = props;
-  const [status, setStatus] = useState("");
-  const [editAlert, setEditAlert] = useState(false);
+  const { status, setStatus, editAlert, setEditAlert, updateStatusById } = useUtils();
   const [orderHistoryId, setOrderHistoryId] = useState(0);
-
-  const updateStatusById = async () => {
-    await axios.put(`http://localhost:4000/orderHistory/${orderHistoryId}`, {
-      status,
-    });
-  };
 
   const navigate = useNavigate();
 
   const edited = () => {
-    updateStatusById();
+    updateStatusById(orderHistoryId, {status});
     searchOrderData();
     document.getElementById("popUp").style.display = "none";
     setEditAlert(false);
@@ -42,10 +35,9 @@ function AdminOrderList(props) {
                 รหัสคำสั่งการซ่อม
               </th>
               <th className="py-3 font-normal">ชื่อบริการ</th>
-              <th className="py-3 font-normal w-[170px]">พนักงาน</th>
+              <th className="py-3 font-normal">พนักงาน</th>
               <th className="py-3 font-normal">สถานะ</th>
-              <th className="py-3 font-normal w-[270px]">Customer Email</th>
-              <th className="py-3 font-normal w-[185px]">วันเวลาดำเนินการ</th>
+              <th className="py-3 font-normal">วันเวลาดำเนินการ</th>
             </tr>
           </thead>
         </table>
@@ -55,7 +47,7 @@ function AdminOrderList(props) {
               return (
                 <tr className="border-t border-grey200" key={index}>
                   <td
-                    className="font-normal text-center h-24 underline cursor-pointer hover:text-grey700"
+                    className="btn-ghost text-center h-24 cursor-pointer"
                     onClick={() =>
                       navigate(`/order/detail/${data.order_history_id}`)
                     }
@@ -63,7 +55,7 @@ function AdminOrderList(props) {
                     {data.order_number}
                   </td>
                   <td className="font-light">{data.service_name}</td>
-                  <td className="font-light w-[170px]">
+                  <td className="font-light">
                     {data.serviceman_name}
                   </td>
                   <td className="font-light mr-6">
@@ -98,7 +90,6 @@ function AdminOrderList(props) {
                             setStatus("กำลังดำเนินการ");
                             setOrderHistoryId(data.order_history_id);
                             setEditAlert(true);
-                            console.log(orderHistoryId);
                           }}
                         >
                           <p>กำลังดำเนินการ</p>
@@ -116,8 +107,7 @@ function AdminOrderList(props) {
                       </div>
                     </div>
                   </td>
-                  <td className="font-light w-[270px]">{data.email}</td>
-                  <td className="font-light mr-6 w-[185px]">
+                  <td className="font-light mr-6">
                     <Moment format="DD/MM/YYYY HH:mm">
                       {data.service_date_time}
                     </Moment>{" "}

@@ -10,7 +10,7 @@ orderHistoryByOrderHistoryIdRouter.get("/:id", async (req, res) => {
   const result = await pool.query(
     `select order_history.order_number, checkout.service_date_time, order_history.status, serviceman_detail.serviceman_name, 
   service.service_name, sub_service.sub_service_name, checkout_quantity.sub_service_quantity, sub_service.unit, checkout.total_price
-  , checkout.address, checkout.sub_district, checkout.district, checkout.province, checkout.postal_code, users.phonenumber     
+  , checkout.address, checkout.sub_district, checkout.district, checkout.province, checkout.postal_code, users.phonenumber, users.name, users.email     
   from order_history
       inner join checkout
       on order_history.checkout_id = checkout.checkout_id
@@ -53,6 +53,8 @@ orderHistoryByOrderHistoryIdRouter.get("/:id", async (req, res) => {
         service_name: countOrderNumber[i].service_name,
         total_price: countOrderNumber[i].total_price,
         phonenumber: countOrderNumber[i].phonenumber,
+        email: countOrderNumber[i].email,
+        name: countOrderNumber[i].name,
         address: countOrderNumber[i].address,
         sub_district: countOrderNumber[i].sub_district,
         district: countOrderNumber[i].district,
