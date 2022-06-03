@@ -1,13 +1,13 @@
-import image from "../HomePagePhoto/imageIndex";
-import { useNavigate } from "react-router-dom";
-import "../App.css";
+import image from '../HomePagePhoto/imageIndex'
+import { useNavigate } from 'react-router-dom'
+import '../App.css'
 
 function Footer() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   return (
     <footer className="home-page-footer">
       <div className="h-[150px] flex justify-between items-center px-[10vw] bg-white">
-        <div className="cursor-pointer flex" onClick={() => navigate("/")}>
+        <div className="cursor-pointer flex" onClick={() => navigate('/')}>
           <img
             className="w-[39.11px] h-[39.11px]"
             alt="homeservices"
@@ -26,7 +26,7 @@ function Footer() {
         <div className="footer-contact2">
           <div className="flex items-center mb-2 text-grey800">
             <img
-              className=" w-[15px] h-[15px] ml-2.5"
+              className=" w-[15px] h-[15px] mr-2.5"
               alt="phone icon"
               src={image.phoneIcon}
             />
@@ -34,7 +34,7 @@ function Footer() {
           </div>
           <div className="flex items-center text-grey800">
             <img
-              className="w-[16.67px] h-[13.33px] ml-2.5"
+              className="w-[16.67px] h-[13.33px] mr-2.5"
               alt="email icon"
               src={image.envelopeIcon}
             />
@@ -52,7 +52,7 @@ function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }
 
-export default Footer;
+export default Footer

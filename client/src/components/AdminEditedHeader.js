@@ -1,4 +1,4 @@
-import image from "../AdminPhoto/imageIndex";
+import image from '../AdminPhoto/imageIndex'
 
 function AdminEditedHeader(props) {
   return (
@@ -6,7 +6,7 @@ function AdminEditedHeader(props) {
       className="h-20 w-full flex items-center justify-between 
         border-b border-grey300 px-10 py-10 bg-white"
     >
-      <div className="flex justify-between h-12 w-fit">
+      <div className="flex gap-[14px] h-12 w-fit">
         <button onClick={props.back}>
           <img alt="Arrow Icon" src={image.arrow} className="w-10 h10" />
         </button>
@@ -19,6 +19,6 @@ function AdminEditedHeader(props) {
         {props.children}
       </div>
     </header>
-  );
+  )
 }
-export default AdminEditedHeader;
+export default AdminEditedHeader

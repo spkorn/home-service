@@ -1,15 +1,15 @@
-import "../../App.css";
-import { useNavigate } from "react-router-dom";
-import { useUtils } from "../../hooks/utils";
+import '../../App.css'
+import { useNavigate } from 'react-router-dom'
+import { useUtils } from '../../hooks/utils'
 
 function CreateCategoryForm() {
-  const navigate = useNavigate();
-  const { category_name, setCategory_name, createCategory } = useUtils();
+  const navigate = useNavigate()
+  const { category_name, setCategory_name, createCategory } = useUtils()
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    createCategory();
-  };
+    event.preventDefault()
+    createCategory()
+  }
 
   return (
     <form className="pl-60" onSubmit={handleSubmit}>
@@ -22,7 +22,7 @@ function CreateCategoryForm() {
           <button
             className="btn-secondary flex items-center
                justify-center text-base font-medium w-28 h-11"
-            onClick={() => navigate("/category-dashboard")}
+            onClick={() => navigate('/category-dashboard')}
           >
             ยกเลิก
           </button>
@@ -38,11 +38,11 @@ function CreateCategoryForm() {
       <div
         className="createCategory 
           bg-white border border-grey200
-           flex items-center rounded-lg h-32 mx-10 my-10 py-0 px-24"
+           flex items-center justify-start rounded-lg h-32 mx-10 my-10 py-0 pl-6 pr-[434px]"
       >
         <div
           className="inputForCreate 
-            flex justify-between items-center h-11 w-2/4"
+            flex justify-between items-center h-11 w-full"
         >
           <label className="h-6 text-grey700">
             ชื่อหมวดหมู่<span className="text-red">*</span>
@@ -53,16 +53,16 @@ function CreateCategoryForm() {
             name="categoryName"
             type="text"
             className="border rounded-lg border-grey300
-              focus:border-blue600 focus:outline-none w-4/6 h-11 py-2.5 px-4"
+              focus:border-blue600 focus:outline-none w-8/12 h-11 py-2.5 px-4"
             value={category_name}
             onChange={(event) => {
-              setCategory_name(event.target.value);
+              setCategory_name(event.target.value)
             }}
           />
         </div>
       </div>
     </form>
-  );
+  )
 }
 
-export default CreateCategoryForm;
+export default CreateCategoryForm
