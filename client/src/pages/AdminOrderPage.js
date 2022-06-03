@@ -18,7 +18,6 @@ function AdminOrderPage() {
       <AdminOrderList
         searchOrderData={searchOrderData}
         allOrder={allOrder}
-        searchOrder={searchOrder}
       />
     </div>
   );

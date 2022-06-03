@@ -2,7 +2,7 @@ import "../../App.css";
 import { useEffect } from "react";
 
 function AdminOrderHeader(props) {
-  const { searchOrder, setSearchOrder, searchOrderData, allOrder } = props;
+  const { searchOrder, setSearchOrder, searchOrderData} = props;
 
   useEffect(() => {
     searchOrderData();
