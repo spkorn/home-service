@@ -1,7 +1,9 @@
 import { Router } from "express";
 import { pool } from "../utils/db.js";
+import { protect } from "../middlewares/protects.js";
 
 const orderHistoryByOrderHistoryIdRouter = Router();
+orderHistoryByOrderHistoryIdRouter.use(protect);
 
 // API route to get order history by order history id
 orderHistoryByOrderHistoryIdRouter.get("/:id", async (req, res) => {

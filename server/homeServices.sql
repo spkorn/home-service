@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS users, service, category, sub_service, promotion, checkout,
 create table users (
 user_id int primary key generated always as identity,
 name varchar (100) not null,
-phoneNumber int not null,
+phoneNumber varchar(10) not null,
 email varchar (100) not null,
 password varchar (100) not null,
 role text not null

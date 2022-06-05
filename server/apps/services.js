@@ -1,10 +1,12 @@
 import { Router } from "express";
 import { pool } from "../utils/db.js";
-import { protect } from "../middlewares/protects.js";
 import multer from "multer";
 import { cloudinaryUpload } from "../utils/uploads.js";
+//import { protect } from "../middlewares/protects.js";
 
 const serviceRouter = Router();
+
+// comment ออก เพราะว่า user ที่ไม่ได้ login สามารถดูรายการ services ได้ด้วย
 //serviceRouter.use(protect);
 
 const multerUpload = multer({ dest: "uploads/" });

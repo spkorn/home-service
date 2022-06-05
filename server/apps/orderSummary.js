@@ -1,9 +1,9 @@
 import { Router } from "express";
 import { pool } from "../utils/db.js";
-import { protect } from "../middlewares/protects.js";
 
 const orderSummaryRouter = Router();
 
+// ไม่ได้ใช้ API นี้แล้ว แต่เก็บไว้เผื่อใช้ในอนาคต
 //API route to view order summary after payment
 orderSummaryRouter.get("/:id", async (req, res) => {
   const newOrderSummary = req.params.id;

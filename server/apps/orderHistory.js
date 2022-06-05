@@ -3,6 +3,7 @@ import { pool } from "../utils/db.js";
 import { protect } from "../middlewares/protects.js";
 
 const orderHistoryRouter = Router();
+orderHistoryRouter.use(protect);
 
 // API route to view order history by userId
 orderHistoryRouter.get("/:id", async (req, res) => {

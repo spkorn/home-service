@@ -1,8 +1,10 @@
 import { Router } from "express";
 import { pool } from "../utils/db.js";
-import { protect } from "../middlewares/protects.js";
+//import { protect } from "../middlewares/protects.js";
 
 const categoryRouter = Router();
+
+// comment ออก เพราะว่า user ที่ไม่ได้ login สามารถดูรายการ services ที่มี category ได้ด้วย
 //categoryRouter.use(protect);
 
 categoryRouter.get("/", async (req, res) => {
@@ -27,9 +29,10 @@ categoryRouter.get("/", async (req, res) => {
 
 categoryRouter.get("/:id", async (req, res) => {
   const categoryId = req.params.id;
-  const result = await pool.query(`select * from category where category_id=$1`, [
-    categoryId,
-  ]);
+  const result = await pool.query(
+    `select * from category where category_id=$1`,
+    [categoryId]
+  );
   return res.json({
     data: result.rows[0],
   });

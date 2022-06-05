@@ -3,6 +3,7 @@ import { pool } from "../utils/db.js";
 import { protect } from "../middlewares/protects.js";
 
 const checkoutRouter = Router();
+checkoutRouter.use(protect);
 
 // API route to add new checkout item to checkout table
 checkoutRouter.post("/", async (req, res) => {
@@ -12,16 +13,16 @@ checkoutRouter.post("/", async (req, res) => {
   let year = dateObj.getUTCFullYear().toString();
   let hours = dateObj.getHours().toString();
   let minutes = dateObj.getMinutes().toString();
-  let seconds = dateObj.getTime().toString().slice(0, 2);
-  
+  let seconds = dateObj.getTime().toString().slice(11, 13);
+
   if (day.length == 1) {
-    day = "0" + day
+    day = "0" + day;
   }
   if (month.length === 1) {
-    month = "0" + month 
+    month = "0" + month;
   }
   if (hours.length === 1) {
-    hours = "0" + hours
+    hours = "0" + hours;
   }
 
   const newdate = day + month + year + hours + minutes + seconds;
