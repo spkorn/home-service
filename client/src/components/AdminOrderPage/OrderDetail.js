@@ -11,7 +11,8 @@ import { useUtils } from "../../hooks/utils";
 function OrderDetail() {
   const params = useParams();
   const navigate = useNavigate();
-  const { status, setStatus, editAlert, setEditAlert, updateStatusById } = useUtils();
+  const { status, setStatus, editAlert, setEditAlert, updateStatusById } =
+    useUtils();
   const [orderByorderHistoryId, setOrderByorderHistoryId] = useState([]);
   const [orderNumber, setOrderNumber] = useState("");
 
@@ -33,8 +34,8 @@ function OrderDetail() {
     );
     setOrderByorderHistoryId(result.data.data);
     setOrderNumber(result.data.data[0].order_number);
-    };
-    
+  };
+
   useEffect(() => {
     getOrderDetailByorderHistoryId(params.orderHistoryId);
   }, [orderByorderHistoryId]);
@@ -110,7 +111,18 @@ function OrderDetail() {
                       alt="Address Icon"
                       src={image.Home}
                     />
-                    <div>ที่อยู่: {order.address} {order.sub_district} {order.district} {order.province} {order.zipcode}</div>
+                    <div>
+                      ที่อยู่: {order.address} {order.sub_district}{" "}
+                      {order.district} {order.province} {order.zipcode}
+                    </div>
+                  </div>
+                  <div className="flex gap-x-[14.5px]">
+                    <img
+                      className="h-3.5 w-5"
+                      alt="Pen Icon"
+                      src={image.penIcon}
+                    />
+                    <div>ข้อมูลเพิ่มเติม: {order.note}</div>
                   </div>
                 </div>
                 <div className="text-base font-normal ] text-black">
@@ -193,7 +205,7 @@ function OrderDetail() {
             </div>
           );
         })}
-                {editAlert ? (
+        {editAlert ? (
           <EditAlertBox
             deleteFunction={edited}
             hideFunction={hide}
