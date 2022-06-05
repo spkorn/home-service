@@ -12,7 +12,8 @@ orderHistoryByOrderHistoryIdRouter.get("/:id", async (req, res) => {
   const result = await pool.query(
     `select order_history.order_number, checkout.service_date_time, order_history.status, serviceman_detail.serviceman_name, 
   service.service_name, sub_service.sub_service_name, checkout_quantity.sub_service_quantity, sub_service.unit, checkout.total_price
-  , checkout.address, checkout.sub_district, checkout.district, checkout.province, checkout.postal_code, users.phonenumber, users.name, users.email     
+  , checkout.address, checkout.sub_district, checkout.district, checkout.province, checkout.postal_code, users.phonenumber, users.name, users.email
+  , checkout.note     
   from order_history
       inner join checkout
       on order_history.checkout_id = checkout.checkout_id
@@ -62,6 +63,7 @@ orderHistoryByOrderHistoryIdRouter.get("/:id", async (req, res) => {
         district: countOrderNumber[i].district,
         province: countOrderNumber[i].province,
         zipcode: countOrderNumber[i].postal_code,
+        note: countOrderNumber[i].note,
       });
     }
 
