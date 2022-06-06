@@ -99,14 +99,16 @@ function EditedCategoryForm() {
               </div>
               <div className="ml-16 flex-col my-1">
                 <p className="mt-3 mb-6">
-                  <Moment format="DD/MM/YYYY hh:mm A">
+                  <Moment format="DD/MM/YYYY hh:mm">
                     {category.category_created_date}
-                  </Moment>
+                  </Moment>{" "}
+                      น.
                 </p>
                 <p className="mt-3 mb-6">
-                  <Moment format="DD/MM/YYYY hh:mm A">
+                  <Moment format="DD/MM/YYYY hh:mm">
                     {category.category_edited_date}
-                  </Moment>
+                  </Moment>{" "}
+                      น.
                 </p>
               </div>
             </div>

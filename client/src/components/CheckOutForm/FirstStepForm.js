@@ -72,7 +72,7 @@ function FirstStepForm(props) {
 
   const nextStep = () => {
     if (subService.length !== 0) {
-      setTotal(totalPrice);
+      setTotal(Number(totalPrice.toFixed(2)));
       setService_name(service[0].service_name);
       setStep(2);
     } else {

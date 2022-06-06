@@ -28,7 +28,7 @@ function AuthProvider(props) {
       localStorage.setItem("token", token);
       const dataToken = jwtDecode(token);
       setState({ ...state, user: dataToken });
-      localStorage.setItem("name", dataToken.name); // ใช้อันนี้แล้ว user name บน nav ไม่หายตอน refresh
+      localStorage.setItem("name", dataToken.name);
       localStorage.setItem("user_id", dataToken.user_id);
       localStorage.setItem("role", dataToken.role);
       localStorage.setItem("phoneNumber", dataToken.phoneNumber);
@@ -48,7 +48,7 @@ function AuthProvider(props) {
   const logout = () => {
     localStorage.removeItem("token");
     setState({ ...state, user: null, error: null });
-    localStorage.removeItem("name"); // ลบข้อมูล user name ออกตอน logout
+    localStorage.removeItem("name"); 
     localStorage.removeItem("user_id");
     localStorage.removeItem("phoneNumbser");
     localStorage.removeItem("email");

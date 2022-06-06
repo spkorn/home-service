@@ -51,9 +51,10 @@ function Activity() {
                       />
                       <div>
                         วันเวลาดำเนินการ:{" "}
-                        <Moment format="DD MMMM YYYY HH:mm">
+                        <Moment format="DD/MM/YYYY HH:mm">
                           {data.service_date_time}
-                        </Moment> น.
+                        </Moment>{" "}
+                        น.
                       </div>
                     </div>
                     <div className="flex gap-x-[14.5px]">
@@ -70,7 +71,10 @@ function Activity() {
                     <ul className="flex flex-col list-disc ml-3">
                       {data.sub_service.map((subService, index) => {
                         return (
-                          <li key={index} className="ml-2 my-1 font-normal text-sm">
+                          <li
+                            key={index}
+                            className="ml-2 my-1 font-normal text-sm"
+                          >
                             {subService.sub_service_name},{" "}
                             {subService.sub_service_quantity} {subService.unit}
                           </li>

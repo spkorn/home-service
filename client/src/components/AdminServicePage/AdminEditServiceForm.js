@@ -283,9 +283,10 @@ function ServiceEditForm() {
                   สร้างเมื่อ
                 </h5>
                 <p>
-                  <Moment format="DD/MM/YYYY hh:mm A">
+                  <Moment format="DD/MM/YYYY hh:mm">
                     {service[0].service_created_date}
-                  </Moment>
+                  </Moment>{" "}
+                      น.
                 </p>
               </div>
               <div className="h-11 w-[387px] flex justify-between">
@@ -293,9 +294,10 @@ function ServiceEditForm() {
                   แก้ไขล่าสุด
                 </h5>
                 <p>
-                  <Moment format="DD/MM/YYYY hh:mm A">
+                  <Moment format="DD/MM/YYYY hh:mm">
                     {service[service.length - 1].service_edited_date}
-                  </Moment>
+                  </Moment>{" "}
+                      น.
                 </p>
               </div>
             </div>

@@ -284,9 +284,10 @@ function ThirdStep(props) {
                   วันที่-เวลา
                 </p>
                 <p className="float-right my-2 text-black text-sm font-normal">
-                  <Moment format="DD MMMM YYYY HH:mm">
+                  <Moment format="DD/MM/YYYY HH:mm">
                     {bookingDateAndTime}
-                  </Moment>
+                  </Moment>{" "}
+                  น.
                 </p>
               </div>
             </div>
@@ -296,11 +297,11 @@ function ThirdStep(props) {
           fullAddress.district !== "" ||
           fullAddress.province !== "" ||
           fullAddress.zipcode !== "" ? (
-            <div>
-              <p className="float-left my-2 text-grey700 text-sm font-light">
+            <div className="flex justify-between w-full">
+              <p className=" my-2 text-grey700 text-sm font-light">
                 สถานที่
               </p>
-              <p className="float-right my-2 text-black text-sm font-normal w-[80%] text-right">
+              <p className=" my-2 text-black text-sm font-normal break-words text-right w-[80%]">
                 {fullAddress.address} {fullAddress.subdistrict}{" "}
                 {fullAddress.district} {fullAddress.province}{" "}
                 {fullAddress.zipcode}

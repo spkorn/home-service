@@ -33,15 +33,12 @@ function AllStepCheckOutForm() {
       {step === 2 ? (
         <SecondStepForm
           total={total}
-          setTotal={setTotal}
           fullAddress={fullAddress}
           setFullAddress={setFullAddress}
           bookingDateAndTime={bookingDateAndTime}
           setBookingDateAndTime={setBookingDateAndTime}
           subService={subService}
           setStep={setStep}
-          service_name={service_name}
-          setService={setService}
           note={note}
           setNote={setNote}
         />

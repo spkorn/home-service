@@ -52,16 +52,15 @@ function OrderSummary(props) {
                 วันที่-เวลา
               </p>
               <p className="float-right my-2 text-black text-sm font-normal">
-                <Moment format="DD MMMM YYYY HH:mm">
-                  {bookingDateAndTime}
-                </Moment>
+                <Moment format="DD/MM/YYYY HH:mm">{bookingDateAndTime}</Moment>{" "}
+                น.
               </p>
             </div>
-            <div>
-              <p className="float-left mt-2 text-grey700 text-sm font-light">
+            <div className="flex justify-between w-full">
+              <p className=" mt-2 text-grey700 text-sm font-light">
                 สถานที่
               </p>
-              <p className="float-right mt-2 text-black text-sm font-normal w-[80%] text-right">
+              <p className=" mt-2 text-black text-sm font-normal break-words text-right w-[80%]">
                 {fullAddress.address} {fullAddress.subdistrict}{" "}
                 {fullAddress.district} {fullAddress.province}{" "}
                 {fullAddress.zipcode}
@@ -90,7 +89,10 @@ function OrderSummary(props) {
             </span>
           </div>
         </div>
-        <button className="bg-blue600 w-full h-11 rounded-lg text-white" onClick={() => navigate(`/order-history/${user_id}`)}>
+        <button
+          className="bg-blue600 w-full h-11 rounded-lg text-white"
+          onClick={() => navigate(`/order-history/${user_id}`)}
+        >
           เช็ครายการซ่อม
         </button>
       </div>

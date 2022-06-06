@@ -227,9 +227,6 @@ serviceRouter.get("/:id", async (req, res) => {
 
 //API route to create service item page
 serviceRouter.post("/", servicePhotoUpload, async (req, res) => {
-  //add parameter servicePhoto
-  //console.log(req.files.servicePhoto);
-
   const newServiceItem = {
     service_name: req.body.service_name,
     category_name: req.body.category_name,
@@ -238,7 +235,6 @@ serviceRouter.post("/", servicePhotoUpload, async (req, res) => {
     service_created_date: new Date(),
     service_edited_date: new Date(),
   };
-  //console.log(JSON.parse(req.body.sub_service))
 
   const servicePhotoUrl = await cloudinaryUpload(req.files);
   newServiceItem["servicePhotos"] = servicePhotoUrl;
@@ -282,9 +278,6 @@ serviceRouter.put("/:id", async (req, res) => {
   };
 
   const serviceId = req.params.id;
-  // const servicePhotoUrl = await cloudinaryUpload(req.files);
-  // updateServiceItem["servicePhotos"] = servicePhotoUrl;
-
   const subServiceId = [];
 
   // เก็บ sub_service_id ที่จะทำการ update
@@ -293,8 +286,6 @@ serviceRouter.put("/:id", async (req, res) => {
       subServiceId.push(updateServiceItem.data[r].sub_service_id);
   }
 
-  console.log(subServiceId);
-  // ใช้ได้แล้ว
   for (let r = 0; r <= updateServiceItem.data.length - 1; r++) {
     await pool.query(
       `update service
@@ -306,7 +297,6 @@ serviceRouter.put("/:id", async (req, res) => {
       [
         updateServiceItem.data[updateServiceItem.data.length - 1].service_name,
         updateServiceItem.data[updateServiceItem.data.length - 1].category_name,
-        // updateServiceItem.data[updateServiceItem.data.length - 1].servicePhotos[0],
         (updateServiceItem.data[
           updateServiceItem.data.length - 1
         ].service_edited_date = new Date()),

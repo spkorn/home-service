@@ -61,28 +61,6 @@ function OrderDetail() {
                 <div className=" flex flex-col gap-y-[9px] mt-3 mb-5 text-sm font-normal leading-[150%] text-grey700">
                   <div className="flex gap-x-[14.5px]">
                     <img
-                      className="w-5 h-5"
-                      alt="Calendar Icon"
-                      src={image.calendarIcon}
-                    />
-                    <div>
-                      วันเวลาดำเนินการ:{" "}
-                      <Moment format="DD MMMM YYYY HH:mm">
-                        {order.service_date_time}
-                      </Moment>{" "}
-                      น.
-                    </div>
-                  </div>
-                  <div className="flex gap-x-[14.5px]">
-                    <img
-                      className="w-5 h-5"
-                      alt="Person Icon"
-                      src={image.personIcon2}
-                    />
-                    <div>พนักงาน: {order.serviceman_name}</div>
-                  </div>
-                  <div className="flex gap-x-[14.5px]">
-                    <img
                       className="h-4 w-5"
                       alt="Customer Name Icon"
                       src={image.name}
@@ -105,25 +83,36 @@ function OrderDetail() {
                     />
                     <div>เบอร์โทรศัพท์: {order.phonenumber}</div>
                   </div>
-                  <div className="flex gap-x-[14.5px]">
+                  <div className="flex gap-x-[14.5px] w-[40vw]">
                     <img
                       className="w-5 h-5"
                       alt="Address Icon"
                       src={image.Home}
                     />
-                    <div>
-                      ที่อยู่: {order.address} {order.sub_district}{" "}
+                    <div className="break-words">
+                      สถานที่: {order.address} {order.sub_district}{" "}
                       {order.district} {order.province} {order.zipcode}
                     </div>
                   </div>
-                  <div className="flex gap-x-[14.5px]">
-                    <img
-                      className="h-4 w-4 mr-1"
-                      alt="Pen Icon"
-                      src={image.penIcon}
-                    />
-                    <div>ข้อมูลเพิ่มเติม: {order.note}</div>
-                  </div>
+                  {order.note ? (
+                    <div className="flex gap-x-[14.5px]">
+                      <img
+                        className="h-4 w-4 mr-1"
+                        alt="Pen Icon"
+                        src={image.penIcon}
+                      />
+                      <div>ข้อมูลเพิ่มเติม: {order.note}</div>
+                    </div>
+                  ) : (
+                    <div className="flex gap-x-[14.5px]">
+                      <img
+                        className="h-4 w-4 mr-1"
+                        alt="Pen Icon"
+                        src={image.penIcon}
+                      />
+                      <div>ข้อมูลเพิ่มเติม: -</div>
+                    </div>
+                  )}
                 </div>
                 <div className="text-base font-normal ] text-black">
                   รายการ: {order.service_name}
@@ -143,8 +132,33 @@ function OrderDetail() {
                 </div>
               </div>
               <div className="flex flex-col gap-y-12">
-                <div className="flex flex-col gap-y-[13px]">
-                  <div className="text-grey700 font-normal text-sm leading-[150%] flex gap-x-3 justify-end items-center">
+                <div className="flex flex-col gap-y-[13px] mt-10 justify-between h-full">
+                  <div>
+                  <div className="flex gap-x-[14.5px] mb-3">
+                    <img
+                      className="w-5 h-5"
+                      alt="Calendar Icon"
+                      src={image.calendarIcon}
+                    />
+                    <div>
+                      วันเวลาดำเนินการ:{" "}
+                      <Moment format="DD/MM/YYYY HH:mm">
+                        {order.service_date_time}
+                      </Moment>{" "}
+                      น.
+                    </div>
+                  </div>
+                  <div className="flex gap-x-[14.5px]">
+                    <img
+                      className="w-5 h-5"
+                      alt="Person Icon"
+                      src={image.personIcon2}
+                    />
+                    <div>พนักงาน: {order.serviceman_name}</div>
+                    </div>
+                  </div>
+                  <div>
+                  <div className="text-grey700 font-normal text-sm leading-[150%] flex gap-x-3 justify-end items-center mb-3">
                     สถานะ:{" "}
                     <div className="dropdown cursor-pointer">
                       {order.status === "รอดำเนินการ" ? (
@@ -201,6 +215,7 @@ function OrderDetail() {
                     </div>
                   </div>
                 </div>
+              </div>
               </div>
             </div>
           );

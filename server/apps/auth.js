@@ -17,8 +17,6 @@ authRouter.post("/register", async (req, res) => {
   const salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(user.password, salt);
 
-  // console.log(user.password.length);
-
   await pool.query(
     `insert into users (name, phoneNumber, email, password, role)
   values ($1, $2, $3, $4, $5)`,
@@ -27,9 +25,6 @@ authRouter.post("/register", async (req, res) => {
 
   return res.json({
     message: "Your account has been created succesfully",
-
-    // return res.status(404).json({
-    //     message: "failed to create a new user account"
   });
 });
 
@@ -45,8 +40,6 @@ authRouter.post("/login", async (req, res) => {
       message: "email not found",
     });
   }
-
-  // console.log(user.rows[0].password);
 
   const isValidPassword = await bcrypt.compare(
     req.body.password,
@@ -68,9 +61,6 @@ authRouter.post("/login", async (req, res) => {
       role: user.rows[0].role,
     },
     process.env.SECRET_KEY,
-    {
-      expiresIn: "1200000",
-    }
   );
 
   return res.json({

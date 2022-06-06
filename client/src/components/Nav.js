@@ -7,7 +7,7 @@ function Nav() {
   const navigate = useNavigate();
   const auth = useAuth();
   const { logout } = useAuth();
-  const loginName = localStorage.getItem("name"); // ใช้อันนี้แล้ว user name บน nav ไม่หายตอน refresh
+  const loginName = localStorage.getItem("name");
   const loginRole = localStorage.getItem("role");
   const user_id = localStorage.getItem("user_id");
 

@@ -20,7 +20,6 @@ function SecondStep(props) {
     subService,
     total,
     setStep,
-    service_name,
     note,
     setNote,
   } = props;
@@ -29,7 +28,7 @@ function SecondStep(props) {
 
   const changeDateAndTime = (date, dateString) => {
     setBookingDateAndTime(
-      moment(dateString, "DD MMMM YYYY HH:mm").toISOString()
+      moment(dateString, "DD/MM/YYYY HH:mm").toISOString()
     );
   };
 
@@ -132,7 +131,7 @@ function SecondStep(props) {
                 </h5>
                 <div className="mt-2">
                   <DatePicker
-                    format="DD MMMM YYYY HH:mm"
+                    format="DD/MM/YYYY HH:mm"
                     disabledDate={disabledDate}
                     disabledTime={disabledDateTime}
                     css={css`
@@ -294,9 +293,9 @@ function SecondStep(props) {
                   วันที่-เวลา
                 </p>
                 <p className="float-right my-2 text-black text-sm font-normal">
-                  <Moment format="DD MMMM YYYY HH:mm">
+                  <Moment format="DD/MM/YYYY HH:mm">
                     {bookingDateAndTime}
-                  </Moment>
+                  </Moment> น.
                 </p>
               </div>
             </div>
@@ -306,11 +305,11 @@ function SecondStep(props) {
           fullAddress.district !== "" ||
           fullAddress.province !== "" ||
           fullAddress.zipcode !== "" ? (
-            <div>
-              <p className="float-left my-2 text-grey700 text-sm font-light">
+            <div className="flex justify-between w-full">
+              <p className=" my-2 text-grey700 text-sm font-light">
                 สถานที่
               </p>
-              <p className="float-right my-2 text-black text-sm font-normal w-[80%] text-right">
+              <p className=" my-2 text-black text-sm font-normal break-words text-right w-[80%]">
                 {fullAddress.address} {fullAddress.subdistrict}{" "}
                 {fullAddress.district} {fullAddress.province}{" "}
                 {fullAddress.zipcode}

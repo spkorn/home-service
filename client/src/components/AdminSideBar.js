@@ -3,7 +3,6 @@ import image from "../HomePagePhoto/imageIndex";
 import icon from "../AdminPhoto/imageIndex";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/authentication.js";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function SideBar() {
   const navigate = useNavigate();
@@ -53,16 +52,6 @@ function SideBar() {
               บริการ
             </button>
           </div>
-          {/* <div className="hover:bg-blue900 h-12 my-1 cursor-pointer flex items-center">
-            <img
-              className="inline-block h-5 mr-2 ml-7"
-              src={icon.coupon}
-              alt="coupon"
-            />
-            <button className="h-14 text-grey100 font-medium text-base no-underline hover:text-white">
-              Promotion Code
-            </button>
-          </div> */}
           <div className="hover:bg-blue900 h-12 my-1 cursor-pointer flex items-center" onClick={() => navigate("/order-dashboard")}>
             <img
               className="inline-block h-5 mr-2 ml-8"
@@ -74,21 +63,17 @@ function SideBar() {
             </button>
           </div>
           <div>
-            <div className="hover:bg-blue900 h-12 my-1 cursor-pointer pt-3 absolute bottom-5 w-60">
+            <div className="hover:bg-blue900 h-12 my-1 cursor-pointer pt-3 absolute bottom-5 w-60" onClick={() => {
+                  logout();
+                }}>
               <img
                 className="inline-block mr-2 ml-7"
                 src={icon.logout}
                 alt="Logout"
               />
-              <Link
-                to="/"
-                onClick={() => {
-                  logout();
-                }}
-                className="h-14 text-grey100 font-medium text-base no-underline hover:text-white"
-              >
+              <button className="h-14 text-grey100 font-medium text-base no-underline hover:text-white">
                 ออกจากระบบ
-              </Link>
+              </button>
             </div>
           </div>
         </div>

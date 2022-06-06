@@ -52,14 +52,16 @@ function AdminCategories(props) {
                     {data.category_name}
                   </td>
                   <td className="created-date font-light mr-6">
-                    <Moment format="DD/MM/YYYY hh:mm A ">
+                    <Moment format="DD/MM/YYYY hh:mm">
                       {data.category_created_date}
-                    </Moment>
+                    </Moment>{" "}
+                      น.
                   </td>
                   <td className="last-edited font-light mr-6">
-                    <Moment format="DD/MM/YYYY hh:mm A">
+                    <Moment format="DD/MM/YYYY hh:mm">
                       {data.category_edited_date}
-                    </Moment>
+                    </Moment>{" "}
+                      น.
                   </td>
                   <td className="icons-box h-[88px] pl-6 flex items-center justify-center">
                     <img

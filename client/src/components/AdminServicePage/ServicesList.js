@@ -13,7 +13,6 @@ function AdminService(props) {
     service_Id,
     setDeleteService,
   } = props;
-  
 
   const navigate = useNavigate();
 
@@ -74,14 +73,16 @@ function AdminService(props) {
                       )}
                     </td>
                     <td className="font-light w-[185px]">
-                      <Moment format="DD/MM/YYYY hh:mm A ">
+                      <Moment format="DD/MM/YYYY hh:mm">
                         {data.service_created_date}
-                      </Moment>
+                      </Moment>{" "}
+                      น.
                     </td>
                     <td className="font-light w-[185px]">
-                      <Moment format="DD/MM/YYYY hh:mm A">
+                      <Moment format="DD/MM/YYYY hh:mm">
                         {data.service_edited_date}
-                      </Moment>
+                      </Moment>{" "}
+                      น.
                     </td>
                     <td className="h-[88px] flex items-center justify-center">
                       <img

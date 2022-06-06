@@ -6,7 +6,6 @@ import serviceRouter from "./apps/services.js";
 import categoryRouter from "./apps/category.js";
 import checkoutRouter from "./apps/checkout.js";
 import orderHistoryRouter from "./apps/orderHistory.js";
-import orderSummaryRouter from "./apps/orderSummary.js";
 import orderHistoryByOrderHistoryIdRouter from "./apps/orderHistoryByOrderHistoryId.js";
 import dotenv from "dotenv";
 import cloudinary from "cloudinary";
@@ -31,7 +30,6 @@ async function init() {
   app.use("/category", categoryRouter);
   app.use("/checkout", checkoutRouter);
   app.use("/orderHistory", orderHistoryRouter);
-  app.use("/orderSummary", orderSummaryRouter);
   app.use("/orderHistoryByOrderHistoryId", orderHistoryByOrderHistoryIdRouter);
 
   app.get("/", (req, res) => {
