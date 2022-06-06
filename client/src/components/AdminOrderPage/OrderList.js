@@ -1,6 +1,5 @@
 import "../../App.css";
 import Moment from "react-moment";
-import EditAlertBox from "../AlertBox";
 import { useNavigate } from "react-router-dom";
 
 function AdminOrderList(props) {

@@ -81,12 +81,10 @@ function SecondStep(props) {
   };
 
   const handleSelectAddress = (addresses) => {
-    //const { address, subdistrict, district, province, zipcode } = addresses;
     setFullAddress({
       ...fullAddress,
       ...addresses,
     });
-    // or setFullAddress({ address, subdistrict, district, province, zipcode, })
   };
 
   const addressStyle = {

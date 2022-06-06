@@ -118,7 +118,7 @@ function OrderDetail() {
                   </div>
                   <div className="flex gap-x-[14.5px]">
                     <img
-                      className="h-3.5 w-5"
+                      className="h-4 w-4 mr-1"
                       alt="Pen Icon"
                       src={image.penIcon}
                     />

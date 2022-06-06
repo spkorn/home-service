@@ -1,7 +1,6 @@
 import icons from "../../AdminPhoto/imageIndex.js";
 import "../../App.css";
 import Moment from "react-moment";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AlertBoxDelete from "../AlertBox.js";
 

@@ -58,10 +58,10 @@ function OrderSummary(props) {
               </p>
             </div>
             <div>
-              <p className="float-left my-2 text-grey700 text-sm font-light">
+              <p className="float-left mt-2 text-grey700 text-sm font-light">
                 สถานที่
               </p>
-              <p className="float-right my-2 text-black text-sm font-normal w-[80%] text-right">
+              <p className="float-right mt-2 text-black text-sm font-normal w-[80%] text-right">
                 {fullAddress.address} {fullAddress.subdistrict}{" "}
                 {fullAddress.district} {fullAddress.province}{" "}
                 {fullAddress.zipcode}
