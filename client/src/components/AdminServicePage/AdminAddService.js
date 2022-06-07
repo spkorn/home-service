@@ -161,10 +161,11 @@ function AddService() {
                         name="servicePhoto"
                         type="file"
                         onChange={handleFileChange}
+                        accept="image/png, image/jpeg"
+                        max-size="5000"
                         hidden
                       />
                     </label>
-                    หรือ ลากและวางที่นี่
                   </div>
                   <div className="text-xs">PNG, JPG ขนาดไม่เกิน 5MB</div>
                 </div>

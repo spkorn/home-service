@@ -35,8 +35,8 @@ function AdminService(props) {
               <th className="py-3 font-normal text-center">ลำดับ</th>
               <th className="py-3 font-normal">ชื่อบริการ</th>
               <th className="p-3 font-normal">หมวดหมู่</th>
-              <th className="py-3 w-[185px] font-normal">สร้างเมื่อ</th>
-              <th className="py-3 w-[185px] font-normal">แก้ไขล่าสุด</th>
+              <th className="py-3 font-normal">สร้างเมื่อ</th>
+              <th className="py-3 font-normal">แก้ไขล่าสุด</th>
               <th className="py-3 font-normal text-center">Action</th>
             </tr>
           </thead>
@@ -72,13 +72,13 @@ function AdminService(props) {
                         </td>
                       )}
                     </td>
-                    <td className="font-light w-[185px]">
+                    <td className="font-light">
                       <Moment format="DD/MM/YYYY hh:mm">
                         {data.service_created_date}
                       </Moment>{" "}
                       น.
                     </td>
-                    <td className="font-light w-[185px]">
+                    <td className="font-light">
                       <Moment format="DD/MM/YYYY hh:mm">
                         {data.service_edited_date}
                       </Moment>{" "}
