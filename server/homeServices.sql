@@ -60,8 +60,6 @@ note text,
 total_price decimal (7,2)
 );
 
-
-
 create table checkout_quantity (
 checkout_quantity_id int primary key generated always as identity,
 sub_service_id int references sub_service(sub_service_id) on delete cascade, 
