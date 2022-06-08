@@ -92,7 +92,7 @@ function ThirdStep(props) {
           setCreditcardError("");
           setError("");
         } else {
-          setCreditcardError("A Visa card number must have 13 or 15 digits.");
+          setCreditcardError("A Visa card number must have 13 or 16 digits.");
           setError("กรุณากรอกข้อมูลการชำระเงินให้ถูกต้อง");
         }
       } else {

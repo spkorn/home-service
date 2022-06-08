@@ -61,6 +61,9 @@ authRouter.post("/login", async (req, res) => {
       role: user.rows[0].role,
     },
     process.env.SECRET_KEY,
+    {
+      expiresIn: "24h",
+    }
   );
 
   return res.json({
