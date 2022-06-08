@@ -73,13 +73,13 @@ function AdminService(props) {
                       )}
                     </td>
                     <td className="font-light">
-                      <Moment format="DD/MM/YYYY hh:mm">
+                      <Moment format="DD/MM/YYYY HH:mm">
                         {data.service_created_date}
                       </Moment>{" "}
                       น.
                     </td>
                     <td className="font-light">
-                      <Moment format="DD/MM/YYYY hh:mm">
+                      <Moment format="DD/MM/YYYY HH:mm">
                         {data.service_edited_date}
                       </Moment>{" "}
                       น.
