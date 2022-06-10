@@ -1,5 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: Prompt;
+}
+
+h1 {
+  @apply font-medium text-[32px];
+  line-height: 150%;
+}
+
+h2 {
+  @apply font-medium text-xl;
+  line-height: 150%;
+}
+
+h3 {
+  @apply font-normal text-xl;
+  line-height: 150%;
+}
+
+h4 {
+  @apply font-medium text-lg;
+  line-height: 150%;
+}
+
+h5 {
+  @apply font-medium text-base;
+  line-height: 150%;
+}
+
+/* Button Primary */
+
+.btn-primary {
+  @apply font-medium text-base py-2.5 px-6 rounded-lg bg-blue600 text-white hover:bg-blue500 active:bg-blue800 !important;
+}
+
+.btn-primary:disabled,
+btn-primary[disabled] {
+  @apply bg-grey300 text-grey100;
+}
+
+/* Button Secondary */
+
+.btn-secondary {
+  @apply font-medium text-base py-2.5 px-6 rounded-lg border border-blue600 bg-white text-blue600;
+}
+
+.btn-secondary:hover {
+  @apply text-blue400 border-blue400 bg-white;
+}
+
+.btn-secondary:active {
+  @apply text-blue800 border-blue800 bg-white;
+}
+.btn-secondary:disabled,
+btn-secondary[disabled] {
+  @apply text-grey400 border-grey400 bg-grey100;
+}
+
+.btn-ghost {
+  @apply cursor-pointer font-semibold text-base underline underline-offset-auto text-blue600 hover:text-blue400 active:text-blue800;
+}
+
+input {
+  @apply placeholder:text-grey700 focus:border-blue600 focus:outline-none focus:placeholder:text-grey950;
+}
+
+label {
+  @apply text-grey900;
+}
+
+input[type="checkbox"] {
+  @apply w-6 h-6 mr-4 border-grey300 rounded-md hover:border-blue600;
+}
+
+.dropdown {
+  overflow: hidden;
+  @apply text-base border-0 outline-0 float-left;
+}
+
+.dropdown-content {
+  @apply hidden absolute bg-white rounded-lg py-1;
+  box-shadow: 2px 2px 24px rgba(23, 51, 106, 0.12);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  @apply float-none py-2 block text-left text-grey800 text-sm font-normal !important;
+  text-decoration: none;
+}
+
+.dropdown-content span {
+  @apply float-none py-2 block text-left text-grey800 text-sm font-normal !important;
+  text-decoration: none;
+}
+
+.dropdown-content p {
+  @apply float-none py-2 block text-left text-grey700 text-sm font-normal hover:text-blue700;
+}
+
+.dropdown:hover .dropdown-content {
+  @apply block;
+}
+
+.banner {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 25, 81, 0.6),
+      rgba(0, 25, 81, 0.6)
+    ),
+    url(../src/ServicePagePhoto/Header.jpg);
+  @apply bg-center bg-cover h-60 text-center relative;
+}
+
+#search-text {
+  background-image: url(../src/ServicePagePhoto/search.svg);
+  width: 350px;
+  @apply bg-no-repeat bg-left pl-4 bg-origin-content placeholder:pl-10  placeholder:text-grey700 font-normal focus:placeholder:text-grey950 focus:border-blue600;
+}
+
+#search-text:focus {
+  background-image: none;
+  @apply bg-white placeholder:pl-2 font-normal placeholder:text-white border-blue600;
+}
+
+#search-text:not(:placeholder-shown) {
+  background-image: none;
+}
+
+.multi-range-slider {
+  width: 216px;
+}
+
+.vl {
+  border-left: 1px solid #ccd0d7;
+  height: 44px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  pointer-events: all;
+  width: 13px;
+  height: 13px;
+  -webkit-appearance: none;
+}
+
+.select {
+  @apply cursor-pointer text-grey950 text-base font-medium appearance-none bg-no-repeat bg-right w-32 bg-origin-content focus:border-0;
+  background-image: url(../src/HomePagePhoto/arrow.svg);
 }
