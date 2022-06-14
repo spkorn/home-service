@@ -10,7 +10,6 @@ function AllStepCheckOutForm() {
   const {
     getServiceById,
     service,
-    setService,
     step,
     setStep,
     fullAddress,
