@@ -47,7 +47,7 @@ function Nav() {
               id="dropdown-content"
               className="dropdown-content cursor-pointer w-[190px] "
             >
-              {loginRole == "admin" ? (
+              {loginRole === "admin" ? (
                 <div>
                   <div
                     onClick={() => navigate("/profile")}

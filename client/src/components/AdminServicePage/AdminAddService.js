@@ -184,14 +184,14 @@ function AddService() {
                         src={URL.createObjectURL(file)}
                         alt={file.name}
                       />
-                      <a
-                        className="absolute right-5 cursor-pointer text-base"
+                      <button
+                        className="btn-ghost absolute right-5"
                         onClick={(e) =>
                           handleRemoveImageService(e, servicePhotosKey)
                         }
                       >
                         ลบรูปภาพ
-                      </a>
+                      </button>
                     </div>
                   );
                 })}
